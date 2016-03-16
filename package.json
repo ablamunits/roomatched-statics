@@ -1,0 +1,20 @@
+{
+  "name": "roomatched-statics",
+  "version": "1.0.0",
+  "description": "Roomatched MTA final project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-typescript": "^2.12.1",
+    "run-sequence": "^1.1.5"
+  }
+}
