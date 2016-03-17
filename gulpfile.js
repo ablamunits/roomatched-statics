@@ -60,6 +60,6 @@ gulp.task('build-fresh', function () {
 
 gulp.task('watch', ['browserSync', 'sass', 'html-copy', 'ts-copy'], function() {
 	gulp.watch('src/**/*.scss', ['sass']);
-	gulp.watch('src/**/*.html', ['html-copy']);
-	gulp.watch('src/**/*.ts', ['ts-copy']);
+	gulp.watch('src/**/*.html', ['html-copy', 'ts-copy']);
+	gulp.watch('src/**/*.ts', ['html-copy', 'ts-copy']);
 });
