@@ -1,18 +1,11 @@
-/// <reference path="../typings/tsd.d.ts" />
-
-var roomatchedApp = angular.module('RoomatchedApp', ['ngRoute'])
-.config(function ($routeProvider, $locationProvider) {
+var roomatchedApp: ng.IModule = angular.module('RoomatchedApp', ['ngRoute'])
+.config(function ($routeProvider: any, $locationProvider: ng.ILocaleService) {
 	$routeProvider
 	.when('/', {
-		templateUrl: 'templates/main.html',
-		controller: 'mainCtrl'
-	})
-	.when('/register', {
-		templateUrl: 'templates/register.html',
-		controller: 'registerCtrl'
+		templateUrl: 'home/home.tpl.html',
+		controller: 'HomeCtrl as home',
 	})
 	.otherwise({
 		redirectTo: '/'
 	});
-
 });

@@ -1,3 +1,21 @@
 {
-	"compileOnSave": false
+    "compilerOptions": {
+        "module": "commonjs",
+        "preserveConstEnums": true,
+        "sourceMap": true
+    },
+    "compileOnSave": false,
+    "buildOnSave": false,
+    "filesGlob": [
+        "src/**/*.ts",
+        "!node_modules/**"
+    ],
+    "files": [
+        "src/home/home.ctrl.ts",
+        "src/roomatched.ts",
+        "src/user/user.ts"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    }
 }

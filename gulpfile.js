@@ -6,6 +6,8 @@ var clean = require('gulp-clean');
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync').create();
 
+gulp.task('default', ['build-fresh']);
+
 gulp.task('sass', function(){
   return gulp.src('src/**/*.scss')
     .pipe(sass()) // Using gulp-sass
@@ -30,7 +32,7 @@ gulp.task('ts-copy', function() {
 			noImplicitAny: true,
 			out: 'scripts-concat.js'
 		}))
-		.pipe(gulp.dest('dist/scripts'))
+		.pipe(gulp.dest('dist'))
 		// .pipe(browserSync.reload({
 		// 	stream: true
 		// }))
