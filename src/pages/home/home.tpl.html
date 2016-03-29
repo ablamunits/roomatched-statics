@@ -1,0 +1,78 @@
+<div class="home-view-container">
+	<div>
+		Debug:
+		{{ home.newUser }}
+		{{ home.preferenceSelect }}
+	</div>
+
+	<p>Your details:</p>
+	<input ng-model="home.newUser.email" placeholder="Email"/>
+	<input ng-model="home.newUser.firstName" placeholder="First Name"/>
+	<input ng-model="home.newUser.lastName" placeholder="Last Name"/>
+
+	<button ng-click="home.openSeekerRegister()">Seeking for a room</button>
+	<button ng-click="home.openOffererRegister()">Offering a room</button>
+
+	<div class="register register-seeker" ng-show="home.showSeekerRegistration">
+		<h3>Register as a Seeker</h3>
+		<p>Fill in your preferences and information to get started!</p>
+		<div class="registration-form">
+			<br>
+			<input type="button" ng-click="home.preferenceClick('smoking')" value="{{ home.preferenceSelect.smoking || 0}}"/> Smoking
+			<input type="button" ng-click="home.preferenceClick('kosher')" value="{{ home.preferenceSelect.kosher || 0}}"/> Kosher
+			<input type="button" ng-click="home.preferenceClick('vegan')" value="{{ home.preferenceSelect.vegan || 0}}"/> Vegan
+			<input type="button" ng-click="home.preferenceClick('sharedExpences')" value="{{ home.preferenceSelect.sharedExpences || 0}}"/> Shared Expences
+			<input type="button" ng-click="home.preferenceClick('animals')" value="{{ home.preferenceSelect.animals || 0}}"/> Animal Friendly
+			<input type="button" ng-click="home.preferenceClick('gayFriendly')" value="{{ home.preferenceSelect.gayFriendly || 0}}"/> Gay Friendly
+			<input type="button" ng-click="home.preferenceClick('musicianFriendly')" value="{{ home.preferenceSelect.musicianFriendly || 0}}"/> Musician Friendly
+
+			<br>
+			<input type="number" ng-model="home.seekerRegistrationFields.fromPrice" placeholder="From price"/>
+			<input type="number" ng-model="home.seekerRegistrationFields.toPrice" placeholder="To price"/>
+			<input type="text" ng-model="home.seekerRegistrationFields.preferedLocation" placeholder="Prefered location"/>
+		</div>
+	</div>
+
+	<div class="register register-offerer" ng-show="home.showOffererRegistration">
+		<h3>Register as a Offerer</h3>
+		<p>Tell us a few words about the room you are offering and what the people who live there are like.</p>
+		<div class="registration-form">
+			<br>
+			<!-- These are the same as above, and should be moved into a directive ... -->
+			<input type="button" ng-click="home.preferenceClick('smoking')" value="{{ home.preferenceSelect.smoking || 0}}"/> Smoking
+			<input type="button" ng-click="home.preferenceClick('kosher')" value="{{ home.preferenceSelect.kosher || 0}}"/> Kosher
+			<input type="button" ng-click="home.preferenceClick('vegan')" value="{{ home.preferenceSelect.vegan || 0}}"/> Vegan
+			<input type="button" ng-click="home.preferenceClick('sharedExpences')" value="{{ home.preferenceSelect.sharedExpences || 0}}"/> Shared Expences
+			<input type="button" ng-click="home.preferenceClick('animals')" value="{{ home.preferenceSelect.animals || 0}}"/> Animal Friendly
+			<input type="button" ng-click="home.preferenceClick('gayFriendly')" value="{{ home.preferenceSelect.gayFriendly || 0}}"/> Gay Friendly
+			<input type="button" ng-click="home.preferenceClick('musicianFriendly')" value="{{ home.preferenceSelect.musicianFriendly || 0}}"/> Musician Friendly
+
+			<br>
+			<input type="number" ng-model="home.offererRoomDetails.price" placeholder="Room price"/>
+			<div>
+				{{ home.offererRoomDetails }}
+				<p>Room details:</p>
+				<input type="number" ng-model="home.offererRoomDetails.size" placeholder="Room size"/>
+				Is Furnished<input type="checkbox" ng-model="home.offererRoomDetails.isFurnished" />
+				Has Balcony<input type="checkbox" ng-model="home.offererRoomDetails.hasBalcony" />
+				Seperate Bathroom<input type="checkbox" ng-model="home.offererRoomDetails.seperateBathroom" />
+				Air Conditioned<input type="checkbox" ng-model="home.offererRoomDetails.airConditioned" />
+
+				<br>
+				{{ home.offererApartmentDetails }}
+				<p>Apartment details:</p>
+				<input type="number" ng-model="home.offererApartmentDetails.size" placeholder="Apartment size"/>
+				<input type="text" ng-model="home.offererApartmentDetails.location" placeholder="Location"/>
+				<input type="number" ng-model="home.offererApartmentDetails.floor" placeholder="Floor #"/>
+				<input type="number" ng-model="home.offererApartmentDetails.totalRooms" placeholder="Total Rooms"/>
+				<input type="number" ng-model="home.offererApartmentDetails.totalRoomates" placeholder="Total Roomates"/>
+				<input type="number" ng-model="home.offererApartmentDetails.freeRooms" placeholder="Free rooms"/>
+				Is Furnished<input type="checkbox" ng-model="home.offererApartmentDetails.isFurnished" />
+				Has Elevator<input type="checkbox" ng-model="home.offererApartmentDetails.hasElevator" />
+				Has Parking<input type="checkbox" ng-model="home.offererApartmentDetails.hasParking" />
+				Is Renovated<input type="checkbox" ng-model="home.offererApartmentDetails.isRenovated" />
+				<input type="number" ng-model="home.offererApartmentDetails.approximateExpences" placeholder="Approx. Expances (Optional)"/>
+			</div>
+		</div>
+	</div>
+</div>

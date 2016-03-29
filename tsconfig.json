@@ -11,9 +11,12 @@
         "!node_modules/**"
     ],
     "files": [
-        "src/home/home.ctrl.ts",
+        "src/apartments/apartment.i.ts",
+        "src/pages/home/home.ctrl.ts",
+        "src/preferences/preferences.i.ts",
         "src/roomatched.ts",
-        "src/user/user.ts"
+        "src/rooms/room.i.ts",
+        "src/user/user.i.ts"
     ],
     "atom": {
         "rewriteTsconfig": true

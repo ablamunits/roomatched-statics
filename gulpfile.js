@@ -12,7 +12,7 @@ gulp.task('sass', function(){
   return gulp.src('src/**/*.scss')
     .pipe(sass()) // Using gulp-sass
 		.pipe(concat('styles-concat.css'))
-    .pipe(gulp.dest('dist/styles'))
+    .pipe(gulp.dest('dist'))
 		.pipe(browserSync.reload({
 			stream: true
 		}))
