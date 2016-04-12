@@ -16,7 +16,8 @@
         "src/preferences/preferences.i.ts",
         "src/roomatched.ts",
         "src/rooms/room.i.ts",
-        "src/user/user.i.ts"
+        "src/user/user.i.ts",
+        "src/user/user.srv.ts"
     ],
     "atom": {
         "rewriteTsconfig": true

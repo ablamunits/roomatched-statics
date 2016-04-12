@@ -1,12 +1,20 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 
-const NUM_OF_PREFERENCE_SCORES: number = 4;
-
 class HomeController {
-	showSeekerRegistration: boolean = false;
-	showOffererRegistration: boolean = false;
+	isSeekerRegistration: boolean = false;
+	isOffererRegistration: boolean = false;
 	newUser: IUser;
 	preferenceSelect: IPreferences;
+	preferenceTitles = {
+		smoking: "Smoking",
+		kosher: "Kosher",
+		vegan: "Vegan",
+		sharedExpences: "Shared Expences",
+		animals: "Animal Friendly",
+		gayFriendly: "Gay Friendly",
+		musicianFriendly: "Musician Friendly"
+	}
+
 	seekerRegistrationFields = {
 		fromPrice: 0,
 		toPrice: 1000,
@@ -17,7 +25,7 @@ class HomeController {
 	offererApartmentDetails: IApartment;
 	offererRoomDetails: IRoom;
 
-	constructor (private $scope: ng.IScope) {
+	constructor (private $scope: ng.IScope, private $http: ng.IHttpService, private UserService) {
 		this.preferenceSelect = {
 			smoking: PreferenceScore.Neutral,
 			kosher: PreferenceScore.Neutral,
@@ -30,28 +38,34 @@ class HomeController {
 	}
 
 	openSeekerRegister() {
-		this.showSeekerRegistration = true;
-		this.showOffererRegistration = false;
+		this.isSeekerRegistration = true;
+		this.isOffererRegistration = false;
 	}
 
 	openOffererRegister() {
-		this.showOffererRegistration = true;
-		this.showSeekerRegistration = false;
+		this.isOffererRegistration = true;
+		this.isSeekerRegistration = false;
 	};
 
 	preferenceClick(preference: string) {
 		this.preferenceSelect[preference] = (this.preferenceSelect[preference] + 1) % NUM_OF_PREFERENCE_SCORES;
 	}
 
+	registerButtonClick() {
+		if (this.isSeekerRegistration) {
+			this.registerAsSeeker();
+		} else if (this.isOffererRegistration) {
+			this.registerAsOfferer();
+		}
+	}
+
 	private registerAsSeeker() {
-		// TODO with User service
-		// UserService.RegisterUser(this.user, UserType.Seeker, this.preferences);
+		this.UserService.registerUser(this.newUser, UserType.Seeker, this.preferenceSelect);
 	}
 
 	private registerAsOfferer() {
-		// TODO with User service
-		// UserService.RegisterUser(this.user, UserType.Offerer, this.preferences);
+		this.UserService.registerUser(this.newUser, UserType.Offerer, this.preferenceSelect);
 	}
-}
+};
 
 roomatchedApp.controller('HomeCtrl', HomeController);

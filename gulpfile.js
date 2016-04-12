@@ -26,6 +26,14 @@ gulp.task('html-copy', function() {
 		}))
 });
 
+gulp.task('assets-copy', function() {
+	return gulp.src('src/assets/**/*.*')
+		.pipe(gulp.dest('dist/assets'))
+		.pipe(browserSync.reload({
+			stream: true
+		}))
+});
+
 gulp.task('ts-copy', function() {
 	return gulp.src('src/**/*.ts')
 		.pipe(ts({
@@ -33,9 +41,6 @@ gulp.task('ts-copy', function() {
 			out: 'scripts-concat.js'
 		}))
 		.pipe(gulp.dest('dist'))
-		// .pipe(browserSync.reload({
-		// 	stream: true
-		// }))
 });
 
 gulp.task('bower-copy', function () {
@@ -57,11 +62,12 @@ gulp.task('clean', function (){
 });
 
 gulp.task('build-fresh', function () {
-	runSequence('clean', 'sass', 'html-copy', 'ts-copy', 'bower-copy', 'watch');
+	runSequence('clean', 'sass', 'html-copy', 'assets-copy', 'ts-copy', 'bower-copy', 'watch');
 });
 
-gulp.task('watch', ['browserSync', 'sass', 'html-copy', 'ts-copy'], function() {
+gulp.task('watch', ['browserSync', 'sass', 'html-copy', 'assets-copy', 'ts-copy'], function() {
 	gulp.watch('src/**/*.scss', ['sass']);
+	gulp.watch('src/assets/**/*.*', ['assets-copy']);
 	gulp.watch('src/**/*.html', ['html-copy', 'ts-copy']);
 	gulp.watch('src/**/*.ts', ['html-copy', 'ts-copy']);
 });
