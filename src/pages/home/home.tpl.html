@@ -10,8 +10,11 @@
 			</div>
 		</div>
 	</div>
+	<div class="container homepage-container" ng-hide="home.isSeekerRegistration || home.isOffererRegistration">
+		<h3>Here is some text that will just appear ...</h3>
+	</div>
 
-	<div class="registration-container">
+	<div class="container registration-container">
 		<div class="register register-seeker" ng-show="home.isSeekerRegistration">
 			<h3>Register as a Seeker</h3>
 			<div class="registration-form">
