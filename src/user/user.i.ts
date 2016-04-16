@@ -2,7 +2,7 @@ enum UserType {
 	Visitor, Seeker, Offerer
 }
 
-interface IUser {
+interface User {
 	id?: number;
 	type: UserType;
 	email: string;
@@ -11,4 +11,16 @@ interface IUser {
 	lastName: string;
 	sex: string;
 	photoUrl?: string;
+}
+
+interface SeekerPreferences {
+	fromPrice: number;
+	toPrice: number;
+	location: string;
+	numberOfRoomates: number;
+}
+
+interface OffererDetails {
+	apartmentDetails: Apartment;
+	roomDetails: Room;
 }

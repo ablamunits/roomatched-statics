@@ -18,9 +18,9 @@
 		<div class="register register-seeker" ng-show="home.isSeekerRegistration">
 			<h3>Register as a Seeker</h3>
 			<div class="registration-form">
-				<p>Finding the perfect place starts by matching you to perfect people! Score your preferences here between neutral, <span>low</span>, <span>medium</span>, or <span>high</span> priority.</p>
+				<p>Finding the perfect place starts by matching you to perfect people! Score your preferences here between: Neutral, <span class="label important">Important</span>, <span class="label somewhat-important">Somewhat important</span>, or <span class="label no-go">No go</span>.</p>
 				<div>
-					<input ng-repeat="(preference, score) in home.preferenceSelect" type="button" class="preference-button preference-score{{ score }}" ng-click="home.preferenceClick(preference)" value="{{ home.preferenceTitles[preference] }}"/>
+					<input ng-repeat="(preferenceKey, title) in home.preferenceTitles" type="button" class="preference-button preference-score{{ home.preferenceSelect[preferenceKey] }}" ng-click="home.preferenceClick(preferenceKey)" value="{{ title }}"/>
 					<div>
 
 						<p>Next, choose an amazing location where you'd want to sattle:</p>
@@ -41,58 +41,60 @@
 
 		<div class="register register-offerer" ng-show="home.isOffererRegistration">
 			<h3>Register as a Offerer</h3>
-			<p>Tell us a few words about the room you are offering and what the people who live there are like.</p>
+			<p>Finding the perfect roomate starts with a perfect match! Score your preferences here between Neutral, <span class="label important">Important</span>, <span class="label somewhat-important">Somewhat important</span>, or <span class="label no-go">No go</span>.</p>
 			<div class="registration-form">
 				<div>
 					<input ng-repeat="(preference, score) in home.preferenceSelect" type="button" class="preference-button preference-score{{ score }}" ng-click="home.preferenceClick(preference)" value="{{ home.preferenceTitles[preference] }}"/>
 				</div>
 
-				<input type="number" ng-model="home.offererRoomDetails.price" placeholder="Room price"/>
+				<p>Give us some details about the room you are offering:</p>
 				<div>
-					{{ home.offererRoomDetails }}
-					<p>Room details:</p>
-					<input type="number" ng-model="home.offererRoomDetails.size" placeholder="Room size"/>
-					Is Furnished<input type="checkbox" ng-model="home.offererRoomDetails.isFurnished" />
-					Has Balcony<input type="checkbox" ng-model="home.offererRoomDetails.hasBalcony" />
-					Seperate Bathroom<input type="checkbox" ng-model="home.offererRoomDetails.seperateBathroom" />
-					Air Conditioned<input type="checkbox" ng-model="home.offererRoomDetails.airConditioned" />
-
-					<br>
-					{{ home.offererApartmentDetails }}
-					<p>Apartment details:</p>
+					<input type="number" ng-model="home.offererRoomDetails.price" placeholder="Room price"/>
+					<input type="number" ng-model="home.offererRoomDetails.size" placeholder="Room size (m^2)"/>
+					<input type="checkbox" ng-model="home.offererRoomDetails.isFurnished" /> Furniture
+					<input type="checkbox" ng-model="home.offererRoomDetails.hasBalcony" /> Balcony
+					<input type="checkbox" ng-model="home.offererRoomDetails.seperateBathroom" /> Seperate Bathroom
+					<input type="checkbox" ng-model="home.offererRoomDetails.airConditioned" /> Air Conditioned
+				</div>
+				<p>Additional apartment details:</p>
+				<div>
 					<input type="number" ng-model="home.offererApartmentDetails.size" placeholder="Apartment size"/>
 					<input type="text" ng-model="home.offererApartmentDetails.location" placeholder="Location"/>
 					<input type="number" ng-model="home.offererApartmentDetails.floor" placeholder="Floor #"/>
 					<input type="number" ng-model="home.offererApartmentDetails.totalRooms" placeholder="Total Rooms"/>
 					<input type="number" ng-model="home.offererApartmentDetails.totalRoomates" placeholder="Total Roomates"/>
 					<input type="number" ng-model="home.offererApartmentDetails.freeRooms" placeholder="Free rooms"/>
-					Is Furnished<input type="checkbox" ng-model="home.offererApartmentDetails.isFurnished" />
-					Has Elevator<input type="checkbox" ng-model="home.offererApartmentDetails.hasElevator" />
-					Has Parking<input type="checkbox" ng-model="home.offererApartmentDetails.hasParking" />
-					Is Renovated<input type="checkbox" ng-model="home.offererApartmentDetails.isRenovated" />
-					<input type="number" ng-model="home.offererApartmentDetails.approximateExpences" placeholder="Approx. Expances (Optional)"/>
+					<input type="number" ng-model="home.offererApartmentDetails.approximateExpences" placeholder="Approx. Expances"/>
+					<br>
+					<input type="checkbox" ng-model="home.offererApartmentDetails.isFurnished" /> Furniture
+					<input type="checkbox" ng-model="home.offererApartmentDetails.hasElevator" /> Elevator
+					<input type="checkbox" ng-model="home.offererApartmentDetails.hasParking" /> Parking
+					<input type="checkbox" ng-model="home.offererApartmentDetails.isRenovated" /> Renovated
 				</div>
 			</div>
 		</div>
 
-		<br>
-		<div ng-show="home.isSeekerRegistration || home.isOffererRegistration">
-			<h3>You are almost ready to get Roomatched!</h3>
-			<p>Fill in the following information to complete the registration:</p>
-			<div>
-				<input type="text" ng-model="home.newUser.firstName" placeholder="First Name"/>
-				<input type="text" ng-model="home.newUser.lastName" placeholder="Last Name"/>
-				<input type="text" ng-model="home.newUser.sex" placeholder="Gender (Male/Female)"/>
-			</div>
-			<p>Login information to use on Roomatched:</p>
-			<div>
-				<input type="text" ng-model="home.newUser.email" placeholder="Email"/>
-				<input type="text" ng-model="home.newUser.password" placeholder="Desired password"/>
-			</div>
 
-			<div>
-				<input type="button" class="register-button" ng-click="home.registerButtonClick()" value="Register"/>
+			<br>
+			<div ng-show="home.isSeekerRegistration || home.isOffererRegistration">
+				<h3>You are almost ready to get Roomatched!</h3>
+				<p>Fill in the following information to complete the registration:</p>
+				<div>
+					<input type="text" ng-model="home.newUser.firstName" placeholder="First Name"/>
+					<input type="text" ng-model="home.newUser.lastName" placeholder="Last Name"/>
+					<input type="text" ng-model="home.newUser.sex" placeholder="Gender (Male/Female)"/>
+				</div>
+				<p>Login information to use on Roomatched:</p>
+				<div>
+					<input type="text" ng-model="home.newUser.email" placeholder="Email"/>
+					<input type="text" ng-model="home.newUser.password" placeholder="Desired password"/>
+				</div>
+
+				<div>
+					<input type="button" class="register-button" ng-click="home.registerButtonClick()" value="Register"/>
+				</div>
 			</div>
-		</div>
 	</div>
+
+</div>
 </div>

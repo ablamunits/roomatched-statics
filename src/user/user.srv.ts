@@ -2,23 +2,24 @@ class UserServiceProvider {
 	constructor(private $http: ng.IHttpService){
 	}
 
-	registerUser (user: IUser, type: UserType, pref: IPreferences) {
-		let newUserRegistrationObject = {
-			email: user.email,
-			password: user.password,
-			firstName: user.firstName,
-			lastName: user.lastName,
-			sex: user.sex || null,
-			type: this.typeToString(type),
-			photoUrl: user.photoUrl || null
-		};
+	registerUser (user: User, preferences: Preferences, additionalInfo: Object) {
+			let newUserRegistrationObject = {
+				email: user.email,
+				password: user.password,
+				firstName: user.firstName,
+				lastName: user.lastName,
+				sex: user.sex || null,
+				type: this.typeToString(user.type),
+				photoUrl: user.photoUrl || null,
+				preferences: preferences,
+				additionalDetails: additionalInfo
+			};
 
-		console.log('Will try to register: ', newUserRegistrationObject);
-		console.log('And after that add: ', pref);
+			console.log(newUserRegistrationObject);
 
-		this.$http.post(API_URI + '/user', newUserRegistrationObject).then((response) => {
-			console.log(response);
-		});
+			this.$http.post(API_URI + '/user', newUserRegistrationObject).then((response) => {
+				console.log(response);
+			});
 	}
 
 	private typeToString(type: UserType): string {

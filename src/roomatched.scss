@@ -102,6 +102,20 @@ body {
 
 	.content {
 		margin: $header-height 0;
+
+		.label {
+			&.important {
+				color: $green-light;
+			}
+
+			&.somewhat-important {
+				color: $orange-light;
+			}
+
+			&.no-go {
+				color: $red-light;
+			}
+		}
 	}
 
 	.footer {

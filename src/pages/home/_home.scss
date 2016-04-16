@@ -1,6 +1,6 @@
-$preference-score1: $orange-light;
-$preference-score2: darken($preference-score1, 20%);
-$preference-score3: rgb(201, 80, 80);
+$preference-score1: $green-light;
+$preference-score2: $orange-light;
+$preference-score3: $red-light;
 
 .home-view {
 	.strip {
@@ -45,7 +45,6 @@ $preference-score3: rgb(201, 80, 80);
 		}
 
 		div {
-			//border: 1px solid black;
 			margin-top: 10px;
 		}
 	}
@@ -73,7 +72,6 @@ $preference-score3: rgb(201, 80, 80);
 
 		&.preference-score2 {
 			background-color: $preference-score2;
-			color: $white;
 		}
 
 		&.preference-score3 {

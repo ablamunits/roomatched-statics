@@ -1,4 +1,4 @@
-interface IApartment {
+interface Apartment {
 	size: number;
 	location: string;
 	totalRooms: number;
@@ -7,8 +7,10 @@ interface IApartment {
 	floor: number;
 	hasElevator: boolean;
 	hasParking: boolean;
+	hasLivingRoom: boolean;
 	isRenovated: boolean;
 	isFurnished: boolean;
+	guarantees: string;
 	approximateExpences?: number;
 	images?: string[];
 }

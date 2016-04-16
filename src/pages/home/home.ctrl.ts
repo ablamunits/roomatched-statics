@@ -3,17 +3,17 @@
 class HomeController {
 	isSeekerRegistration: boolean = false;
 	isOffererRegistration: boolean = false;
-	newUser: IUser;
-	preferenceSelect: IPreferences;
+	newUser: User;
+	preferenceSelect: Preferences;
 	preferenceTitles = {
-		smoking: "Smoking",
-		kosher: "Kosher",
-		vegan: "Vegan",
-		sharedExpences: "Shared Expences",
-		animals: "Animal Friendly",
-		gayFriendly: "Gay Friendly",
-		musicianFriendly: "Musician Friendly"
-	}
+		smoking: 'Smoking',
+		kosher: 'Kosher',
+		vegan: 'Vegan',
+		sharedExpences: 'Shared Expences',
+		animals: 'Animal Friendly',
+		gayFriendly: 'Gay Friendly',
+		musicianFriendly: 'Musician Friendly'
+	};
 
 	seekerRegistrationFields = {
 		fromPrice: 0,
@@ -22,8 +22,8 @@ class HomeController {
 		preferedNumberOfRoomates: 2
 	};
 
-	offererApartmentDetails: IApartment;
-	offererRoomDetails: IRoom;
+	offererApartmentDetails: Apartment;
+	offererRoomDetails: Room;
 
 	constructor (private $scope: ng.IScope, private $http: ng.IHttpService, private UserService) {
 		this.preferenceSelect = {
@@ -60,11 +60,25 @@ class HomeController {
 	}
 
 	private registerAsSeeker() {
-		this.UserService.registerUser(this.newUser, UserType.Seeker, this.preferenceSelect);
+		let seekerPreferences = {
+			fromPrice: this.seekerRegistrationFields.fromPrice,
+			toPrice: this.seekerRegistrationFields.toPrice,
+			location: this.seekerRegistrationFields.preferedLocation,
+			numberOfRoomates: this.seekerRegistrationFields.preferedNumberOfRoomates
+		};
+
+		this.newUser.type = UserType.Seeker;
+		this.UserService.registerUser(this.newUser, this.preferenceSelect, seekerPreferences);
 	}
 
 	private registerAsOfferer() {
-		this.UserService.registerUser(this.newUser, UserType.Offerer, this.preferenceSelect);
+		let offererDetails = {
+			roomDetails: this.offererRoomDetails,
+			apartmentDetails: this.offererApartmentDetails
+		};
+
+		this.newUser.type = UserType.Offerer;
+		this.UserService.registerUser(this.newUser, this.preferenceSelect, offererDetails);
 	}
 };
 

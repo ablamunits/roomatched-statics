@@ -1,10 +1,10 @@
 const NUM_OF_PREFERENCE_SCORES: number = 4;
 
 enum PreferenceScore {
-	Neutral, Low, Medium, High
+	Neutral, Important, SomewhatImportant, NoGo
 }
 
-interface IPreferences {
+interface Preferences {
 	smoking: PreferenceScore;
 	kosher: PreferenceScore;
 	vegan: PreferenceScore;
