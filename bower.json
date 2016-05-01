@@ -1,0 +1,22 @@
+{
+  "name": "roomatched-statics",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ablamunits/roomatched-statics",
+  "authors": [
+    "Boris Ablamunits <borisa@wix.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.5.1",
+    "angular": "~1.5.1",
+    "jquery": "~2.2.1",
+    "typeit": "~3.0.1"
+  }
+}

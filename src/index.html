@@ -1,19 +1,28 @@
 <html ng-app="RoomatchedApp">
 	<head>
 		<link rel="stylesheet" type="text/css" href="styles-concat.css">
-
+		<!-- Keep these scripts first! -->
 		<script src="./bower_components/jquery/dist/jquery.js"></script>
 		<script src="./bower_components/angular/angular.js"></script>
+		<!-- End -->
 		<script src="./bower_components/angular-route/angular-route.js"></script>
+		<script src="./bower_components/typeit/dist/typeit.js"></script>
+		<script src="./bower_components/ng-typeit/dist/angular-typeit.js"></script>
 	</head>
 
 	<body>
+
 		<div class="header">
-			<p>Roomatched</p>
+			<div class="header-content">
+				<h1>Roomatched</h1>
+				<div class="user-wrapper">
+					<input type="button" class="sign-in-button" value="Sign in"/>
+				</div>
+			</div>
 		</div>
 		<div class="content">
 			<div ng-view class="main-view">
-				
+
 			</div>
 		</div>
 		<div class="footer">

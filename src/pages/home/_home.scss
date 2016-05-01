@@ -7,49 +7,62 @@ $preference-score3: $red-light;
 		@include shadow();
 		position: relative;
 		width: 100%;
-		height: 400px;
-		background-image: url('../assets/images/strip.jpg');
-		background-position: center;
-		background-color: $black;
-		background-blend-mode: overlay;
 
-		.user-type-buttons-wrapper {
-			width: 100%;
-			position: absolute;
-			display: block;
-			text-align: center;
-			margin-top: 50px;
+		&.strip-home {
+			height: 400px;
+			background-image: url('../assets/images/strip.jpg');
+			background-position: center;
+			background-color: $black;
+			background-blend-mode: overlay;
 
-			.button-big {
-				@include button-big($red-light);
-				color: $white;
-				display: inline-block;
-				position: relative;
+			.user-type-buttons-wrapper {
+				width: 100%;
+				position: absolute;
+				display: block;
+				text-align: center;
+				margin-top: 50px;
 
-				span {
-					position: absolute;
-					top: 50%;
-					transform: translateY(-50%);
-					left: 0;
-					width: 100%;
+				.button-big {
+					@include button-big($red-light);
+					color: $white;
+					display: inline-block;
+					position: relative;
+
+					span {
+						position: absolute;
+						top: 50%;
+						transform: translateY(-50%);
+						left: 0;
+						width: 100%;
+					}
 				}
+			}
+		}
+
+		&.strip-headline {
+			text-align: center;
+			background: $color-bg-section-strip;
+			h2 {
+				margin: 0;
+				padding: 10px 0;
+				color: $grey-xlight;
+			}
+
+			h3 {
+				margin: 0;
+				padding: 5px 0;
+				color: $grey-light;
+			}
+
+			.typewrite {
+				color: $orange-light;
 			}
 		}
 	}
 
-	.container {
-		margin: 0 220px;
-
-		h3 {
-			font-size: 20px;
-		}
-
-		div {
-			margin-top: 10px;
-		}
-	}
-
 	input[type="text"],
+	input[type="password"],
+	input[type="email"],
 	input[type="number"] {
 		@include input-field($grey-xlight);
 	}

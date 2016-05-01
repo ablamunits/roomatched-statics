@@ -3,6 +3,9 @@
 class HomeController {
 	isSeekerRegistration: boolean = false;
 	isOffererRegistration: boolean = false;
+	registrationHasErrors: boolean = false;
+
+	cityOptions: string[] = ['Tel-Aviv', 'Beer-Sheva', 'Jerusalem', 'Haifa'];
 	newUser: User;
 	preferenceSelect: Preferences;
 	preferenceTitles = {
@@ -60,15 +63,26 @@ class HomeController {
 	}
 
 	private registerAsSeeker() {
+		// let seekerPreferences = {
+		// 	fromPrice: this.seekerRegistrationFields.fromPrice,
+		// 	toPrice: this.seekerRegistrationFields.toPrice,
+		// 	location: this.seekerRegistrationFields.preferedLocation,
+		// 	numberOfRoomates: this.seekerRegistrationFields.preferedNumberOfRoomates
+		// };
+
 		let seekerPreferences = {
-			fromPrice: this.seekerRegistrationFields.fromPrice,
-			toPrice: this.seekerRegistrationFields.toPrice,
-			location: this.seekerRegistrationFields.preferedLocation,
-			numberOfRoomates: this.seekerRegistrationFields.preferedNumberOfRoomates
+			pricePreffered: this.seekerRegistrationFields.toPrice,
+			numberOfRoomates: this.seekerRegistrationFields.preferedNumberOfRoomates,
+			location: this.seekerRegistrationFields.preferedLocation
 		};
 
 		this.newUser.type = UserType.Seeker;
-		this.UserService.registerUser(this.newUser, this.preferenceSelect, seekerPreferences);
+
+		this.UserService.registerUser(this.newUser, this.preferenceSelect, seekerPreferences).then((response) => {
+			this.registrationHasErrors = false;
+		}, (e) => {
+			this.registrationHasErrors = true;
+		});
 	}
 
 	private registerAsOfferer() {
@@ -78,7 +92,12 @@ class HomeController {
 		};
 
 		this.newUser.type = UserType.Offerer;
-		this.UserService.registerUser(this.newUser, this.preferenceSelect, offererDetails);
+
+		this.UserService.registerUser(this.newUser, this.preferenceSelect, offererDetails).then((response) => {
+			this.registrationHasErrors = false;
+		}, (e) => {
+			this.registrationHasErrors = true;
+		});
 	}
 };
 

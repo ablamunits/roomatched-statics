@@ -3,23 +3,25 @@ class UserServiceProvider {
 	}
 
 	registerUser (user: User, preferences: Preferences, additionalInfo: Object) {
+		// TODO: REMOVE THIS!!
+		preferences.seekerOccupation = '';
+		// ***
+
 			let newUserRegistrationObject = {
 				email: user.email,
 				password: user.password,
 				firstName: user.firstName,
 				lastName: user.lastName,
-				sex: user.sex || null,
+				sex: user.sex,
 				type: this.typeToString(user.type),
-				photoUrl: user.photoUrl || null,
+				photoUrl: user.photoUrl || '',
 				preferences: preferences,
 				additionalDetails: additionalInfo
 			};
 
 			console.log(newUserRegistrationObject);
 
-			this.$http.post(API_URI + '/user', newUserRegistrationObject).then((response) => {
-				console.log(response);
-			});
+			return this.$http.post(API_URI + '/user', newUserRegistrationObject);
 	}
 
 	private typeToString(type: UserType): string {

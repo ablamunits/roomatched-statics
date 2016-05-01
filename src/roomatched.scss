@@ -1,8 +1,8 @@
 @font-face{
-    font-family: "helvetica-neue";
-		font-weight: 400;
-    src:url("//static.parastorage.com/services/third-party/fonts/Helvetica/Fonts/41774233-b9da-44be-b252-6a7b612fb1c7.eot?#iefix");
-    src:url("//static.parastorage.com/services/third-party/fonts/Helvetica/Fonts/41774233-b9da-44be-b252-6a7b612fb1c7.eot?#iefix") format("eot"),url("//static.parastorage.com/services/third-party/fonts/Helvetica/Fonts/4bff1fbb-b4bf-4d95-9c47-efcb14384e36.woff") format("woff"),url("//static.parastorage.com/services/third-party/fonts/Helvetica/Fonts/7f1f2a7d-3837-4c93-b373-f03c5da3f9a1.ttf") format("truetype"),url("//static.parastorage.com/services/third-party/fonts/Helvetica/Fonts/d9f2752a-8d82-4cf1-b82f-109c1105be7f.svg#d9f2752a-8d82-4cf1-b82f-109c1105be7f") format("svg");
+	font-family: "helvetica-neue";
+	font-weight: 400;
+	src:url("//static.parastorage.com/services/third-party/fonts/Helvetica/Fonts/41774233-b9da-44be-b252-6a7b612fb1c7.eot?#iefix");
+	src:url("//static.parastorage.com/services/third-party/fonts/Helvetica/Fonts/41774233-b9da-44be-b252-6a7b612fb1c7.eot?#iefix") format("eot"),url("//static.parastorage.com/services/third-party/fonts/Helvetica/Fonts/4bff1fbb-b4bf-4d95-9c47-efcb14384e36.woff") format("woff"),url("//static.parastorage.com/services/third-party/fonts/Helvetica/Fonts/7f1f2a7d-3837-4c93-b373-f03c5da3f9a1.ttf") format("truetype"),url("//static.parastorage.com/services/third-party/fonts/Helvetica/Fonts/d9f2752a-8d82-4cf1-b82f-109c1105be7f.svg#d9f2752a-8d82-4cf1-b82f-109c1105be7f") format("svg");
 }
 
 @mixin button($color) {
@@ -67,6 +67,7 @@ $color-button: $white;
 $color-button-text: $grey;
 $color-bg-main: $black;
 $color-bg-header: darken($black, 100%);
+$color-bg-section-strip: darken($black, 4%);
 $color-text-main: $white;
 
 $header-height: 60px;
@@ -87,12 +88,38 @@ body {
 		top: 0;
 		background-color: rgba($color-bg-header, .9);
 
-		p {
-			margin-left: 20px;
-			font-size: 25px;
-			line-height: 10px;
-			color: $red-light;
-			font-weight: bold;
+		.header-content {
+			position: relative;
+
+			h1 {
+				margin-left: 20px;
+				display: inline;
+				position: absolute;
+				font-size: 25px;
+				color: $red-light;
+				font-weight: bold;
+			}
+
+			.user-wrapper {
+				height: 100%;
+				width: 140px;
+				position: absolute;
+				right: 20px;
+
+				.sign-in-button {
+					@include button($red-light);
+					position: absolute;
+					width: 100px;
+					height: 30px;
+					top: 15px;
+					border-radius: 20px;
+					color: $white;
+
+					&:hover {
+						color: $black;
+					}
+				}
+			}
 		}
 	}
 
@@ -118,12 +145,26 @@ body {
 		}
 	}
 
+	.app-view {
+		.container {
+			margin: 0 220px;
+
+			h3 {
+				font-size: 20px;
+			}
+
+			div {
+				margin-top: 10px;
+			}
+		}
+	}
+
 	.footer {
 		@include shadow();
 		height: 100px;
 		width: 100%;
 		bottom: 0;
-		background-color: darken($black, 4%);
+		background-color: $color-bg-section-strip;
 		color: $grey;
 		position: relative;
 
