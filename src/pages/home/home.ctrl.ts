@@ -17,6 +17,15 @@ class HomeController {
 		gayFriendly: 'Gay Friendly',
 		musicianFriendly: 'Musician Friendly'
 	};
+	preferenceIcons = {
+		smoking: 'fa-search',
+		kosher: 'fa-cutlery',
+		vegan: 'fa-envira',
+		sharedExpences: 'fa-money',
+		animals: 'fa-paw',
+		gayFriendly: 'fa-venus-mars',
+		musicianFriendly: 'fa-headphones'
+	};
 
 	seekerRegistrationFields = {
 		fromPrice: 0,

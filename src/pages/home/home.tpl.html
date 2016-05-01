@@ -3,11 +3,11 @@
 		<div class="user-type-buttons-wrapper">
 
 			<h2>What are you up to?</h2>
-			<div class="button-big" ng-click="home.openSeekerRegister()">
-				<span>Seeking for a room</span>
+			<div class="button-seeking-for-room" ng-click="home.openSeekerRegister()">
+				<span><i class="icon fa fa-search"></i>Seeking for a room</span>
 			</div>
-			<div class="button-big" ng-click="home.openOffererRegister()">
-				<span>Offering a room</span>
+			<div class="button-offering-a-room" ng-click="home.openOffererRegister()">
+				<span><i class="icon fa fa-bed"></i>Offering a room</span>
 			</div>
 		</div>
 	</div>
@@ -28,9 +28,12 @@
 			<div class="registration-form">
 				<p>Finding the perfect place starts by matching you to perfect people! Score your preferences here between: Neutral, <span class="label important">Important</span>, <span class="label somewhat-important">Somewhat important</span>, or <span class="label no-go">No go</span>.</p>
 				<div>
-					<input ng-repeat="(preferenceKey, title) in home.preferenceTitles" type="button" class="preference-button preference-score{{ home.preferenceSelect[preferenceKey] }}" ng-click="home.preferenceClick(preferenceKey)" value="{{ title }}"/>
-					<div>
+					<div ng-repeat="(preferenceKey, title) in home.preferenceTitles" class="preference-button-wrapper">
+						<i class="icon fa" ng-class="home.preferenceIcons[preferenceKey]"></i>
+						<input type="button" class="preference-button preference-score{{ home.preferenceSelect[preferenceKey] }}" ng-click="home.preferenceClick(preferenceKey)" value="{{ title }}"/>
+					</div>
 
+					<div>
 						<p>Next, choose an amazing location where you'd want to sattle:</p>
 						<div>
 							<input type="text" ng-model="home.seekerRegistrationFields.preferedLocation" placeholder="Prefered location"/>
@@ -50,8 +53,9 @@
 			<h3>Offering a room?</h3>
 			<p>Finding the perfect roomate starts with a perfect match! Score your preferences here between Neutral, <span class="label important">Important</span>, <span class="label somewhat-important">Somewhat important</span>, or <span class="label no-go">No go</span>.</p>
 			<div class="registration-form">
-				<div>
-					<input ng-repeat="(preferenceKey, title) in home.preferenceTitles" type="button" class="preference-button preference-score{{ home.preferenceSelect[preferenceKey] }}" ng-click="home.preferenceClick(preferenceKey)" value="{{ title }}"/>
+				<div ng-repeat="(preferenceKey, title) in home.preferenceTitles" class="preference-button-wrapper">
+					<i class="icon fa" ng-class="home.preferenceIcons[preferenceKey]"></i>
+					<input type="button" class="preference-button preference-score{{ home.preferenceSelect[preferenceKey] }}" ng-click="home.preferenceClick(preferenceKey)" value="{{ title }}"/>
 				</div>
 
 				<p>Give us some details about the room you are offering:</p>

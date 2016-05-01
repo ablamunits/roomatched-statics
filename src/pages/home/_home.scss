@@ -22,7 +22,7 @@ $preference-score3: $red-light;
 				text-align: center;
 				margin-top: 50px;
 
-				.button-big {
+				.button-seeking-for-room, .button-offering-a-room {
 					@include button-big($red-light);
 					color: $white;
 					display: inline-block;
@@ -34,6 +34,20 @@ $preference-score3: $red-light;
 						transform: translateY(-50%);
 						left: 0;
 						width: 100%;
+
+						.icon {
+							display: block;
+							font-size: initial;
+							transition: font-size .1s ease-out;
+						}
+					}
+
+					&:hover {
+						.icon {
+							font-size: 22px;
+							margin-bottom: 15px;
+							transition: all .1s ease-in;
+						}
 					}
 				}
 			}
@@ -67,29 +81,49 @@ $preference-score3: $red-light;
 		@include input-field($grey-xlight);
 	}
 
-	.preference-button {
-		@include button($grey-xlight);
+	.preference-button-wrapper {
+		display: inline-block;
+		position: relative;
 
-		width: 100px;
-		height: 100px;
-		color: $black;
-		border: 0;
+		.preference-button {
+			@include button($grey-xlight);
+
+			width: 100px;
+			height: 100px;
+			color: $black;
+			border: 0;
+
+			&.preference-score1 {
+				background-color: $preference-score1;
+			}
+
+			&.preference-score2 {
+				background-color: $preference-score2;
+			}
+
+			&.preference-score3 {
+				background-color: $preference-score3;
+			}
+		}
+
+		.icon {
+			position: absolute;
+			width: 100%;
+			text-align: center;
+			top: 15px;
+			color: $black;
+			transition: font-size .1s ease-out;
+		}
 
 		&:hover {
-			background-color: darken($grey-xlight, 10%);
-		}
+			.preference-button {
+				border: 0;
+			}
 
-		&.preference-score1 {
-			background-color: $preference-score1;
-		}
-
-		&.preference-score2 {
-			background-color: $preference-score2;
-		}
-
-		&.preference-score3 {
-			background-color: $preference-score3;
-			color: $white;
+			.icon {
+				font-size: 20px;
+				transition: font-size .1s linear;
+			}
 		}
 	}
 
