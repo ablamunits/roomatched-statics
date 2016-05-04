@@ -34,9 +34,9 @@
 					</div>
 
 					<div>
-						<p>Next, choose an amazing location where you'd want to sattle:</p>
+						<p>Next, choose an amazing city where you'd want to sattle:</p>
 						<div>
-							<input type="text" ng-model="home.seekerRegistrationFields.preferedLocation" placeholder="Prefered location"/>
+							<input type="text" ng-model="home.seekerRegistrationFields.preferedCity" placeholder="Prefered city"/>
 						</div>
 
 						<p>And your price range preference right here:</p>
@@ -68,9 +68,11 @@
 					<input type="checkbox" ng-model="home.offererRoomDetails.airConditioned" /> Air Conditioned
 				</div>
 				<p>Additional apartment details:</p>
+				{{ home.offererApartmentDetails }}
 				<div>
 					<input type="number" ng-model="home.offererApartmentDetails.size" placeholder="Apartment size"/>
-					<input type="text" ng-model="home.offererApartmentDetails.location" placeholder="Location"/>
+					<input type="text" ng-model="home.offererApartmentDetails.city" placeholder="City"/>
+					<input type="text" ng-model="home.offererApartmentDetails.address" placeholder="Address"/>
 					<input type="number" ng-model="home.offererApartmentDetails.floor" placeholder="Floor #"/>
 					<input type="number" ng-model="home.offererApartmentDetails.totalRooms" placeholder="Total Rooms"/>
 					<input type="number" ng-model="home.offererApartmentDetails.totalRoomates" placeholder="Total Roomates"/>
@@ -78,6 +80,7 @@
 					<input type="number" ng-model="home.offererApartmentDetails.approximateExpences" placeholder="Approx. Expances"/>
 					<br>
 					<input type="checkbox" ng-model="home.offererApartmentDetails.isFurnished" /> Furniture
+					<input type="checkbox" ng-model="home.offererApartmentDetails.hasLivingRoom" /> Living Room
 					<input type="checkbox" ng-model="home.offererApartmentDetails.hasElevator" /> Elevator
 					<input type="checkbox" ng-model="home.offererApartmentDetails.hasParking" /> Parking
 					<input type="checkbox" ng-model="home.offererApartmentDetails.isRenovated" /> Renovated
@@ -107,7 +110,6 @@
 				</div>
 				<div class="register-error" ng-if="home.registrationHasErrors">
 					There is a problem with your registration. Please review the information and try again.
-					<!-- <div ng-show="userRegister.$invalid">Please make sure to provide all of your personal info.</div> -->
 				</div>
 				<div class="register-success" ng-if="!home.registrationHasErrors && userRegister.$submitted">
 					Registration was ok! Awesome!

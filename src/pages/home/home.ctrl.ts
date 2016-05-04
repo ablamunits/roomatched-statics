@@ -30,7 +30,7 @@ class HomeController {
 	seekerRegistrationFields = {
 		fromPrice: 0,
 		toPrice: 1000,
-		preferedLocation: null,
+		preferedCity: null,
 		preferedNumberOfRoomates: 2
 	};
 
@@ -72,17 +72,10 @@ class HomeController {
 	}
 
 	private registerAsSeeker() {
-		// let seekerPreferences = {
-		// 	fromPrice: this.seekerRegistrationFields.fromPrice,
-		// 	toPrice: this.seekerRegistrationFields.toPrice,
-		// 	location: this.seekerRegistrationFields.preferedLocation,
-		// 	numberOfRoomates: this.seekerRegistrationFields.preferedNumberOfRoomates
-		// };
-
 		let seekerPreferences = {
 			pricePreffered: this.seekerRegistrationFields.toPrice,
 			numberOfRoomates: this.seekerRegistrationFields.preferedNumberOfRoomates,
-			location: this.seekerRegistrationFields.preferedLocation
+			city: this.seekerRegistrationFields.preferedCity
 		};
 
 		this.newUser.type = UserType.Seeker;

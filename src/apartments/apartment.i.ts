@@ -1,6 +1,7 @@
 interface Apartment {
 	size: number;
-	location: string;
+	city: string;
+	address: string;
 	totalRooms: number;
 	totalRoomates: number;
 	freeRooms: number;
@@ -12,5 +13,6 @@ interface Apartment {
 	isFurnished: boolean;
 	guarantees: string;
 	approximateExpences?: number;
-	images?: string[];
+	// images?: string[];
+	images?: string;
 }

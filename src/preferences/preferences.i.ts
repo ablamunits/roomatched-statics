@@ -12,5 +12,4 @@ interface Preferences {
 	animals: PreferenceScore;
 	musicianFriendly: PreferenceScore;
 	gayFriendly: PreferenceScore;
-	seekerOccupation?: string;
 };

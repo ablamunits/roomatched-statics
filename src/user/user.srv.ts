@@ -3,25 +3,21 @@ class UserServiceProvider {
 	}
 
 	registerUser (user: User, preferences: Preferences, additionalInfo: Object) {
-		// TODO: REMOVE THIS!!
-		preferences.seekerOccupation = '';
-		// ***
+		let newUserRegistrationObject = {
+			email: user.email,
+			password: user.password,
+			firstName: user.firstName,
+			lastName: user.lastName,
+			sex: user.sex,
+			type: this.typeToString(user.type),
+			photoUrl: user.photoUrl || '',
+			preferences: preferences,
+			additionalDetails: additionalInfo
+		};
 
-			let newUserRegistrationObject = {
-				email: user.email,
-				password: user.password,
-				firstName: user.firstName,
-				lastName: user.lastName,
-				sex: user.sex,
-				type: this.typeToString(user.type),
-				photoUrl: user.photoUrl || '',
-				preferences: preferences,
-				additionalDetails: additionalInfo
-			};
+		console.log(newUserRegistrationObject);
 
-			console.log(newUserRegistrationObject);
-
-			return this.$http.post(API_URI + '/user', newUserRegistrationObject);
+		return this.$http.post(API_URI + '/user', newUserRegistrationObject);
 	}
 
 	private typeToString(type: UserType): string {
