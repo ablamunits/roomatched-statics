@@ -17,14 +17,25 @@ class HomeController {
 		gayFriendly: 'Gay Friendly',
 		musicianFriendly: 'Musician Friendly'
 	};
+	// preferenceIcons = {
+	// 	// smoking: 'fa-search',
+	// 	smoking: '/assets/icons/smoking.svg',
+	// 	kosher: 'fa-cutlery',
+	// 	vegan: 'fa-envira',
+	// 	sharedExpences: 'fa-money',
+	// 	animals: 'fa-paw',
+	// 	gayFriendly: 'fa-venus-mars',
+	// 	musicianFriendly: 'fa-headphones'
+	// };
 	preferenceIcons = {
-		smoking: 'fa-search',
-		kosher: 'fa-cutlery',
-		vegan: 'fa-envira',
-		sharedExpences: 'fa-money',
-		animals: 'fa-paw',
-		gayFriendly: 'fa-venus-mars',
-		musicianFriendly: 'fa-headphones'
+		// smoking: 'fa-search',
+		smoking: '/assets/icons/smoking.svg',
+		kosher: '/assets/icons/kosher.svg',
+		vegan: '/assets/icons/vegan.svg',
+		sharedExpences: '/assets/icons/money.svg',
+		animals: '/assets/icons/animals.svg',
+		gayFriendly: '/assets/icons/gay.svg',
+		musicianFriendly: '/assets/icons/musician.svg'
 	};
 
 	seekerRegistrationFields = {

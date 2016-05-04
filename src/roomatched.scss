@@ -5,13 +5,31 @@
 	src:url("//static.parastorage.com/services/third-party/fonts/Helvetica/Fonts/41774233-b9da-44be-b252-6a7b612fb1c7.eot?#iefix") format("eot"),url("//static.parastorage.com/services/third-party/fonts/Helvetica/Fonts/4bff1fbb-b4bf-4d95-9c47-efcb14384e36.woff") format("woff"),url("//static.parastorage.com/services/third-party/fonts/Helvetica/Fonts/7f1f2a7d-3837-4c93-b373-f03c5da3f9a1.ttf") format("truetype"),url("//static.parastorage.com/services/third-party/fonts/Helvetica/Fonts/d9f2752a-8d82-4cf1-b82f-109c1105be7f.svg#d9f2752a-8d82-4cf1-b82f-109c1105be7f") format("svg");
 }
 
+@mixin icon() {
+	pointer-events: none;
+	fill: $black;
+	text-align: center;
+
+	svg {
+		height: inherit;
+	}
+}
+
+@mixin no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 @mixin button($color) {
 	font-family: $font-family;
 	font-size: 13px;
 	padding: 1px;
 	background-color: $color;
 	color: $black;
-	border: 1px solid $color;
 	border-radius: 4px;
 	margin: 0 20px;
 	cursor: pointer;
@@ -20,7 +38,6 @@
 	&:hover {
 		background-color: $white;
 		color: $black;
-		border: 1px solid $orange-light;
 	}
 }
 
@@ -112,6 +129,7 @@ body {
 					width: 100px;
 					height: 30px;
 					top: 15px;
+					border: 0;
 					border-radius: 20px;
 					color: $white;
 
