@@ -16,6 +16,7 @@
         "src/auth/login.ctrl.ts",
         "src/pages/home/home.ctrl.ts",
         "src/pages/matches/matches.ctrl.ts",
+        "src/pages/profile/profile.ctrl.ts",
         "src/preferences/preferences.i.ts",
         "src/roomatched.ts",
         "src/rooms/room.i.ts",

@@ -7,7 +7,6 @@
 		<script src="./bower_components/jquery/dist/jquery.js"></script>
 		<script src="./bower_components/angular/angular.js"></script>
 		<!-- End -->
-		<!-- <script src="./bower_components/angular-route/angular-route.js"></script> -->
 		<script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 		<script src="./bower_components/typeit/dist/typeit.js"></script>
 		<script src="./bower_components/ng-typeit/dist/angular-typeit.js"></script>
@@ -18,7 +17,7 @@
 
 		<div class="header">
 			<div class="header-content">
-				<h1>Roomatched</h1>
+				<h1 ui-sref="home" ui-sref-opts="{reload: true}">Roomatched</h1>
 				<div class="user-wrapper" ng-controller="LoginCtrl as login">
 					<input type="button" class="sign-in-button" value="Sign in" ng-click="signInVisible = true" ng-show="!loggedIn && !signInVisible"/>
 					<form name="sign-in-form" class="sign-in-form" ng-show="signInVisible === true" ng-submit="login.signIn()" novalidate>

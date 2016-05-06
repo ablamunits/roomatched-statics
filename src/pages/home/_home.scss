@@ -2,6 +2,8 @@ $preference-score1: $pref-green;
 $preference-score2: $pref-orange;
 $preference-score3: $pref-red;
 
+$green-confirm: rgb(128, 198, 115);
+
 .home-view {
 	@include input-field();
 
@@ -139,6 +141,8 @@ $preference-score3: $pref-red;
 
 	.register-button {
 		@include button();
+		background-color: $green-confirm;
+		color: $white;
 		font-size: 16px;
 		border-radius: 50px;
 		width: 200px;
@@ -146,7 +150,7 @@ $preference-score3: $pref-red;
 		margin: 10px 0;
 
 		&:hover {
-			background-color: darken($pref-green, 5%);
+			background-color: darken($green-confirm, 5%);
 		}
 	}
 }

@@ -13,5 +13,10 @@ var roomatchedApp: ng.IModule = angular.module('RoomatchedApp', ['ui.router', 'a
 		url: '/matches',
 		templateUrl: 'pages/matches/matches.tpl.html',
 		controller: 'MatchesCtrl as matches'
+	})
+	.state('profile', {
+		url: '/profile?id',
+		templateUrl: 'pages/profile/profile.tpl.html',
+		controller: 'ProfileCtrl as profile'
 	});
 });
