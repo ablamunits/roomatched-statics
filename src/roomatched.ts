@@ -1,17 +1,17 @@
 var API_URI = 'http://vmedu92.mtacloud.co.il:8080/Roomatched/api';
 
-var roomatchedApp: ng.IModule = angular.module('RoomatchedApp', ['ngRoute', 'ab.Typeit'])
-.config(function ($routeProvider: any, $locationProvider: ng.ILocaleService) {
-	$routeProvider
-	.when('/', {
+var roomatchedApp: ng.IModule = angular.module('RoomatchedApp', ['ui.router', 'ab.Typeit', '720kb.tooltips'])
+.config(function ($stateProvider, $urlRouterProvider) {
+	$urlRouterProvider.otherwise('/');
+	$stateProvider
+	.state('home', {
+		url: '/',
 		templateUrl: 'pages/home/home.tpl.html',
 		controller: 'HomeCtrl as home',
 	})
-	.when('/matches', {
+	.state('matches', {
+		url: '/matches',
 		templateUrl: 'pages/matches/matches.tpl.html',
 		controller: 'MatchesCtrl as matches'
-	})
-	.otherwise({
-		redirectTo: '/'
 	});
 });

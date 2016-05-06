@@ -30,16 +30,16 @@
 				<div>
 					<div class="preference-buttons">
 						<div ng-repeat="(preferenceKey, title) in home.preferenceTitles" class="preference-button-wrapper">
-							<div class="preference-button preference-score{{ home.preferenceSelect[preferenceKey] }}" ng-click="home.preferenceClick(preferenceKey)">
-								<div class="icon" ng-include="home.preferenceIcons[preferenceKey]"></div>
+							<div class="preference-button preference-score{{ home.preferenceSelect[preferenceKey] }}" ng-click="home.preferenceClick(preferenceKey)" tooltips tooltip-template="{{ title }}" tooltip-side="bottom" tooltip-class="pref-tooltip">
+								<div class="icon" ng-include="home.preferenceIcons[preferenceKey]" ></div>
 							</div>
 						</div>
 					</div>
 
 					<div>
-						<p>Next, choose an amazing city where you'd want to sattle:</p>
+						<p>Choose city:</p>
 						<div>
-							<input type="text" ng-model="home.seekerRegistrationFields.preferedCity" placeholder="Prefered city"/>
+							<input type="text" ng-model="home.seekerRegistrationFields.preferedCity" placeholder="City"/>
 						</div>
 
 						<p>And your price range preference right here:</p>
@@ -58,8 +58,8 @@
 			<div class="registration-form">
 				<div class="preference-buttons">
 					<div ng-repeat="(preferenceKey, title) in home.preferenceTitles" class="preference-button-wrapper">
-						<div class="preference-button preference-score{{ home.preferenceSelect[preferenceKey] }}" ng-click="home.preferenceClick(preferenceKey)">
-							<div class="icon" ng-include="home.preferenceIcons[preferenceKey]"></div>
+						<div class="preference-button preference-score{{ home.preferenceSelect[preferenceKey] }}" ng-click="home.preferenceClick(preferenceKey)" tooltips tooltip-template="{{ title }}" tooltip-side="bottom" tooltip-class="pref-tooltip">
+							<div class="icon" ng-include="home.preferenceIcons[preferenceKey]" ></div>
 						</div>
 					</div>
 				</div>
@@ -107,7 +107,7 @@
 				<p>Login information to use on Roomatched:</p>
 				<div>
 					<input type="email" ng-model="home.newUser.email" placeholder="Email" name="email" required/>
-					<input type="password" ng-model="home.newUser.password" placeholder="Desired password" name="password" required/>
+					<input type="password" ng-model="home.newUser.password" placeholder="Password" name="password" required/>
 				</div>
 
 				<div>

@@ -12,8 +12,8 @@
     ],
     "files": [
         "src/apartments/apartment.i.ts",
-        "src/auth/auth.ctrl.ts",
         "src/auth/auth.srv.ts",
+        "src/auth/login.ctrl.ts",
         "src/pages/home/home.ctrl.ts",
         "src/pages/matches/matches.ctrl.ts",
         "src/preferences/preferences.i.ts",

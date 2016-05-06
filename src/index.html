@@ -1,14 +1,17 @@
 <html ng-app="RoomatchedApp">
 	<head>
 		<link rel="stylesheet" type="text/css" href="styles-concat.css">
+		<link rel="stylesheet" type="text/css" href="./bower_components/angular-tooltips/dist/angular-tooltips.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 		<!-- Keep these scripts first! -->
 		<script src="./bower_components/jquery/dist/jquery.js"></script>
 		<script src="./bower_components/angular/angular.js"></script>
 		<!-- End -->
-		<script src="./bower_components/angular-route/angular-route.js"></script>
+		<!-- <script src="./bower_components/angular-route/angular-route.js"></script> -->
+		<script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 		<script src="./bower_components/typeit/dist/typeit.js"></script>
 		<script src="./bower_components/ng-typeit/dist/angular-typeit.js"></script>
+		<script src="./bower_components/angular-tooltips/dist/angular-tooltips.min.js"></script>
 	</head>
 
 	<body>
@@ -16,9 +19,9 @@
 		<div class="header">
 			<div class="header-content">
 				<h1>Roomatched</h1>
-				<div class="user-wrapper" ng-controller="AuthCtrl as auth">
-					<input type="button" class="sign-in-button" value="Sign in" ng-click="signInVisible = true" ng-show="!signInVisible"/>
-					<form name="sign-in-form" class="sign-in-form" ng-show="signInVisible === true" ng-submit="auth.signIn()" novalidate>
+				<div class="user-wrapper" ng-controller="LoginCtrl as login">
+					<input type="button" class="sign-in-button" value="Sign in" ng-click="signInVisible = true" ng-show="!loggedIn && !signInVisible"/>
+					<form name="sign-in-form" class="sign-in-form" ng-show="signInVisible === true" ng-submit="login.signIn()" novalidate>
 						<input ng-model="auth.email" type="email" placeholder="Email" required/>
 						<input ng-model="auth.password" type="password" placeholder="Password" required/>
 						<input type="submit" value="Go"/>
@@ -28,7 +31,7 @@
 		</div>
 
 		<div class="content">
-			<div ng-view class="main-view">
+			<div ui-view class="main-view">
 
 			</div>
 		</div>

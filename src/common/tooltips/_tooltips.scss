@@ -1,0 +1,16 @@
+// Important to Overide tooltip arrow color
+
+tooltip {
+	display: inline-block !important;
+}
+
+.pref-tooltip {
+	@include shadow();
+	background-color: $white;
+	color: $light-red;
+	top: 85px !important;
+
+	tip-arrow {
+		border-bottom-color: $white !important;
+	}
+}
