@@ -17,18 +17,8 @@ class HomeController {
 		gayFriendly: 'Gay Friendly',
 		musicianFriendly: 'Musician Friendly'
 	};
-	// preferenceIcons = {
-	// 	// smoking: 'fa-search',
-	// 	smoking: '/assets/icons/smoking.svg',
-	// 	kosher: 'fa-cutlery',
-	// 	vegan: 'fa-envira',
-	// 	sharedExpences: 'fa-money',
-	// 	animals: 'fa-paw',
-	// 	gayFriendly: 'fa-venus-mars',
-	// 	musicianFriendly: 'fa-headphones'
-	// };
+
 	preferenceIcons = {
-		// smoking: 'fa-search',
 		smoking: '/assets/icons/smoking.svg',
 		kosher: '/assets/icons/kosher.svg',
 		vegan: '/assets/icons/vegan.svg',
@@ -48,7 +38,7 @@ class HomeController {
 	offererApartmentDetails: Apartment;
 	offererRoomDetails: Room;
 
-	constructor (private $scope: ng.IScope, private $http: ng.IHttpService, private UserService) {
+	constructor (private $scope: ng.IScope, private $http: ng.IHttpService, private UserService: UserServiceProvider) {
 		this.preferenceSelect = {
 			smoking: PreferenceScore.Neutral,
 			kosher: PreferenceScore.Neutral,

@@ -5,9 +5,23 @@
 	src:url("//static.parastorage.com/services/third-party/fonts/Helvetica/Fonts/41774233-b9da-44be-b252-6a7b612fb1c7.eot?#iefix") format("eot"),url("//static.parastorage.com/services/third-party/fonts/Helvetica/Fonts/4bff1fbb-b4bf-4d95-9c47-efcb14384e36.woff") format("woff"),url("//static.parastorage.com/services/third-party/fonts/Helvetica/Fonts/7f1f2a7d-3837-4c93-b373-f03c5da3f9a1.ttf") format("truetype"),url("//static.parastorage.com/services/third-party/fonts/Helvetica/Fonts/d9f2752a-8d82-4cf1-b82f-109c1105be7f.svg#d9f2752a-8d82-4cf1-b82f-109c1105be7f") format("svg");
 }
 
+$font-family: 'helvetica-neue';
+
+$black: #6B6B6B;
+$red: #CD3128;
+$light-red: #D99996;
+$xlight-red: #F0D5D3;
+$grey: #ADADAD;
+$light-grey: #D4D2D2;
+$white: #FEFEFE;
+
+$pref-red: rgb(238, 17, 43);
+$pref-orange: #ff9100;
+$pref-green: #30f03d;
+
 @mixin icon() {
 	pointer-events: none;
-	fill: $black;
+	fill: $light-grey;
 	text-align: center;
 
 	svg {
@@ -24,12 +38,12 @@
   user-select: none;
 }
 
-@mixin button($color) {
+@mixin button() {
 	font-family: $font-family;
 	font-size: 13px;
 	padding: 1px;
-	background-color: $color;
-	color: $black;
+	background-color: $white;
+	color: $light-red;
 	border: 0;
 	border-radius: 4px;
 	margin: 0 20px;
@@ -37,56 +51,48 @@
 	outline: none;
 
 	&:hover {
-		background-color: $white;
-		color: $black;
+		background-color: $light-red;
+		color: $white;
 	}
 }
 
-@mixin button-big($color) {
-	@include button($color);
+@mixin button-big() {
+	@include button();
 	@include shadow();
 	font-size: 20px;
 	width: 200px;
 	height: 200px;
 }
 
-@mixin input-field($color) {
-	height: 40px;
-	font-size: 21px;
-	font-family: $font-family;
-	border: 0;
-	border-radius: 4px;
-	background-color: $white;
-	padding: 10px;
-	margin: 5px 5px;
-	outline: none;
+@mixin input-field() {
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	input[type="number"] {
+		height: 40px;
+		font-size: 21px;
+		font-family: $font-family;
+		border: 1px solid $grey;
+		border-radius: 4px;
+		background-color: $white;
+		padding: 10px;
+		margin: 5px 5px;
+		outline: none;
 
-	&:focus {
-		background-color: lighten($orange-light, 20%);
+		&:focus {
+			background-color: $xlight-red;
+		}
 	}
 }
 
 @mixin shadow {
-	box-shadow: 0 2px 54px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 2px 54px 0 rgba(0, 0, 0, 0.1);
 }
 
-$font-family: 'helvetica-neue';
-
-$black: #3E4453;
-$grey: #907D7B;
-$grey-light: #A2A2A1;
-$grey-xlight: #D8D9D6;
-$white: #F9FAF9;
-$red-light: #D69B8A;
-$orange-light: #E2CD90;
-$green-light: #9de8a2;
-
-$color-button: $white;
-$color-button-text: $grey;
-$color-bg-main: $black;
-$color-bg-header: darken($black, 100%);
-$color-bg-section-strip: darken($black, 4%);
-$color-text-main: $white;
+$color-bg-main: $white;
+$color-bg-header: $red;
+$color-bg-section-strip: $white;
+$color-text-main: $black;
 
 $header-height: 60px;
 
@@ -104,7 +110,7 @@ body {
 		height: $header-height;
 		width: 100%;
 		top: 0;
-		background-color: rgba($color-bg-header, .9);
+		background-color: rgba($color-bg-header, .95);
 
 		.header-content {
 			position: relative;
@@ -114,7 +120,7 @@ body {
 				display: inline;
 				position: absolute;
 				font-size: 25px;
-				color: $red-light;
+				color: $white;
 				font-weight: bold;
 			}
 
@@ -125,16 +131,29 @@ body {
 				right: 20px;
 
 				.sign-in-button {
-					@include button($red-light);
+					@include button();
 					position: absolute;
 					width: 100px;
 					height: 30px;
 					top: 15px;
 					border-radius: 20px;
-					color: $white;
+				}
 
-					&:hover {
-						color: $black;
+				.sign-in-form {
+					@include input-field();
+					position: absolute;
+					display: inline-flex;
+					right: 0;
+					top: 5px;
+
+					[type="submit"] {
+						@include button();
+						margin: 0 0 0 5px;
+						width: 40px;
+						height: 40px;
+						border-radius: 50%;
+						position: relative;
+						top: 5px;
 					}
 				}
 			}
@@ -150,15 +169,15 @@ body {
 
 		.label {
 			&.important {
-				color: $green-light;
+				color: $pref-green;
 			}
 
 			&.somewhat-important {
-				color: $orange-light;
+				color: $pref-orange;
 			}
 
 			&.no-go {
-				color: $red-light;
+				color: $pref-red;
 			}
 		}
 	}

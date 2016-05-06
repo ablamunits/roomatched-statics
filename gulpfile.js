@@ -50,6 +50,7 @@ gulp.task('bower-copy', function () {
 
 gulp.task('browserSync', function() {
 	browserSync.init({
+		notify: false,
 		server: {
 			baseDir: 'dist'
 		}

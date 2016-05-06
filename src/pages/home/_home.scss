@@ -1,8 +1,10 @@
-$preference-score1: $green-light;
-$preference-score2: $orange-light;
-$preference-score3: $red-light;
+$preference-score1: $pref-green;
+$preference-score2: $pref-orange;
+$preference-score3: $pref-red;
 
 .home-view {
+	@include input-field();
+
 	.strip {
 		@include shadow();
 		position: relative;
@@ -12,7 +14,7 @@ $preference-score3: $red-light;
 			height: 400px;
 			background-image: url('../assets/images/strip.jpg');
 			background-position: center;
-			background-color: $black;
+			background-color: darken($white, 3%);
 			background-blend-mode: overlay;
 
 			.user-type-buttons-wrapper {
@@ -22,9 +24,12 @@ $preference-score3: $red-light;
 				text-align: center;
 				margin-top: 50px;
 
+				h2 {
+					color: $red;
+				}
+
 				.button-seeking-for-room, .button-offering-a-room {
-					@include button-big($red-light);
-					color: $white;
+					@include button-big();
 					display: inline-block;
 					position: relative;
 
@@ -59,99 +64,89 @@ $preference-score3: $red-light;
 			h2 {
 				margin: 0;
 				padding: 10px 0;
-				color: $grey-xlight;
+				color: $red;
 			}
 
 			h3 {
 				margin: 0;
 				padding: 5px 0;
-				color: $grey-light;
+				color: $black;
+
+				.typeit {
+					color: $light-red;
+				}
 			}
 
-			.typewrite {
-				color: $orange-light;
-			}
 		}
 	}
 
-	input[type="text"],
-	input[type="password"],
-	input[type="email"],
-	input[type="number"] {
-		@include input-field($grey-xlight);
-	}
+	.preference-buttons {
+		text-align: center;
 
-	.preference-button-wrapper {
-		@include no-select();
-		display: inline-block;
-		position: relative;
-
-		.preference-button {
-			@include button($grey-xlight);
-
-			width: 100px;
-			height: 100px;
-			color: $black;
-			border: 0;
+		.preference-button-wrapper {
+			@include no-select();
+			display: inline-block;
 			position: relative;
 
-			&.preference-score1 {
-				background-color: $preference-score1;
+			.preference-button {
+				cursor: pointer;
+				width: 100px;
+				height: 100px;
+				position: relative;
+
+				.icon {
+					@include icon();
+					height: 60px;
+					width: 100%;
+					position: absolute;
+					display: block;
+					border-bottom: 2px solid;
+					border-color: rgba($light-grey, .3);
+					transition: all .1s ease-out;
+				}
+
+				&.preference-score1 {
+					.icon {
+						border-color: $preference-score1;
+						fill: $preference-score1;
+					}
+				}
+
+				&.preference-score2 {
+					.icon {
+						border-color: $preference-score2;
+						fill: $preference-score2;
+					}
+				}
+
+				&.preference-score3 {
+					.icon {
+						border-color: $preference-score3;
+						fill: $preference-score3;
+					}
+				}
 			}
 
-			&.preference-score2 {
-				background-color: $preference-score2;
-			}
-
-			&.preference-score3 {
-				background-color: $preference-score3;
-			}
-
-			.icon {
-				@include icon();
-				height: 30px;
-				width: 100%;
-				position: absolute;
-				display: block;
-				transition: all .1s ease-out;
-			}
-
-			.title {
-				text-align: center;
-				position: absolute;
-				margin-top: 0;
-				top: 50%;
-				transform: translateY(-50%);
-				width: 100%;
-				transition: all .1s ease-out;
-			}
-		}
-
-		&:hover {
-			.icon {
-				height: 40px;
-				margin-bottom: 15px;
-				transition: all .1s ease-in;
-			}
-
-			.title {
-				padding-top: 20px;
-				transition: padding-top .1s ease-in;
+			&:hover {
+				.icon {
+					border-bottom-width: 4px;
+				}
 			}
 		}
 	}
 
+
+
 	.register-button {
-		@include button($green-light);
+		@include button();
 		font-size: 16px;
-		color: $black;
 		border-radius: 50px;
 		width: 200px;
 		height: 50px;
 		margin: 10px 0;
 
 		&:hover {
-			background-color: darken($green-light, 5%);
+			background-color: darken($pref-green, 5%);
 		}
 	}
 }

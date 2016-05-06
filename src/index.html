@@ -16,16 +16,23 @@
 		<div class="header">
 			<div class="header-content">
 				<h1>Roomatched</h1>
-				<div class="user-wrapper">
-					<input type="button" class="sign-in-button" value="Sign in"/>
+				<div class="user-wrapper" ng-controller="AuthCtrl as auth">
+					<input type="button" class="sign-in-button" value="Sign in" ng-click="signInVisible = true" ng-show="!signInVisible"/>
+					<form name="sign-in-form" class="sign-in-form" ng-show="signInVisible === true" ng-submit="auth.signIn()" novalidate>
+						<input ng-model="auth.email" type="email" placeholder="Email" required/>
+						<input ng-model="auth.password" type="password" placeholder="Password" required/>
+						<input type="submit" value="Go"/>
+					</form>
 				</div>
 			</div>
 		</div>
+
 		<div class="content">
 			<div ng-view class="main-view">
 
 			</div>
 		</div>
+
 		<div class="footer">
 			<p>Roomatched | By Boris Ablamunits, Or Bar and Gil Dadosh - an MTA project</p>
 		</div>
