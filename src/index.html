@@ -13,13 +13,20 @@
 		<script src="./bower_components/angular-tooltips/dist/angular-tooltips.min.js"></script>
 	</head>
 
-	<body>
+	<body ng-cloak>
 
 		<div class="header">
 			<div class="header-content">
 				<h1 ui-sref="home" ui-sref-opts="{reload: true}">Roomatched</h1>
 				<div class="user-wrapper" ng-controller="LoginCtrl as login">
-					<input type="button" class="sign-in-button" value="Sign in" ng-click="signInVisible = true" ng-show="!login.isLoggedIn && !signInVisible"/>
+					<div class="login-form" ng-hide="login.isLoggedIn">
+						<input type="button" class="sign-in-button" value="Sign in" ng-click="login.signInFormVisible = true" ng-hide="login.signInFormVisible"/>
+						<form name="sign-in-form" class="sign-in-form" ng-show="login.signInFormVisible && !login.isLoggedIn" ng-submit="login.signIn()" novalidate>
+							<input ng-model="login.email" type="email" placeholder="Email" required/>
+							<input ng-model="login.password" type="password" placeholder="Password" required/>
+							<input type="submit" value="Go"/>
+						</form>
+					</div>
 					<div class="user-info" ng-show="login.isLoggedIn">
 						<div class="user-greeting" ng-show="login.loggedUser">
 							Hi, {{ login.loggedUser.firstName }}
@@ -30,14 +37,10 @@
 						<ul class="user-menu">
 							<li><div class="icon" ng-include="'assets/icons/profile.svg'"></div>Profile</li>
 							<li><div class="icon" ng-include="'assets/icons/discover.svg'"></div>Discover</li>
-							<li><div class="icon" ng-include="'assets/icons/matches-check.svg'"></div>Matches</li>
+							<li ui-sref="matches"><div class="icon" ng-include="'assets/icons/matches-check.svg'"></div>Matches</li>
+							<li ng-click="login.signOut()"><div class="icon" ng-include="'assets/icons/logout.svg'"></div>Logout</li>
 						</ul>
 					</div>
-					<form name="sign-in-form" class="sign-in-form" ng-show="signInVisible === true" ng-submit="login.signIn()" novalidate>
-						<input ng-model="login.email" type="email" placeholder="Email" required/>
-						<input ng-model="login.password" type="password" placeholder="Password" required/>
-						<input type="submit" value="Go"/>
-					</form>
 				</div>
 			</div>
 		</div>
