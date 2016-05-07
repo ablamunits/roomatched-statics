@@ -30,12 +30,12 @@ $pref-green: #30f03d;
 }
 
 @mixin no-select {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 @mixin button() {
@@ -89,6 +89,12 @@ $pref-green: #30f03d;
 	box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
 }
 
+@mixin vertical-align($position: relative) {
+	position: $position;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
 $color-bg-main: $white;
 $color-bg-header: $red;
 $color-bg-section-strip: $white;
@@ -128,8 +134,17 @@ body {
 			.user-wrapper {
 				height: 100%;
 				width: 140px;
-				position: absolute;
+				position: relative;
 				right: 20px;
+				float: right;
+				color: $white;
+
+				&:hover {
+					cursor: pointer;
+					.user-info {
+						background: darken($red, 1%);
+					}
+				}
 
 				.sign-in-button {
 					@include button();
@@ -155,6 +170,32 @@ body {
 						border-radius: 50%;
 						position: relative;
 						top: 5px;
+					}
+				}
+
+				.user-info {
+					height: inherit;
+					top: 10px;
+					padding: 0 5px;
+
+					.user-greeting {
+						@include vertical-align();
+						position: absolute;
+					}
+
+					.user-image {
+						@include vertical-align();
+						@include shadow();
+						width: 35px;
+						height: 35px;
+						border-radius: 50%;
+						overflow: hidden;
+						float: right;
+
+						img {
+							max-width: 100%;
+							max-height: 100%;
+						}
 					}
 				}
 			}

@@ -1,22 +1,35 @@
 /// <reference path="../../typings/tsd.d.ts" />
 
 class LoginController {
-	private loggedIn: boolean = true;
-	private loggedUser: User;
+	isLoggedIn: boolean = true;
+	loggedUser: User;
 	email: string;
 	password: string;
 
 	constructor (private $scope: ng.IScope, private AuthService: AuthServiceProvider) {
 		AuthService.getAuthState().then((response) => {
 			let data: any = response.data;
-			this.loggedIn = data.loggedIn;
+			this.isLoggedIn = data.loggedIn;
+			console.log(data);
 
-			if (this.loggedIn) {
+			if (this.isLoggedIn) {
+				this.loggedUser = {
+					id: data.userId,
+					firstName: data.firstName,
+					lastName: data.lastName,
+					email: null, // todo
+					type: UserType.Seeker, // todo
+					photoUrl: '', // todo
+					sex: '', // todo
+				};
+				
 					this.loggedUser.id = data.id;
 					this.loggedUser.firstName = data.firstName;
 					this.loggedUser.lastName = data.lastName;
 					this.loggedUser.email = data.email;
 			}
+
+			console.log(this.loggedUser);
 		}, (e) => { console.log(e); });
 	}
 
@@ -30,10 +43,6 @@ class LoginController {
 
 	signOut() {
 		this.AuthService.logout();
-	}
-
-	isLoggedIn(): boolean {
-		return this.loggedIn;
 	}
 };
 

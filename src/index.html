@@ -19,10 +19,18 @@
 			<div class="header-content">
 				<h1 ui-sref="home" ui-sref-opts="{reload: true}">Roomatched</h1>
 				<div class="user-wrapper" ng-controller="LoginCtrl as login">
-					<input type="button" class="sign-in-button" value="Sign in" ng-click="signInVisible = true" ng-show="!loggedIn && !signInVisible"/>
+					<input type="button" class="sign-in-button" value="Sign in" ng-click="signInVisible = true" ng-show="!login.isLoggedIn && !signInVisible"/>
+					<div class="user-info" ng-show="login.isLoggedIn">
+						<div class="user-greeting" ng-show="login.loggedUser">
+							Hi, {{ login.loggedUser.firstName }}
+						</div>
+						<div class="user-image">
+							<img ng-src="{{ login.loggedUser.photoUrl || './assets/images/user-photo-placeholder.png' }}" />
+						</div>
+					</div>
 					<form name="sign-in-form" class="sign-in-form" ng-show="signInVisible === true" ng-submit="login.signIn()" novalidate>
-						<input ng-model="auth.email" type="email" placeholder="Email" required/>
-						<input ng-model="auth.password" type="password" placeholder="Password" required/>
+						<input ng-model="login.email" type="email" placeholder="Email" required/>
+						<input ng-model="login.password" type="password" placeholder="Password" required/>
 						<input type="submit" value="Go"/>
 					</form>
 				</div>
