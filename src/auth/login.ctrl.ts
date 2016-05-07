@@ -6,27 +6,21 @@ class LoginController {
 	email: string;
 	password: string;
 
-	constructor (private $scope: ng.IScope, private AuthService: AuthServiceProvider) {
+	constructor (private $scope: ng.IScope, private $state, private AuthService: AuthServiceProvider) {
 		AuthService.getAuthState().then((response) => {
 			let data: any = response.data;
 			this.isLoggedIn = data.loggedIn;
-			console.log(data);
 
 			if (this.isLoggedIn) {
 				this.loggedUser = {
 					id: data.userId,
 					firstName: data.firstName,
 					lastName: data.lastName,
-					email: null, // todo
+					email: data.email,
 					type: UserType.Seeker, // todo
-					photoUrl: '', // todo
-					sex: '', // todo
+					photoUrl: data.userPhoto,
+					sex: data.sex
 				};
-				
-					this.loggedUser.id = data.id;
-					this.loggedUser.firstName = data.firstName;
-					this.loggedUser.lastName = data.lastName;
-					this.loggedUser.email = data.email;
 			}
 
 			console.log(this.loggedUser);
@@ -35,7 +29,9 @@ class LoginController {
 
 	signIn() {
 		this.AuthService.login(this.email, this.password).then((response) => {
-			console.log(response);
+			if (true) { // if success
+				this.isLoggedIn = true;
+			}
 		}, (e) => {
 			console.log(e);
 		});

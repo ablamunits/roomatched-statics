@@ -197,6 +197,56 @@ body {
 							max-height: 100%;
 						}
 					}
+
+					ul.user-menu {
+						@include shadow();
+						display: none;
+						position: absolute;
+						opacity: 0;
+						top: 44px;
+						left: 0;
+						background-color: rgba($red, .9);
+						width: 140px;
+						padding: 0;
+						border-bottom-right-radius: 4px;
+						border-bottom-left-radius: 4px;
+
+						.icon {
+							@include icon();
+							height: 30px;
+							display: inline;
+							position: absolute;
+							left: 10px;
+							top: 12px;
+						}
+
+						li {
+							list-style: none;
+							padding: 15px 10px 15px 40px;
+							position: relative;
+
+							&:last-child {
+								border-bottom-right-radius: 4px;
+								border-bottom-left-radius: 4px;
+							}
+
+							&:hover {
+								background-color: rgba($xlight-red, .9);
+								color: $red;
+
+								.icon {
+									fill: $red;
+								}
+							}
+						}
+					}
+
+					&:hover {
+						> .user-menu {
+							display: block;
+							opacity: 1;
+						}
+					}
 				}
 			}
 		}

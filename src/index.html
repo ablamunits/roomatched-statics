@@ -27,6 +27,11 @@
 						<div class="user-image">
 							<img ng-src="{{ login.loggedUser.photoUrl || './assets/images/user-photo-placeholder.png' }}" />
 						</div>
+						<ul class="user-menu">
+							<li><div class="icon" ng-include="'assets/icons/profile.svg'"></div>Profile</li>
+							<li><div class="icon" ng-include="'assets/icons/discover.svg'"></div>Discover</li>
+							<li><div class="icon" ng-include="'assets/icons/matches-check.svg'"></div>Matches</li>
+						</ul>
 					</div>
 					<form name="sign-in-form" class="sign-in-form" ng-show="signInVisible === true" ng-submit="login.signIn()" novalidate>
 						<input ng-model="login.email" type="email" placeholder="Email" required/>
