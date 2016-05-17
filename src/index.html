@@ -14,7 +14,6 @@
 	</head>
 
 	<body ng-cloak>
-
 		<div class="header">
 			<div class="header-content">
 				<h1 ui-sref="home" ui-sref-opts="{reload: true}">Roomatched</h1>
@@ -35,7 +34,7 @@
 							<img ng-src="{{ login.loggedUser.photoUrl || './assets/images/user-photo-placeholder.png' }}" />
 						</div>
 						<ul class="user-menu">
-							<li><div class="icon" ng-include="'assets/icons/profile.svg'"></div>Profile</li>
+							<li ui-sref="profile"><div class="icon" ng-include="'assets/icons/profile.svg'"></div>Profile</li>
 							<li><div class="icon" ng-include="'assets/icons/discover.svg'"></div>Discover</li>
 							<li ui-sref="matches"><div class="icon" ng-include="'assets/icons/matches-check.svg'"></div>Matches</li>
 							<li ng-click="login.signOut()"><div class="icon" ng-include="'assets/icons/logout.svg'"></div>Logout</li>
@@ -47,7 +46,6 @@
 
 		<div class="content">
 			<div ui-view class="main-view">
-
 			</div>
 		</div>
 

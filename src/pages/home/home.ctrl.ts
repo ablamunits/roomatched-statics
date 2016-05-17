@@ -38,7 +38,7 @@ class HomeController {
 	offererApartmentDetails: Apartment;
 	offererRoomDetails: Room;
 
-	constructor (private $scope: ng.IScope, private $http: ng.IHttpService, private UserService: UserServiceProvider, $stateParams) {
+	constructor (private $scope: ng.IScope, private $http: ng.IHttpService, private UserService: UserServiceProvider, $stateParams, AuthService) {
 		this.preferenceSelect = {
 			smoking: PreferenceScore.Neutral,
 			kosher: PreferenceScore.Neutral,

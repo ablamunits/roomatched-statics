@@ -7,48 +7,39 @@ class LoginController {
 	email: string;
 	password: string;
 
-	constructor (private $scope: ng.IScope, private $state, private AuthService: AuthServiceProvider) {
-		this.updateLoggedUser();
-	}
-
-	private updateLoggedUser() {
-		this.AuthService.getAuthState().then((response) => {
-			let data: any = response.data;
-
-			if (data.loggedIn === false) {
-				this.isLoggedIn = false;
-				this.loggedUser = null;
-				return;
-			}
-
-			this.loggedUser = {
-				id: data.userId,
-				firstName: data.firstName,
-				lastName: data.lastName,
-				email: data.email,
-				type: UserType.Seeker, // todo
-				photoUrl: data.userPhoto,
-				sex: data.sex
-			};
+	constructor (private $scope: ng.IScope, private $timeout, private $state, private AuthService: AuthServiceProvider) {
+		AuthService.updateUserAuthentication().then(() => {
+			this.updateLoggedUser();
 		});
 	}
 
+	private updateLoggedUser() {
+		if (this.AuthService.userIsLoggedIn) {
+			this.isLoggedIn = true;
+			this.loggedUser = this.AuthService.loggedUser;
+		} else {
+			this.isLoggedIn = false;
+			this.loggedUser = null;
+		}
+	}
+
 	signIn() {
-		this.AuthService.login(this.email, this.password).then((response) => {
-			if (true) { // if success
-				this.isLoggedIn = true;
+		this.AuthService.login(this.email, this.password).then((loggedUser) => {
+			if (loggedUser) {
 				this.updateLoggedUser();
 				this.$state.go('matches');
+			} else {
+				console.log('sign in failed');
 			}
-		}, (e) => {
-			console.log(e);
 		});
 	}
 
 	signOut() {
-		this.AuthService.logout();
-		this.updateLoggedUser();
-		this.$state.go('home');
+		this.AuthService.logout().then(() => {
+			this.updateLoggedUser();
+			this.signInFormVisible = false;
+			this.$state.go('home');
+		});
 	}
 };
 
