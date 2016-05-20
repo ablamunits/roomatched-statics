@@ -22,7 +22,6 @@ $pref-green: #30f03d;
 @mixin icon() {
 	pointer-events: none;
 	fill: $light-grey;
-	text-align: center;
 
 	svg {
 		height: inherit;
@@ -282,7 +281,7 @@ body {
 
 	.app-view {
 		.container {
-			margin: 0 220px;
+			margin: 0 120px;
 
 			h3 {
 				font-size: 20px;
@@ -315,5 +314,9 @@ body {
 	}
 }
 
+// Pages
 @import './common/tooltips/tooltips';
 @import './pages/home/home';
+
+// Directives
+@import './directives/apartment-post/apartment-post';

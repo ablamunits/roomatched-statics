@@ -3,7 +3,6 @@
 class ProfileController {
 	private user: User;
 	constructor (private AuthService) {
-		// todo
 		this.user = AuthService.loggedUser;
 	}
 };

@@ -1,0 +1,23 @@
+<div class="apartment-post-wrapper">
+	<div class="post-content">
+		<div class="post-image">
+			<img ng-src="{{ post.content.room.roomImage || './assets/images/user-photo-placeholder.png' }}"/>
+			<div class="room-icons">
+				<li class="icon-wrapper" ng-repeat="(icon, url) in post.roomIcons" ng-if="post.content.room[icon]">
+					<span class="icon" ng-include="url"></span>
+				</li>
+				<li>&nbsp;Room size: {{ post.content.room.roomSize }} sqm.</li>
+			</div>
+		</div>
+		<div class="post-details">
+			<p class="post-address">{{ post.content.apartment.address }}<span class="post-city"> {{ post.content.apartment.city }}</span></p>
+
+			<p class="post-price">{{ post.content.room.price }}</p>
+			<ul class="apartment-icons">
+				<li class="icon-wrapper" ng-repeat="(icon, url) in post.apartmentIcons" ng-if="post.content.apartment[icon]">
+					<span class="icon" ng-include="url"></span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

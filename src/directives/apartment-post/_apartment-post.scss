@@ -1,0 +1,96 @@
+.apartment-post-wrapper .post-content {
+	background-color: $white;
+	position: relative;
+	border: 1px solid $xlight-red;
+	width: 50%;
+	margin: 0 auto;
+
+	.post-image {
+		@include shadow();
+		position: relative;
+		width: 100%;
+		height: 200px;
+		margin: 0;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			transition: all .2s ease;
+		}
+	}
+
+	.apartment-icons {
+		list-style: none;
+		padding: 0;
+		margin: 10px 0 0 0;
+
+		.icon-wrapper {
+			display: inline-block;
+			margin: 0 3px;
+
+			.icon {
+				@include icon();
+				height: 40px;
+			}
+
+			&:hover .icon {
+				fill: $light-red;
+			}
+		}
+	}
+
+	.room-icons {
+		background-color: rgba($white, 0.9);
+		bottom: 0;
+		width: 100%;
+		position: absolute;
+		list-style: none;
+		opacity: 0;
+		transition: all .2s ease;
+
+		.icon-wrapper {
+			display: inline-block;
+			padding: 5px 5px 0 3px;
+
+			.icon {
+				@include icon();
+				height: 30px;
+				fill: $red;
+			}
+		}
+	}
+
+	.post-details {
+		position: relative;
+		display: block;
+		margin: 5px;
+
+		p {
+			margin: 0;
+		}
+
+		.post-address {
+			color: $red;
+			font-size: 22px;
+			font-weight: bold;
+		}
+
+		.post-city {
+			color: $light-red;
+			font-size: 14px;
+		}
+
+	}
+
+	&:hover {
+		.post-image {
+			img {
+				transform: scale(1.10);
+			}
+		}
+
+		.room-icons {
+			opacity: 1;
+		}
+	}
+}

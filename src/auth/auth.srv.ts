@@ -42,7 +42,7 @@ class AuthServiceProvider {
 		return this.$http.get(API_URI + '/auth');
 	}
 
-	updateUserAuthentication() {
+	init() {
 		return this.getAuthState().then((authResponse) => {
 			let authData: any = authResponse.data;
 
@@ -58,6 +58,8 @@ class AuthServiceProvider {
 					sex: authData.sex
 				};
 			}
+
+			return this.loggedUser;
 		});
 	}
 }

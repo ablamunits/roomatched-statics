@@ -22,6 +22,9 @@
 			Roomatched is a project dedicated to helping people find the perfect place to live together.
 			Whether you are looking to live with roomates, or looking for a roomate to join you in - Roomatched connects people by personal preferences. No surprises.
 		</div>
+		<div ng-repeat="apartmentPost in home.postList">
+			<apartment-post content="apartmentPost"></apartment-post>
+		</div>
 	</div>
 
 	<div class="container registration-container">

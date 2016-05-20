@@ -8,7 +8,7 @@ class LoginController {
 	password: string;
 
 	constructor (private $scope: ng.IScope, private $timeout, private $state, private AuthService: AuthServiceProvider) {
-		AuthService.updateUserAuthentication().then(() => {
+		AuthService.init().then(() => {
 			this.updateLoggedUser();
 		});
 	}
