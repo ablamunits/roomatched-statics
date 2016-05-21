@@ -34,14 +34,7 @@
 			<div class="registration-form">
 				<p>Finding the perfect place starts by matching you to perfect people! Score your preferences here between: Neutral, <span class="label important">Important</span>, <span class="label somewhat-important">Somewhat important</span>, or <span class="label no-go">No go</span>.</p>
 				<div>
-					<div class="preference-buttons">
-						<div ng-repeat="(preferenceKey, title) in home.preferenceTitles" class="preference-button-wrapper">
-							<div class="preference-button preference-score{{ home.preferenceSelect[preferenceKey] }}" ng-click="home.preferenceClick(preferenceKey)" tooltips tooltip-template="{{ title }}" tooltip-side="bottom" tooltip-class="pref-tooltip">
-								<div class="icon" ng-include="home.preferenceIcons[preferenceKey]" ></div>
-							</div>
-						</div>
-					</div>
-
+					<preference-select ng-model="home.preferenceSelect"></preference-select>
 					<div>
 						<p>Choose city:</p>
 						<div>
@@ -63,13 +56,7 @@
 			<hr>
 			<p>Finding the perfect roomate starts with a perfect match! Score your preferences here between Neutral, <span class="label important">Important</span>, <span class="label somewhat-important">Somewhat important</span>, or <span class="label no-go">No go</span>.</p>
 			<div class="registration-form">
-				<div class="preference-buttons">
-					<div ng-repeat="(preferenceKey, title) in home.preferenceTitles" class="preference-button-wrapper">
-						<div class="preference-button preference-score{{ home.preferenceSelect[preferenceKey] }}" ng-click="home.preferenceClick(preferenceKey)" tooltips tooltip-template="{{ title }}" tooltip-side="bottom" tooltip-class="pref-tooltip">
-							<div class="icon" ng-include="home.preferenceIcons[preferenceKey]" ></div>
-						</div>
-					</div>
-				</div>
+				<preference-select ng-model="home.preferenceSelect"></preference-select>
 
 				<p>Give us some details about the room you are offering:</p>
 				<div>
@@ -99,7 +86,6 @@
 				</div>
 			</div>
 		</div>
-
 
 		<br>
 		<div ng-show="home.isSeekerRegistration || home.isOffererRegistration">

@@ -16,6 +16,7 @@
         "src/auth/auth.srv.ts",
         "src/auth/login.ctrl.ts",
         "src/directives/apartment-post/apartment-post.drv.ts",
+        "src/directives/preference-select/preference-select.drv.ts",
         "src/pages/home/home.ctrl.ts",
         "src/pages/matches/matches.ctrl.ts",
         "src/pages/profile/profile.ctrl.ts",
