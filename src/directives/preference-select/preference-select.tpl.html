@@ -1,0 +1,8 @@
+<div class="preference-buttons">
+	<div ng-repeat="(preferenceKey, title) in ctrl.preferenceTitles" class="preference-button-wrapper">
+		<div class="preference-button preference-score{{ ctrl.preferenceSelect[preferenceKey] }}" ng-click="ctrl.preferenceClick(preferenceKey)" tooltips tooltip-template="{{ title }}" tooltip-side="bottom" tooltip-class="pref-tooltip">
+			<div class="icon" ng-include="ctrl.preferenceIcons[preferenceKey]"></div>
+		</div>
+	</div>
+	<div class="icon" ng-include="ctrl.preferenceIcons[vegan]"></div>
+</div>
