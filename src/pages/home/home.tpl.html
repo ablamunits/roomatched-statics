@@ -90,21 +90,10 @@
 		<br>
 		<div ng-show="home.isSeekerRegistration || home.isOffererRegistration">
 			<h3>You are almost ready to get Roomatched!</h3>
-			<p>Fill in the following information to complete the registration:</p>
+			<p>Confirm your registration with Facebook to help us hook you up with more genuine results.</p>
 			<form ng-submit="home.registerButtonClick()" name="userRegister">
 				<div>
-					<input type="text" ng-model="home.newUser.firstName" placeholder="First Name" name="firstName" required/>
-					<input type="text" ng-model="home.newUser.lastName" placeholder="Last Name" name="lastName" required/>
-					<input type="text" ng-model="home.newUser.sex" placeholder="Gender (Male/Female)" name="gender" required/>
-				</div>
-				<p>Login information to use on Roomatched:</p>
-				<div>
-					<input type="email" ng-model="home.newUser.email" placeholder="Email" name="email" required/>
-					<input type="password" ng-model="home.newUser.password" placeholder="Password" name="password" required/>
-				</div>
-
-				<div>
-					<input type="submit" class="register-button" value="Register"/>
+					<input type="submit" class="register-button" value="Register with Facebook"/>
 				</div>
 				<div class="register-error" ng-if="home.registrationHasErrors">
 					There is a problem with your registration. Please review the information and try again.

@@ -107,6 +107,7 @@ body {
 	font-weight: 400;
 	color: $color-text-main;
 	background-color: $color-bg-main;
+	height: 100%;
 
 	.header {
 		@include shadow();
@@ -262,7 +263,10 @@ body {
 	}
 
 	.content {
-		margin: $header-height 0;
+		min-height: 100%;
+		height: auto !important;
+		position: relative;
+		margin: $header-height auto;
 
 		.label {
 			&.important {
@@ -285,6 +289,16 @@ body {
 
 			h3 {
 				font-size: 20px;
+			}
+
+			a {
+				color: $light-red;
+				font-weight: bold;
+				cursor: pointer;
+
+				&:hover {
+					color: $red;
+				}
 			}
 
 			div {
@@ -315,9 +329,12 @@ body {
 }
 
 // Pages
-@import './common/tooltips/tooltips';
 @import './pages/home/home';
+@import './pages/profile/profile';
 
 // Directives
 @import './directives/apartment-post/apartment-post';
 @import './directives/preference-select/preference-select';
+
+// Assets and commons
+@import './common/tooltips/tooltips';

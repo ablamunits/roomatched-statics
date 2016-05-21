@@ -1,5 +1,5 @@
 class PreferenceSelectDirectiveController {
-	preferenceSelect: Preferences;
+	prefScores: Preferences;
 
 	preferenceTitles = {
 		smoking: 'Smoking',
@@ -22,8 +22,7 @@ class PreferenceSelectDirectiveController {
 	};
 
 	preferenceClick(preference: string) {
-		console.log('click');
-		this.preferenceSelect[preference] = (this.preferenceSelect[preference] + 1) % NUM_OF_PREFERENCE_SCORES;
+		this.prefScores[preference] = (this.prefScores[preference] + 1) % NUM_OF_PREFERENCE_SCORES;
 	}
 }
 
@@ -31,7 +30,7 @@ function preferenceSelectDirectiveFactory(): ng.IDirective {
 	return <ng.IDirective> {
 		restrict: 'E',
 		scope: {
-			preferenceSelect: '=ngModel'
+			prefScores: '=ngModel'
 		},
 		require: 'ngModel',
 		templateUrl: 'directives/preference-select/preference-select.tpl.html',

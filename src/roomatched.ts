@@ -1,28 +1,25 @@
 var API_URI = 'http://vmedu92.mtacloud.co.il:8080/Roomatched/api';
 
 var roomatchedApp: ng.IModule = angular.module('RoomatchedApp', ['ui.router', 'ab.Typeit', '720kb.tooltips'])
-.run(function($rootScope, $location, $state, $timeout, AuthService) {
-	// AuthService.init().then((user) => {
-	// 	console.log(user);
-	// });
-	// $rootScope.$on('$stateChangeStart', function (e, toState, toParams, fromState, fromParams) {
-	// 	if (toState.name === 'home') {
-	// 		if (AuthService.userIsLoggedIn) {
-	// 			e.preventDefault();
-	// 			$state.go('matches');
-	// 			return;
-	// 		}
-	// 	} else {
-	// 		if (AuthService.userIsLoggedIn) {
-	// 			return;
-	// 		} else {
-	// 			e.preventDefault();
-	// 			$state.go('home');
-	// 		}
-	// 	};
-	// });
+.run(function($rootScope, $location, $state, $timeout, AuthService, $window) {
+	$window.fbAsyncInit = function() {
+		FB.init({
+			appId      : '1754796394756872', // Roomatched appId
+			cookie     : true,  // enable cookies to allow the server to access
+			// the session
+			xfbml      : true,  // parse social plugins on this page
+			version    : 'v2.5' // use graph api version 2.5
+		});
+
+		FB.getLoginStatus(function(response) {
+			console.log('login status:', response);
+			if (response.status === 'connected') {
+				AuthService.init(response.authResponse.userID, response.authResponse.accessToken);
+			}
+		});
+	};
 })
-.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $windowProvider) {
 	$httpProvider.defaults.withCredentials = true;
 
 	$urlRouterProvider.otherwise('/');

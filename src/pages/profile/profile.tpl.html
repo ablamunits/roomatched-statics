@@ -1,10 +1,51 @@
-<div class="app-view matches-view">
+<div class="app-view profile-view" ng-cloak>
 	<div class="container">
 		<div>
-			<br>
-			<h3>Hi {{ profile.user.firstName }}, this is your profile page.</h3>
-			<hr>
-			<p>You can review and update your personal settings on this page.</p>
+		</br>
+		<h3>Hi {{ profile.user.firstName }}, this is your profile page.</h3>
+		<hr>
+		<p>You can review and update your personal settings on this page.</p>
+		<div class="user-container">
+			<div class="user-image">
+				<img ng-src="{{ profile.user.photoUrl || './assets/images/user-photo-placeholder.png' }}" />
+				<div class="edit-image-icon">
+					<p>Edit</p>
+				</div>
+			</div>
+			<div class="user-info">
+				<p>You are registered as an apartment {{ profile.user.type | typeToString }}.</p>
+				<ul class="user-info-option-list">
+					<li class="user-info-option">
+						<a ng-click="profile.showPreferenceSelector()">My Preferences</a>
+						<div class="user-preferences" ng-if="profile.preferences">
+							<preference-select ng-model="profile.preferences"></preference-select>
+							<div>
+								<div>
+									<p>City preference</p>
+									<input type="text" ng-model="profile.details.city" placeholder="City"/>
+								</div>
+								<div>
+									<p>Preffered price range</p>
+									<input type="number" ng-model="profile.details.fromPrice" placeholder="From price"/>
+									<input type="number" ng-model="profile.details.toPrice" placeholder="To price"/>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="user-info-option">
+						<a ng-click="profile.isDetailEditVisible = true">My Details</a>
+						<div class="user-details" ng-if="profile.isDetailEditVisible">
+							<h4>Update your name and email as it will be used by Roomatched</h4>
+							<p>Personal details:</p>
+							<input type="text" ng-model="profile.user.firstName" placeholder="First name"/>
+							<input type="text" ng-model="profile.user.lastName" placeholder="Last name"/>
+							<p>Email</p>
+							<input type="email" ng-model="profile.user.email" placeholder="Email"/>
+						</div>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
+</div>
 </div>

@@ -5,6 +5,7 @@ class UserServiceProvider {
 	registerUser (user: User, preferences: Preferences, additionalInfo: Object) {
 		let newUserRegistrationObject = {
 			email: user.email,
+			facebookId: user.facebookId,
 			password: user.password,
 			firstName: user.firstName,
 			lastName: user.lastName,
@@ -20,7 +21,7 @@ class UserServiceProvider {
 		return this.$http.post(API_URI + '/user', newUserRegistrationObject);
 	}
 
-	private typeToString(type: UserType): string {
+	typeToString(type: UserType): string {
 		if (type === UserType.Visitor) {
 			return 'VISITOR';
 		} else if (type === UserType.Seeker) {

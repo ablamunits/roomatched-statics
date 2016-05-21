@@ -4,6 +4,7 @@ enum UserType {
 
 interface User {
 	id?: number;
+	facebookId?: string;
 	type: UserType;
 	email: string;
 	password?: string;
@@ -16,7 +17,7 @@ interface User {
 interface SeekerPreferences {
 	fromPrice: number;
 	toPrice: number;
-	location: string;
+	city: string;
 	numberOfRoomates: number;
 }
 

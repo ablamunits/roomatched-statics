@@ -1,66 +1,61 @@
 class AuthServiceProvider {
+	private authComplete: boolean = false;
+	private authCompleteCallbacks: any[] = [];
+
 	userIsLoggedIn: boolean = false;
 	loggedUser: User;
+	FBAccessToken: string;
+	FBUserId: string;
 
 	constructor(private $http: ng.IHttpService){
 		console.log('Authorization service constructor...');
 	}
 
-	login(email: string, password: string) {
-		return this.$http.post(API_URI + '/auth/login', {email: email, password: password}).then((response) => {
-			let data: any = response.data;
-
-			if (true) { // if success
-				this.userIsLoggedIn = true;
-				this.loggedUser = {
-					id: data.userId,
-					firstName: data.firstName,
-					lastName: data.lastName,
-					email: data.email,
-					type: data.type,
-					photoUrl: data.photoUrl,
-					sex: data.sex
-				};
-			}
-		}, (e) => {
-			console.log(e);
-			return null;
-		}).then(() => {
-			return this.loggedUser;
+	login() {
+		FB.login((response: any) => {
+			this.init(response.authResponse.userID, response.authResponse.accessToken);
 		});
 	}
 
+	logout(callback) {
+		FB.logout((response: any) => {
+				console.log(response);
+				callback();
+		});
+	};
 
-	logout() {
-		return this.$http.post(API_URI + '/auth/logout', null).then((response) => {
-			this.userIsLoggedIn = false;
-			this.loggedUser = null;
+	getUserByFacebookId(id: string) {
+			return this.$http.get(API_URI + '/user/fb/' + id).then(response => {
+				return response.data;
+			});
+	};
+
+	init(fbUID: string, fbAT: string) {
+		this.FBUserId = fbUID;
+		this.FBAccessToken = fbAT;
+		this.userIsLoggedIn = true;
+
+		this.getUserByFacebookId(this.FBUserId).then((user: any) => {
+			this.loggedUser = user;
+			this.loggedUser.type = user.type.toLowerCase() === 'seeker' ? UserType.Seeker : UserType.Offerer;
+			this.notifyAuthComplete();
 		});
 	}
 
-	getAuthState() {
-		return this.$http.get(API_URI + '/auth');
+	onAuthComplete(cb) {
+		if (this.authComplete) {
+			cb();
+		} else {
+			this.authCompleteCallbacks.push(cb);
+		}
 	}
 
-	init() {
-		return this.getAuthState().then((authResponse) => {
-			let authData: any = authResponse.data;
-
-			if (authData.loggedIn) {
-				this.userIsLoggedIn = true;
-				this.loggedUser = {
-					id: authData.userId,
-					firstName: authData.firstName,
-					lastName: authData.lastName,
-					email: authData.email,
-					type: authData.type,
-					photoUrl: authData.userPhoto,
-					sex: authData.sex
-				};
-			}
-
-			return this.loggedUser;
+	private notifyAuthComplete() {
+		this.authComplete = true;
+		angular.forEach(this.authCompleteCallbacks, (cb) => {
+			cb();
 		});
+		this.authCompleteCallbacks = [];
 	}
 }
 

@@ -1,59 +1,64 @@
 <html ng-app="RoomatchedApp">
-	<head>
-		<link rel="stylesheet" type="text/css" href="styles-concat.css">
-		<link rel="stylesheet" type="text/css" href="./bower_components/angular-tooltips/dist/angular-tooltips.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-		<!-- Keep these scripts first! -->
-		<script src="./bower_components/jquery/dist/jquery.js"></script>
-		<script src="./bower_components/angular/angular.js"></script>
-		<!-- End -->
-		<script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-		<script src="./bower_components/typeit/dist/typeit.js"></script>
-		<script src="./bower_components/ng-typeit/dist/angular-typeit.js"></script>
-		<script src="./bower_components/angular-tooltips/dist/angular-tooltips.min.js"></script>
-	</head>
+<head>
+	<link rel="stylesheet" type="text/css" href="styles-concat.css">
+	<link rel="stylesheet" type="text/css" href="./bower_components/angular-tooltips/dist/angular-tooltips.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+	<!-- Keep these scripts first! -->
+	<script src="./bower_components/jquery/dist/jquery.js"></script>
+	<script src="./bower_components/angular/angular.js"></script>
+	<!-- End -->
+	<script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+	<script src="./bower_components/typeit/dist/typeit.js"></script>
+	<script src="./bower_components/ng-typeit/dist/angular-typeit.js"></script>
+	<script src="./bower_components/angular-tooltips/dist/angular-tooltips.min.js"></script>
+</head>
 
-	<body ng-cloak>
-		<div class="header">
-			<div class="header-content">
-				<h1 ui-sref="home" ui-sref-opts="{reload: true}">Roomatched</h1>
-				<div class="user-wrapper" ng-controller="LoginCtrl as login">
-					<div class="login-form" ng-hide="login.isLoggedIn">
-						<input type="button" class="sign-in-button" value="Sign in" ng-click="login.signInFormVisible = true" ng-hide="login.signInFormVisible"/>
-						<form name="sign-in-form" class="sign-in-form" ng-show="login.signInFormVisible && !login.isLoggedIn" ng-submit="login.signIn()" novalidate>
-							<input ng-model="login.email" type="email" placeholder="Email" required/>
-							<input ng-model="login.password" type="password" placeholder="Password" required/>
-							<input type="submit" value="Go"/>
-						</form>
+<body ng-cloak>
+	<script>
+	// Load the SDK asynchronously
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<div class="header">
+		<div class="header-content">
+			<h1 ui-sref="home" ui-sref-opts="{reload: true}">Roomatched</h1>
+			<div class="user-wrapper" ng-controller="LoginCtrl as login">
+				<div class="login-form" ng-show="!login.isLoggedIn">
+					<input type="button" class="sign-in-button" value="Sign in" ng-click="login.fbLogin()" ng-hide="login.signInFormVisible"/>
+				</div>
+				<div class="user-info" ng-show="login.loggedUser">
+					<div class="user-greeting" ng-show="login.loggedUser">
+						Hi, {{ login.loggedUser.firstName }}
 					</div>
-					<div class="user-info" ng-show="login.isLoggedIn">
-						<div class="user-greeting" ng-show="login.loggedUser">
-							Hi, {{ login.loggedUser.firstName }}
-						</div>
-						<div class="user-image">
-							<img ng-src="{{ login.loggedUser.photoUrl || './assets/images/user-photo-placeholder.png' }}" />
-						</div>
-						<ul class="user-menu">
-							<li ui-sref="profile"><div class="icon" ng-include="'assets/icons/profile.svg'"></div>Profile</li>
-							<li><div class="icon" ng-include="'assets/icons/discover.svg'"></div>Discover</li>
-							<li ui-sref="matches"><div class="icon" ng-include="'assets/icons/matches-check.svg'"></div>Matches</li>
-							<li ng-click="login.signOut()"><div class="icon" ng-include="'assets/icons/logout.svg'"></div>Logout</li>
-						</ul>
+					<div class="user-image">
+						<img ng-src="{{ login.loggedUser.photoUrl || './assets/images/user-photo-placeholder.png' }}" />
 					</div>
+					<ul class="user-menu">
+						<li ui-sref="profile"><div class="icon" ng-include="'assets/icons/profile.svg'"></div>Profile</li>
+						<li><div class="icon" ng-include="'assets/icons/discover.svg'"></div>Discover</li>
+						<li ui-sref="matches"><div class="icon" ng-include="'assets/icons/matches-check.svg'"></div>Matches</li>
+						<li ng-click="login.fbLogout()"><div class="icon" ng-include="'assets/icons/logout.svg'"></div>Logout</li>
+					</ul>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<div class="content">
-			<div ui-view class="main-view">
-			</div>
+	<div class="content">
+		<div ui-view class="main-view">
 		</div>
+	</div>
 
-		<div class="footer">
-			<p>Roomatched | By Boris Ablamunits, Or Bar and Gil Dadosh - an MTA project</p>
-		</div>
-	</body>
+	<div class="footer">
+		<p>Roomatched | By Boris Ablamunits, Or Bar and Gil Dadosh - an MTA project</p>
+	</div>
+</body>
 
-	<script src="./scripts-concat.js"></script>
+<script src="./scripts-concat.js"></script>
 
 </html>

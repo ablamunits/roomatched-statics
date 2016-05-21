@@ -1,0 +1,70 @@
+@keyframes slide-in {
+	0% {
+		height: 0;
+	}
+
+	100% {
+		height: 60px;
+	}
+}
+
+.profile-view {
+
+	.user-container {
+		position: relative;
+		height: 100%;
+
+		.user-image {
+			@include shadow();
+			overflow: hidden;
+			width: 300px;
+			height: 300px;
+			border-radius: 50%;
+			display: inline-block;
+			position: relative;
+
+			img {
+				width: 100%;
+				height: auto;
+			}
+
+			.edit-image-icon {
+				background-color: rgba($red, .5);
+				font-size: 20px;
+				color: $white;
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				text-align: center;
+				height: 0;
+			}
+
+			&:hover {
+				.edit-image-icon {
+					animation: slide-in .2s;
+					animation-fill-mode: forwards;
+				}
+			}
+		}
+
+		.user-info {
+			@include input-field();
+			p {
+				margin: 0;
+			}
+
+			display: inline;
+			position: absolute;
+			padding: 20px 20px 20px 30px;
+			height: 100%;
+
+			.user-info-option-list {
+				list-style: none;
+
+				.user-info-option {
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+}
