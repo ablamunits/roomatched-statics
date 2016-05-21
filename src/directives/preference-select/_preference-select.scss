@@ -1,0 +1,55 @@
+.preference-buttons {
+	text-align: center;
+
+	.preference-button-wrapper {
+		@include no-select();
+		display: inline-block;
+		position: relative;
+
+		.preference-button {
+			cursor: pointer;
+			width: 100px;
+			height: 100px;
+			position: relative;
+
+			.icon {
+				@include icon();
+				text-align: center;
+				height: 60px;
+				width: 100%;
+				position: absolute;
+				display: block;
+				border-bottom: 2px solid;
+				border-color: rgba($light-grey, .3);
+				transition: all .1s ease-out;
+			}
+
+			&.preference-score1 {
+				.icon {
+					border-color: $preference-score1;
+					fill: $preference-score1;
+				}
+			}
+
+			&.preference-score2 {
+				.icon {
+					border-color: $preference-score2;
+					fill: $preference-score2;
+				}
+			}
+
+			&.preference-score3 {
+				.icon {
+					border-color: $preference-score3;
+					fill: $preference-score3;
+				}
+			}
+		}
+
+		&:hover {
+			.icon {
+				border-bottom-width: 4px;
+			}
+		}
+	}
+}
