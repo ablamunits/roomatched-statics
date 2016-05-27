@@ -1,8 +1,12 @@
+.apartment-post-wrapper {
+	//max-width: 33%;
+}
+
 .apartment-post-wrapper .post-content {
 	background-color: $white;
 	position: relative;
 	border: 1px solid $xlight-red;
-	width: 50%;
+	//width: 50%;
 	margin: 0 auto;
 
 	.post-image {
@@ -14,7 +18,8 @@
 		overflow: hidden;
 
 		img {
-			width: 100%;
+			//width: 100%;
+			width: 300px;
 			transition: all .2s ease;
 		}
 	}

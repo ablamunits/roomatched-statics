@@ -10,7 +10,23 @@ $green-confirm: rgb(128, 198, 115);
 	.homepage-container {
 		background-color: lighten($light-grey, 15%);
 		padding: 20px 15px;
+
+		h2 {
+			color: $red;
+			text-align: center;
+		}
+
+		.apartment-post-list {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+
+			.apartment-post {
+				margin: 10px;
+			}
+		}
 	}
+
 	.strip {
 		@include shadow();
 		position: relative;

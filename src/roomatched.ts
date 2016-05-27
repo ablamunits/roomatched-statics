@@ -5,8 +5,7 @@ var roomatchedApp: ng.IModule = angular.module('RoomatchedApp', ['ui.router', 'a
 	$window.fbAsyncInit = function() {
 		FB.init({
 			appId      : '1754796394756872', // Roomatched appId
-			cookie     : true,  // enable cookies to allow the server to access
-			// the session
+			cookie     : true,  // enable cookies to allow the server to access the session
 			xfbml      : true,  // parse social plugins on this page
 			version    : 'v2.5' // use graph api version 2.5
 		});
@@ -14,7 +13,12 @@ var roomatchedApp: ng.IModule = angular.module('RoomatchedApp', ['ui.router', 'a
 		FB.getLoginStatus(function(response) {
 			console.log('login status:', response);
 			if (response.status === 'connected') {
+				console.log('FB connected.');
 				AuthService.init(response.authResponse.userID, response.authResponse.accessToken);
+			} else {
+				console.log('FB not connected.');
+				AuthService.notifyAuthComplete(false);
+				$state.go('home');
 			}
 		});
 	};

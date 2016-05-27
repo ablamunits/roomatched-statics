@@ -8,9 +8,13 @@ class ProfileController {
 	isPreferenceEditVisible: boolean = false;
 	isDetailEditVisible: boolean = false;
 
-	constructor (private $scope, private AuthService, private PreferenceService) {
+	constructor (private $scope, private AuthService, private PreferenceService, private $state) {
 		AuthService.onAuthComplete(() => {
-			this.user = AuthService.loggedUser;
+			if (AuthService.userIsLoggedIn) {
+				this.user = AuthService.loggedUser;
+			} else {
+				$state.go('home');
+			}
 		});
 	};
 

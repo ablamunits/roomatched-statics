@@ -15,12 +15,18 @@ class LoginController {
 	fbLogin() {
 		this.AuthService.login();
 		this.AuthService.onAuthComplete(() => {
-			this.$state.go('profile');
+			if (this.AuthService.userIsLoggedIn) {
+				this.$state.go('profile');
+			} else {
+				this.$state.go('home');
+			}
 		});
 	}
 
 	fbLogout() {
 		this.AuthService.logout(() => {
+			this.isLoggedIn = false;
+			this.loggedUser = null;
 			this.$state.go('home');
 		});
 	}
