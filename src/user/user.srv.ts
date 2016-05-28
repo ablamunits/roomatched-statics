@@ -4,9 +4,7 @@ class UserServiceProvider {
 
 	registerUser (user: User, preferences: Preferences, additionalInfo: Object) {
 		let newUserRegistrationObject = {
-			email: user.email,
 			facebookId: user.facebookId,
-			password: user.password,
 			firstName: user.firstName,
 			lastName: user.lastName,
 			sex: user.sex,
@@ -19,6 +17,18 @@ class UserServiceProvider {
 		console.log(newUserRegistrationObject);
 
 		return this.$http.post(API_URI + '/user', newUserRegistrationObject);
+	}
+
+	getUserByFacebookId(id: number) {
+		return this.$http.get(API_URI + '/user/fb/' + id);
+	}
+
+	getUserById(id: number) {
+		return this.$http.get(API_URI + '/user/' + id).then(response => {
+			return response.data;
+		}, e => {
+			console.log(e);
+		});
 	}
 
 	typeToString(type: UserType): string {

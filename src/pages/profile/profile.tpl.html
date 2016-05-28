@@ -9,7 +9,8 @@
 			<div class="user-image">
 				<img ng-src="{{ profile.user.photoUrl || './assets/images/user-photo-placeholder.png' }}" />
 				<div class="edit-image-icon">
-					<p>Edit</p>
+					<p><b>{{ profile.user.firstName }} {{ profile.user.lastName}}</b></p>
+					<p>{{ profile.user.type | typeToString }}</p>
 				</div>
 			</div>
 			<div class="user-info">
@@ -19,7 +20,7 @@
 						<a ng-click="profile.showPreferenceSelector()">My Preferences</a>
 						<div class="user-preferences" ng-if="profile.preferences">
 							<preference-select ng-model="profile.preferences"></preference-select>
-							<div>
+							<div class="seeker-preferences" ng-if="(profile.user.type | typeToString) === 'Seeker'">
 								<div>
 									<p>City preference</p>
 									<input type="text" ng-model="profile.details.city" placeholder="City"/>
@@ -33,14 +34,20 @@
 						</div>
 					</li>
 					<li class="user-info-option">
-						<a ng-click="profile.isDetailEditVisible = true">My Details</a>
-						<div class="user-details" ng-if="profile.isDetailEditVisible">
-							<h4>Update your name and email as it will be used by Roomatched</h4>
-							<p>Personal details:</p>
-							<input type="text" ng-model="profile.user.firstName" placeholder="First name"/>
-							<input type="text" ng-model="profile.user.lastName" placeholder="Last name"/>
-							<p>Email</p>
+						<a ng-click="profile.showSettings()">My Settings</a>
+						<div class="user-settings" ng-if="profile.userSettings">
+							<span>Send me email notifications to</span>
 							<input type="email" ng-model="profile.user.email" placeholder="Email"/>
+						</div>
+					</li>
+					<li class="user-info-option" ng-if="(profile.user.type | typeToString) === 'Offerer'">
+						<a ng-click="profile.showRoomOffering()">My Room Offering</a>
+						<div class="user-details" ng-if="profile.apartmentDetails && profile.roomDetails">
+							<h4>Update the details for the room you have published</h4>
+							<p>My room offer</p>
+							<room-details-form ng-model=""></room-details-form>
+							<p>My apartment details</p>
+							<apartment-details-form ng-model=""></apartment-details-form>
 						</div>
 					</li>
 				</ul>

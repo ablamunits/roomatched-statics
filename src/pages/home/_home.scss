@@ -6,6 +6,7 @@ $green-confirm: rgb(128, 198, 115);
 
 .home-view {
 	@include input-field();
+	@include select-box();
 
 	.homepage-container {
 		background-color: lighten($light-grey, 15%);
@@ -104,7 +105,7 @@ $green-confirm: rgb(128, 198, 115);
 
 	.register-button {
 		@include button();
-		background-color: $green-confirm;
+		background-color: $facebook-blue;
 		color: $white;
 		font-size: 16px;
 		border-radius: 50px;
@@ -113,7 +114,7 @@ $green-confirm: rgb(128, 198, 115);
 		margin: 10px 0;
 
 		&:hover {
-			background-color: darken($green-confirm, 5%);
+			background-color: darken($facebook-blue, 5%);
 		}
 	}
 }

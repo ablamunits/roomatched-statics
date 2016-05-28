@@ -4,11 +4,12 @@ class ProfileController {
 	user: User;
 	preferences: Preferences;
 	details: SeekerPreferences | OffererDetails;
+	userSettings: UserSettings;
 
-	isPreferenceEditVisible: boolean = false;
-	isDetailEditVisible: boolean = false;
+	apartmentDetails: Apartment;
+	roomDetails: Room;
 
-	constructor (private $scope, private AuthService, private PreferenceService, private $state) {
+	constructor (private $scope, private AuthService, private PreferenceService, private UserSettingsService, private $state) {
 		AuthService.onAuthComplete(() => {
 			if (AuthService.userIsLoggedIn) {
 				this.user = AuthService.loggedUser;
@@ -19,9 +20,24 @@ class ProfileController {
 	};
 
 	showPreferenceSelector() {
-		this.PreferenceService.getUserPreference(this.user.id, this.user.type).then(detailedPreferences => {
+		this.PreferenceService.getUserPreference(this.user.id, this.user.type).then((detailedPreferences) => {
 			this.preferences = detailedPreferences.preferences;
 			this.details = detailedPreferences.additionalDetails;
+		});
+	};
+
+	showSettings() {
+		this.UserSettingsService.getUserSettings(this.user.id).then((userSettings) => {
+			this.userSettings = userSettings;
+			console.log(this.userSettings);
+		});
+	};
+
+	showRoomOffering() {
+		// TODO !!!
+		this.ApartmentService.getApartmentDetailsByOffererId(this.user.id).then((apartmentDetailsResponse) => {
+			this.apartmentDetails = apartmentDetailsResponse.apartmentDetails;
+			this.roomDetails = apartmentDetailsResponse.roomDetails;
 		});
 	}
 };

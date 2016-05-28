@@ -29,21 +29,15 @@
 			}
 
 			.edit-image-icon {
-				background-color: rgba($red, .5);
+				background-color: rgba($white, .9);
 				font-size: 20px;
-				color: $white;
+				color: $red;
 				position: absolute;
 				bottom: 0;
 				width: 100%;
 				text-align: center;
-				height: 0;
-			}
-
-			&:hover {
-				.edit-image-icon {
-					animation: slide-in .2s;
-					animation-fill-mode: forwards;
-				}
+				height: 70px;
+				line-height: 5px;
 			}
 		}
 

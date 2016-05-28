@@ -38,6 +38,11 @@ var roomatchedApp: ng.IModule = angular.module('RoomatchedApp', ['ui.router', 'a
 		templateUrl: 'pages/matches/matches.tpl.html',
 		controller: 'MatchesCtrl as matches'
 	})
+	.state('inbox', {
+		url: '/inbox',
+		templateUrl: 'pages/inbox/inbox.tpl.html',
+		controller: 'InboxCtrl as inbox'
+	})
 	.state('profile', {
 		url: '/profile?id',
 		templateUrl: 'pages/profile/profile.tpl.html',

@@ -13,6 +13,16 @@ class PreferencesServiceProvider {
 		}
 	}
 
+	private getOffererPreference(userId: number): ng.IPromise<any> {
+		let preferences: Preferences;
+		let additionalDetails: OffererDetails;
+
+		return this.$http.get(API_URI + `/offererPref/${userId}`).then((response) => {
+			preferences = <Preferences>response.data;
+			return { preferences: preferences };
+		});
+	}
+
 	private getSeekerPreference(userId: number): ng.IPromise<any> {
 		let preferences: Preferences;
 		let additionalDetails: SeekerPreferences;
@@ -41,13 +51,6 @@ class PreferencesServiceProvider {
 				preferences: preferences,
 				additionalDetails: additionalDetails
 			};
-		});
-	}
-
-	private getOffererPreference(userId: number): ng.IPromise<Preferences> {
-		let preferenceObj: Preferences;
-		return this.$http.get(API_URI + `/offererPref/${userId}`).then((response) => {
-			return response.data;
 		});
 	}
 }

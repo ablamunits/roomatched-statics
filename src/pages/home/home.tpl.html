@@ -39,18 +39,20 @@
 				<div>
 					<preference-select ng-model="home.preferenceSelect"></preference-select>
 					<div>
-						<p>Choose city:</p>
 						<div>
 							<select name="city-select" ng-options="city as city for city in home.cityOptions" ng-model="home.seekerRegistrationFields.preferedCity">
-								<option value="" disabled selected hidden>City</option>
+								<option value="" disabled selected hidden>I am looking for an apartment in ..</option>
 							</select>
 						</div>
 
-						<p>And your price range preference right here:</p>
+						<p>Price range:</p>
 						<div>
 							<input type="number" ng-model="home.seekerRegistrationFields.fromPrice" placeholder="From price"/>
 							<input type="number" ng-model="home.seekerRegistrationFields.toPrice" placeholder="To price"/>
 						</div>
+						<br>
+						<span>Preffered number of roomates</span>
+						<input type="number" min="0" max="6" ng-model="home.seekerRegistrationFields.preferedNumberOfRoomates"/>
 					</div>
 				</div>
 			</div>
@@ -62,35 +64,21 @@
 			<p>Finding the perfect roomate starts with a perfect match! Score your preferences here between Neutral, <span class="label important">Important</span>, <span class="label somewhat-important">Somewhat important</span>, or <span class="label no-go">No go</span>.</p>
 			<div class="registration-form">
 				<preference-select ng-model="home.preferenceSelect"></preference-select>
-
+				<select name="offerer-city-select" ng-options="city as city for city in home.cityOptions" ng-model="home.offererApartmentDetails.city">
+					<option value="" disabled selected hidden>I am offering a room in..</option>
+				</select>
+				<input type="text" ng-model="home.offererApartmentDetails.address" placeholder="Address"/>
 				<p>Give us some details about the room you are offering:</p>
-				<div>
-					<input type="number" ng-model="home.offererRoomDetails.price" placeholder="Room price"/>
-					<input type="number" ng-model="home.offererRoomDetails.size" placeholder="Room size (m^2)"/>
-					<input type="checkbox" ng-model="home.offererRoomDetails.isFurnished" /> Furniture
-					<input type="checkbox" ng-model="home.offererRoomDetails.hasBalcony" /> Balcony
-					<input type="checkbox" ng-model="home.offererRoomDetails.seperateBathroom" /> Seperate Bathroom
-					<input type="checkbox" ng-model="home.offererRoomDetails.airConditioned" /> Air Conditioned
-				</div>
+				<room-details-form ng-model="home.offererRoomDetails"></room-details-form>
 				<p>Additional apartment details:</p>
-				<div>
-					<input type="number" ng-model="home.offererApartmentDetails.size" placeholder="Apartment size"/>
-					<select name="offerer-city-select" ng-options="city as city for city in home.cityOptions" ng-model="home.offererApartmentDetails.city">
-						<option value="" disabled selected hidden>City</option>
-					</select>
-					<input type="text" ng-model="home.offererApartmentDetails.address" placeholder="Address"/>
-					<input type="number" ng-model="home.offererApartmentDetails.floor" placeholder="Floor #"/>
-					<input type="number" ng-model="home.offererApartmentDetails.totalRooms" placeholder="Total Rooms"/>
-					<input type="number" ng-model="home.offererApartmentDetails.totalRoomates" placeholder="Total Roomates"/>
-					<input type="number" ng-model="home.offererApartmentDetails.freeRooms" placeholder="Free rooms"/>
-					<input type="number" ng-model="home.offererApartmentDetails.approximateExpences" placeholder="Approx. Expances"/>
-					<br>
-					<input type="checkbox" ng-model="home.offererApartmentDetails.isFurnished" /> Furniture
-					<input type="checkbox" ng-model="home.offererApartmentDetails.hasLivingRoom" /> Living Room
-					<input type="checkbox" ng-model="home.offererApartmentDetails.hasElevator" /> Elevator
-					<input type="checkbox" ng-model="home.offererApartmentDetails.hasParking" /> Parking
-					<input type="checkbox" ng-model="home.offererApartmentDetails.isRenovated" /> Renovated
-				</div>
+				<apartment-details-form ng-model="home.offererApartmentDetails"></apartment-details-form>
+				<br>
+				<span>Roomate gender:</span>
+				<select name="offerer-gender-select" ng-model="home.offererSexPreffered">
+					<option value="any" selected>Any</option>
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+				</select>
 			</div>
 		</div>
 
@@ -100,7 +88,7 @@
 			<p>Confirm your registration with Facebook to help us hook you up with more genuine results.</p>
 			<form ng-submit="home.registerButtonClick()" name="userRegister">
 				<div>
-					<input type="submit" class="register-button" value="Register with Facebook"/>
+					<input type="submit" class="register-button" value="Sign up with Facebook"/>
 				</div>
 				<div class="register-error" ng-if="home.registrationHasErrors">
 					There is a problem with your registration. Please review the information and try again.

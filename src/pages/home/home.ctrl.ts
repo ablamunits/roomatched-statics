@@ -6,7 +6,7 @@ class HomeController {
 	registrationHasErrors: boolean = false;
 
 	cityOptions: string[] = ['Tel-Aviv', 'Beer-Sheva', 'Jerusalem', 'Haifa'];
-	newUser: User;
+	newUser: User = <User>{};
 	preferenceSelect: Preferences;
 
 	seekerRegistrationFields = {
@@ -18,6 +18,7 @@ class HomeController {
 
 	offererApartmentDetails: Apartment;
 	offererRoomDetails: Room;
+	offererSexPreffered: string = 'any';
 
 	postList: Post[];
 
@@ -89,7 +90,8 @@ class HomeController {
 	private registerAsOfferer() {
 		let offererDetails = {
 			roomDetails: this.offererRoomDetails,
-			apartmentDetails: this.offererApartmentDetails
+			apartmentDetails: this.offererApartmentDetails,
+			sexPreffered: this.offererSexPreffered
 		};
 
 		this.newUser.type = UserType.Offerer;

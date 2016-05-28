@@ -19,6 +19,8 @@ $pref-red: rgb(238, 17, 43);
 $pref-orange: #ff9100;
 $pref-green: #30f03d;
 
+$facebook-blue: #3B5998;
+
 @mixin icon() {
 	pointer-events: none;
 	fill: $light-grey;
@@ -75,12 +77,26 @@ $pref-green: #30f03d;
 		border-radius: 4px;
 		background-color: $white;
 		padding: 10px;
-		margin: 5px 5px;
+		margin: 5px;
 		outline: none;
 
 		&:focus {
-			background-color: $xlight-red;
+			background-color: lighten($xlight-red, 10%);
 		}
+	}
+}
+
+@mixin select-box() {
+	select {
+		height: 40px;
+		border: 1px solid $grey;
+		background-color: $white;
+		padding: 10px;
+		margin: 5px;
+		outline: none;
+		font-size: 18px;
+		font-family: $font-family;
+		-webkit-appearance: menulist-button;
 	}
 }
 

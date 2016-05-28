@@ -7,11 +7,13 @@ class AuthServiceProvider {
 	FBAccessToken: string;
 	FBUserId: string;
 
-	constructor(private $http: ng.IHttpService, private $state){};
+	constructor(private $http: ng.IHttpService, private $state, private UserService){};
 
 	login() {
 		FB.login((response: any) => {
-			this.init(response.authResponse.userID, response.authResponse.accessToken);
+			if (response.authResponse) {
+				this.init(response.authResponse.userID, response.authResponse.accessToken);
+			};
 		});
 	}
 
@@ -26,11 +28,10 @@ class AuthServiceProvider {
 	};
 
 	getUserByFacebookId(id: string) {
-			return this.$http.get(API_URI + '/user/fb/' + id).then(response => {
+			return this.UserService.getUserByFacebookId(id).then(response => {
 				console.log(response);
 				return response.data;
 			}, e => {
-				// User never signed up as anything!
 				console.error('Could not find user by Facebook id.');
 				this.notifyAuthComplete();
 				this.$state.go('home');
@@ -47,7 +48,12 @@ class AuthServiceProvider {
 				this.userIsLoggedIn = true;
 
 				this.notifyAuthComplete();
-			};
+			} else {
+				console.log('Did not find user ' + fbUID + ' in DB. Probably never registered?');
+				FB.logout((res) => {
+					console.log(res);
+				});
+			}
 		});
 	}
 
