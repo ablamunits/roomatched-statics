@@ -9,9 +9,6 @@ $green-confirm: rgb(128, 198, 115);
 	@include select-box();
 
 	.homepage-container {
-		background-color: lighten($light-grey, 15%);
-		padding: 20px 15px;
-
 		h2 {
 			color: $red;
 			text-align: center;

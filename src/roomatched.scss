@@ -13,11 +13,12 @@ $light-red: #D99996;
 $xlight-red: #F0D5D3;
 $grey: #ADADAD;
 $light-grey: #D4D2D2;
+$xlight-grey: #f5efef;
 $white: #FEFEFE;
 
 $pref-red: rgb(238, 17, 43);
-$pref-orange: #ff9100;
-$pref-green: #30f03d;
+$pref-orange: #F5D76E;
+$pref-green: #2ECC71;
 
 $facebook-blue: #3B5998;
 
@@ -302,6 +303,8 @@ body {
 	.app-view {
 		.container {
 			margin: 0 120px;
+			background-color: lighten($light-grey, 15%);
+			padding: 20px 15px;
 
 			h3 {
 				font-size: 20px;

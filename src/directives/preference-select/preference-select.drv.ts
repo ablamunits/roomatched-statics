@@ -21,8 +21,9 @@ class PreferenceSelectDirectiveController {
 		musicianFriendly: '/assets/icons/musician.svg'
 	};
 
-	preferenceClick(preference: string) {
-		this.prefScores[preference] = (this.prefScores[preference] + 1) % NUM_OF_PREFERENCE_SCORES;
+	preferenceClick(preference: string, score: string) {
+		let scores: string[] = ['neutral', 'important', 'somewhat-important', 'no-go'];
+		this.prefScores[preference] = scores.indexOf(score);
 	}
 }
 

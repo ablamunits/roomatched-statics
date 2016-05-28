@@ -4,7 +4,7 @@
 
 			<h2>What are you up to?</h2>
 			<div class="button-seeking-for-room" ng-click="home.openSeekerRegister()">
-				<span><i class="icon fa fa-search"></i>Seeking for a room</span>
+				<span><i class="icon fa fa-search"></i>Looking for a room</span>
 			</div>
 			<div class="button-offering-a-room" ng-click="home.openOffererRegister()">
 				<span><i class="icon fa fa-bed"></i>Offering a room</span>
@@ -63,25 +63,25 @@
 			<hr>
 			<p>Finding the perfect roomate starts with a perfect match! Score your preferences here between Neutral, <span class="label important">Important</span>, <span class="label somewhat-important">Somewhat important</span>, or <span class="label no-go">No go</span>.</p>
 			<div class="registration-form">
+				<h3>What's important to you in a roommate?</h3>
 				<preference-select ng-model="home.preferenceSelect"></preference-select>
-				<select name="offerer-city-select" ng-options="city as city for city in home.cityOptions" ng-model="home.offererApartmentDetails.city">
-					<option value="" disabled selected hidden>I am offering a room in..</option>
-				</select>
-				<input type="text" ng-model="home.offererApartmentDetails.address" placeholder="Address"/>
-				<p>Give us some details about the room you are offering:</p>
-				<room-details-form ng-model="home.offererRoomDetails"></room-details-form>
-				<p>Additional apartment details:</p>
-				<apartment-details-form ng-model="home.offererApartmentDetails"></apartment-details-form>
-				<br>
 				<span>Roomate gender:</span>
 				<select name="offerer-gender-select" ng-model="home.offererSexPreffered">
 					<option value="any" selected>Any</option>
 					<option value="male">Male</option>
 					<option value="female">Female</option>
 				</select>
+				<br>
+				<h3>Room details</h3>
+				<select name="offerer-city-select" ng-options="city as city for city in home.cityOptions" ng-model="home.offererApartmentDetails.city">
+					<option value="" disabled selected hidden>I am offering a room in..</option>
+				</select>
+				<input type="text" ng-model="home.offererApartmentDetails.address" placeholder="Address"/>
+				<room-details-form ng-model="home.offererRoomDetails"></room-details-form>
+				<h3>Additional apartment details</h3>
+				<apartment-details-form ng-model="home.offererApartmentDetails"></apartment-details-form>
 			</div>
 		</div>
-
 		<br>
 		<div ng-show="home.isSeekerRegistration || home.isOffererRegistration">
 			<h3>You are almost ready to get Roomatched!</h3>

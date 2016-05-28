@@ -1,3 +1,20 @@
+@keyframes subtle-pop {
+	0% {
+		opacity: 0;
+		margin-top: 10px;
+	}
+
+	50% {
+		margin-top: -5px;
+		opacity: .5;
+	}
+
+	100% {
+		margin-top: 0;
+		opacity: 1;
+	}
+}
+
 .preference-buttons {
 	text-align: center;
 
@@ -29,12 +46,20 @@
 					border-color: $preference-score1;
 					fill: $preference-score1;
 				}
+
+				.pref-title {
+					color: $preference-score1;
+				}
 			}
 
 			&.preference-score2 {
 				.icon {
 					border-color: $preference-score2;
 					fill: $preference-score2;
+				}
+
+				.pref-title {
+					color: $preference-score2;
 				}
 			}
 
@@ -43,12 +68,66 @@
 					border-color: $preference-score3;
 					fill: $preference-score3;
 				}
+
+				.pref-title {
+					color: $preference-score3;
+				}
+			}
+
+			.pref-pop {
+				@include shadow();
+				//display: none;
+				visibility: hidden;
+				opacity: 0;
+				position: absolute;
+				list-style: none;
+				font-size: 14px;
+				width: 120px;
+				background-color: rgba($white, .95);
+				padding: 0;
+				margin: 14px 0;
+				top: 60px;
+				left: -10px;
+				transition: opacity .2s ease-out;
+
+				.pref-option {
+					padding: 0 10px;
+
+					&:hover {
+						background-color: rgba($xlight-red, .3);
+					}
+				}
+			}
+
+			.pref-title {
+				display: none;
+				font-size: 14px;
+				font-weight: bolder;
+				width: 100%;
+				color: $black;
+				position: absolute;
+				top: -10px;
 			}
 		}
 
 		&:hover {
 			.icon {
+				fill: $black;
 				border-bottom-width: 4px;
+				//opacity: .5;
+			}
+
+			.pref-pop {
+				//display: block;
+				visibility: visible;
+				opacity: 1;
+				transition: opacity .2s ease-in;
+			}
+
+			.pref-title {
+				display: block;
+				animation: subtle-pop .3s;
+				animation-fill-mode: forwards;
 			}
 		}
 	}
