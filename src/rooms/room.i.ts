@@ -1,11 +1,12 @@
 interface Room {
+	roomId?: number;
 	id?: number;
 	apartmentId?: number;
 	price: number;
 	size: number;
-	isFurnished: boolean;
 	hasBalcony: boolean;
-	seperateBathroom: boolean;
 	airConditioned: boolean;
+	seperateBathroom: boolean;
+	isFurnished: boolean;
 	images?: string[];
 }

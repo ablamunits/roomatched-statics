@@ -13,13 +13,47 @@ class PreferencesServiceProvider {
 		}
 	}
 
+	updateUserPreference(id: number, type: UserType, preferences: Preferences, details?: any) {
+		if (type === UserType.Offerer) {
+			return this.updateOffererPreference(id, preferences, details);
+		} else if (type === UserType.Seeker) {
+			return this.updateSeekerPreference(id, preferences, details);
+		}
+	}
+
 	private getOffererPreference(userId: number): ng.IPromise<any> {
 		let preferences: Preferences;
 		let additionalDetails: OffererDetails;
 
 		return this.$http.get(API_URI + `/offererPref/${userId}`).then((response) => {
-			preferences = <Preferences>response.data;
-			return { preferences: preferences };
+			// preferences = <Preferences>response.data;
+			let data = response.data;
+
+			preferences = {
+				smoking: data.smoking,
+				animals: data.animals,
+				gayFriendly: data.gayFriendly,
+				sharedExpences: data.sharedExpences,
+				musicianFriendly: data.musicianFriendly,
+				kosher: data.kosher || 0,
+				vegan: data.vegan
+			};
+
+			let additionalDetails = {
+				sexPreffered: data.sexPreffered
+			}
+
+			return {
+				preferences: preferences,
+				additionalDetails: additionalDetails
+			};
+		});
+	}
+
+	private updateOffererPreference(userId: number, preferences: Preferences, details: any): ng.IPromise<any> {
+		preferences = angular.extend(preferences, details);
+		return this.$http.post(API_URI + `/offererPref/${userId}`, preferences).then((response) => {
+			console.log('Updated offerer pref.');
 		});
 	}
 
@@ -51,6 +85,24 @@ class PreferencesServiceProvider {
 				preferences: preferences,
 				additionalDetails: additionalDetails
 			};
+		});
+	}
+
+	private updateSeekerPreference(userId: number, preferences: Preferences, seekerPref: SeekerPreferences) {
+		let seekerPrefObject = {
+				minPricePreffered: seekerPref.fromPrice,
+				maxPricePreffered: seekerPref.toPrice,
+				numberOfRoomates: seekerPref.numberOfRoomates,
+				city: seekerPref.city,
+				address: null,
+				seekerOccupation: null
+		};
+
+		seekerPrefObject = angular.extend(seekerPrefObject, preferences);
+		console.log(seekerPrefObject);
+
+		return this.$http.post(API_URI + `/seekerPref/${userId}`, seekerPrefObject).then((response) => {
+			console.log('Updated seeker pref.');
 		});
 	}
 }

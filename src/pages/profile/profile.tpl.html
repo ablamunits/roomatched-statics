@@ -19,7 +19,16 @@
 					<li class="user-info-option">
 						<a ng-click="profile.showPreferenceSelector()">My Preferences</a>
 						<div class="user-preferences" ng-if="profile.preferences">
+							<a class="update-link" ng-click="profile.updatePreferences()">Update</a>
 							<preference-select ng-model="profile.preferences"></preference-select>
+							<div class="offerer-preferences" ng-if="(profile.user.type | typeToString) === 'Offerer'">
+								<span>Roomate gender:</span>
+								<select name="offerer-gender-select" ng-model="profile.details.sexPreffered">
+									<option value="any">Any</option>
+									<option value="male">Male</option>
+									<option value="female">Female</option>
+								</select>
+							</div>
 							<div class="seeker-preferences" ng-if="(profile.user.type | typeToString) === 'Seeker'">
 								<div>
 									<p>City preference</p>
@@ -36,18 +45,20 @@
 					<li class="user-info-option">
 						<a ng-click="profile.showSettings()">My Settings</a>
 						<div class="user-settings" ng-if="profile.userSettings">
+							<a class="update-link" ng-click="profile.updateSettings()">Update</a>
 							<span>Send me email notifications to</span>
-							<input type="email" ng-model="profile.user.email" placeholder="Email"/>
+							<input type="email" ng-model="profile.userSettings.email" placeholder="Email"/>
 						</div>
 					</li>
 					<li class="user-info-option" ng-if="(profile.user.type | typeToString) === 'Offerer'">
 						<a ng-click="profile.showRoomOffering()">My Room Offering</a>
 						<div class="user-details" ng-if="profile.apartmentDetails && profile.roomDetails">
 							<h4>Update the details for the room you have published</h4>
+							<a class="update-link" ng-click="profile.updateRoomOffering()">Update</a>
 							<p>My room offer</p>
-							<room-details-form ng-model=""></room-details-form>
+							<room-details-form ng-model="profile.roomDetails"></room-details-form>
 							<p>My apartment details</p>
-							<apartment-details-form ng-model=""></apartment-details-form>
+							<apartment-details-form ng-model="profile.apartmentDetails"></apartment-details-form>
 						</div>
 					</li>
 				</ul>

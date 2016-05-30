@@ -56,6 +56,16 @@
 
 				.user-info-option {
 					margin-top: 10px;
+
+					.update-link {
+						display: block;
+						font-size: 14px;
+						color: $link-blue;
+
+						&:hover {
+							color: darken($link-blue, 5%);
+						}
+					}
 				}
 			}
 		}

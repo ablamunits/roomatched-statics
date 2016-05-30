@@ -1,4 +1,6 @@
 interface Apartment {
+	apartmentId?: number;
+	id?: number;
 	size: number;
 	city: string;
 	address: string;

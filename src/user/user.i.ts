@@ -22,7 +22,7 @@ interface SeekerPreferences {
 }
 
 interface OffererDetails {
-	apartmentDetails: Apartment;
-	roomDetails: Room;
-	sexPreffered: string;
+	apartmentDetails?: Apartment;
+	roomDetails?: Room;
+	sexPreffered?: string;
 }

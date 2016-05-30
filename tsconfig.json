@@ -12,6 +12,7 @@
     ],
     "files": [
         "src/apartments/apartment.i.ts",
+        "src/apartments/apartment.srv.ts",
         "src/assets/icons.ts",
         "src/auth/auth.srv.ts",
         "src/auth/login.ctrl.ts",
@@ -30,6 +31,7 @@
         "src/preferences/preferences.srv.ts",
         "src/roomatched.ts",
         "src/rooms/room.i.ts",
+        "src/rooms/room.srv.ts",
         "src/user/user-settings.i.ts",
         "src/user/user-settings.srv.ts",
         "src/user/user.i.ts",
