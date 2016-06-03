@@ -7,6 +7,7 @@ class UserServiceProvider {
 			facebookId: user.facebookId,
 			firstName: user.firstName,
 			lastName: user.lastName,
+			yearOfBirth: user.yearOfBirth,
 			sex: user.sex,
 			type: this.typeToString(user.type),
 			photoUrl: user.photoUrl || '',

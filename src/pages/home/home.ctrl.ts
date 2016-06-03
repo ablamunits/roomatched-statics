@@ -49,7 +49,7 @@ class HomeController {
 	registerButtonClick() {
 		FB.login((response: any) => {
 			FB.api('/me', {
-				fields: 'first_name,last_name,email,gender,picture'
+				fields: 'first_name,last_name,email,gender,birthday,picture'
 			}, (response: any) => {
 				console.log(response);
 				if (!response.error) {
@@ -57,6 +57,7 @@ class HomeController {
 					this.newUser.firstName = response.first_name;
 					this.newUser.lastName = response.last_name;
 					this.newUser.sex = response.gender;
+					this.newUser.yearOfBirth = (new Date(response.birthday)).getUTCFullYear() || null;
 					this.newUser.photoUrl = response.picture.data.url;
 
 					if (this.isSeekerRegistration) {
@@ -67,7 +68,7 @@ class HomeController {
 					}
 				}
 			});
-		});
+		}, {scope: 'user_birthday' });
 	}
 
 	private registerAsSeeker() {

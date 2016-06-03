@@ -1,0 +1,18 @@
+.match-post-wrapper {
+	.match-content {
+		.match-graph-wrapper {
+			position: relative;
+			text-align: center;
+
+			.match-percent-text {
+				position: absolute;
+				width: 100%;
+				bottom: 35px;
+				font-size: 25px;
+				font-weight: bolder;
+				color: $red;
+				text-align: center;
+			}
+		}
+	}
+}

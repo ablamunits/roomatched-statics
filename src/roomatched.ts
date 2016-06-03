@@ -1,6 +1,6 @@
 var API_URI = 'http://vmedu92.mtacloud.co.il:8080/Roomatched/api';
 
-var roomatchedApp: ng.IModule = angular.module('RoomatchedApp', ['ui.router', 'ab.Typeit', '720kb.tooltips'])
+var roomatchedApp: ng.IModule = angular.module('RoomatchedApp', ['ui.router', 'ab.Typeit', '720kb.tooltips', 'angular-svg-round-progressbar'])
 .run(function($rootScope, $location, $state, $timeout, AuthService, $window) {
 	$window.fbAsyncInit = function() {
 		FB.init({

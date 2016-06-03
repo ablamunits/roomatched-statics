@@ -8,7 +8,8 @@
 $font-family: 'helvetica-neue';
 
 $black: #6B6B6B;
-$red: #CD3128;
+//$red: #CD3128;
+$red: #EB5635;
 $light-red: #D99996;
 $xlight-red: #F0D5D3;
 $grey: #ADADAD;
@@ -17,6 +18,8 @@ $xlight-grey: #f5efef;
 $white: #FEFEFE;
 
 $pref-red: rgb(238, 17, 43);
+$pref-xlight-red: $light-red;
+$pref-grey: $grey;
 $pref-orange: #F5D76E;
 $pref-green: #2ECC71;
 
@@ -355,6 +358,7 @@ body {
 
 // Directives
 @import './directives/apartment-post/apartment-post';
+@import './directives/match-post/match-post';
 @import './directives/preference-select/preference-select';
 
 // Assets and commons

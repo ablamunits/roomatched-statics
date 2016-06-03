@@ -1,0 +1,23 @@
+<!-- Example of gmaps api -->
+<!-- https://maps.googleapis.com/maps/api/staticmap?center=Tel-Aviv,Bugrashov+23&markers=color:blue|Tel-Aviv,Bugrashov+23&zoom=14&size=400x400&key=AIzaSyCJUhxI3Wgw5WZ6qW3KSQHrzSFDvskueiQ -->
+<div class="match-post-wrapper">
+	<div class="match-content">
+		{{ ctrl.content }}
+		<div class="match-graph-wrapper">
+			<round-progress
+	    max="100"
+	    current="ctrl.content.matchPercent"
+	    color="#2ECC71"
+	    bgcolor="#eaeaea"
+	    radius="50"
+	    stroke="10"
+	    clockwise="true"
+	    responsive="false"
+	    duration="800"
+	    animation="easeInOutQuart"
+	    animation-delay="0">
+	    </round-progress>
+			<div class="match-percent-text">{{ ctrl.content.matchPercent }}%</div>
+		</div>
+	</div>
+</div>

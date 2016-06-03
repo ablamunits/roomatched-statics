@@ -5,10 +5,11 @@
 			<li class="pref-title">{{ title }}</li>
 			<div class="icon" ng-include="ctrl.preferenceIcons[preferenceKey]"></div>
 			<ul class="pref-pop">
-				<li class="pref-option preference-score1" ng-click="ctrl.preferenceClick(preferenceKey, 'important')">Very Important</li>
-				<li class="pref-option preference-score2" ng-click="ctrl.preferenceClick(preferenceKey, 'somewhat-important')">Important</li>
-				<li class="pref-option preference-score3" ng-click="ctrl.preferenceClick(preferenceKey, 'no-go')">No Go</li>
+				<li class="pref-option preference-score2" ng-click="ctrl.preferenceClick(preferenceKey, 'veryImportant')">Very Important</li>
+				<li class="pref-option preference-score1" ng-click="ctrl.preferenceClick(preferenceKey, 'important')">Important</li>
 				<li class="pref-option preference-score0" ng-click="ctrl.preferenceClick(preferenceKey, 'neutral')">Don't care</li>
+				<li class="pref-option preference-score-1" ng-click="ctrl.preferenceClick(preferenceKey, 'preferNot')">Prefer not</li>
+				<li class="pref-option preference-score-2" ng-click="ctrl.preferenceClick(preferenceKey, 'noGo')">No Go</li>
 			</ul>
 		</div>
 	</div>

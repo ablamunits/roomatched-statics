@@ -1,14 +1,13 @@
 class ApartmentServiceProvider {
-	constructor(private $http: ng.IHttpService, private PostService){
+	constructor(private $http: ng.IHttpService, private PostService: PostServiceProvider){
 	}
 
 	getApartmentDetailsByOffererId(id: number) {
-		return this.PostService.getPostByOffererId(id).then((post) => {
-			console.log(post);
+		return this.PostService.getPostByOffererId(id).then((post: any) => {
 			return {
 				roomDetails: post.room,
 				apartmentDetails: post.apartment
-			}
+			};
 		});
 	}
 

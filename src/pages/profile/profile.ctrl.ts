@@ -9,6 +9,12 @@ class ProfileController {
 	apartmentDetails: Apartment;
 	roomDetails: Room;
 
+	openSettings = {
+		preferences: false,
+		settings: false,
+		roomPost: false
+	};
+
 	constructor (private $scope, private AuthService, private PreferenceService, private UserSettingsService, private ApartmentService, private RoomService, private $state) {
 		AuthService.onAuthComplete(() => {
 			if (AuthService.userIsLoggedIn) {
@@ -19,7 +25,18 @@ class ProfileController {
 		});
 	};
 
-	showPreferenceSelector() {
+	openSetting(setting: string) {
+		this.closeAllSettings();
+		this.openSetting[setting] = true;
+	}
+
+	private closeAllSettings() {
+		angular.forEach(this.openSetting, (i, key) => {
+			this.openSettings[key] = false;
+		});
+	}
+
+	private showPreferenceSelector() {
 		this.PreferenceService.getUserPreference(this.user.id, this.user.type).then((detailedPreferences) => {
 			this.preferences = detailedPreferences.preferences;
 			this.details = detailedPreferences.additionalDetails;

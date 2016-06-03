@@ -17,7 +17,8 @@
 				<p>You are registered as an apartment {{ profile.user.type | typeToString }}.</p>
 				<ul class="user-info-option-list">
 					<li class="user-info-option">
-						<a ng-click="profile.showPreferenceSelector()">My Preferences</a>
+						<!-- <a ng-click="profile.showPreferenceSelector()">My Preferences</a> -->
+						<a ng-click="profile.openSetting('preferences')">My Preferences</a>
 						<div class="user-preferences" ng-if="profile.preferences">
 							<a class="update-link" ng-click="profile.updatePreferences()">Update</a>
 							<preference-select ng-model="profile.preferences"></preference-select>

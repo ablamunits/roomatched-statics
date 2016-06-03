@@ -1,3 +1,9 @@
+$preference-score2: $pref-green;
+$preference-score1: $pref-orange;
+$preference-score0: $pref-grey;
+$preference-score-1: $pref-xlight-red;
+$preference-score-2: $pref-red;
+
 @keyframes subtle-pop {
 	0% {
 		opacity: 0;
@@ -41,17 +47,6 @@
 				transition: all .1s ease-out;
 			}
 
-			&.preference-score1 {
-				.icon {
-					border-color: $preference-score1;
-					fill: $preference-score1;
-				}
-
-				.pref-title {
-					color: $preference-score1;
-				}
-			}
-
 			&.preference-score2 {
 				.icon {
 					border-color: $preference-score2;
@@ -63,14 +58,47 @@
 				}
 			}
 
-			&.preference-score3 {
+			&.preference-score1 {
 				.icon {
-					border-color: $preference-score3;
-					fill: $preference-score3;
+					border-color: $preference-score1;
+					fill: $preference-score1;
 				}
 
 				.pref-title {
-					color: $preference-score3;
+					color: $preference-score1;
+				}
+			}
+
+			&.preference-score0 {
+				//.icon {
+				//	border-color: $preference-score0;
+				//	fill: $preference-score0;
+				//}
+				//
+				//.pref-title {
+				//	color: $preference-score0;
+				//}
+			}
+
+			&.preference-score-1 {
+				.icon {
+					border-color: $preference-score-1;
+					fill: $preference-score-1;
+				}
+
+				.pref-title {
+					color: $preference-score-1;
+				}
+			}
+
+			&.preference-score-2 {
+				.icon {
+					border-color: $preference-score-2;
+					fill: $preference-score-2;
+				}
+
+				.pref-title {
+					color: $preference-score-2;
 				}
 			}
 
