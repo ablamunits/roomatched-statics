@@ -12,13 +12,13 @@ class PreferenceSelectDirectiveController {
 	};
 
 	preferenceIcons = {
-		smoking: '/assets/icons/smoking.svg',
-		kosher: '/assets/icons/kosher.svg',
-		vegan: '/assets/icons/vegan.svg',
-		sharedExpences: '/assets/icons/money.svg',
-		animals: '/assets/icons/animals.svg',
-		gayFriendly: '/assets/icons/gay.svg',
-		musicianFriendly: '/assets/icons/musician.svg'
+		smoking: './assets/icons/smoking.svg',
+		kosher: './assets/icons/kosher.svg',
+		vegan: './assets/icons/vegan.svg',
+		sharedExpences: './assets/icons/money.svg',
+		animals: './assets/icons/animals.svg',
+		gayFriendly: './assets/icons/gay.svg',
+		musicianFriendly: './assets/icons/musician.svg'
 	};
 
 	scoreNameToValue = {
