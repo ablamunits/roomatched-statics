@@ -28,7 +28,7 @@ $green-confirm: rgb(128, 198, 115);
 
 		&.strip-home {
 			height: 400px;
-			background-image: url('../assets/images/strip.jpg');
+			background-image: url('./assets/images/strip.jpg');
 			background-position: center;
 			background-color: darken($white, 3%);
 			background-blend-mode: overlay;

@@ -326,7 +326,6 @@ body {
 			}
 
 			div {
-				margin-top: 10px;
 				line-height: 25px;
 				font-size: 18px;
 			}
@@ -355,6 +354,7 @@ body {
 // Pages
 @import './pages/home/home';
 @import './pages/profile/profile';
+@import './pages/matches/matches';
 
 // Directives
 @import './directives/apartment-post/apartment-post';

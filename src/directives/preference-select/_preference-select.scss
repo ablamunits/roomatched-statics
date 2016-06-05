@@ -26,10 +26,12 @@ $preference-score-2: $pref-red;
 
 	.preference-button-wrapper {
 		@include no-select();
+		margin-top: 10px;
 		display: inline-block;
 		position: relative;
 
 		.preference-button {
+			margin-top: 10px;
 			cursor: pointer;
 			width: 100px;
 			height: 100px;
@@ -37,6 +39,8 @@ $preference-score-2: $pref-red;
 
 			.icon {
 				@include icon();
+				margin-top: 10px;
+
 				text-align: center;
 				height: 60px;
 				width: 100%;
@@ -142,11 +146,9 @@ $preference-score-2: $pref-red;
 			.icon {
 				fill: $black;
 				border-bottom-width: 4px;
-				//opacity: .5;
 			}
 
 			.pref-pop {
-				//display: block;
 				visibility: visible;
 				opacity: 1;
 				transition: opacity .2s ease-in;

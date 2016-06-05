@@ -6,12 +6,12 @@ interface User {
 	id?: number;
 	facebookId?: string;
 	type: UserType;
-	email: string;
-	password?: string;
 	firstName: string;
 	lastName: string;
-	yearOfBirth: number;
 	sex: string;
+	email?: string;
+	yearOfBirth?: number;
+	password?: string;
 	photoUrl?: string;
 }
 

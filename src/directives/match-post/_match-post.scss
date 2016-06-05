@@ -1,18 +1,160 @@
 .match-post-wrapper {
+	@include shadow();
+	border-radius: 4px;
+	width: 50%;
+	margin-bottom: 10px;
+	position: relative;
+
 	.match-content {
+		padding: 0;
+
+		.room-icons,
+		.apartment-icons {
+			padding: 0;
+
+			.icon-wrapper {
+				display: inline-block;
+			}
+		}
+
+		.icon {
+			@include icon();
+			height: 40px;
+		}
+
 		.match-graph-wrapper {
+			border-radius: 4px;
 			position: relative;
 			text-align: center;
+			background-color: $white;
+			padding: 5px;
 
-			.match-percent-text {
-				position: absolute;
-				width: 100%;
-				bottom: 35px;
-				font-size: 25px;
-				font-weight: bolder;
-				color: $red;
-				text-align: center;
+			.match-user-and-address{
+				.room-price {
+					color: $black;
+					padding: 4px;
+				}
+
+				.match-address {
+					margin: 3px 0 0 0;
+					font-size: 22px;
+					font-weight: bolder;
+					color: $red;
+				}
+
+				.match-preferences {
+					margin: 0;
+				}
+
+				.match-user-name {
+					margin: 0;
+					color: $grey;
+				}
+
+				.match-user-image {
+					position: absolute;
+					width: 100%;
+					bottom: 35px;
+					font-size: 25px;
+					font-weight: bolder;
+					color: $red;
+					text-align: center;
+					top: 10px;
+					left: 0;
+
+					img {
+						border-radius: 50%;
+					}
+				}
 			}
+		}
+
+		.match-media-slides {
+			.match-media-nav {
+				width: 100%;
+				background-color: rgba($white, .85);
+				text-align: center;
+				position: absolute;
+				z-index: 1;
+
+				.media-nav-buttons {
+					display: flex;
+					flex-direction: row;
+					list-style: none;
+					padding: 0;
+
+					.media-nav-button {
+						flex-grow: 1;
+						display: inline;
+						border-top: 4px solid transparent;
+						border-bottom: 4px solid transparent;
+						transition: border-top .1s ease-out;
+						//margin: 0 10px;
+
+						&:hover {
+							cursor: pointer;
+							border-top: 4px solid $xlight-red;
+							transition: border-top .1s ease-in;
+						}
+					}
+				}
+			}
+
+			.match-apartment,
+			.match-room {
+				position: relative;
+
+				.match-apartment-image,
+				.match-room-image {
+					position: relative;
+					height: 400px;
+					overflow: hidden;
+
+					img {
+						width: 100%;
+					}
+				}
+
+				.match-apartment-details,
+				.match-room-details {
+					position: absolute;
+					width: 100%;
+					background-color: rgba($white, .9);
+					bottom: 0;
+
+					.match-apartment-description,
+					.match-room-description {
+						margin: 0;
+						padding: 5px;
+						color: $light-red;
+						font-weight: bolder;
+						letter-spacing: 1px;
+						font-size: 16px;
+					}
+
+					.apartment-icons,
+					.room-icons {
+						padding: 0 5px;
+
+						li {
+							margin: 5px 7px;
+						}
+					}
+				}
+			}
+
+			.match-map {
+
+			}
+
+		}
+
+		.match-post-details {
+
+		}
+
+		.match-messaging {
+
 		}
 	}
 }

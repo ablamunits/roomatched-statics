@@ -5,11 +5,20 @@
 			<h3>Matches</h3>
 			<hr>
 			<p>We are looking for matches for you ...</p>
-			<ul class="matches-list">
-				<li class="match-item" ng-repeat="match in matches.matchList">
-					<match-post ng-model="match"></match-post>
-				</li>
-			</ul>
+			<div class="match-lists-container">
+				<ul class="offerer-matches-list match-list" ng-if="matches.showMatchesForOfferer">
+					<li class="match-item" ng-repeat="match in matches.matchesArray | orderBy: 'matchPercentage':true">
+						<match-post ng-model="match"></match-post>
+						<!-- Todo: make it offererMatchPost directive -->
+					</li>
+				</ul>
+				<ul class="seeker-match-list match-list" ng-if="matches.showMatchesForSeeker">
+					<li class="match-item" ng-repeat="match in matches.matchesArray | orderBy: 'matchPercentage':true">
+						<match-post ng-model="match"></match-post>
+						<!-- Todo: make it seekerMatchPost directive -->
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>
