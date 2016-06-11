@@ -27,9 +27,15 @@ $facebook-blue: #3B5998;
 
 $link-blue: #89c3f2;
 
-@mixin icon() {
+$preference-score2: $pref-green;
+$preference-score1: $pref-orange;
+$preference-score0: $pref-grey;
+$preference-score-1: $pref-xlight-red;
+$preference-score-2: $pref-red;
+
+@mixin icon($color-fill: $light-grey) {
 	pointer-events: none;
-	fill: $light-grey;
+	fill: $color-fill;
 
 	svg {
 		height: inherit;
@@ -326,10 +332,12 @@ body {
 			}
 
 			div {
+				//margin-top: 10px;
 				line-height: 25px;
 				font-size: 18px;
 			}
 		}
+
 	}
 
 	.footer {
@@ -360,6 +368,7 @@ body {
 @import './directives/apartment-post/apartment-post';
 @import './directives/match-post/match-post';
 @import './directives/preference-select/preference-select';
+@import './directives/preference-viewer/preference-viewer';
 
 // Assets and commons
 @import './common/tooltips/tooltips';

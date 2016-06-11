@@ -1,0 +1,9 @@
+<ul class="preference-viewer">
+	<li ng-repeat="(preferenceKey, title) in ctrl.preferenceTitles">
+		<div class="preference-score{{ ctrl.prefScores[preferenceKey] }}">
+			<div class="icon" ng-include="ctrl.preferenceIcons[preferenceKey]">
+
+			</div>
+		</div>
+	</li>
+</div>

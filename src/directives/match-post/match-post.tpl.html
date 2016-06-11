@@ -6,71 +6,73 @@
 	<div class="match-content">
 		<div class="match-graph-wrapper">
 			<round-progress
-	    max="100"
-	    current="ctrl.content.matchPercentage"
-	    color="#2ECC71"
-	    bgcolor="#eaeaea"
-	    radius="30"
-	    stroke="10"
-	    clockwise="true"
-	    responsive="false"
-	    duration="800"
-	    animation="easeInOutQuart"
-	    animation-delay="0">
-	    </round-progress>
-			<!-- <div class="match-percent-text">{{ ctrl.content.matchPercentage }}%</div> -->
-			<div class="match-user-and-address">
-				<div class="match-user-image">
-					<img ng-src="{{ ctrl.content.user.photoUrl }}" />
-				</div>
-				<p class="match-address"><span class="room-price">{{ ctrl.content.room.price }}&#8362</span>| {{ ctrl.content.apartment.address }}, {{ ctrl.content.apartment.city }}</p>
-				<p class="match-user-name">{{ ctrl.content.matchPercentage }}% Match with {{ ctrl.content.user.firstName + ' ' + ctrl.content.user.lastName }}</p>
-				<p class="match-preferences">A A A</p>
+			max="100"
+			current="ctrl.content.matchPercentage"
+			color="#2ECC71"
+			bgcolor="#eaeaea"
+			radius="30"
+			stroke="10"
+			clockwise="true"
+			responsive="false"
+			duration="800"
+			animation="easeInOutQuart"
+			animation-delay="0">
+		</round-progress>
+
+		<div class="match-user-and-address">
+			<div class="match-user-image">
+				<img ng-src="{{ ctrl.content.user.photoUrl }}" />
 			</div>
-		</div>
-		<div class="match-content">
-			<div class="match-media-slides">
-				<div class="match-media-nav">
-					<ul class="media-nav-buttons">
-						<li class="media-nav-button" ng-click="ctrl.setSlide('roomImage')">Room</li>
-						<li class="media-nav-button" ng-click="ctrl.setSlide('apartmentImage')">Apartment</li>
-						<li class="media-nav-button" ng-click="ctrl.setSlide('map')">Map</li>
-						<li class="media-nav-button">Contact {{ ctrl.content.user.firstName }}</li>
-					</ul>
-				</div>
-				<div class="match-apartment" ng-show="ctrl.currentSlide === 'apartmentImage'">
-					<div class="match-apartment-image">
-						<img ng-src="{{ ctrl.content.apartment.photoUrl || './assets/images/user-photo-placeholder.png' }}"/>
-					</div>
-					<div class="match-apartment-details">
-						<h4 class="match-apartment-description">{{ ctrl.content.apartment.size }}sqm with {{ ctrl.content.apartment.totalRooms }} Rooms ({{ ctrl.content.apartment.freeRooms }} Available) and {{ ctrl.content.apartment.totalRoomates}} Roommates total.</h4>
-						<ul class="apartment-icons">
-							<li class="icon-wrapper" ng-repeat="(icon, url) in ctrl.apartmentIcons" ng-if="ctrl.content.apartment[icon]">
-								<span class="icon" ng-include="url"></span>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="match-room" ng-show="ctrl.currentSlide === 'roomImage'">
-					<div class="match-room-image">
-						<img ng-src="{{ ctrl.content.room.photoUrl || './assets/images/user-photo-placeholder.png' }}"/>
-					</div>
-					<div class="match-room-details">
-						<h4 class="match-room-description">Room is {{ ctrl.content.room.size }}sqm.</h4>
-						<ul class="room-icons">
-							<li class="icon-wrapper" ng-repeat="(icon, url) in ctrl.roomIcons" ng-if="ctrl.content.room[icon]">
-								<span class="icon" ng-include="url"></span>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="match-map" ng-show="ctrl.currentSlide === 'map'">
-					<!-- TODO -->
-				</div>
-			</div>
-			<div class="match-messaging">
-				<!-- TODO -->
+			<p class="match-address"><span class="room-price">{{ ctrl.content.room.price }}&#8362</span>| {{ ctrl.content.apartment.address }}, {{ ctrl.content.apartment.city }}</p>
+			<p class="match-user-name">{{ ctrl.content.matchPercentage }}% Match with {{ ctrl.content.user.firstName + ' ' + ctrl.content.user.lastName }}</p>
+			<div class="match-preferences">
+				<preference-viewer ng-model="ctrl.content.preferences"></preference-viewer>
 			</div>
 		</div>
 	</div>
+	<div class="match-content">
+		<div class="match-media-slides">
+			<div class="match-media-nav">
+				<ul class="media-nav-buttons">
+					<li class="media-nav-button" ng-click="ctrl.setSlide('roomImage')">Room</li>
+					<li class="media-nav-button" ng-click="ctrl.setSlide('apartmentImage')">Apartment</li>
+					<li class="media-nav-button" ng-click="ctrl.setSlide('map')">Map</li>
+					<li class="media-nav-button">Contact {{ ctrl.content.user.firstName }}</li>
+				</ul>
+			</div>
+			<div class="match-apartment" ng-show="ctrl.currentSlide === 'apartmentImage'">
+				<div class="match-apartment-image">
+					<img ng-src="{{ ctrl.content.apartment.photoUrl || './assets/images/user-photo-placeholder.png' }}"/>
+				</div>
+				<div class="match-apartment-details">
+					<h4 class="match-apartment-description">{{ ctrl.content.apartment.size }}sqm with {{ ctrl.content.apartment.totalRooms }} Rooms ({{ ctrl.content.apartment.freeRooms }} Available) and {{ ctrl.content.apartment.totalRoomates}} Roommates total. <span ng-if="ctrl.content.apartment.approximateExpences > 0">Expences: {{ ctrl.content.apartment.approximateExpences }}</span></h4>
+					<ul class="apartment-icons">
+						<li class="icon-wrapper" ng-repeat="(icon, url) in ctrl.apartmentIcons" ng-if="ctrl.content.apartment[icon]">
+							<span class="icon" ng-include="url"></span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="match-room" ng-show="ctrl.currentSlide === 'roomImage'">
+				<div class="match-room-image">
+					<img ng-src="{{ ctrl.content.room.photoUrl || './assets/images/user-photo-placeholder.png' }}"/>
+				</div>
+				<div class="match-room-details">
+					<h4 class="match-room-description">Room is {{ ctrl.content.room.size }}sqm.</h4>
+					<ul class="room-icons">
+						<li class="icon-wrapper" ng-repeat="(icon, url) in ctrl.roomIcons" ng-if="ctrl.content.room[icon]">
+							<span class="icon" ng-include="url"></span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="match-map" ng-show="ctrl.currentSlide === 'map'">
+				<!-- TODO -->
+			</div>
+		</div>
+		<div class="match-messaging">
+			<!-- TODO -->
+		</div>
+	</div>
+</div>
 </div>
