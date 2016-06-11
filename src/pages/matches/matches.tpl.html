@@ -4,7 +4,11 @@
 			<br>
 			<h3>Matches</h3>
 			<hr>
-			<p>We are looking for matches for you ...</p>
+			<h3 class="title title-searching" ng-if="!matches.matchesArray"><i class="fa fa-spinner fa-spin"></i> We are looking for matches for you ... Hold tight!</h3>
+			<h3 class="title title-matches-found" ng-if="matches.matchesArray">We have found {{ matches.matchesArray.length }} matches for you!</h3>
+			<div class="no-matches" ng-if="matches.hasNoMatches">
+				<h3>Sorry, no matches!</h3>
+			</div>
 			<div class="match-lists-container">
 				<ul class="offerer-matches-list match-list" ng-if="matches.showMatchesForOfferer">
 					<li class="match-item" ng-repeat="match in matches.matchesArray | orderBy: 'matchPercentage':true">
@@ -15,6 +19,7 @@
 				<ul class="seeker-match-list match-list" ng-if="matches.showMatchesForSeeker">
 					<li class="match-item" ng-repeat="match in matches.matchesArray | orderBy: 'matchPercentage':true">
 						<match-post ng-model="match"></match-post>
+						<hr>
 						<!-- Todo: make it seekerMatchPost directive -->
 					</li>
 				</ul>

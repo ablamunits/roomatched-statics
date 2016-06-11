@@ -1,7 +1,7 @@
 .match-post-wrapper {
 	@include shadow();
 	border-radius: 4px;
-	width: 50%;
+	//width: 50%;
 	margin-bottom: 10px;
 	position: relative;
 
@@ -214,7 +214,9 @@
 			}
 
 			.match-map {
-
+				ng-map {
+					height: 400px;
+				}
 			}
 
 		}

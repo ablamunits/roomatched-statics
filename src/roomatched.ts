@@ -1,6 +1,13 @@
 var API_URI = 'http://vmedu92.mtacloud.co.il:8080/Roomatched/api';
 
-var roomatchedApp: ng.IModule = angular.module('RoomatchedApp', ['ui.router', 'ab.Typeit', '720kb.tooltips', 'angular-svg-round-progressbar'])
+var roomatchedApp: ng.IModule = angular.module('RoomatchedApp', ['ui.router', 'ab.Typeit', '720kb.tooltips', 'angular-svg-round-progressbar', 'ngMap'])
+// .config(function(uiGmapGoogleMapApiProvider) {
+// 	uiGmapGoogleMapApiProvider.configure({
+// 		key: 'AIzaSyCJUhxI3Wgw5WZ6qW3KSQHrzSFDvskueiQ',
+// 		v: '3.23',
+// 		libraries: 'weather, geomerty, visualization'
+// 	});
+// })
 .run(function($rootScope, $location, $state, $timeout, AuthService, $window) {
 	$window.fbAsyncInit = function() {
 		FB.init({
@@ -11,12 +18,12 @@ var roomatchedApp: ng.IModule = angular.module('RoomatchedApp', ['ui.router', 'a
 		});
 
 		FB.getLoginStatus(function(response) {
-			console.log('login status:', response);
+			console.log('FB login status:', response);
 			if (response.status === 'connected') {
-				console.log('FB connected.');
+				// console.log('FB connected.');
 				AuthService.init(response.authResponse.userID, response.authResponse.accessToken);
 			} else {
-				console.log('FB not connected.');
+				// console.log('FB not connected.');
 				AuthService.notifyAuthComplete(false);
 				$state.go('home');
 			}

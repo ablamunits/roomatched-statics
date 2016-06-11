@@ -5,7 +5,6 @@ class PreferenceViewerDirectiveController {
 	scoreNameToValue: any;
 
 	constructor(IconSet) {
-		console.log(IconSet);
 		this.preferenceTitles = IconSet.preferenceTitles;
 		this.preferenceIcons = IconSet.preferenceIcons;
 		this.scoreNameToValue = IconSet.scoreNameToValue;

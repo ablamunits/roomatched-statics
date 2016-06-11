@@ -1,6 +1,11 @@
 class MatchPostDirectiveController {
 	content: Match;
 
+	mapCenter: any = {
+		lat: null,
+		lng: null
+	};
+
 	apartmentIcons = {
 		isFurnished: './assets/icons/furniture.svg',
 		hasLivingRoom: './assets/icons/livingroom.svg',
@@ -18,6 +23,14 @@ class MatchPostDirectiveController {
 
 	private postSlides = ['roomImage', 'apartmentImage', 'map'];
 	currentSlide = this.postSlides[0];
+
+	constructor(NgMap, private GeoCoder) {
+		let locationString = `${this.content.apartment.address}, ${this.content.apartment.city}, Israel`;
+		this.GeoCoder.geocode({ address: locationString, region: 'IL' }).then((results) => {
+			this.mapCenter.lat = results[0].geometry.location.lat();
+			this.mapCenter.lng = results[0].geometry.location.lng();
+		});
+	}
 
 	nextSlide() {
 		this.currentSlide = this.postSlides[(this.postSlides.indexOf(this.currentSlide) + 1) % this.postSlides.length];

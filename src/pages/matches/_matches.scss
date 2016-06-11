@@ -1,5 +1,22 @@
 .matches-view {
+	.title {
+		text-align: center;
+	}
+
 	.match-list {
 		list-style: none;
+		padding: 0;
+
+		.match-item {
+			margin: 0 auto;
+			width: 70%;
+
+			hr {
+				margin: 30px 0;
+				border: 0;
+				border-top: 1px dashed $light-grey;
+				opacity: .4;
+			}
+		}
 	}
 }

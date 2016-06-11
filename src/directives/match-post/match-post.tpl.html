@@ -66,8 +66,10 @@
 					</ul>
 				</div>
 			</div>
-			<div class="match-map" ng-show="ctrl.currentSlide === 'map'">
-				<!-- TODO -->
+			<div class="match-map" ng-if="ctrl.currentSlide === 'map'">
+				<ng-map map-lazy-load class="google-map" center="{{ ctrl.mapCenter.lat }},{{ ctrl.mapCenter.lng }}" disable-default-u-i="true">
+					<marker position="{{ ctrl.mapCenter.lat }}, {{ ctrl.mapCenter.lng}}"></marker>
+				</ng-map>
 			</div>
 		</div>
 		<div class="match-messaging">

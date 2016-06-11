@@ -20,6 +20,6 @@
     "typeit": "~3.0.1",
     "angular-ui-router": "~0.2.18",
     "angular-tooltips": "~1.0.10",
-    "angular-google-maps": "~2.3.3"
+    "ngmap": "~1.17.3"
   }
 }

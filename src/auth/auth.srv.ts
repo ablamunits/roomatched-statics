@@ -29,7 +29,7 @@ class AuthServiceProvider {
 
 	getUserByFacebookId(id: string) {
 			return this.UserService.getUserByFacebookId(id).then(response => {
-				console.log(response);
+				// console.log(response);
 				return response.data;
 			}, e => {
 				console.error('Could not find user by Facebook id.');
