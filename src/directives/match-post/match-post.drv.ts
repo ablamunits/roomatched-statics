@@ -1,5 +1,6 @@
 class MatchPostDirectiveController {
 	content: Match;
+	matchMessage: string;
 
 	mapCenter: any = {
 		lat: null,
@@ -21,7 +22,7 @@ class MatchPostDirectiveController {
 		airConditioned: './assets/icons/air-conditioner.svg'
 	};
 
-	private postSlides = ['roomImage', 'apartmentImage', 'map'];
+	private postSlides = ['roomImage', 'apartmentImage', 'map', 'messaging'];
 	currentSlide = this.postSlides[0];
 
 	constructor(NgMap, private GeoCoder) {

@@ -17,9 +17,11 @@
 				<p>You are registered as an apartment {{ profile.user.type | typeToString }}.</p>
 				<ul class="user-info-option-list">
 					<li class="user-info-option">
-						<!-- <a ng-click="profile.showPreferenceSelector()">My Preferences</a> -->
-						<a ng-click="profile.openSetting('preferences')">My Preferences</a>
-						<div class="user-preferences" ng-if="profile.preferences">
+						<a ng-click="profile.showPreferenceSelector()">
+							<span class="icon icon-arrow" ng-include="'assets/icons/arrow-down.svg'"></span>
+							My Preferences
+						</a>
+						<div class="user-preferences" ng-if="profile.openSettings.preferences && profile.preferences">
 							<a class="update-link" ng-click="profile.updatePreferences()">Update</a>
 							<preference-select ng-model="profile.preferences"></preference-select>
 							<div class="offerer-preferences" ng-if="(profile.user.type | typeToString) === 'Offerer'">
@@ -44,16 +46,22 @@
 						</div>
 					</li>
 					<li class="user-info-option">
-						<a ng-click="profile.showSettings()">My Settings</a>
-						<div class="user-settings" ng-if="profile.userSettings">
+						<a ng-click="profile.showSettings()">
+							<span class="icon icon-arrow" ng-include="'assets/icons/arrow-down.svg'"></span>
+							My Settings
+						</a>
+						<div class="user-settings" ng-if="profile.openSettings.settings && profile.userSettings">
 							<a class="update-link" ng-click="profile.updateSettings()">Update</a>
 							<span>Send me email notifications to</span>
 							<input type="email" ng-model="profile.userSettings.email" placeholder="Email"/>
 						</div>
 					</li>
 					<li class="user-info-option" ng-if="(profile.user.type | typeToString) === 'Offerer'">
-						<a ng-click="profile.showRoomOffering()">My Room Offering</a>
-						<div class="user-details" ng-if="profile.apartmentDetails && profile.roomDetails">
+						<a ng-click="profile.showRoomOffering()">
+							<span class="icon icon-arrow" ng-include="'assets/icons/arrow-down.svg'"></span>
+							My Room Offering
+						</a>
+						<div class="user-details" ng-if="profile.openSettings.roomPost && profile.apartmentDetails && profile.roomDetails">
 							<h4>Update the details for the room you have published</h4>
 							<a class="update-link" ng-click="profile.updateRoomOffering()">Update</a>
 							<p>My room offer</p>

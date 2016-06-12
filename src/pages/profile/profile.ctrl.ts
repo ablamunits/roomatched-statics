@@ -27,16 +27,17 @@ class ProfileController {
 
 	openSetting(setting: string) {
 		this.closeAllSettings();
-		this.openSetting[setting] = true;
+		this.openSettings[setting] = true;
 	}
 
 	private closeAllSettings() {
-		angular.forEach(this.openSetting, (i, key) => {
+		angular.forEach(this.openSettings, (i, key) => {
 			this.openSettings[key] = false;
 		});
 	}
 
-	private showPreferenceSelector() {
+	showPreferenceSelector() {
+		this.openSetting('preferences');
 		this.PreferenceService.getUserPreference(this.user.id, this.user.type).then((detailedPreferences) => {
 			this.preferences = detailedPreferences.preferences;
 			this.details = detailedPreferences.additionalDetails;
@@ -50,6 +51,7 @@ class ProfileController {
 	}
 
 	showSettings() {
+		this.openSetting('settings');
 		this.UserSettingsService.getUserSettings(this.user.id).then((userSettings) => {
 			this.userSettings = userSettings;
 			console.log(this.userSettings);
@@ -63,6 +65,7 @@ class ProfileController {
 	}
 
 	showRoomOffering() {
+		this.openSetting('roomPost');
 		this.ApartmentService.getApartmentDetailsByOffererId(this.user.id).then((apartmentDetailsResponse) => {
 			this.apartmentDetails = apartmentDetailsResponse.apartmentDetails;
 			this.roomDetails = apartmentDetailsResponse.roomDetails;

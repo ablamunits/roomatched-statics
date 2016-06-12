@@ -68,6 +68,20 @@
 					}
 				}
 			}
+
+			.icon {
+				@include icon($red);
+				height: 20px;
+
+				&.icon-arrow {
+					position: relative;
+
+					svg {
+						position: relative;
+						top: 6px;
+					}
+				}
+			}
 		}
 	}
 }

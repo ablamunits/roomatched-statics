@@ -24,7 +24,7 @@
 				<img ng-src="{{ ctrl.content.user.photoUrl }}" />
 			</div>
 			<p class="match-address"><span class="room-price">{{ ctrl.content.room.price }}&#8362</span>| {{ ctrl.content.apartment.address }}, {{ ctrl.content.apartment.city }}</p>
-			<p class="match-user-name">{{ ctrl.content.matchPercentage }}% Match with {{ ctrl.content.user.firstName + ' ' + ctrl.content.user.lastName }}</p>
+			<p class="match-user-name">{{ ctrl.content.matchPercentage | number:1 }}% Match with {{ ctrl.content.user.firstName + ' ' + ctrl.content.user.lastName }}</p>
 			<div class="match-preferences">
 				<preference-viewer ng-model="ctrl.content.preferences"></preference-viewer>
 			</div>
@@ -37,9 +37,10 @@
 					<li class="media-nav-button" ng-click="ctrl.setSlide('roomImage')">Room</li>
 					<li class="media-nav-button" ng-click="ctrl.setSlide('apartmentImage')">Apartment</li>
 					<li class="media-nav-button" ng-click="ctrl.setSlide('map')">Map</li>
-					<li class="media-nav-button">Contact {{ ctrl.content.user.firstName }}</li>
+					<li class="media-nav-button" ng-click="ctrl.setSlide('messaging')">Contact {{ ctrl.content.user.firstName }}</li>
 				</ul>
 			</div>
+
 			<div class="match-apartment" ng-show="ctrl.currentSlide === 'apartmentImage'">
 				<div class="match-apartment-image">
 					<img ng-src="{{ ctrl.content.apartment.photoUrl || './assets/images/user-photo-placeholder.png' }}"/>
@@ -53,6 +54,7 @@
 					</ul>
 				</div>
 			</div>
+
 			<div class="match-room" ng-show="ctrl.currentSlide === 'roomImage'">
 				<div class="match-room-image">
 					<img ng-src="{{ ctrl.content.room.photoUrl || './assets/images/user-photo-placeholder.png' }}"/>
@@ -66,14 +68,20 @@
 					</ul>
 				</div>
 			</div>
+
 			<div class="match-map" ng-if="ctrl.currentSlide === 'map'">
 				<ng-map map-lazy-load class="google-map" center="{{ ctrl.mapCenter.lat }},{{ ctrl.mapCenter.lng }}" disable-default-u-i="true">
 					<marker position="{{ ctrl.mapCenter.lat }}, {{ ctrl.mapCenter.lng}}"></marker>
 				</ng-map>
 			</div>
-		</div>
-		<div class="match-messaging">
-			<!-- TODO -->
+
+			<div class="match-messaging" ng-show="ctrl.currentSlide === 'messaging'">
+				<div class="message-wrapper">
+					<h3>Send {{ ctrl.content.user.firstName }} a message and let them know you are interested in this room!</h3>
+					<textarea class="message-text-area" placeholder="Living together starts with a 'Hi'!"></textarea>
+					<div class="message-send-button"><i class="fa fa-paper-plane-o"></i> Send</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

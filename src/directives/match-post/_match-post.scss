@@ -219,14 +219,51 @@
 				}
 			}
 
+			.match-messaging {
+				//border: 1px solid black;
+
+				.message-wrapper {
+					height: 400px;
+					padding: 50px;
+					box-sizing: border-box;
+					position: relative;
+
+					.message-text-area {
+						resize: none;
+						position: relative;
+						width: 100%;
+						height: 150px;
+						border: 1px solid $light-grey;
+						font-size: 18px;
+						font-family: $font-family;
+						padding: 10px;
+
+						&:focus {
+							outline: none;
+							border: 1px solid $light-red;
+						}
+					}
+
+					.message-send-button {
+						position: absolute;
+						cursor: pointer;
+						text-align: center;
+						background-color: $pref-green;
+						color: white;
+						border-radius: 50px;
+						right: 30px;
+						display: block;
+						margin: 20px;
+						padding: 12px;
+						width: 100px;
+
+						&:hover {
+							background-color: darken($pref-green, 5%);
+						}
+					}
+				}
+			}
 		}
 
-		.match-post-details {
-
-		}
-
-		.match-messaging {
-
-		}
 	}
 }
