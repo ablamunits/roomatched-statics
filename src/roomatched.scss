@@ -95,6 +95,12 @@ $preference-score-2: $pref-red;
 		&:focus {
 			background-color: lighten($xlight-red, 10%);
 		}
+
+		//+ label {
+		//	position: absolute;
+		//	left: 0;
+		//}
+		// TODO: Input field poppy label, if it has one ..
 	}
 }
 
@@ -288,6 +294,15 @@ body {
 		border: 0;
 		height: 0;
 		border-top: 1px solid $light-red;
+	}
+
+	// Override browser fieldset
+	fieldset {
+		border: 0;
+		padding: 0;
+		margin: 0;
+		position: relative;
+		display: inline
 	}
 
 	.content {

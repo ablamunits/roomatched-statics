@@ -1,5 +1,5 @@
 class PostServiceProvider {
-	constructor(private $http: ng.IHttpService){
+	constructor(private $http: ng.IHttpService) {
 	}
 
 	init() {

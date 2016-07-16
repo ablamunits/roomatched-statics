@@ -78,8 +78,12 @@
 			<div class="match-messaging" ng-show="ctrl.currentSlide === 'messaging'">
 				<div class="message-wrapper">
 					<h3>Send {{ ctrl.content.user.firstName }} a message and let them know you are interested in this room!</h3>
-					<textarea class="message-text-area" placeholder="Living together starts with a 'Hi'!"></textarea>
-					<div class="message-send-button"><i class="fa fa-paper-plane-o"></i> Send</div>
+					<textarea class="message-text-area" placeholder="Living together starts with a 'Hi'!" ng-model="ctrl.matchMessage"></textarea>
+					<div class="message-send-button" ng-click="ctrl.sendMatchMessage(ctrl.content.user.id)" ng-class="{ 'sent' : ctrl.messageStatus === ctrl.messageStatuses.SENT }">
+						<span ng-if="ctrl.messageStatus === ctrl.messageStatuses.NOT_SENT"><i class="fa fa-paper-plane-o"></i> Send</span>
+						<span ng-if="ctrl.messageStatus === ctrl.messageStatuses.SENDING"><i class="fa fa-spinner spin"></i> Sending..</span>
+						<span ng-if="ctrl.messageStatus === ctrl.messageStatuses.SENT"><i class="fa fa-check"></i> Sent!</span>
+					</div>
 				</div>
 			</div>
 		</div>

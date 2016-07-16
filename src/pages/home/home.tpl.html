@@ -47,7 +47,10 @@
 
 						<p>Price range:</p>
 						<div>
-							<input type="number" ng-model="home.seekerRegistrationFields.fromPrice" placeholder="From price"/>
+							<fieldset>
+								<input id="from-price" type="number" ng-model="home.seekerRegistrationFields.fromPrice" placeholder="From price"/>
+								<label for="from-price">From Price</label>
+							</fieldset>
 							<input type="number" ng-model="home.seekerRegistrationFields.toPrice" placeholder="To price"/>
 						</div>
 						<br>

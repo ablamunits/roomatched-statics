@@ -1,6 +1,9 @@
 class MatchPostDirectiveController {
 	content: Match;
+
 	matchMessage: string;
+	messageStatus: MessageStatus = MessageStatus.NOT_SENT;
+	messageStatuses = MessageStatus;
 
 	mapCenter: any = {
 		lat: null,
@@ -25,7 +28,7 @@ class MatchPostDirectiveController {
 	private postSlides = ['roomImage', 'apartmentImage', 'map', 'messaging'];
 	currentSlide = this.postSlides[0];
 
-	constructor(NgMap, private GeoCoder) {
+	constructor(NgMap, private GeoCoder, private AuthService, private MessageService) {
 		let locationString = `${this.content.apartment.address}, ${this.content.apartment.city}, Israel`;
 		this.GeoCoder.geocode({ address: locationString, region: 'IL' }).then((results) => {
 			this.mapCenter.lat = results[0].geometry.location.lat();
@@ -45,6 +48,14 @@ class MatchPostDirectiveController {
 		if (this.postSlides.indexOf(slideKey) > -1) {
 			this.currentSlide = slideKey;
 		}
+	}
+
+	sendMatchMessage(to: number) {
+		this.messageStatus = MessageStatus.SENDING;
+
+		this.MessageService.sendMessage(this.AuthService.loggedUser.id, to, this.matchMessage).then(() => {
+			this.messageStatus = MessageStatus.SENT;
+		});
 	}
 }
 

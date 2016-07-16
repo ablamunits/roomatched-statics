@@ -260,6 +260,13 @@
 						&:hover {
 							background-color: darken($pref-green, 5%);
 						}
+
+						&.sent {
+							background-color: lighten($xlight-grey, 3%);
+							color: $pref-green;
+							border: 1px solid lighten($pref-green, 35%);
+							pointer-events: none;
+						}
 					}
 				}
 			}

@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var plumber = require('gulp-plumber');
 var concat = require('gulp-concat');
 var ts = require('gulp-typescript');
 var clean = require('gulp-clean');
@@ -9,13 +10,16 @@ var browserSync = require('browser-sync').create();
 gulp.task('default', ['build-fresh']);
 
 gulp.task('sass', function(){
-  return gulp.src('src/**/*.scss')
+  gulp.src('src/**/*.scss')
+		.pipe(plumber())
+		.pipe(sass().on('error', sass.logError))
     .pipe(sass()) // Using gulp-sass
 		.pipe(concat('styles-concat.css'))
     .pipe(gulp.dest('dist'))
 		.pipe(browserSync.reload({
 			stream: true
 		}))
+		.pipe(plumber.stop());
 });
 
 gulp.task('html-copy', function() {
