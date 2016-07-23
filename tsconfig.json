@@ -19,7 +19,7 @@
         "src/common/icon-set.ts",
         "src/directives/apartment-details-form/apartment-details-form.drv.ts",
         "src/directives/apartment-post/apartment-post.drv.ts",
-        "src/directives/match-post/match-post.drv.ts",
+        "src/directives/match-post/seeker-match-post.drv.ts",
         "src/directives/preference-select/preference-select.drv.ts",
         "src/directives/preference-viewer/preference-viewer.drv.ts",
         "src/directives/room-details-form/room-details-form.drv.ts",

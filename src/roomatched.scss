@@ -8,7 +8,6 @@
 $font-family: 'helvetica-neue';
 
 $black: #6B6B6B;
-//$red: #CD3128;
 $red: #EB5635;
 $light-red: #D99996;
 $xlight-red: #F0D5D3;
@@ -369,7 +368,7 @@ body {
 			margin: 20px auto;
 			width: 100%;
 			text-align: center;
-			font-size: 16px
+			font-size: 16px;
 		}
 	}
 }
@@ -381,7 +380,7 @@ body {
 
 // Directives
 @import './directives/apartment-post/apartment-post';
-@import './directives/match-post/match-post';
+@import './directives/match-post/seeker-match-post';
 @import './directives/preference-select/preference-select';
 @import './directives/preference-viewer/preference-viewer';
 

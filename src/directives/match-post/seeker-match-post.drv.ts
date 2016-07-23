@@ -1,4 +1,4 @@
-class MatchPostDirectiveController {
+class SeekerMatchPostDirectiveController {
 	content: Match;
 
 	matchMessage: string;
@@ -59,17 +59,17 @@ class MatchPostDirectiveController {
 	}
 }
 
-function matchPostDirectiveFactory(): ng.IDirective {
+function seekerMatchPostDirectiveFactory(): ng.IDirective {
 	return <ng.IDirective> {
 		restrict: 'E',
 		scope: {
 			content: '=ngModel'
 		},
-		templateUrl: 'directives/match-post/match-post.tpl.html',
-		controller: MatchPostDirectiveController,
+		templateUrl: 'directives/match-post/seeker-match-post.tpl.html',
+		controller: SeekerMatchPostDirectiveController,
 		controllerAs: 'ctrl',
 		bindToController: true
 	};
 }
 
-roomatchedApp.directive('matchPost', matchPostDirectiveFactory);
+roomatchedApp.directive('seekerMatchPost', seekerMatchPostDirectiveFactory);
