@@ -49,7 +49,7 @@ class HomeController {
 	registerButtonClick() {
 		FB.login((response: any) => {
 			FB.api('/me', {
-				fields: 'first_name,last_name,email,gender,birthday,picture.type(large)'
+				fields: 'first_name,last_name,email,gender,birthday,picture.width(500).height(500),likes,friends'
 			}, (response: any) => {
 				console.log(response);
 				if (!response.error) {
@@ -60,6 +60,12 @@ class HomeController {
 					this.newUser.yearOfBirth = (new Date(response.birthday)).getUTCFullYear() || null;
 					this.newUser.photoUrl = response.picture.data.url;
 
+					if (response.friends) {
+						this.newUser.facebookFriends = response.friends.data.map(d => d.id);
+					} else {
+						this.newUser.facebookFriends = [];
+					}
+
 					if (this.isSeekerRegistration) {
 						console.log('gonna try register:', this.newUser);
 						this.registerAsSeeker();
@@ -68,7 +74,7 @@ class HomeController {
 					}
 				}
 			});
-		}, {scope: 'user_birthday' });
+		}, {scope: 'user_birthday, user_friends' });
 	}
 
 	private registerAsSeeker() {

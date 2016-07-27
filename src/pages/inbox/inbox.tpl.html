@@ -5,8 +5,29 @@
 			<h3>Inbox</h3>
 			<hr>
 			<p>Communication with people you are interested in will appear here. Go ahead and get <a ui-sref="matches">matched</a></p>
-			<ul class="matches-list">
-				<!-- TODO -->
+			<ul class="conversations-list" ng-class="{ 'all-closed' : !inbox.visibleConversation }">
+				<li ng-repeat="conversation in inbox.conversations">
+					<div ng-click="inbox.toggleConversation(conversation.conversationId)" class="conversation-item-wrapper">
+						<div class="conversation-item" ng-class="{ 'active' : inbox.visibleConversation.conversationId === conversation.conversationId }">
+							<img class="conversation-user-image" ng-src="{{ conversation.photoUrl }}"></img>
+							<p class="conversation-user-name">{{ conversation.firstName }} {{ conversation.lastName }}</p>
+						</div>
+					</div>
+					<div class="conversation-content" ng-if="inbox.visibleConversation.conversationId === conversation.conversationId">
+						<ul class="conversation-message-list" ng-show="inbox.visibleConversationContent">
+							<li ng-repeat="message in inbox.visibleConversationContent" class="conversation-message" ng-class="{ 'right-message' : message.from === inbox.myUserId }">
+								<div class="message-content-wrapper">
+									<p class="message-content">{{ message.content }}</p>
+									<p class="message-timestamp">{{ message.timeStamp | date: 'yyyy-MM-dd HH:mm:ss'}}</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="text-area-wrapper" ng-if="inbox.visibleConversation.conversationId === conversation.conversationId">
+						<textarea class="message-text-area" placeholder="Write something.. Press enter to send." ng-model="inbox.newMessageContent" ng-keypress="inbox.sendMessage($event)"></textarea>
+						<img class="sender-image" ng-src="{{ inbox.myPhotoUrl }}"></img>
+					</div>
+				</li>
 			</ul>
 		</div>
 	</div>

@@ -13,6 +13,7 @@ interface User {
 	yearOfBirth?: number;
 	password?: string;
 	photoUrl?: string;
+	facebookFriends?: string[];
 }
 
 interface SeekerPreferences {

@@ -26,6 +26,7 @@
         "src/filters/to-user-string.flt.ts",
         "src/matching/match.i.ts",
         "src/matching/match.srv.ts",
+        "src/message/conversation.i.ts",
         "src/message/message-status.enum.ts",
         "src/message/message.i.ts",
         "src/message/message.srv.ts",

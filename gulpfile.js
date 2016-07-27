@@ -41,7 +41,7 @@ gulp.task('assets-copy', function() {
 gulp.task('ts-copy', function() {
 	return gulp.src('src/**/*.ts')
 		.pipe(ts({
-			noImplicitAny: true,
+			noImplicitAny: false,
 			out: 'scripts-concat.js'
 		}))
 		.pipe(gulp.dest('dist'))

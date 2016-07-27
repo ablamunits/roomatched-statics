@@ -1,0 +1,153 @@
+.inbox-view {
+	.conversations-list {
+		list-style: none;
+		padding: 0;
+
+		&.all-closed {
+			.conversation-item {
+				opacity: 1 !important; // Force nice opacity when all conversations are closed.
+			}
+		}
+
+		.conversation-item-wrapper {
+			border: 1px solid $xlight-grey;
+			margin-top: 10px;
+			border-radius: 4px;
+			background-color: $white;
+			position: relative;
+
+			&:hover {
+				background-color: lighten($xlight-red, 10%);
+				transition: background-color .2s;
+			}
+
+			.conversation-item {
+				cursor: pointer;
+				box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.05);
+				border-radius: 4px;
+
+				position: relative;
+				padding: 10px;
+				height: 50px;
+				opacity: .1;
+
+				&.active {
+					opacity: 1;
+					border: 1px solid $light-red;
+				}
+
+				img {
+					max-width: 50px;
+					position: absolute;
+					border-radius: 50%;
+				}
+
+				.conversation-user-name {
+					@include vertical-align();
+					font-weight: bolder;
+					position: absolute;
+					display: inline;
+					padding: 0;
+					margin: 0;
+					left: 70px;
+				}
+			}
+		}
+	}
+
+	.conversation-content {
+		padding: 5px;
+
+		.conversation-message-list {
+			list-style: none;
+			max-height: 400px;
+			overflow: scroll;
+
+			.conversation-message.right-message {
+				.message-content-wrapper {
+					text-align: right;
+
+					&:before {
+						right: -7px;
+						left: initial;
+						border-left: 0;
+						border-bottom: 0;
+						border-right: 1px solid $xlight-grey;
+						border-top: 1px solid $xlight-grey;
+					}
+				}
+			}
+
+			.message-content-wrapper {
+				background-color: $white;
+				border-radius: 4px;
+				border: 1px solid $xlight-grey;
+				padding: 10px;
+				margin: 10px;
+				position: relative;
+
+				&:before {
+					content: '';
+					width: 12px;
+					height: 12px;
+					display: block;
+					border-left: 1px solid $xlight-grey;
+					border-bottom: 1px solid $xlight-grey;
+					transform: rotate(45deg);
+					border-radius: 2px;
+					background-color: $white;
+					position: absolute;
+					left: -7px;
+				}
+
+				.message-content {
+					white-space: pre;
+					margin: 0;
+					color: $red;
+				}
+
+				.message-timestamp {
+					margin: 0;
+					color: $light-grey;
+					font-size: 12px;
+				}
+			}
+		}
+	}
+
+	.text-area-wrapper {
+		position: relative;
+		display: block;
+		padding: 5px;
+		padding-left: 50px;
+
+		.message-text-area {
+			resize: none;
+			border: 1px solid $xlight-grey;
+			border-radius: 4px;
+			padding: 5px;
+			width: 100%;
+			height: 80px;
+			font-size: inherit;
+			font-family: $font-family;
+			position: relative;
+
+			&:focus {
+				outline: none;
+			}
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+		}
+
+		img {
+			max-width: 50px;
+			border-radius: 50%;
+			top: -2px;
+			border: 2px solid $xlight-grey;
+			right: -2px;
+			position: absolute;
+		}
+	}
+}

@@ -14,10 +14,19 @@ class MessageServiceProvider {
 		});
 	}
 
-	getConversation(id1: number, id2: number, lastMessageId?: number) {
+	getConversationContent(id1: number, id2: number, lastMessageId?: number) {
 		lastMessageId = lastMessageId ? lastMessageId : 0;
 
-		return this.$http.get(API_URI + `/messages/history?id1=${id1}&id2=${id2}&messageId=${lastMessageId}`);
+		return this.$http.get(API_URI + `/messages/history?id1=${id1}&id2=${id2}&messageId=${lastMessageId}`).then(response => response.data);
+	}
+
+	getConversationContentById(conversationId: number, lastMessageId?: number) {
+		lastMessageId = lastMessageId ? lastMessageId : 0;
+		return this.$http.get(API_URI + `/messages/conversation?convId=${conversationId}&lastMessage=${lastMessageId}`).then(response => response.data);
+	}
+
+	getAllUserConversations(userId: number) {
+		return this.$http.get(API_URI + `/messages/${userId}`).then(response => response.data);
 	}
 }
 

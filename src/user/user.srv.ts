@@ -5,6 +5,7 @@ class UserServiceProvider {
 	registerUser (user: User, preferences: Preferences, additionalInfo: Object) {
 		let newUserRegistrationObject = {
 			facebookId: user.facebookId,
+			facebookFriends: user.facebookFriends,
 			firstName: user.firstName,
 			lastName: user.lastName,
 			yearOfBirth: user.yearOfBirth,
