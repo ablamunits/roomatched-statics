@@ -1,7 +1,5 @@
 <!-- Example of gmaps api -->
 <!-- https://maps.googleapis.com/maps/api/staticmap?center=Tel-Aviv,Bugrashov+23&markers=color:blue|Tel-Aviv,Bugrashov+23&zoom=14&size=400x400&key=AIzaSyCJUhxI3Wgw5WZ6qW3KSQHrzSFDvskueiQ -->
-
-<!-- Currently showing matches for seeker user type -->
 <div class="match-post-wrapper">
 	<div class="match-content">
 		<div class="match-graph-wrapper">
@@ -81,7 +79,7 @@
 					<textarea class="message-text-area" placeholder="Living together starts with a 'Hi'!" ng-model="ctrl.matchMessage"></textarea>
 					<div class="message-send-button" ng-click="ctrl.sendMatchMessage(ctrl.content.user.id)" ng-class="{ 'sent' : ctrl.messageStatus === ctrl.messageStatuses.SENT }">
 						<span ng-if="ctrl.messageStatus === ctrl.messageStatuses.NOT_SENT"><i class="fa fa-paper-plane-o"></i> Send</span>
-						<span ng-if="ctrl.messageStatus === ctrl.messageStatuses.SENDING"><i class="fa fa-spinner spin"></i> Sending..</span>
+						<span ng-if="ctrl.messageStatus === ctrl.messageStatuses.SENDING"><i class="fa fa-spinner fa-spin"></i> Sending..</span>
 						<span ng-if="ctrl.messageStatus === ctrl.messageStatuses.SENT"><i class="fa fa-check"></i> Sent!</span>
 					</div>
 				</div>

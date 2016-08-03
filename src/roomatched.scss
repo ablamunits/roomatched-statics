@@ -22,6 +22,8 @@ $pref-grey: $grey;
 $pref-orange: #F5D76E;
 $pref-green: #2ECC71;
 
+$green: $pref-green;
+
 $facebook-blue: #3B5998;
 
 $link-blue: #89c3f2;
@@ -118,7 +120,7 @@ $preference-score-2: $pref-red;
 }
 
 @mixin shadow {
-	box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
 }
 
 @mixin vertical-align($position: relative) {
@@ -382,6 +384,7 @@ body {
 // Directives
 @import './directives/apartment-post/apartment-post';
 @import './directives/match-post/seeker-match-post';
+@import './directives/match-post/offerer-match-post';
 @import './directives/preference-select/preference-select';
 @import './directives/preference-viewer/preference-viewer';
 

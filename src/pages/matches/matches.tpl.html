@@ -13,13 +13,13 @@
 				<ul class="offerer-matches-list match-list" ng-if="matches.showMatchesForOfferer">
 					<li class="match-item" ng-repeat="match in matches.matchesArray | orderBy: 'matchPercentage':true">
 						<offerer-match-post ng-model="match"></offerer-match-post>
+						<hr>
 					</li>
 				</ul>
 				<ul class="seeker-match-list match-list" ng-if="matches.showMatchesForSeeker">
 					<li class="match-item" ng-repeat="match in matches.matchesArray | orderBy: 'matchPercentage':true">
 						<seeker-match-post ng-model="match"></seeker-match-post>
 						<hr>
-						<!-- Todo: make it seekerMatchPost directive -->
 					</li>
 				</ul>
 			</div>

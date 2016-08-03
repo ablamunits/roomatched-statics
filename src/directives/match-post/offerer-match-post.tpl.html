@@ -1,0 +1,51 @@
+<div class="offerer-match-post">
+	<div class="offerer-match-hidden" ng-if="!ctrl.matchIsVisible">
+		<p>Hidden match with {{ ctrl.content.user.firstName }} <a ng-click="ctrl.unhide()">Unhide</a> </p>
+	</div>
+	<div class="offerer-match-content" ng-if="ctrl.matchIsVisible">
+		<div class="match-graph-wrapper">
+				<round-progress
+				max="100"
+				current="ctrl.content.matchPercentage"
+				color="#2ECC71"
+				bgcolor="#eaeaea"
+				radius="40"
+				stroke="10"
+				clockwise="true"
+				responsive="false"
+				duration="800"
+				animation="easeInOutQuart"
+				animation-delay="0">
+				</round-progress>
+
+			<div class="match-user">
+				<div class="match-user-image">
+					<img ng-src="{{ ctrl.content.user.photoUrl }}" />
+				</div>
+				<div class="match-user-name-pref">
+					<p class="match-user-name">{{ ctrl.content.matchPercentage | number:1 }}% Match with <span>{{ ctrl.content.user.firstName + ' ' + ctrl.content.user.lastName }}<span></p>
+					<div class="match-preferences">
+						<preference-viewer ng-model="ctrl.content.preferences"></preference-viewer>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="match-messaging" ng-show="ctrl.messagingIsVisible">
+			<div class="message-wrapper">
+				<h3>Send {{ ctrl.content.user.firstName }} a message and let them know you want them in!</h3>
+				<textarea class="message-text-area" placeholder="Living together starts with a 'Hi'!" ng-model="ctrl.matchMessage"></textarea>
+				<div class="message-send-button" ng-click="ctrl.sendMatchMessage(ctrl.content.user.id)" ng-class="{ 'sent' : ctrl.messageStatus === ctrl.messageStatuses.SENT }">
+					<span ng-if="ctrl.messageStatus === ctrl.messageStatuses.NOT_SENT"><i class="fa fa-paper-plane-o"></i> Send</span>
+					<span ng-if="ctrl.messageStatus === ctrl.messageStatuses.SENDING"><i class="fa fa-spinner fa-spin"></i> Sending..</span>
+					<span ng-if="ctrl.messageStatus === ctrl.messageStatuses.SENT"><i class="fa fa-check"></i> Sent!</span>
+				</div>
+			</div>
+		</div>
+
+		<ul class="match-options">
+			<li class="option-hide" ng-click="ctrl.hide()"><i class="fa fa-close"></i> Hide Match</li>
+			<li class="option-message" ng-click="ctrl.showMessaging()" ng-hide="ctrl.messagingIsVisible"><i class="fa fa-envelope-o"></i> Message {{ ctrl.content.user.firstName }}</li>
+		</ul>
+	</div>
+</div>

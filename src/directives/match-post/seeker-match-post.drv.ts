@@ -1,5 +1,5 @@
 class SeekerMatchPostDirectiveController {
-	content: Match;
+	content: OffererMatch;
 
 	matchMessage: string;
 	messageStatus: MessageStatus = MessageStatus.NOT_SENT;

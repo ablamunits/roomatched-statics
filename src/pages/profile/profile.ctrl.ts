@@ -15,6 +15,8 @@ class ProfileController {
 		roomPost: false
 	};
 
+	friendObjects: any[];
+
 	constructor (private $scope, private AuthService, private PreferenceService, private UserSettingsService, private ApartmentService, private RoomService, private $state) {
 		AuthService.onAuthComplete(() => {
 			if (AuthService.userIsLoggedIn) {
@@ -22,12 +24,27 @@ class ProfileController {
 			} else {
 				$state.go('home');
 			}
+
+			this.getUserFriends();
 		});
 	};
 
 	openSetting(setting: string) {
 		this.closeAllSettings();
 		this.openSettings[setting] = true;
+	}
+
+	private getUserFriends() {
+		FB.api('/me/friends', {fields: 'first_name,picture'}, (response: any) => {
+			this.friendObjects = response.data.map(obj => {
+				return {
+					name: obj.first_name,
+					picture: obj.picture.data.url
+				};
+			});
+
+			this.$scope.$apply();
+		});
 	}
 
 	private closeAllSettings() {

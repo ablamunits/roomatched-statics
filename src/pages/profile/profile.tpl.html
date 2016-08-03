@@ -72,6 +72,14 @@
 					</li>
 				</ul>
 			</div>
+			<div style="border: 1px solid black">
+				<ul>
+					<li ng-repeat="friend in profile.friendObjects">
+						{{ friend.name }}
+						<img style="width: 50px; height: 50px; border-radius: 50%" ng-src="{{ friend.picture }}"></img>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>
