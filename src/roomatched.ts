@@ -1,13 +1,11 @@
 var API_URI = 'http://vmedu92.mtacloud.co.il:8080/Roomatched/api';
 
-var roomatchedApp: ng.IModule = angular.module('RoomatchedApp', ['ui.router', 'ab.Typeit', '720kb.tooltips', 'angular-svg-round-progressbar', 'ngMap'])
-// .config(function(uiGmapGoogleMapApiProvider) {
-// 	uiGmapGoogleMapApiProvider.configure({
-// 		key: 'AIzaSyCJUhxI3Wgw5WZ6qW3KSQHrzSFDvskueiQ',
-// 		v: '3.23',
-// 		libraries: 'weather, geomerty, visualization'
-// 	});
-// })
+var roomatchedApp: ng.IModule = angular.module('RoomatchedApp', ['ui.router', 'ab.Typeit', '720kb.tooltips', 'angular-svg-round-progressbar', 'ngMap', 'cloudinary', 'ngFileUpload'])
+.config(['cloudinaryProvider', function(cloudinaryProvider) {
+	cloudinaryProvider
+		.set('cloud_name', 'roomatched')
+		.set('upload_preset', 'f0dwrr6s');
+}])
 .run(function($rootScope, $location, $state, $timeout, AuthService, $window) {
 	$window.fbAsyncInit = function() {
 		FB.init({

@@ -16,5 +16,5 @@ interface Apartment {
 	guarantees: string;
 	approximateExpences?: number;
 	// images?: string[];
-	images?: string;
+	photoUrl?: string;
 }

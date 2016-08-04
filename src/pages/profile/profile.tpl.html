@@ -72,11 +72,11 @@
 					</li>
 				</ul>
 			</div>
-			<div style="border: 1px solid black">
-				<ul>
-					<li ng-repeat="friend in profile.friendObjects">
-						{{ friend.name }}
-						<img style="width: 50px; height: 50px; border-radius: 50%" ng-src="{{ friend.picture }}"></img>
+			<div class="user-friends">
+				<span>Your friends on Roomatched:</span>
+				<ul class="user-friends-list">
+					<li class="user-friend" ng-repeat="friend in profile.userFriends | limitTo: 4">
+						<img style="width: 50px; height: 50px; border-radius: 50%" ng-src="{{ friend.picture }}" title="{{ friend.name }}"></img>
 					</li>
 				</ul>
 			</div>

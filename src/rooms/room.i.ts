@@ -8,5 +8,6 @@ interface Room {
 	airConditioned: boolean;
 	seperateBathroom: boolean;
 	isFurnished: boolean;
-	images?: string[];
+	// images?: string[];
+	photoUrl?: string;
 }

@@ -16,6 +16,8 @@
         "src/assets/icons.ts",
         "src/auth/auth.srv.ts",
         "src/auth/login.ctrl.ts",
+        "src/common/cloudinary/cloudinary.srv.ts",
+        "src/common/facebook-utils/fb-friend.i.ts",
         "src/common/icon-set.ts",
         "src/directives/apartment-details-form/apartment-details-form.drv.ts",
         "src/directives/apartment-post/apartment-post.drv.ts",

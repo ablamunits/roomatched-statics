@@ -15,7 +15,7 @@ class ProfileController {
 		roomPost: false
 	};
 
-	friendObjects: any[];
+	userFriends: FBFriend[];
 
 	constructor (private $scope, private AuthService, private PreferenceService, private UserSettingsService, private ApartmentService, private RoomService, private $state) {
 		AuthService.onAuthComplete(() => {
@@ -36,7 +36,7 @@ class ProfileController {
 
 	private getUserFriends() {
 		FB.api('/me/friends', {fields: 'first_name,picture'}, (response: any) => {
-			this.friendObjects = response.data.map(obj => {
+			this.userFriends = response.data.map(obj => {
 				return {
 					name: obj.first_name,
 					picture: obj.picture.data.url
