@@ -10,14 +10,14 @@ class HomeController {
 	preferenceSelect: Preferences;
 
 	seekerRegistrationFields = {
-		fromPrice: 0,
-		toPrice: 1000,
+		fromPrice: 1,
+		toPrice: 2500,
 		preferedCity: null,
 		preferedNumberOfRoomates: 2
 	};
 
-	offererApartmentDetails: Apartment;
-	offererRoomDetails: Room;
+	offererApartmentDetails: Apartment = <Apartment>{};
+	offererRoomDetails: Room = <Room>{};
 	offererSexPreffered: string = 'any';
 
 	postList: Post[];

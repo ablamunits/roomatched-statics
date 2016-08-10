@@ -25,6 +25,7 @@
         "src/directives/match-post/seeker-match-post.drv.ts",
         "src/directives/preference-select/preference-select.drv.ts",
         "src/directives/preference-viewer/preference-viewer.drv.ts",
+        "src/directives/rm-selectbox/rm-selectbox.drv.ts",
         "src/directives/room-details-form/room-details-form.drv.ts",
         "src/filters/to-user-string.flt.ts",
         "src/matching/match.i.ts",

@@ -96,6 +96,36 @@ $green-confirm: rgb(128, 198, 115);
 		}
 	}
 
+	.registration-form {
+		h3 {
+			margin: 0 0 10px 0;
+		}
+
+		.form-section {
+			@include shadow();
+			position: relative;
+			background-color: $white;
+			margin: 20px 0;
+			padding: 20px;
+			border-radius: 4px;
+			z-index: 1;
+
+			&.form-room,
+			&.form-apartment,
+			&.form-seeker-additional-details {
+				padding: 20px 200px 20px 20px;
+				z-index: 0;
+			}
+		}
+
+		.gender-wrapper {
+			text-align: center;
+			> div {
+				margin: 10px 0;
+			}
+		}
+	}
+
 	.register-button {
 		@include button();
 		background-color: $facebook-blue;
@@ -108,6 +138,45 @@ $green-confirm: rgb(128, 198, 115);
 
 		&:hover {
 			background-color: darken($facebook-blue, 5%);
+		}
+	}
+
+	.image-uploader {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
+}
+
+.image-uploader {
+	text-align: center;
+	border: 1px dashed $light-grey;
+	color: $light-red;
+	cursor: pointer;
+	//position: absolute;
+	width: 200px;
+	height: 100%;
+	//bottom: 0;
+	//right: 0;
+
+	box-sizing: border-box;
+
+	&:hover {
+		background-color: $xlight-grey;
+		border-color: $red;
+		color: $red;
+	}
+
+	.upload-image-label {
+		@include vertical-align();
+	}
+
+	.uploaded-image {
+		position: relative;
+		@include vertical-align();
+
+		img {
+			max-width: 100%;
 		}
 	}
 }

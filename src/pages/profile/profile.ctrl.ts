@@ -1,6 +1,8 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 
 class ProfileController {
+	cityOptions: string[] = ['Tel-Aviv', 'Beer-Sheva', 'Jerusalem', 'Haifa'];
+
 	user: User;
 	preferences: Preferences;
 	details: SeekerPreferences | OffererDetails;

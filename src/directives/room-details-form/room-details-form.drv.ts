@@ -1,5 +1,13 @@
 class RoomDetailsFormDirectiveController {
 	roomDetails: Room;
+
+	constructor(private CloudinaryService) {};
+
+	uploadRoomImage(files) {
+		this.CloudinaryService.uploadFiles(files, (data) => {
+			this.roomDetails.photoUrl = data.url;
+		});
+	}
 }
 
 function roomDetailsFormDirectiveFactory(): ng.IDirective {
@@ -9,6 +17,7 @@ function roomDetailsFormDirectiveFactory(): ng.IDirective {
 			roomDetails: '=ngModel'
 		},
 		require: 'ngModel',
+		replace: true,
 		templateUrl: 'directives/room-details-form/room-details-form.tpl.html',
 		controller: RoomDetailsFormDirectiveController,
 		controllerAs: 'ctrl',

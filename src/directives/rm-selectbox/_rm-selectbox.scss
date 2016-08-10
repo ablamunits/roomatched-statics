@@ -1,0 +1,36 @@
+.rm-select-container {
+	.select-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		.select-list-item {
+			border: 1px solid $light-grey;
+			padding: 10px;
+			display: inline-block;
+			text-transform: capitalize;
+			border-left: 0;
+			cursor: pointer;
+
+			&:first-child {
+				border-top-left-radius: 6px;
+				border-bottom-left-radius: 6px;
+				border-left: 1px solid $light-grey;
+			}
+
+			&:last-child {
+				border-top-right-radius: 6px;
+				border-bottom-right-radius: 6px;
+			}
+
+			&:hover {
+				background-color: $superlight-grey;
+				transition: background-color .2s;
+			}
+
+			&.selected {
+				background-color: $xlight-red;
+			}
+		}
+	}
+}

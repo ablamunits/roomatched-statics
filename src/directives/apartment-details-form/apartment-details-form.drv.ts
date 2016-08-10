@@ -1,5 +1,13 @@
 class ApartmentDetailsFormDirectiveController {
 	apartmentDetails: Apartment;
+
+	constructor(private CloudinaryService){};
+
+	uploadApartmentImage(files) {
+		this.CloudinaryService.uploadFiles(files, (data) => {
+			this.apartmentDetails.photoUrl = data.url;
+		});
+	}
 }
 
 function apartmentDetailsFormDirectiveFactory(): ng.IDirective {
@@ -9,6 +17,7 @@ function apartmentDetailsFormDirectiveFactory(): ng.IDirective {
 			apartmentDetails: '=ngModel'
 		},
 		require: 'ngModel',
+		replace: true,
 		templateUrl: 'directives/apartment-details-form/apartment-details-form.tpl.html',
 		controller: ApartmentDetailsFormDirectiveController,
 		controllerAs: 'ctrl',

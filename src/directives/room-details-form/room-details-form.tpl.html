@@ -1,8 +1,16 @@
-<div>
-	<input type="number" ng-model="ctrl.roomDetails.price" placeholder="Room price"/>
-	<input type="number" ng-model="ctrl.roomDetails.size" placeholder="Room size (m^2)"/>
-	<input type="checkbox" ng-model="ctrl.roomDetails.isFurnished" /> Furniture
-	<input type="checkbox" ng-model="ctrl.roomDetails.hasBalcony" /> Balcony
-	<input type="checkbox" ng-model="ctrl.roomDetails.seperateBathroom" /> Separate Bathroom
-	<input type="checkbox" ng-model="ctrl.roomDetails.airConditioned" /> Air Conditioned
+<div class="room-details-form">
+	<div class="room-form">
+		<input floating-label type="number" ng-model="ctrl.roomDetails.price" placeholder="Room price"/>
+		<input floating-label type="number" ng-model="ctrl.roomDetails.size" placeholder="Room size (m^2)"/>
+		<input type="checkbox" ng-model="ctrl.roomDetails.isFurnished" /> Furniture
+		<input type="checkbox" ng-model="ctrl.roomDetails.hasBalcony" /> Balcony
+		<input type="checkbox" ng-model="ctrl.roomDetails.seperateBathroom" /> Separate Bathroom
+		<input type="checkbox" ng-model="ctrl.roomDetails.airConditioned" /> Air Conditioning
+	</div>
+	<div class="room-image-container image-uploader" type="file" ngf-select="ctrl.uploadRoomImage($files)">
+		<div class="upload-image-label" ng-if="!ctrl.roomDetails.photoUrl"><i class="fa fa-camera"></i> Add Room Image</div>
+		<div class="uploaded-image" ng-if="ctrl.roomDetails.photoUrl">
+			<img ng-src="{{ ctrl.roomDetails.photoUrl }}"/>
+		</div>
+	</div>
 </div>

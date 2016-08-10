@@ -14,6 +14,7 @@ $xlight-red: #F0D5D3;
 $grey: #ADADAD;
 $light-grey: #D4D2D2;
 $xlight-grey: #f5efef;
+$superlight-grey: #faf6f6;
 $white: #FEFEFE;
 
 $pref-red: rgb(238, 17, 43);
@@ -297,13 +298,8 @@ body {
 		border-top: 1px solid $light-red;
 	}
 
-	// Override browser fieldset
-	fieldset {
-		border: 0;
-		padding: 0;
-		margin: 0;
-		position: relative;
-		display: inline
+	.floating-label {
+		display: inline-block;
 	}
 
 	.content {
@@ -387,6 +383,9 @@ body {
 @import './directives/match-post/offerer-match-post';
 @import './directives/preference-select/preference-select';
 @import './directives/preference-viewer/preference-viewer';
+@import './directives/apartment-details-form/apartment-details-form';
+@import './directives/room-details-form/room-details-form';
+@import './directives/rm-selectbox/rm-selectbox';
 
 // Assets and commons
 @import './common/tooltips/tooltips';

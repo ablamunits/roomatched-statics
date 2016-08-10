@@ -8,6 +8,29 @@
 	}
 }
 
+.form-section {
+	@include shadow();
+	position: relative;
+	background-color: $white;
+	margin: 20px 0;
+	padding: 20px;
+	border-radius: 4px;
+	z-index: 1;
+
+	&.form-room,
+	&.form-apartment,
+	{
+		padding: 10px 200px 10px 10px;
+	}
+	&.user-settings .floating-label {
+		width: 100%;
+
+		input[type="email"] {
+			width: 100%;
+		}
+	}
+}
+
 .profile-view {
 	.user-container {
 		position: relative;
@@ -97,5 +120,11 @@
 				}
 			}
 		}
+	}
+
+	.image-uploader {
+		position: absolute;
+		bottom: 0;
+		right: 0;
 	}
 }

@@ -21,26 +21,23 @@
 							<span class="icon icon-arrow" ng-include="'assets/icons/arrow-down.svg'"></span>
 							My Preferences
 						</a>
-						<div class="user-preferences" ng-if="profile.openSettings.preferences && profile.preferences">
+						<div class="form-section user-preferences" ng-if="profile.openSettings.preferences && profile.preferences">
 							<a class="update-link" ng-click="profile.updatePreferences()">Update</a>
 							<preference-select ng-model="profile.preferences"></preference-select>
 							<div class="offerer-preferences" ng-if="(profile.user.type | typeToString) === 'Offerer'">
-								<span>Roomate gender:</span>
-								<select name="offerer-gender-select" ng-model="profile.details.sexPreffered">
-									<option value="any">Any</option>
-									<option value="male">Male</option>
-									<option value="female">Female</option>
-								</select>
+								<h4>Roommate gender</h4>
+								<rm-select ng-model="profile.details.sexPreffered" options="['any','male','female']"></rm-select>
 							</div>
 							<div class="seeker-preferences" ng-if="(profile.user.type | typeToString) === 'Seeker'">
 								<div>
-									<p>City preference</p>
-									<input type="text" ng-model="profile.details.city" placeholder="City"/>
+									<h4>City preference</h4>
+									<!-- <input type="text" ng-model="profile.details.city" placeholder="City"/> -->
+									<rm-select ng-model="profile.details.city" options="profile.cityOptions"></rm-select>
 								</div>
 								<div>
-									<p>Preffered price range</p>
-									<input type="number" ng-model="profile.details.fromPrice" placeholder="From price"/>
-									<input type="number" ng-model="profile.details.toPrice" placeholder="To price"/>
+									<h4>Preffered price range</h4>
+									<input floating-label type="number" ng-model="profile.details.fromPrice" placeholder="From price"/>
+									<input floating-label type="number" ng-model="profile.details.toPrice" placeholder="To price"/>
 								</div>
 							</div>
 						</div>
@@ -50,10 +47,11 @@
 							<span class="icon icon-arrow" ng-include="'assets/icons/arrow-down.svg'"></span>
 							My Settings
 						</a>
-						<div class="user-settings" ng-if="profile.openSettings.settings && profile.userSettings">
+						<div class="form-section user-settings" ng-if="profile.openSettings.settings && profile.userSettings">
 							<a class="update-link" ng-click="profile.updateSettings()">Update</a>
-							<span>Send me email notifications to</span>
-							<input type="email" ng-model="profile.userSettings.email" placeholder="Email"/>
+							<!-- <span>Send me email notifications to</span> -->
+							<div>Set up an email address to recieve notifications when contacted by a match</div>
+							<input floating-label type="email" ng-model="profile.userSettings.email" placeholder="Email notifications address"/>
 						</div>
 					</li>
 					<li class="user-info-option" ng-if="(profile.user.type | typeToString) === 'Offerer'">
@@ -62,12 +60,16 @@
 							My Room Offering
 						</a>
 						<div class="user-details" ng-if="profile.openSettings.roomPost && profile.apartmentDetails && profile.roomDetails">
-							<h4>Update the details for the room you have published</h4>
-							<a class="update-link" ng-click="profile.updateRoomOffering()">Update</a>
-							<p>My room offer</p>
-							<room-details-form ng-model="profile.roomDetails"></room-details-form>
-							<p>My apartment details</p>
-							<apartment-details-form ng-model="profile.apartmentDetails"></apartment-details-form>
+							<div class="form-section form-room">
+								<a class="update-link" ng-click="profile.updateRoomOffering()">Update</a>
+								<h3>My Room Details</h3>
+								<room-details-form ng-model="profile.roomDetails"></room-details-form>
+							</div>
+							<div class="form-section form-apartment">
+								<a class="update-link" ng-click="profile.updateRoomOffering()">Update</a>
+								<h3>My Apartment Details</h3>
+								<apartment-details-form ng-model="profile.apartmentDetails"></apartment-details-form>
+							</div>
 						</div>
 					</li>
 				</ul>

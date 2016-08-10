@@ -22,6 +22,7 @@
     "angular-tooltips": "~1.0.10",
     "ngmap": "~1.17.3",
     "cloudinary_ng": "^1.0.0",
-    "ng-file-upload": "^12.0.4"
+    "ng-file-upload": "^12.0.4",
+    "angular-floating-label": "git@github.com:ablamunits/angular-floating-label.git#master"
   }
 }

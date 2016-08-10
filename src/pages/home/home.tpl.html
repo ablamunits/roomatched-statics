@@ -24,7 +24,7 @@
 		</div>
 		<h2>Apartments waiting just for you!</h2>
 		<ul class="apartment-post-list">
-			<li ng-repeat="apartmentPost in home.postList" class="apartment-post">
+			<li ng-repeat="apartmentPost in home.postList | limitTo: 3" class="apartment-post">
 				<apartment-post content="apartmentPost"></apartment-post>
 			</li>
 		</ul>
@@ -36,27 +36,20 @@
 			<hr>
 			<div class="registration-form">
 				<p>Finding the perfect place starts by matching you to perfect people! Score your preferences here between: Neutral, <span class="label important">Important</span>, <span class="label somewhat-important">Somewhat important</span>, or <span class="label no-go">No go</span>.</p>
-				<div>
+				<div class="form-section">
+					<h3>What's important to you in a roommate?</h3>
 					<preference-select ng-model="home.preferenceSelect"></preference-select>
+				</div>
+				<div class="form-section form-seeker-additional-details">
+					<h3>Prefered city and living details</h3>
 					<div>
-						<div>
-							<select name="city-select" ng-options="city as city for city in home.cityOptions" ng-model="home.seekerRegistrationFields.preferedCity">
-								<option value="" disabled selected hidden>I am looking for an apartment in ..</option>
-							</select>
-						</div>
-
-						<p>Price range:</p>
-						<div>
-							<fieldset>
-								<input id="from-price" type="number" ng-model="home.seekerRegistrationFields.fromPrice" placeholder="From price"/>
-								<label for="from-price">From Price</label>
-							</fieldset>
-							<input type="number" ng-model="home.seekerRegistrationFields.toPrice" placeholder="To price"/>
-						</div>
-						<br>
-						<span>Preffered number of roomates</span>
-						<input type="number" min="0" max="6" ng-model="home.seekerRegistrationFields.preferedNumberOfRoomates"/>
+						<rm-select ng-model="home.seekerRegistrationFields.preferedCity" options="home.cityOptions"></rm-select>
 					</div>
+					<div>
+						<input floating-label min="1" type="number" ng-model="home.seekerRegistrationFields.fromPrice" placeholder="From price"/>
+						<input floating-label type="number" ng-model="home.seekerRegistrationFields.toPrice" placeholder="To price"/>
+					</div>
+					<input floating-label type="number" min="0"  ng-model="home.seekerRegistrationFields.preferedNumberOfRoomates" placeholder="Number of Roommates"/>
 				</div>
 			</div>
 		</div>
@@ -66,23 +59,25 @@
 			<hr>
 			<p>Finding the perfect roomate starts with a perfect match! Score your preferences here between Neutral, <span class="label important">Important</span>, <span class="label somewhat-important">Somewhat important</span>, or <span class="label no-go">No go</span>.</p>
 			<div class="registration-form">
-				<h3>What's important to you in a roommate?</h3>
-				<preference-select ng-model="home.preferenceSelect"></preference-select>
-				<span>Roomate gender:</span>
-				<select name="offerer-gender-select" ng-model="home.offererSexPreffered">
-					<option value="any" selected>Any</option>
-					<option value="male">Male</option>
-					<option value="female">Female</option>
-				</select>
-				<br>
-				<h3>Room details</h3>
-				<select name="offerer-city-select" ng-options="city as city for city in home.cityOptions" ng-model="home.offererApartmentDetails.city">
-					<option value="" disabled selected hidden>I am offering a room in..</option>
-				</select>
-				<input type="text" ng-model="home.offererApartmentDetails.address" placeholder="Address"/>
-				<room-details-form ng-model="home.offererRoomDetails"></room-details-form>
-				<h3>Additional apartment details</h3>
-				<apartment-details-form ng-model="home.offererApartmentDetails"></apartment-details-form>
+				<div class="form-section">
+					<h3>What's important to you in a roommate?</h3>
+					<preference-select ng-model="home.preferenceSelect"></preference-select>
+					<div class="gender-wrapper">
+						<div>Roommate Gender</div>
+						<rm-select name="offerer-gender-select" options="['any', 'male', 'female']" ng-model="home.offererSexPreffered"></rm-select>
+					</div>
+				</div>
+				<!-- <br> -->
+				<div class="form-section form-room">
+					<h3>Room Details</h3>
+					<rm-select ng-model="home.offererApartmentDetails.city" options="home.cityOptions"></rm-select>
+					<input floating-label size="100" type="text" ng-model="home.offererApartmentDetails.address" placeholder="Address"/>
+					<room-details-form ng-model="home.offererRoomDetails"></room-details-form>
+				</div>
+				<div class="form-section form-apartment">
+					<h3>Additional Apartment Details</h3>
+					<apartment-details-form ng-model="home.offererApartmentDetails"></apartment-details-form>
+				</div>
 			</div>
 		</div>
 		<br>

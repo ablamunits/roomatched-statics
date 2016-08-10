@@ -1,0 +1,5 @@
+<div class="rm-select-container">
+ <ul class="select-list">
+	<li class="select-list-item" ng-repeat="option in ctrl.options" ng-click="ctrl.setSelection(option)" ng-class="{ 'selected': ctrl.selection === option }">{{ option }}</li>
+ </ul>
+</div>
