@@ -1,7 +1,13 @@
 <!-- Example of gmaps api -->
 <!-- https://maps.googleapis.com/maps/api/staticmap?center=Tel-Aviv,Bugrashov+23&markers=color:blue|Tel-Aviv,Bugrashov+23&zoom=14&size=400x400&key=AIzaSyCJUhxI3Wgw5WZ6qW3KSQHrzSFDvskueiQ -->
 <div class="match-post-wrapper">
-	<div class="match-content">
+	<div class="seeker-match-hidden" ng-if="!ctrl.matchIsVisible">
+		<p>Hidden match with {{ ctrl.content.user.firstName }} <a ng-click="ctrl.unhide()">Unhide</a> </p>
+	</div>
+	<div class="match-content" ng-if="ctrl.matchIsVisible">
+		<ul class="match-options">
+			<li class="option-hide" ng-click="ctrl.hide()"><i class="fa fa-close"></i> Hide Match</li>
+		</ul>
 		<div class="match-graph-wrapper">
 			<round-progress
 			max="100"

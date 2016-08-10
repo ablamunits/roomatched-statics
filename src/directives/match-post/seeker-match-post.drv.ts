@@ -1,5 +1,6 @@
 class SeekerMatchPostDirectiveController {
 	content: OffererMatch;
+	matchIsVisible: boolean = true;
 
 	matchMessage: string;
 	messageStatus: MessageStatus = MessageStatus.NOT_SENT;
@@ -48,6 +49,14 @@ class SeekerMatchPostDirectiveController {
 		if (this.postSlides.indexOf(slideKey) > -1) {
 			this.currentSlide = slideKey;
 		}
+	}
+
+	hide() {
+		this.matchIsVisible = false;
+	}
+
+	unhide() {
+		this.matchIsVisible = true;
 	}
 
 	sendMatchMessage(to: number) {

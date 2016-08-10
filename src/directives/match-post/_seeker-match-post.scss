@@ -1,8 +1,13 @@
 .match-post-wrapper {
-	@include shadow();
-	border-radius: 4px;
-	margin-bottom: 10px;
-	position: relative;
+	.seeker-match-hidden p {
+		font-size: 14px;
+		color: $light-grey;
+
+		a {
+			text-decoration: none;
+			cursor: pointer;
+		}
+	}
 
 	tooltip tip {
 		color: $red;
@@ -18,7 +23,34 @@
 		line-height: 1.5em;
 	}
 
+	.match-options {
+		position: absolute;
+		top: 0;
+		left: 0;
+		list-style: none;
+		padding: 0;
+		font-size: 14px;
+		line-height: normal;
+		margin: 10px;
+		text-align: right;
+		z-index: 1;
+
+		li {
+			display: inline;
+			cursor: pointer;
+			margin: 5px;
+
+			&.option-hide:hover {
+				color: $red;
+			}
+		}
+	}
+
 	.match-content {
+		@include shadow();
+		border-radius: 4px;
+		margin-bottom: 10px;
+		position: relative;
 		padding: 0;
 
 		.room-icons,
