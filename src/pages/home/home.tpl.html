@@ -38,6 +38,7 @@
 				<p>Finding the perfect place starts by matching you to perfect people! Score your preferences here between: Neutral, <span class="label important">Important</span>, <span class="label somewhat-important">Somewhat important</span>, or <span class="label no-go">No go</span>.</p>
 				<div class="form-section">
 					<h3>What's important to you in a roommate?</h3>
+					<!-- <preference-select ng-model="home.preferenceSelect" mvp="home.mostValuablePreferences"></preference-select> -->
 					<preference-select ng-model="home.preferenceSelect"></preference-select>
 				</div>
 				<div class="form-section form-seeker-additional-details">
@@ -91,7 +92,7 @@
 				<div class="register-error" ng-if="home.registrationHasErrors">
 					There is a problem with your registration. Please review the information and try again.
 				</div>
-				<div class="register-success" ng-if="!home.registrationHasErrors && userRegister.$submitted">
+				<div class="register-success" ng-if="home.registrationComplete && !home.registrationHasErrors && userRegister.$submitted">
 					Registration was ok! Awesome!
 				</div>
 			</form>

@@ -46,7 +46,8 @@
 				</div>
 				<div class="user-info" ng-show="login.loggedUser">
 					<div class="user-greeting" ng-show="login.loggedUser">
-						Hi, {{ login.loggedUser.firstName }}
+						<span>Hi, {{ login.loggedUser.firstName }}</span>
+						<span class="user-type">{{ login.loggedUser.type | typeToString }}</span>
 					</div>
 					<div class="user-image">
 						<img ng-src="{{ login.loggedUser.photoUrl || './assets/images/user-photo-placeholder.png' }}" />

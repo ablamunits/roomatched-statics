@@ -13,7 +13,7 @@ class PreferencesServiceProvider {
 		}
 	}
 
-	updateUserPreference(id: number, type: UserType, preferences: Preferences, details?: any) {
+	updateUserPreference(id: number, type: UserType, preferences: Preferences<PreferenceScore>, details?: any) {
 		if (type === UserType.Offerer) {
 			return this.updateOffererPreference(id, preferences, details);
 		} else if (type === UserType.Seeker) {
@@ -22,12 +22,12 @@ class PreferencesServiceProvider {
 	}
 
 	private getOffererPreference(userId: number): ng.IPromise<any> {
-		let preferences: Preferences;
+		let preferences: Preferences<PreferenceScore>;
 		let additionalDetails: OffererDetails;
 
 		return this.$http.get(API_URI + `/offererPref/${userId}`).then((response) => {
 			// preferences = <Preferences>response.data;
-			let data = response.data;
+			let data = response.data as any;
 
 			preferences = {
 				smoking: data.smoking,
@@ -41,7 +41,7 @@ class PreferencesServiceProvider {
 
 			let additionalDetails = {
 				sexPreffered: data.sexPreffered
-			}
+			};
 
 			return {
 				preferences: preferences,
@@ -50,7 +50,7 @@ class PreferencesServiceProvider {
 		});
 	}
 
-	private updateOffererPreference(userId: number, preferences: Preferences, details: any): ng.IPromise<any> {
+	private updateOffererPreference(userId: number, preferences: Preferences<PreferenceScore>, details: any): ng.IPromise<any> {
 		preferences = angular.extend(preferences, details);
 		return this.$http.post(API_URI + `/offererPref/${userId}`, preferences).then((response) => {
 			console.log('Updated offerer pref.');
@@ -58,7 +58,7 @@ class PreferencesServiceProvider {
 	}
 
 	private getSeekerPreference(userId: number): ng.IPromise<any> {
-		let preferences: Preferences;
+		let preferences: Preferences<PreferenceScore>;
 		let additionalDetails: SeekerPreferences;
 
 		return this.$http.get(API_URI + `/seekerPref/${userId}`).then((response) => {
@@ -88,7 +88,7 @@ class PreferencesServiceProvider {
 		});
 	}
 
-	private updateSeekerPreference(userId: number, preferences: Preferences, seekerPref: SeekerPreferences) {
+	private updateSeekerPreference(userId: number, preferences: Preferences<PreferenceScore>, seekerPref: SeekerPreferences) {
 		let seekerPrefObject = {
 				minPricePreffered: seekerPref.fromPrice,
 				maxPricePreffered: seekerPref.toPrice,

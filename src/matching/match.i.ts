@@ -1,5 +1,5 @@
 interface Match extends Post {
-	preferences: Preferences;
+	preferences: Preferences<PreferenceScore>;
 	matchPercentage: number;
 }
 

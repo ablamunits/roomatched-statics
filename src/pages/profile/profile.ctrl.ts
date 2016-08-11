@@ -4,7 +4,7 @@ class ProfileController {
 	cityOptions: string[] = ['Tel-Aviv', 'Beer-Sheva', 'Jerusalem', 'Haifa'];
 
 	user: User;
-	preferences: Preferences;
+	preferences: Preferences<PreferenceScore>;
 	details: SeekerPreferences | OffererDetails;
 
 	userSettings: UserSettings;

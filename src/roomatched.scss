@@ -217,6 +217,16 @@ body {
 					.user-greeting {
 						@include vertical-align();
 						position: absolute;
+						transition: transform .2s;
+
+						.user-type {
+							position: absolute;
+							font-size: 11px;
+							color: $xlight-red;
+							opacity: 0;
+							margin: 3px 0;
+							transition: opacity .2s;
+						}
 					}
 
 					.user-image {
@@ -281,6 +291,16 @@ body {
 						> .user-menu {
 							display: block;
 							opacity: 1;
+						}
+
+						.user-greeting {
+							transform: translateY(-15px);
+							transition: transform .2s;
+						}
+
+						.user-type {
+							opacity: 1;
+							transition: opacity .2s;
 						}
 					}
 				}

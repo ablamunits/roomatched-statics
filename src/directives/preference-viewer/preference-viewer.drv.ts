@@ -1,5 +1,5 @@
 class PreferenceViewerDirectiveController {
-	prefScores: Preferences;
+	prefScores: Preferences<PreferenceScore>;
 	preferenceTitles: any;
 	preferenceIcons: any;
 	scoreNameToValue: any;

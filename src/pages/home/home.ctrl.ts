@@ -4,10 +4,11 @@ class HomeController {
 	isSeekerRegistration: boolean = false;
 	isOffererRegistration: boolean = false;
 	registrationHasErrors: boolean = false;
+	registrationComplete: boolean = false;
 
 	cityOptions: string[] = ['Tel-Aviv', 'Beer-Sheva', 'Jerusalem', 'Haifa'];
 	newUser: User = <User>{};
-	preferenceSelect: Preferences;
+	preferenceSelect: Preferences<PreferenceScore>;
 
 	seekerRegistrationFields = {
 		fromPrice: 1,
@@ -22,7 +23,7 @@ class HomeController {
 
 	postList: Post[];
 
-	constructor (private $scope: ng.IScope, private $http: ng.IHttpService, private UserService: UserServiceProvider, $stateParams, private AuthService, PostService) {
+	constructor (private $scope: ng.IScope, private $http: ng.IHttpService, private UserService: UserServiceProvider, $stateParams, private AuthService, PostService, private $state) {
 		PostService.init().then((posts) => this.postList = posts);
 
 		this.preferenceSelect = {
@@ -51,7 +52,6 @@ class HomeController {
 			FB.api('/me', {
 				fields: 'first_name,last_name,email,gender,birthday,picture.width(500).height(500),likes,friends'
 			}, (response: any) => {
-				console.log(response);
 				if (!response.error) {
 					this.newUser.facebookId = response.id;
 					this.newUser.firstName = response.first_name;
@@ -67,7 +67,6 @@ class HomeController {
 					}
 
 					if (this.isSeekerRegistration) {
-						console.log('gonna try register:', this.newUser);
 						this.registerAsSeeker();
 					} else if (this.isOffererRegistration) {
 						this.registerAsOfferer();
@@ -88,7 +87,8 @@ class HomeController {
 		this.newUser.type = UserType.Seeker;
 
 		this.UserService.registerUser(this.newUser, this.preferenceSelect, seekerPreferences).then((response) => {
-			this.registrationHasErrors = false;
+			this.registrationComplete = true;
+			this.postRegistrationRedirect();
 		}, (e) => {
 			this.registrationHasErrors = true;
 		});
@@ -104,9 +104,21 @@ class HomeController {
 		this.newUser.type = UserType.Offerer;
 
 		this.UserService.registerUser(this.newUser, this.preferenceSelect, offererDetails).then((response) => {
-			this.registrationHasErrors = false;
+			this.registrationComplete = true;
+			this.postRegistrationRedirect();
 		}, (e) => {
 			this.registrationHasErrors = true;
+		});
+	}
+
+	private postRegistrationRedirect() {
+		// this.$state.go('matches');
+		// Force user login..
+		this.AuthService.login();
+		this.AuthService.onAuthComplete(() => {
+			if (this.AuthService.userIsLoggedIn) {
+				this.$state.go('matches');
+			}
 		});
 	}
 };

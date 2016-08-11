@@ -1,5 +1,5 @@
 class PreferenceSelectDirectiveController {
-	prefScores: Preferences;
+	prefScores: Preferences<PreferenceScore>;
 
 	preferenceTitles: any;
 	preferenceIcons: any;
