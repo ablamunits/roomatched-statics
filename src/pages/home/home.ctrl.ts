@@ -35,6 +35,12 @@ class HomeController {
 			gayFriendly: PreferenceScore.Neutral,
 			musicianFriendly: PreferenceScore.Neutral
 		};
+
+		this.$scope.$watch('home.registrationComplete', () => {
+			if (this.registrationComplete) {
+				this.postRegistrationRedirect();
+			}
+		});
 	}
 
 	openSeekerRegister() {
@@ -88,7 +94,6 @@ class HomeController {
 
 		this.UserService.registerUser(this.newUser, this.preferenceSelect, seekerPreferences).then((response) => {
 			this.registrationComplete = true;
-			this.postRegistrationRedirect();
 		}, (e) => {
 			this.registrationHasErrors = true;
 		});
@@ -105,19 +110,19 @@ class HomeController {
 
 		this.UserService.registerUser(this.newUser, this.preferenceSelect, offererDetails).then((response) => {
 			this.registrationComplete = true;
-			this.postRegistrationRedirect();
 		}, (e) => {
 			this.registrationHasErrors = true;
 		});
 	}
 
 	private postRegistrationRedirect() {
-		// this.$state.go('matches');
 		// Force user login..
 		this.AuthService.login();
 		this.AuthService.onAuthComplete(() => {
 			if (this.AuthService.userIsLoggedIn) {
 				this.$state.go('matches');
+			} else {
+				console.error('postRegistrationRedirect - User is not logged in');
 			}
 		});
 	}

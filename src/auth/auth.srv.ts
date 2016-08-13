@@ -10,10 +10,20 @@ class AuthServiceProvider {
 	constructor(private $http: ng.IHttpService, private $state, private UserService){};
 
 	login() {
-		FB.login((response: any) => {
-			if (response.authResponse) {
+		this.authComplete = false;
+
+		FB.getLoginStatus((response: any) => {
+			if (response.status === 'connected') {
 				this.init(response.authResponse.userID, response.authResponse.accessToken);
-			};
+			} else {
+				FB.login((response: any) => {
+					if (response.authResponse) {
+						this.init(response.authResponse.userID, response.authResponse.accessToken);
+					} else {
+						this.notifyAuthComplete(false);
+					};
+				});
+			}
 		});
 	}
 
@@ -74,6 +84,7 @@ class AuthServiceProvider {
 		angular.forEach(this.authCompleteCallbacks, (cb) => {
 			cb(this.userIsLoggedIn);
 		});
+
 		this.authCompleteCallbacks = [];
 	}
 }

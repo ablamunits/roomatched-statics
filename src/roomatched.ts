@@ -19,10 +19,15 @@ var roomatchedApp: ng.IModule = angular.module('RoomatchedApp', ['ui.router', 'a
 		FB.getLoginStatus(function(response) {
 			console.log('FB login status:', response);
 			if (response.status === 'connected') {
-				// console.log('FB connected.');
 				AuthService.init(response.authResponse.userID, response.authResponse.accessToken);
+
+				//// Enable the lines below if you want to be redirected to matches page upon initial page-load login
+				// AuthService.onAuthComplete(() => {
+				// 	if (AuthService.userIsLoggedIn) {
+				// 		$state.go('matches');
+				// 	}
+				// });
 			} else {
-				// console.log('FB not connected.');
 				AuthService.notifyAuthComplete(false);
 				$state.go('home');
 			}
