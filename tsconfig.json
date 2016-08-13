@@ -27,6 +27,7 @@
         "src/directives/preference-viewer/preference-viewer.drv.ts",
         "src/directives/rm-selectbox/rm-selectbox.drv.ts",
         "src/directives/room-details-form/room-details-form.drv.ts",
+        "src/favourites/favourite.srv.ts",
         "src/filters/to-user-string.flt.ts",
         "src/matching/match.i.ts",
         "src/matching/match.srv.ts",

@@ -1,6 +1,7 @@
 class SeekerMatchPostDirectiveController {
 	content: OffererMatch;
 	matchIsVisible: boolean = true;
+	// isStarred: boolean;
 
 	matchMessage: string;
 	messageStatus: MessageStatus = MessageStatus.NOT_SENT;
@@ -29,12 +30,28 @@ class SeekerMatchPostDirectiveController {
 	private postSlides = ['roomImage', 'apartmentImage', 'map', 'messaging'];
 	currentSlide = this.postSlides[0];
 
-	constructor(NgMap, private GeoCoder, private AuthService, private MessageService) {
+	constructor(NgMap, private GeoCoder, private AuthService, private MessageService, private FavouriteService) {
 		let locationString = `${this.content.apartment.address}, ${this.content.apartment.city}, Israel`;
 		this.GeoCoder.geocode({ address: locationString, region: 'IL' }).then((results) => {
 			this.mapCenter.lat = results[0].geometry.location.lat();
 			this.mapCenter.lng = results[0].geometry.location.lng();
 		});
+
+		// this.isStarred = this.content.isFavorite;
+	}
+
+	toggleStar() {
+		if (this.isStarred) {
+			this.FavouriteService.unsetFavourite(this.AuthService.loggedUser.id, this.content.postId).then(() => {
+				// this.isStarred = false;
+				this.content.isFavorite = false;
+			});
+		} else {
+			this.FavouriteService.setFavourite(this.AuthService.loggedUser.id, this.content.postId).then(() => {
+				// this.isStarred = true;
+				this.content.isFavorite = true;
+			});
+		}
 	}
 
 	nextSlide() {

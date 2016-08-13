@@ -6,6 +6,11 @@ class MatchesController {
 	showMatchesForOfferer: boolean = false;
 	hasNoMatches = false;
 
+	filters: any = {
+		starred: 'All',
+		contaced: 'All',
+	};
+
 	constructor (private $scope: ng.IScope, private $http: ng.IHttpService, private $stateParams, private AuthService, private MatchService, private $state) {
 		AuthService.onAuthComplete(() => {
 			if (AuthService.userIsLoggedIn) {

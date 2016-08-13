@@ -5,9 +5,18 @@
 			<h3>Matches</h3>
 			<hr>
 			<h3 class="title title-searching" ng-if="!matches.matchesArray"><i class="fa fa-spinner fa-spin"></i> We are looking for matches for you ... Hold tight!</h3>
-			<h3 class="title title-matches-found" ng-if="matches.matchesArray">We have found {{ matches.matchesArray.length }} matches for you!</h3>
+			<h3 class="title title-matches-found" ng-if="matches.matchesArray">We have found {{ matches.matchesArray.length }} great {{ matches.matchArray.length > 1 ? 'matches' : 'match' }} for you!</h3>
 			<div class="no-matches" ng-if="matches.hasNoMatches">
 				<h3>Sorry, no matches!</h3>
+			</div>
+			<div class="match-filter-options">
+				<div class="form-section">
+					<h4 class="title">You can filter the results further with these options</h4>
+					<div class="select-wrapper">
+						<rm-select ng-model="matches.filters.starred" options="['All', 'Starred', 'Unstarred']"></rm-select>
+						<rm-select ng-model="matches.filters.contacted" options="['All', 'Previously Contacted', 'Not Contacted']"></rm-select>
+					</div>
+				</div>
 			</div>
 			<div class="match-lists-container">
 				<ul class="offerer-matches-list match-list" ng-if="matches.showMatchesForOfferer">
@@ -17,7 +26,10 @@
 					</li>
 				</ul>
 				<ul class="seeker-match-list match-list" ng-if="matches.showMatchesForSeeker">
-					<li class="match-item" ng-repeat="match in matches.matchesArray | orderBy: 'matchPercentage':true">
+					<li class="match-item" ng-repeat="match in matches.matchesArray
+					| filter: matches.filters.starred !== 'All' && {isFavorite: matches.filters.starred === 'Starred'}
+					| filter: matches.filters.contacted !== 'All' && {hasConversation: matches.filters.contacted === 'Previously Contacted'}
+					| orderBy: 'matchPercentage':true">
 						<seeker-match-post ng-model="match"></seeker-match-post>
 						<hr>
 					</li>

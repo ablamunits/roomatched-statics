@@ -12,6 +12,8 @@ class MatchServiceProvider {
 					postId: responseObject.postId,
 					room: responseObject.room,
 					apartment: responseObject.apartment,
+					isFavorite: responseObject.isFavorite,
+					hasConversation: responseObject.hasConversation,
 					user: {
 						id: responseObject.user.id,
 						type: UserType.Offerer,

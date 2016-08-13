@@ -5,6 +5,10 @@
 	<div class="match-content" ng-if="ctrl.matchIsVisible">
 		<ul class="match-options">
 			<li class="option-hide" ng-click="ctrl.hide()"><i class="fa fa-close"></i> Hide Match</li>
+			<li class="option-star" ng-click="ctrl.toggleStar()">
+				<span ng-if="!ctrl.content.isFavorite"><i class="fa fa-star-o"></i> Star This</span>
+				<span ng-if="ctrl.content.isFavorite"><i class="fa fa-star"></i> Unstar</span>
+			</li>
 		</ul>
 		<div class="match-graph-wrapper">
 			<round-progress
