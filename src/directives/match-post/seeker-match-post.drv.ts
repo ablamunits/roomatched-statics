@@ -1,7 +1,6 @@
 class SeekerMatchPostDirectiveController {
 	content: OffererMatch;
 	matchIsVisible: boolean = true;
-	// isStarred: boolean;
 
 	matchMessage: string;
 	messageStatus: MessageStatus = MessageStatus.NOT_SENT;
@@ -41,7 +40,7 @@ class SeekerMatchPostDirectiveController {
 	}
 
 	toggleStar() {
-		if (this.isStarred) {
+		if (this.content.isFavorite) {
 			this.FavouriteService.unsetFavourite(this.AuthService.loggedUser.id, this.content.postId).then(() => {
 				// this.isStarred = false;
 				this.content.isFavorite = false;
