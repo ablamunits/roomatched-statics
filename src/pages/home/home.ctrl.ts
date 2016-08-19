@@ -127,13 +127,14 @@ class HomeController {
 	}
 
 	private postRegistrationRedirect() {
-		// Force user login..
-		this.AuthService.login();
-		this.AuthService.onAuthComplete(() => {
-			if (this.AuthService.userIsLoggedIn) {
-				this.$state.go('matches');
-			} else {
-				console.error('postRegistrationRedirect - User is not logged in');
+		this.AuthService.getLoginStatus((response) => {
+			console.log(response);
+			if (response.status === 'connected') {
+				console.log('connected in post reg!');
+				this.AuthService.init(response.authResponse.userID, response.authResponse.accessToken);
+				this.AuthService.onAuthComplete(() => {
+					this.$state.go('matches');
+				});
 			}
 		});
 	}

@@ -10,21 +10,22 @@ class AuthServiceProvider {
 	constructor(private $http: ng.IHttpService, private $state, private UserService){};
 
 	login() {
-		this.authComplete = false;
-
-		FB.getLoginStatus((response: any) => {
-			if (response.status === 'connected') {
-				this.init(response.authResponse.userID, response.authResponse.accessToken);
-			} else {
+		// FB.getLoginStatus((response: any) => {
+			// if (response.status === 'connected') {
+				// this.init(response.authResponse.userID, response.authResponse.accessToken);
+			// } else {
 				FB.login((response: any) => {
 					if (response.authResponse) {
+						this.onAuthComplete(() => {
+							this.$state.go('profile');
+						});
 						this.init(response.authResponse.userID, response.authResponse.accessToken);
 					} else {
 						this.notifyAuthComplete(false);
 					};
 				});
-			}
-		});
+			// }
+		// });
 	}
 
 	logout(callback) {
@@ -35,6 +36,10 @@ class AuthServiceProvider {
 				this.FBUserId = null;
 				callback();
 		});
+	};
+
+	getLoginStatus(callback) {
+		return FB.getLoginStatus(callback);
 	};
 
 	getUserByFacebookId(id: string) {
@@ -49,6 +54,8 @@ class AuthServiceProvider {
 	};
 
 	init(fbUID: string, fbAT: string) {
+		this.authComplete = false;
+
 		this.getUserByFacebookId(fbUID).then((userData: any) => {
 			if (userData) {
 				this.FBUserId = fbUID;
