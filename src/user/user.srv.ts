@@ -2,7 +2,7 @@ class UserServiceProvider {
 	constructor(private $http: ng.IHttpService){
 	}
 
-	registerUser (user: User, preferences: Preferences<PreferenceScore>, additionalInfo: Object) {
+	registerUser (user: User, preferences: Preferences<PreferenceScore>, mostValuablePreferences: Preferences<boolean>, additionalInfo: Object) {
 		let newUserRegistrationObject = {
 			facebookId: user.facebookId,
 			facebookFriends: user.facebookFriends,
@@ -13,6 +13,7 @@ class UserServiceProvider {
 			type: this.typeToString(user.type),
 			photoUrl: user.photoUrl || '',
 			preferences: preferences,
+			mostValuablePreferences: mostValuablePreferences,
 			additionalDetails: additionalInfo
 		};
 

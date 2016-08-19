@@ -28,6 +28,7 @@ class PreferencesServiceProvider {
 		return this.$http.get(API_URI + `/offererPref/${userId}`).then((response) => {
 			// preferences = <Preferences>response.data;
 			let data = response.data as any;
+			console.log(data);
 
 			preferences = {
 				smoking: data.smoking,

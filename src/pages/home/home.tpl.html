@@ -35,11 +35,10 @@
 			<h3>Looking for a room?</h3>
 			<hr>
 			<div class="registration-form">
-				<p>Finding the perfect place starts by matching you to perfect people! Score your preferences here between: Neutral, <span class="label important">Important</span>, <span class="label somewhat-important">Somewhat important</span>, or <span class="label no-go">No go</span>.</p>
 				<div class="form-section">
 					<h3>What's important to you in a roommate?</h3>
-					<!-- <preference-select ng-model="home.preferenceSelect" mvp="home.mostValuablePreferences"></preference-select> -->
-					<preference-select ng-model="home.preferenceSelect"></preference-select>
+					<div>You can select up to 3 of your most valuable preferences.</div>
+					<preference-select ng-model="home.preferenceSelect" mvp="home.mostValuablePreferenceSelect"></preference-select>
 				</div>
 				<div class="form-section form-seeker-additional-details">
 					<h3>Prefered city and living details</h3>
@@ -58,11 +57,11 @@
 		<div class="register register-offerer" ng-show="home.isOffererRegistration">
 			<h3>Offering a room?</h3>
 			<hr>
-			<p>Finding the perfect roomate starts with a perfect match! Score your preferences here between Neutral, <span class="label important">Important</span>, <span class="label somewhat-important">Somewhat important</span>, or <span class="label no-go">No go</span>.</p>
 			<div class="registration-form">
 				<div class="form-section">
 					<h3>What's important to you in a roommate?</h3>
-					<preference-select ng-model="home.preferenceSelect"></preference-select>
+					<div>You can select up to 3 of your most valuable preferences.</div>
+					<preference-select ng-model="home.preferenceSelect" mvp="home.mostValuablePreferenceSelect"></preference-select>
 					<div class="gender-wrapper">
 						<div>Roommate Gender</div>
 						<rm-select name="offerer-gender-select" options="['any', 'male', 'female']" ng-model="home.offererSexPreffered"></rm-select>

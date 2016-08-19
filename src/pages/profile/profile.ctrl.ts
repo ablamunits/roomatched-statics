@@ -58,6 +58,7 @@ class ProfileController {
 	showPreferenceSelector() {
 		this.openSetting('preferences');
 		this.PreferenceService.getUserPreference(this.user.id, this.user.type).then((detailedPreferences) => {
+			// console.log(detailedPreferences);
 			this.preferences = detailedPreferences.preferences;
 			this.details = detailedPreferences.additionalDetails;
 		});

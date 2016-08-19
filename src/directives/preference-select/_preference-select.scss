@@ -30,6 +30,14 @@ $preference-score-2: $pref-red;
 		display: inline-block;
 		position: relative;
 
+		.valuable-check {
+			color: $xlight-grey;
+		}
+
+		&:hover .valuable-check {
+			color: $xlight-red;
+		}
+
 		.preference-button {
 			margin-top: 10px;
 			cursor: pointer;
@@ -49,6 +57,25 @@ $preference-score-2: $pref-red;
 				border-bottom: 2px solid;
 				border-color: rgba($light-grey, .3);
 				transition: all .1s ease-out;
+			}
+
+			&:hover {
+				.icon {
+					fill: $black;
+					border-bottom-width: 4px;
+				}
+
+				.pref-pop {
+					visibility: visible;
+					opacity: 1;
+					transition: opacity .2s ease-in;
+				}
+
+				.pref-title {
+					display: block;
+					animation: subtle-pop .3s;
+					animation-fill-mode: forwards;
+				}
 			}
 
 			&.preference-score2 {
@@ -71,17 +98,6 @@ $preference-score-2: $pref-red;
 				.pref-title {
 					color: $preference-score1;
 				}
-			}
-
-			&.preference-score0 {
-				//.icon {
-				//	border-color: $preference-score0;
-				//	fill: $preference-score0;
-				//}
-				//
-				//.pref-title {
-				//	color: $preference-score0;
-				//}
 			}
 
 			&.preference-score-1 {
@@ -139,25 +155,6 @@ $preference-score-2: $pref-red;
 				color: $black;
 				position: absolute;
 				top: -10px;
-			}
-		}
-
-		&:hover {
-			.icon {
-				fill: $black;
-				border-bottom-width: 4px;
-			}
-
-			.pref-pop {
-				visibility: visible;
-				opacity: 1;
-				transition: opacity .2s ease-in;
-			}
-
-			.pref-title {
-				display: block;
-				animation: subtle-pop .3s;
-				animation-fill-mode: forwards;
 			}
 		}
 	}

@@ -9,6 +9,7 @@ class HomeController {
 	cityOptions: string[] = ['Tel-Aviv', 'Beer-Sheva', 'Jerusalem', 'Haifa'];
 	newUser: User = <User>{};
 	preferenceSelect: Preferences<PreferenceScore>;
+	mostValuablePreferenceSelect: Preferences<boolean>;
 
 	seekerRegistrationFields = {
 		fromPrice: 1,
@@ -34,6 +35,16 @@ class HomeController {
 			animals: PreferenceScore.Neutral,
 			gayFriendly: PreferenceScore.Neutral,
 			musicianFriendly: PreferenceScore.Neutral
+		};
+
+		this.mostValuablePreferenceSelect = {
+			smoking: false,
+			kosher: false,
+			vegan: false,
+			sharedExpences: false,
+			animals: false,
+			gayFriendly: false,
+			musicianFriendly: false,
 		};
 
 		this.$scope.$watch('home.registrationComplete', () => {
@@ -92,7 +103,7 @@ class HomeController {
 
 		this.newUser.type = UserType.Seeker;
 
-		this.UserService.registerUser(this.newUser, this.preferenceSelect, seekerPreferences).then((response) => {
+		this.UserService.registerUser(this.newUser, this.preferenceSelect, this.mostValuablePreferenceSelect, seekerPreferences).then((response) => {
 			this.registrationComplete = true;
 		}, (e) => {
 			this.registrationHasErrors = true;
@@ -108,7 +119,7 @@ class HomeController {
 
 		this.newUser.type = UserType.Offerer;
 
-		this.UserService.registerUser(this.newUser, this.preferenceSelect, offererDetails).then((response) => {
+		this.UserService.registerUser(this.newUser, this.preferenceSelect, this.mostValuablePreferenceSelect, offererDetails).then((response) => {
 			this.registrationComplete = true;
 		}, (e) => {
 			this.registrationHasErrors = true;
