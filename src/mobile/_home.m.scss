@@ -1,0 +1,58 @@
+.home-view {
+	.strip {
+		&.strip-headline {
+			h2 {
+				font-size: 20px;
+			}
+
+			h3 {
+				display: none;
+			}
+		}
+
+		&.strip-home {
+			height: 500px;
+
+			h2 {
+				font-size: 40px;
+			}
+		}
+
+		&.strip-home .user-type-buttons-wrapper  {
+			.button-seeking-for-room, .button-offering-a-room {
+				width: 300px;
+				height: 250px;
+				font-size: 32px;
+
+				.icon {
+					font-size: 32px !important;
+				}
+			}
+		}
+	}
+
+	.form-section {
+		preference-select {
+			.preference-buttons {
+				margin-bottom: 70px;
+			}
+			.icon {
+				height: 106px !important;
+			}
+
+			.pref-pop {
+				top: 100px !important;
+			}
+		}
+	}
+
+	.register-button {
+		width: 400px;
+		height: 100px;
+		font-size: 32px;
+	}
+
+	.container.homepage-container {
+		padding: 20px;
+	}
+}

@@ -153,12 +153,8 @@ $green-confirm: rgb(128, 198, 115);
 	border: 1px dashed $light-grey;
 	color: $light-red;
 	cursor: pointer;
-	//position: absolute;
 	width: 200px;
 	height: 100%;
-	//bottom: 0;
-	//right: 0;
-
 	box-sizing: border-box;
 
 	&:hover {

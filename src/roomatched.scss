@@ -372,7 +372,6 @@ body {
 				font-size: 18px;
 			}
 		}
-
 	}
 
 	.footer {
@@ -412,3 +411,11 @@ body {
 
 // Assets and commons
 @import './common/tooltips/tooltips';
+
+// Mobile
+@media (max-device-width: 480px) {
+	@import './mobile/main.m';
+	@import './mobile/home.m';
+	@import './mobile/matches.m';
+	@import './mobile/inbox.m';
+}

@@ -1,0 +1,31 @@
+.matches-view {
+	.title{
+			font-size: 42px !important;
+	}
+
+	.match-filter-options {
+		.form-section {
+			.title {
+				display: none;
+			}
+
+			.select-wrapper {
+				zoom: 1.5;
+			}
+		}
+	}
+
+	.match-list {
+		.match-item {
+			width: 100%;
+			zoom: 2;
+
+			.match-apartment-image,
+			.match-room-image {
+				img {
+					top: 0;
+				}
+			}
+		}
+	}
+}
