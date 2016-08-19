@@ -3,10 +3,10 @@
 		font-size: 14px;
 		color: $light-grey;
 
-		a {
-			text-decoration: none;
-			cursor: pointer;
-		}
+		//a {
+		//	text-decoration: none;
+		//	cursor: pointer;
+		//}
 	}
 
 	tooltip tip {
@@ -139,12 +139,16 @@
 						border-top: 4px solid transparent;
 						border-bottom: 4px solid transparent;
 						transition: border-top .1s ease-out;
-						//margin: 0 10px;
 
 						&:hover {
 							cursor: pointer;
 							border-top: 4px solid $xlight-red;
 							transition: border-top .1s ease-in;
+						}
+
+						.icon-contacted {
+							margin: 5px;
+							color: $green;
 						}
 					}
 				}
@@ -207,6 +211,14 @@
 					padding: 50px;
 					box-sizing: border-box;
 					position: relative;
+
+					.message-contacted-tooltip {
+						border: 1px solid $light-grey;
+						font-size: 14px;
+						border-radius: 4px;
+						background: $xlight-grey;
+						padding: 5px 10px;
+					}
 
 					.message-text-area {
 						resize: none;

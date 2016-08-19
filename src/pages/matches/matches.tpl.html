@@ -5,7 +5,7 @@
 			<h3>Matches</h3>
 			<hr>
 			<h3 class="title title-searching" ng-if="!matches.matchesArray"><i class="fa fa-spinner fa-spin"></i> We are looking for matches for you ... Hold tight!</h3>
-			<h3 class="title title-matches-found" ng-if="matches.matchesArray">We have found {{ matches.matchesArray.length }} great {{ matches.matchArray.length > 1 ? 'matches' : 'match' }} for you!</h3>
+			<h3 class="title title-matches-found" ng-if="matches.matchesArray">We have found {{ matches.matchesArray.length }} great {{ matches.matchesArray.length > 1 ? 'matches' : 'match' }} for you!</h3>
 			<div class="no-matches" ng-if="matches.hasNoMatches">
 				<h3>Sorry, no matches!</h3>
 			</div>

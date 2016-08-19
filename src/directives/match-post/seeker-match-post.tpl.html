@@ -43,7 +43,7 @@
 					<li class="media-nav-button" ng-click="ctrl.setSlide('roomImage')">Room</li>
 					<li class="media-nav-button" ng-click="ctrl.setSlide('apartmentImage')">Apartment</li>
 					<li class="media-nav-button" ng-click="ctrl.setSlide('map')">Map</li>
-					<li class="media-nav-button" ng-click="ctrl.setSlide('messaging')">Contact {{ ctrl.content.user.firstName }}</li>
+					<li class="media-nav-button" ng-click="ctrl.setSlide('messaging')"><i ng-if="ctrl.content.hasConversation" class="fa fa-check icon-contacted"></i>Contact {{ ctrl.content.user.firstName }}</li>
 				</ul>
 			</div>
 
@@ -83,6 +83,7 @@
 
 			<div class="match-messaging" ng-show="ctrl.currentSlide === 'messaging'">
 				<div class="message-wrapper">
+					<div class="message-contacted-tooltip" ng-if="ctrl.content.hasConversation">Hey! You have already sent a message to {{ ctrl.content.user.firstName }}. See the full conversation in your <a ui-sref="inbox">Inbox</a>.</div>
 					<h3>Send {{ ctrl.content.user.firstName }} a message and let them know you are interested in this room!</h3>
 					<textarea class="message-text-area" placeholder="Living together starts with a 'Hi'!" ng-model="ctrl.matchMessage"></textarea>
 					<div class="message-send-button" ng-click="ctrl.sendMatchMessage(ctrl.content.user.id)" ng-class="{ 'sent' : ctrl.messageStatus === ctrl.messageStatuses.SENT }">

@@ -25,6 +25,7 @@ $pref-orange: $orange;
 $pref-green: #2ECC71;
 
 $green: $pref-green;
+$light-green: #ceebda;
 
 $facebook-blue: #3B5998;
 
@@ -358,6 +359,7 @@ body {
 				color: $light-red;
 				font-weight: bold;
 				cursor: pointer;
+				text-decoration: none;
 
 				&:hover {
 					color: $red;

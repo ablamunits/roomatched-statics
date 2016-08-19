@@ -22,7 +22,7 @@
 							My Preferences
 						</a>
 						<div class="form-section user-preferences" ng-if="profile.openSettings.preferences && profile.preferences">
-							<a class="update-link" ng-click="profile.updatePreferences()">Update</a>
+							<button class="update-button" ng-click="profile.updatePreferences()">Update</button>
 							<preference-select ng-model="profile.preferences"></preference-select>
 							<div class="offerer-preferences" ng-if="(profile.user.type | typeToString) === 'Offerer'">
 								<h4>Roommate gender</h4>
@@ -47,10 +47,13 @@
 							My Settings
 						</a>
 						<div class="form-section user-settings" ng-if="profile.openSettings.settings && profile.userSettings">
-							<a class="update-link" ng-click="profile.updateSettings()">Update</a>
-							<!-- <span>Send me email notifications to</span> -->
+							<button class="update-button" ng-click="profile.updateSettings()">Update</button>
+							<h3>Notification Email</h3>
 							<div>Set up an email address to recieve notifications when contacted by a match</div>
 							<input floating-label type="email" ng-model="profile.userSettings.email" placeholder="Email notifications address"/>
+							<h3>Match appearance settings</h3>
+							<input floating-label type="number" min="0" max="100" ng-model="profile.userSettings.minShowMatch" placeholder="Show me matches from (%)"/>
+							<input floating-label type="number" min="0" max="100" ng-model="profile.userSettings.minIncludeMatch" placeholder="Include me in matches from (%)"/>
 						</div>
 					</li>
 					<li class="user-info-option" ng-if="(profile.user.type | typeToString) === 'Offerer'">
@@ -60,12 +63,12 @@
 						</a>
 						<div class="user-details" ng-if="profile.openSettings.roomPost && profile.apartmentDetails && profile.roomDetails">
 							<div class="form-section form-room">
-								<a class="update-link" ng-click="profile.updateRoomOffering()">Update</a>
+								<button class="update-button upper-left" ng-click="profile.updateRoomOffering()">Update</button>
 								<h3>My Room Details</h3>
 								<room-details-form ng-model="profile.roomDetails"></room-details-form>
 							</div>
 							<div class="form-section form-apartment">
-								<a class="update-link" ng-click="profile.updateRoomOffering()">Update</a>
+								<button class="update-button upper-left" ng-click="profile.updateRoomOffering()">Update</button>
 								<h3>My Apartment Details</h3>
 								<apartment-details-form ng-model="profile.apartmentDetails"></apartment-details-form>
 							</div>

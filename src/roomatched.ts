@@ -8,6 +8,8 @@ var roomatchedApp: ng.IModule = angular.module('RoomatchedApp', ['ui.router', 'a
 		.set('upload_preset', 'f0dwrr6s');
 }])
 .run(function($rootScope, $location, $state, $timeout, AuthService, $window) {
+	$rootScope.$state = $state;
+
 	$window.fbAsyncInit = function() {
 		FB.init({
 			appId      : '1754796394756872', // Roomatched appId
@@ -43,20 +45,24 @@ var roomatchedApp: ng.IModule = angular.module('RoomatchedApp', ['ui.router', 'a
 		url: '/',
 		templateUrl: 'pages/home/home.tpl.html',
 		controller: 'HomeCtrl as home',
+		data: { pageTitle: 'Roomatched | Welcome' }
 	})
 	.state('matches', {
 		url: '/matches',
 		templateUrl: 'pages/matches/matches.tpl.html',
-		controller: 'MatchesCtrl as matches'
+		controller: 'MatchesCtrl as matches',
+		data: { pageTitle: 'Roomatched | Matches' }
 	})
 	.state('inbox', {
 		url: '/inbox',
 		templateUrl: 'pages/inbox/inbox.tpl.html',
-		controller: 'InboxCtrl as inbox'
+		controller: 'InboxCtrl as inbox',
+		data: { pageTitle: 'Roomatched | Inbox' }
 	})
 	.state('profile', {
 		url: '/profile?id',
 		templateUrl: 'pages/profile/profile.tpl.html',
 		controller: 'ProfileCtrl as profile',
+		data: { pageTitle: 'Roomatched | Profile' }
 	});
 });

@@ -28,6 +28,10 @@
 		input[type="email"] {
 			width: 100%;
 		}
+
+		input[type="number"] {
+			width: 300px;
+		}
 	}
 }
 
@@ -80,13 +84,28 @@
 				.user-info-option {
 					margin-top: 10px;
 
-					.update-link {
+					.update-button {
+						cursor: pointer;
+						position: absolute;
+						right: 10px;
+						bottom: 10px;
+						padding: 10px;
+						font-weight: lighter;
 						display: block;
 						font-size: 14px;
+						background-color: $white;
 						color: $link-blue;
+						border: 1px solid $link-blue;
+						border-radius: 20px;
+						z-index: 1;
+
+						&.upper-left {
+							position: static;
+						}
 
 						&:hover {
-							color: darken($link-blue, 5%);
+							color: $white;
+							background-color: $link-blue;
 						}
 					}
 				}
