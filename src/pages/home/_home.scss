@@ -1,5 +1,9 @@
 $green-confirm: rgb(128, 198, 115);
 
+.home-view.home-mobile {
+	display: none;
+}
+
 .home-view {
 	@include input-field();
 	@include select-box();

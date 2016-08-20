@@ -20,7 +20,11 @@ body {
 					top: 80px;
 					left: -100px;
 					border-radius: 40px;
+				}
 
+				.user-info {
+					width: 100px;
+					background-color: inherit !important;
 				}
 
 				.user-info .user-greeting{
@@ -34,14 +38,29 @@ body {
 
 				.user-info ul.user-menu {
 					width: 300px;
-					top: 160px;
-					font-size: 40px;
-					left: -150px;
+					top: 156px;
+					font-size: 44px;
+					left: -120px;
 					text-align: center;
-					padding: 20px;
+					border-bottom-left-radius: 20px;
 
 					.icon {
-						height: 60px;
+						height: 80px;
+						top: 20px;
+					}
+
+					li {
+						padding: 30px 0 30px 30px;
+						&.navigate-inbox {
+							&:hover {
+								border-bottom-left-radius: 20px !important;
+							}
+
+						}
+					}
+
+					.navigate-profile, .navigate-logout {
+						display: none;
 					}
 				}
 			}

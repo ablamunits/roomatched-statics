@@ -55,10 +55,10 @@
 						<img ng-src="{{ login.loggedUser.photoUrl || './assets/images/user-photo-placeholder.png' }}" />
 					</div>
 					<ul class="user-menu">
-						<li ui-sref="profile"><div class="icon" ng-include="'assets/icons/profile.svg'"></div>Profile</li>
-						<li ui-sref="matches"><div class="icon" ng-include="'assets/icons/matching.svg'"></div>Matching</li>
-						<li ui-sref="inbox"><div class="icon" ng-include="'assets/icons/inbox.svg'"></div>Inbox</li>
-						<li ng-click="login.fbLogout()"><div class="icon" ng-include="'assets/icons/logout.svg'"></div>Logout</li>
+						<li class="navigate-profile" ui-sref="profile"><div class="icon" ng-include="'assets/icons/profile.svg'"></div>Profile</li>
+						<li class="navigate-matches" ui-sref="matches"><div class="icon" ng-include="'assets/icons/matching.svg'"></div>Matching</li>
+						<li class="navigate-inbox" ui-sref="inbox"><div class="icon" ng-include="'assets/icons/inbox.svg'"></div>Inbox</li>
+						<li class="navigate-logout" ng-click="login.fbLogout()"><div class="icon" ng-include="'assets/icons/logout.svg'"></div>Logout</li>
 					</ul>
 				</div>
 			</div>

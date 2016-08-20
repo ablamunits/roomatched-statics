@@ -14,13 +14,13 @@ class LoginController {
 
 	fbLogin() {
 		this.AuthService.login();
-		this.AuthService.onAuthComplete(() => {
-			if (this.AuthService.userIsLoggedIn) {
-				this.$state.go('profile');
-			} else {
-				this.$state.go('home');
-			}
-		});
+		// this.AuthService.onAuthComplete(() => {
+		// 	if (this.AuthService.userIsLoggedIn) {
+		// 		this.$state.go('profile');
+		// 	} else {
+		// 		this.$state.go('home');
+		// 	}
+		// });
 	}
 
 	fbLogout() {

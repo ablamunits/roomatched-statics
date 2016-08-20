@@ -1,4 +1,23 @@
+.home-view.home-mobile {
+	padding-top: 400px;
+	display: block;
+	background-color: $xlight-grey;
+	height: 100%;
+
+	.mobile-welcome {
+		color: $red;
+		text-align: center;
+		font-size: 52px;
+	}
+
+	.mobile-description {
+		text-align: center;
+		font-size: 42px;
+	}
+}
+
 .home-view {
+	display: none;
 	.strip {
 		&.strip-headline {
 			h2 {

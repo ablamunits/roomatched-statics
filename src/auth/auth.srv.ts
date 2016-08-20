@@ -10,31 +10,25 @@ class AuthServiceProvider {
 	constructor(private $http: ng.IHttpService, private $state, private UserService){};
 
 	login() {
-		// FB.getLoginStatus((response: any) => {
-			// if (response.status === 'connected') {
-				// this.init(response.authResponse.userID, response.authResponse.accessToken);
-			// } else {
-				FB.login((response: any) => {
-					if (response.authResponse) {
-						this.onAuthComplete(() => {
-							this.$state.go('profile');
-						});
-						this.init(response.authResponse.userID, response.authResponse.accessToken);
-					} else {
-						this.notifyAuthComplete(false);
-					};
+		FB.login((response: any) => {
+			if (response.authResponse) {
+				this.onAuthComplete(() => {
+					this.$state.go('matches');
 				});
-			// }
-		// });
+				this.init(response.authResponse.userID, response.authResponse.accessToken);
+			} else {
+				this.notifyAuthComplete(false);
+			};
+		});
 	}
 
 	logout(callback) {
 		FB.logout((response: any) => {
-				this.userIsLoggedIn = false;
-				this.loggedUser = null;
-				this.FBAccessToken = null;
-				this.FBUserId = null;
-				callback();
+			this.userIsLoggedIn = false;
+			this.loggedUser = null;
+			this.FBAccessToken = null;
+			this.FBUserId = null;
+			callback();
 		});
 	};
 
@@ -43,14 +37,13 @@ class AuthServiceProvider {
 	};
 
 	getUserByFacebookId(id: string) {
-			return this.UserService.getUserByFacebookId(id).then(response => {
-				// console.log(response);
-				return response.data;
-			}, e => {
-				console.error('Could not find user by Facebook id.');
-				this.notifyAuthComplete();
-				this.$state.go('home');
-			});
+		return this.UserService.getUserByFacebookId(id).then(response => {
+			return response.data;
+		}, e => {
+			console.error('Could not find user by Facebook id.');
+			this.notifyAuthComplete();
+			this.$state.go('home');
+		});
 	};
 
 	init(fbUID: string, fbAT: string) {

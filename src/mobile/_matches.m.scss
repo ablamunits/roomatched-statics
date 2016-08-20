@@ -26,6 +26,16 @@
 					top: 0;
 				}
 			}
+
+			.match-messaging .message-wrapper {
+				h3 {
+					font-size: 20px;
+				}
+
+				.message-text-area {
+					height: 100px;
+				}
+			}
 		}
 	}
 }
