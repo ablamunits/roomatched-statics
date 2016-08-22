@@ -10,7 +10,10 @@ class InboxController {
 
 	newMessageContent: string;
 
-	constructor (private MessageService, private AuthService, private $state) {
+	isPolling: boolean = false;
+	pollingPromise: any;
+
+	constructor (private MessageService, private AuthService, private $state, private $interval) {
 		AuthService.onAuthComplete(() => {
 			if (AuthService.userIsLoggedIn) {
 				this.myUserId = AuthService.loggedUser.id;
@@ -41,6 +44,7 @@ class InboxController {
 
 		this.MessageService.getConversationContentById(conversationId).then(content => {
 			this.visibleConversationContent = content;
+			this.startMessagePolling(conversationId);
 		});
 	}
 
@@ -75,6 +79,22 @@ class InboxController {
 		this.visibleConversation = null;
 		this.visibleConversationContent = null;
 		this.newMessageContent = '';
+		this.stopMessagePolling();
+	}
+
+	private startMessagePolling(conversationId: number) {
+		this.isPolling = true;
+
+		this.pollingPromise = this.$interval(() => {
+			this.MessageService.getConversationContentById(this.visibleConversation.conversationId).then(content => {
+				this.visibleConversationContent = content;
+			});
+		}, 1500);
+	}
+
+	private stopMessagePolling() {
+		this.$interval.cancel(this.pollingPromise);
+		this.isPolling = false;
 	}
 };
 
