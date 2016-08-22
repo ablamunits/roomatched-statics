@@ -5,6 +5,7 @@ class ProfileController {
 
 	user: User;
 	preferences: Preferences<PreferenceScore>;
+	mostValuablePreferences: Preferences<boolean>;
 	details: SeekerPreferences | OffererDetails;
 
 	userSettings: UserSettings;
@@ -58,14 +59,15 @@ class ProfileController {
 	showPreferenceSelector() {
 		this.openSetting('preferences');
 		this.PreferenceService.getUserPreference(this.user.id, this.user.type).then((detailedPreferences) => {
-			// console.log(detailedPreferences);
+			console.log(detailedPreferences);
 			this.preferences = detailedPreferences.preferences;
+			this.mostValuablePreferences = detailedPreferences.mostValuablePreferences;
 			this.details = detailedPreferences.additionalDetails;
 		});
 	};
 
 	updatePreferences() {
-		this.PreferenceService.updateUserPreference(this.user.id, this.user.type, this.preferences, this.details).then(() => {
+		this.PreferenceService.updateUserPreference(this.user.id, this.user.type, this.preferences, this.mostValuablePreferences, this.details).then(() => {
 			console.log('update ok?');
 		});
 	}

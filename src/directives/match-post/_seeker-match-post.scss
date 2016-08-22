@@ -2,11 +2,6 @@
 	.seeker-match-hidden p {
 		font-size: 14px;
 		color: $light-grey;
-
-		//a {
-		//	text-decoration: none;
-		//	cursor: pointer;
-		//}
 	}
 
 	tooltip tip {
@@ -168,6 +163,12 @@
 						width: 100%;
 						position: absolute;
 						bottom: 0;
+					}
+
+					&.no-image {
+						img {
+							bottom: -100px;
+						}
 					}
 				}
 

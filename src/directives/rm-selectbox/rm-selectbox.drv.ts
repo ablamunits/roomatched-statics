@@ -2,7 +2,7 @@ class RoomatchedSelectboxDirectiveController {
 	selection: string;
 	options: string[];
 
-	constructor() {
+	constructor(private $scope) {
 		if (this.options.indexOf(this.selection) < 0) {
 			this.selection = this.options[0];
 		}

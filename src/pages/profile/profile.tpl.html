@@ -23,7 +23,7 @@
 						</a>
 						<div class="form-section user-preferences" ng-if="profile.openSettings.preferences && profile.preferences">
 							<button class="update-button" ng-click="profile.updatePreferences()">Update</button>
-							<preference-select ng-model="profile.preferences"></preference-select>
+							<preference-select ng-model="profile.preferences" mvp="profile.mostValuablePreferences"></preference-select>
 							<div class="offerer-preferences" ng-if="(profile.user.type | typeToString) === 'Offerer'">
 								<h4>Roommate gender</h4>
 								<rm-select ng-model="profile.details.sexPreffered" options="['any','male','female']"></rm-select>
@@ -76,7 +76,7 @@
 					</li>
 				</ul>
 			</div>
-			<div class="user-friends">
+			<div class="user-friends" ng-if="profile.userFriends.length > 0">
 				<span>Your friends on Roomatched:</span>
 				<ul class="user-friends-list">
 					<li class="user-friend" ng-repeat="friend in profile.userFriends | limitTo: 4">

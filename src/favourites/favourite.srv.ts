@@ -2,20 +2,37 @@ class FavouriteServiceProvider {
 	constructor(private $http: ng.IHttpService) {
 	}
 
-	setFavourite(userId: number, matchId: number) {
+	setFavourite(newState: boolean, userId: number, matchId: number) {
+		if (newState === true) {
+			return this.markFavourite(userId, matchId);
+		} else {
+			return this.removeFavourite(userId, matchId);
+		}
+	}
+
+	private markFavourite(userId: number, matchId: number) {
 		let payload = {
-			seekerId: userId,
-			postId: matchId
+			userId: userId,
+			matchingUserId: matchId
 		};
 
 		return this.$http.post(API_URI + `/favorite`, payload).then((r) => {
 			console.log(`User ${userId} starred match post ${matchId}!`);
+		}).catch((e) => {
+			throw e;
 		});
 	}
 
-	unsetFavourite(userId: number, matchId: number) {
-		return this.$http.post(API_URI + `/favorite/delete?seekerId=${userId}&postId=${matchId}`, {}).then((r) => {
+	private removeFavourite(userId: number, matchId: number) {
+		let payload = {
+			userId: userId,
+			matchingUserId: matchId
+		};
+
+		return this.$http.post(API_URI + `/favorite/delete`, payload).then((r) => {
 			console.log(`User ${userId} un-starred match post ${matchId}!`);
+		}).catch((e) => {
+			throw e;
 		});
 	}
 }

@@ -35,22 +35,17 @@ class SeekerMatchPostDirectiveController {
 			this.mapCenter.lat = results[0].geometry.location.lat();
 			this.mapCenter.lng = results[0].geometry.location.lng();
 		});
-
-		// this.isStarred = this.content.isFavorite;
 	}
 
 	toggleStar() {
-		if (this.content.isFavorite) {
-			this.FavouriteService.unsetFavourite(this.AuthService.loggedUser.id, this.content.postId).then(() => {
-				// this.isStarred = false;
-				this.content.isFavorite = false;
-			});
-		} else {
-			this.FavouriteService.setFavourite(this.AuthService.loggedUser.id, this.content.postId).then(() => {
-				// this.isStarred = true;
-				this.content.isFavorite = true;
-			});
-		}
+		let currentState = this.content.isFavorite;
+
+		this.content.isFavorite = !currentState;
+		this.FavouriteService.setFavourite(!currentState, this.AuthService.loggedUser.id, this.content.user.id)
+		.catch((e) => {
+			console.log('catch seeker');
+			this.content.isFavorite = currentState;
+		});
 	}
 
 	nextSlide() {
@@ -80,6 +75,7 @@ class SeekerMatchPostDirectiveController {
 
 		this.MessageService.sendMessage(this.AuthService.loggedUser.id, to, this.matchMessage).then(() => {
 			this.messageStatus = MessageStatus.SENT;
+			this.content.hasConversation = true;
 		});
 	}
 }

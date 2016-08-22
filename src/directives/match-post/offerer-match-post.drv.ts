@@ -8,7 +8,7 @@ class OffererMatchPostDirectiveController {
 	matchIsVisible: boolean = true;
 	messagingIsVisible: boolean = false;
 
-	constructor(NgMap, private GeoCoder, private AuthService, private MessageService) {
+	constructor(NgMap, private GeoCoder, private AuthService, private MessageService, private FavouriteService) {
 
 	}
 
@@ -17,6 +17,7 @@ class OffererMatchPostDirectiveController {
 
 		this.MessageService.sendMessage(this.AuthService.loggedUser.id, to, this.matchMessage).then(() => {
 			this.messageStatus = MessageStatus.SENT;
+			this.content.hasConversation = true;
 		});
 	}
 
@@ -26,6 +27,16 @@ class OffererMatchPostDirectiveController {
 
 	unhide() {
 		this.matchIsVisible = true;
+	}
+
+	toggleStar() {
+		let currentState = this.content.isFavorite;
+
+		this.content.isFavorite = !currentState;
+		this.FavouriteService.setFavourite(!currentState, this.AuthService.loggedUser.id, this.content.user.id)
+		.catch((e) => {
+			this.content.isFavorite = currentState;
+		});
 	}
 
 	showMessaging() {

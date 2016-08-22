@@ -48,8 +48,8 @@
 			</div>
 
 			<div class="match-apartment" ng-show="ctrl.currentSlide === 'apartmentImage'">
-				<div class="match-apartment-image">
-					<img ng-src="{{ ctrl.content.apartment.photoUrl || './assets/images/user-photo-placeholder.png' }}"/>
+				<div class="match-apartment-image" ng-class="{ 'no-image': !ctrl.content.apartment.photoUrl }">
+					<img ng-src="{{ ctrl.content.apartment.photoUrl || './assets/images/apartment-photo-placeholder.png' }}"/>
 				</div>
 				<div class="match-apartment-details">
 					<h4 class="match-apartment-description">{{ ctrl.content.apartment.size }}sqm with {{ ctrl.content.apartment.totalRooms }} Rooms ({{ ctrl.content.apartment.freeRooms }} Available) and {{ ctrl.content.apartment.totalRoomates}} Roommates total. <span ng-if="ctrl.content.apartment.approximateExpences > 0">Expences: {{ ctrl.content.apartment.approximateExpences }}</span></h4>
@@ -62,8 +62,8 @@
 			</div>
 
 			<div class="match-room" ng-show="ctrl.currentSlide === 'roomImage'">
-				<div class="match-room-image">
-					<img ng-src="{{ ctrl.content.room.photoUrl || './assets/images/user-photo-placeholder.png' }}"/>
+				<div class="match-room-image" ng-class="{ 'no-image': !ctrl.content.apartment.photoUrl }">
+					<img ng-src="{{ ctrl.content.room.photoUrl || './assets/images/apartment-photo-placeholder.png' }}"/>
 				</div>
 				<div class="match-room-details">
 					<h4 class="match-room-description">Room is {{ ctrl.content.room.size }}sqm.</h4>

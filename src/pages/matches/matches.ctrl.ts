@@ -8,7 +8,7 @@ class MatchesController {
 
 	filters: any = {
 		starred: 'All',
-		contaced: 'All',
+		contacted: 'All',
 	};
 
 	constructor (private $scope: ng.IScope, private $http: ng.IHttpService, private $stateParams, private AuthService, private MatchService, private $state) {
@@ -26,6 +26,7 @@ class MatchesController {
 					this.showMatchesForOfferer = true;
 					MatchService.getOffererMatches(AuthService.loggedUser.id).then((matches: OffererMatch[]) => {
 						this.matchesArray = matches;
+						this.$scope.$applyAsync();
 						if (this.matchesArray.length < 1) {
 							this.hasNoMatches = true;
 						}

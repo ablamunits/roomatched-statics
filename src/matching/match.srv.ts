@@ -34,8 +34,9 @@ class MatchServiceProvider {
 
 			return data.map((responseObject) => {
 				return {
-					preferences: responseObject.preferences,
 					matchPercentage: responseObject.matchPercentage,
+					isFavorite: responseObject.isFavorite,
+					hasConversation: responseObject.hasConversation,
 					user: <User>{
 						id: responseObject.user.id,
 						type: UserType.Seeker,
@@ -44,6 +45,7 @@ class MatchServiceProvider {
 						sex: responseObject.user.sex,
 						photoUrl: responseObject.user.photoUrl
 					},
+					preferences: responseObject.preferences
 				};
 			});
 		});
