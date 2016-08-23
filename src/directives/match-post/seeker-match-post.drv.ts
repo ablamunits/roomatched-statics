@@ -29,7 +29,7 @@ class SeekerMatchPostDirectiveController {
 	private postSlides = ['roomImage', 'apartmentImage', 'map', 'messaging'];
 	currentSlide = this.postSlides[0];
 
-	constructor(NgMap, private GeoCoder, private AuthService, private MessageService, private FavouriteService) {
+	constructor(NgMap, private GeoCoder, private AuthService, private MessageService, private FavouriteService, private ngDialog) {
 		let locationString = `${this.content.apartment.address}, ${this.content.apartment.city}, Israel`;
 		this.GeoCoder.geocode({ address: locationString, region: 'IL' }).then((results) => {
 			this.mapCenter.lat = results[0].geometry.location.lat();
@@ -77,6 +77,15 @@ class SeekerMatchPostDirectiveController {
 			this.messageStatus = MessageStatus.SENT;
 			this.content.hasConversation = true;
 		});
+	}
+
+	openImageModal(imageUrl: string) {
+		// Smelly way to check if im about to open a placeholder
+		if (imageUrl.indexOf('./assets') > -1) {
+			return;
+		}
+
+		this.ngDialog.open({ plain: true, width: '600px', template: `<img src="${imageUrl}"></img>`, className: 'ngdialog-theme-plain roomatched-image-modal' });
 	}
 }
 

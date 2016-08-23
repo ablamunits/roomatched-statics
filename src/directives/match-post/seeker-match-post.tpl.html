@@ -48,7 +48,7 @@
 			</div>
 
 			<div class="match-apartment" ng-show="ctrl.currentSlide === 'apartmentImage'">
-				<div class="match-apartment-image" ng-class="{ 'no-image': !ctrl.content.apartment.photoUrl }">
+				<div class="match-apartment-image" ng-class="{ 'no-image': !ctrl.content.apartment.photoUrl }" ng-click="ctrl.openImageModal(ctrl.content.apartment.photoUrl)">
 					<img ng-src="{{ ctrl.content.apartment.photoUrl || './assets/images/apartment-photo-placeholder.png' }}"/>
 				</div>
 				<div class="match-apartment-details">
@@ -62,7 +62,7 @@
 			</div>
 
 			<div class="match-room" ng-show="ctrl.currentSlide === 'roomImage'">
-				<div class="match-room-image" ng-class="{ 'no-image': !ctrl.content.apartment.photoUrl }">
+				<div class="match-room-image" ng-class="{ 'no-image': !ctrl.content.room.photoUrl }" ng-click="ctrl.openImageModal(ctrl.content.room.photoUrl)">
 					<img ng-src="{{ ctrl.content.room.photoUrl || './assets/images/apartment-photo-placeholder.png' }}"/>
 				</div>
 				<div class="match-room-details">

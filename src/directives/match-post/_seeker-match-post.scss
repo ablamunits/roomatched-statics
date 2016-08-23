@@ -159,10 +159,21 @@
 					height: 400px;
 					overflow: hidden;
 
+					&:not(.no-image) {
+						cursor: pointer;	
+					}
+
 					img {
 						width: 100%;
 						position: absolute;
 						bottom: 0;
+						transition: all .2s ease;
+					}
+
+					&:hover {
+						img {
+							transform: scale(1.10);
+						}
 					}
 
 					&.no-image {
