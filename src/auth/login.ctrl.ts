@@ -20,6 +20,7 @@ class LoginController {
 		this.AuthService.logout(() => {
 			this.isLoggedIn = false;
 			this.loggedUser = null;
+			this.$scope.$apply();
 			this.$state.go('home');
 		});
 	}

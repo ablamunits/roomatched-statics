@@ -91,10 +91,15 @@ $green-confirm: rgb(128, 198, 115);
 				margin: 0;
 				padding: 5px 0;
 				color: $black;
+				display: inline;
+			}
 
-				.typeit {
-					color: $light-red;
-				}
+			.typeit {
+				color: $red;
+				width: 100%;
+				letter-spacing: 1px;
+				//font-size: 42px;
+				font-weight: bolder;
 			}
 
 		}
