@@ -65,32 +65,46 @@ class HomeController {
 	};
 
 	registerButtonClick() {
-		FB.login((response: any) => {
-			FB.api('/me', {
-				fields: 'first_name,last_name,email,gender,birthday,picture.width(500).height(500),likes,friends'
-			}, (response: any) => {
-				if (!response.error) {
-					this.newUser.facebookId = response.id;
-					this.newUser.firstName = response.first_name;
-					this.newUser.lastName = response.last_name;
-					this.newUser.sex = response.gender;
-					this.newUser.yearOfBirth = (new Date(response.birthday)).getUTCFullYear() || null;
-					this.newUser.photoUrl = response.picture.data.url;
+		this.registrationHasErrors = false;
 
-					if (response.friends) {
-						this.newUser.facebookFriends = response.friends.data.map(d => d.id);
-					} else {
-						this.newUser.facebookFriends = [];
-					}
+		if (this.isUserInputValid()) {
+			FB.login((response: any) => {
+				FB.api('/me', {
+					fields: 'first_name,last_name,email,gender,birthday,picture.width(500).height(500),likes,friends'
+				}, (response: any) => {
+					if (!response.error) {
+						this.newUser.facebookId = response.id;
+						this.newUser.firstName = response.first_name;
+						this.newUser.lastName = response.last_name;
+						this.newUser.sex = response.gender;
+						this.newUser.yearOfBirth = (new Date(response.birthday)).getUTCFullYear() || null;
+						this.newUser.photoUrl = response.picture.data.url;
 
-					if (this.isSeekerRegistration) {
-						this.registerAsSeeker();
-					} else if (this.isOffererRegistration) {
-						this.registerAsOfferer();
+						if (response.friends) {
+							this.newUser.facebookFriends = response.friends.data.map(d => d.id);
+						} else {
+							this.newUser.facebookFriends = [];
+						}
+
+						if (this.isSeekerRegistration) {
+							this.registerAsSeeker();
+						} else if (this.isOffererRegistration) {
+							this.registerAsOfferer();
+						}
 					}
-				}
-			});
-		}, {scope: 'user_birthday, user_friends' });
+				});
+			}, {scope: 'user_birthday, user_friends' });
+		} else {
+			this.registrationHasErrors = true;
+		}
+	}
+
+	private isUserInputValid() {
+		if (this.isSeekerRegistration) {
+			return true; // its just numbers ...
+		} else if (this.isOffererRegistration) {
+			return (/^[-\'\sa-zA-Z0-9]*$/).test(this.offererApartmentDetails.address);
+		}
 	}
 
 	private registerAsSeeker() {

@@ -35,7 +35,7 @@
 		</ul>
 	</div>
 
-	<div class="container registration-container">
+	<div class="container registration-container" ng-form name="userRegister">
 		<div class="register register-seeker" ng-show="home.isSeekerRegistration">
 			<h3>Looking for a room?</h3>
 			<hr>
@@ -89,7 +89,7 @@
 		<div ng-show="home.isSeekerRegistration || home.isOffererRegistration">
 			<h3>You are almost ready to get Roomatched!</h3>
 			<p>Confirm your registration with Facebook to help us hook you up with more genuine results.</p>
-			<form ng-submit="home.registerButtonClick()" name="userRegister">
+			<form ng-submit="home.registerButtonClick()">
 				<div>
 					<input type="submit" class="register-button" value="Sign up with Facebook"/>
 				</div>
