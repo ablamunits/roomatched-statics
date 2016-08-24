@@ -13,7 +13,7 @@ class InboxController {
 	isPolling: boolean = false;
 	pollingPromise: any;
 
-	constructor (private MessageService, private AuthService, private $state, private $interval) {
+	constructor (private MessageService, private AuthService, private $state, private $interval, private $scope) {
 		AuthService.onAuthComplete(() => {
 			if (AuthService.userIsLoggedIn) {
 				this.myUserId = AuthService.loggedUser.id;
@@ -25,6 +25,11 @@ class InboxController {
 			} else {
 				this.$state.go('home');
 			}
+		});
+
+		$scope.$on('$stateChangeStart', () => {
+			console.log('should stop polling now ...');
+			this.stopMessagePolling();
 		});
 	}
 
@@ -93,7 +98,10 @@ class InboxController {
 	}
 
 	private stopMessagePolling() {
-		this.$interval.cancel(this.pollingPromise);
+		if (this.pollingPromise) {
+			this.$interval.cancel(this.pollingPromise);
+		}
+
 		this.isPolling = false;
 	}
 };
