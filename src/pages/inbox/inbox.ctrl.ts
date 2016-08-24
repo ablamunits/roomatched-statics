@@ -31,6 +31,13 @@ class InboxController {
 			console.log('should stop polling now ...');
 			this.stopMessagePolling();
 		});
+
+		$scope.$watch('inbox.visibleConversationContent', (newVal, oldVal) => {
+			if (newVal && oldVal && newVal.length !== oldVal.length) {
+				console.log('doing conversation scroll!');
+				this.doConversationContentScroll();
+			}
+		});
 	}
 
 	toggleConversation(conversationId: number) {
@@ -76,8 +83,15 @@ class InboxController {
 		this.MessageService.sendMessage(this.myUserId, this.visibleConversation.userId, messageCopy).then(() => {
 			this.MessageService.getConversationContentById(this.visibleConversation.conversationId).then(content => {
 				this.visibleConversationContent = content;
+				this.doConversationContentScroll();
 			});
 		});
+	}
+
+	private doConversationContentScroll() {
+		let $conv = $('.visible-conversation .conversation-message-list');
+
+		$conv.animate({ scrollTop: $conv[0].scrollHeight}, 1000);
 	}
 
 	private resetVisibleConversation() {

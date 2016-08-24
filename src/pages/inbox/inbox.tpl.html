@@ -13,7 +13,7 @@
 							<p class="conversation-user-name">{{ conversation.firstName }} {{ conversation.lastName }}</p>
 						</div>
 					</div>
-					<div class="conversation-content" ng-if="inbox.visibleConversation.conversationId === conversation.conversationId">
+					<div class="conversation-content" ng-if="inbox.visibleConversation.conversationId === conversation.conversationId" ng-class="{'visible-conversation': inbox.visibleConversation.conversationId === conversation.conversationId}">
 						<ul class="conversation-message-list" ng-show="inbox.visibleConversationContent">
 							<li ng-repeat="message in inbox.visibleConversationContent" class="conversation-message" ng-class="{ 'right-message' : message.from === inbox.myUserId }">
 								<div class="message-content-wrapper">
