@@ -26,6 +26,14 @@ class IconSetServiceProvider {
 		preferNot: -1,
 		noGo: -2
 	};
+
+	public scoreToTitle = {
+		'2': 'Very Important',
+		'1': 'Important',
+		'0': 'Neutral',
+		'-1': 'Prefer not',
+		'-2': 'No go'
+	};
 }
 
 roomatchedApp.service('IconSet', IconSetServiceProvider);

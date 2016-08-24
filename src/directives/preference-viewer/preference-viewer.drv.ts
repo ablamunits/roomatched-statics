@@ -3,11 +3,13 @@ class PreferenceViewerDirectiveController {
 	preferenceTitles: any;
 	preferenceIcons: any;
 	scoreNameToValue: any;
+	scoreToTitle: any;
 
 	constructor(IconSet) {
 		this.preferenceTitles = IconSet.preferenceTitles;
 		this.preferenceIcons = IconSet.preferenceIcons;
 		this.scoreNameToValue = IconSet.scoreNameToValue;
+		this.scoreToTitle = IconSet.scoreToTitle;
 	}
 }
 
