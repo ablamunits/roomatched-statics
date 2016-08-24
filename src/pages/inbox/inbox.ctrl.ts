@@ -53,6 +53,7 @@ class InboxController {
 		})[0];
 
 		this.visibleConversation = requestedConversation;
+		this.doActiveConversationScroll();
 
 		this.MessageService.getConversationContentById(conversationId).then(content => {
 			this.visibleConversationContent = content;
@@ -92,6 +93,12 @@ class InboxController {
 		let $conv = $('.visible-conversation .conversation-message-list');
 
 		$conv.animate({ scrollTop: $conv[0].scrollHeight}, 1000);
+	}
+
+	private doActiveConversationScroll() {
+		// let $conv = $('.conversation-item.active');
+		//
+		// $('body').animate({ scrollTop: $conv[0].scrollHeight}, 1000);
 	}
 
 	private resetVisibleConversation() {
