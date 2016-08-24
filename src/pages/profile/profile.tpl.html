@@ -15,10 +15,11 @@
 			</div>
 			<div class="user-info">
 				<p>You are registered as an apartment {{ profile.user.type | typeToString }}.</p>
+				<div class="save-success-message" ng-show="profile.isSuccessMessageVisible"><i class="fa fa-check"></i> Your profile has been updated.</div>
 				<ul class="user-info-option-list">
 					<li class="user-info-option">
 						<a ng-click="profile.showPreferenceSelector()">
-							<span class="icon icon-arrow" ng-include="'assets/icons/arrow-down.svg'"></span>
+							<span class="icon icon-arrow" ng-include="'assets/icons/arrow-down.svg'" ng-class="{ 'open': profile.openSettings.preferences }"></span>
 							My Preferences
 						</a>
 						<div class="form-section user-preferences" ng-if="profile.openSettings.preferences && profile.preferences">
@@ -43,7 +44,7 @@
 					</li>
 					<li class="user-info-option">
 						<a ng-click="profile.showSettings()">
-							<span class="icon icon-arrow" ng-include="'assets/icons/arrow-down.svg'"></span>
+							<span class="icon icon-arrow" ng-include="'assets/icons/arrow-down.svg'" ng-class="{ 'open': profile.openSettings.settings }"></span>
 							My Settings
 						</a>
 						<div class="form-section user-settings" ng-if="profile.openSettings.settings && profile.userSettings">
@@ -58,7 +59,7 @@
 					</li>
 					<li class="user-info-option" ng-if="(profile.user.type | typeToString) === 'Offerer'">
 						<a ng-click="profile.showRoomOffering()">
-							<span class="icon icon-arrow" ng-include="'assets/icons/arrow-down.svg'"></span>
+							<span class="icon icon-arrow" ng-include="'assets/icons/arrow-down.svg'" ng-class="{ 'open': profile.openSettings.roomPost }"></span>
 							My Room Offering
 						</a>
 						<div class="user-details" ng-if="profile.openSettings.roomPost && profile.apartmentDetails && profile.roomDetails">

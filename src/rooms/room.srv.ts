@@ -4,7 +4,7 @@ class RoomServiceProvider {
 
 	updateRoom(id: number, room: Room) {
 		return this.$http.post(API_URI + `/room/${id}`, room).then((r) => {
-			console.log('room update ok?');
+			console.log('Room updated');
 		});
 	}
 }

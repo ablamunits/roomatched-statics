@@ -13,7 +13,7 @@ class ApartmentServiceProvider {
 
 	updateApartment(id: number, apartment: Apartment) {
 		return this.$http.post(API_URI + `/apartment/${id}`, apartment).then((r) => {
-			console.log('apt update ok?');
+			console.log('Apartment updated.');
 		});
 	}
 }

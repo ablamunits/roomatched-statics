@@ -18,9 +18,11 @@ class ProfileController {
 		roomPost: false
 	};
 
+	isSuccessMessageVisible: boolean = false;
+
 	userFriends: FBFriend[];
 
-	constructor (private $scope, private AuthService, private PreferenceService, private UserSettingsService, private ApartmentService, private RoomService, private $state) {
+	constructor (private $scope, private AuthService, private PreferenceService, private UserSettingsService, private ApartmentService, private RoomService, private $state, private $timeout) {
 		AuthService.onAuthComplete(() => {
 			if (AuthService.userIsLoggedIn) {
 				this.user = AuthService.loggedUser;
@@ -50,10 +52,17 @@ class ProfileController {
 		});
 	}
 
-	private closeAllSettings() {
+	private closeAllSettings(displaySuccessMessage: boolean = false) {
 		angular.forEach(this.openSettings, (i, key) => {
 			this.openSettings[key] = false;
 		});
+
+		if (displaySuccessMessage) {
+			this.isSuccessMessageVisible = true;
+			this.$timeout(() => {
+				this.isSuccessMessageVisible = false;
+			}, 3000);
+		}
 	}
 
 	showPreferenceSelector() {
@@ -68,7 +77,7 @@ class ProfileController {
 
 	updatePreferences() {
 		this.PreferenceService.updateUserPreference(this.user.id, this.user.type, this.preferences, this.mostValuablePreferences, this.details).then(() => {
-			console.log('update ok?');
+			this.closeAllSettings(true);
 		});
 	}
 
@@ -82,7 +91,7 @@ class ProfileController {
 
 	updateSettings() {
 		this.UserSettingsService.updateUserSettings(this.user.id, this.userSettings).then(() => {
-			console.log('settings update ok?');
+			this.closeAllSettings(true);
 		});
 	}
 
@@ -95,8 +104,11 @@ class ProfileController {
 	}
 
 	updateRoomOffering() {
-		this.ApartmentService.updateApartment(this.apartmentDetails.apartmentId, this.apartmentDetails);
-		this.RoomService.updateRoom(this.roomDetails.roomId, this.roomDetails);
+		this.ApartmentService.updateApartment(this.apartmentDetails.apartmentId, this.apartmentDetails).then(() => {
+			this.RoomService.updateRoom(this.roomDetails.roomId, this.roomDetails).then(() => {
+				this.closeAllSettings(true);
+			});
+		});
 	}
 };
 
