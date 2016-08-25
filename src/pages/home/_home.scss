@@ -37,6 +37,7 @@ $green-confirm: rgb(128, 198, 115);
 			transition: background-image 1s ease-in-out;
 			background-color: #525252;
 			background-blend-mode: overlay;
+			background-attachment: fixed;
 
 			.user-type-buttons-wrapper {
 				width: 100%;

@@ -1,4 +1,24 @@
 .inbox-view {
+	.strip {
+		@include strip(400px, './assets/images/strip-inbox.jpg', #6f6f6f);
+		background-position-y: -100px;
+
+		h2 {
+			position: absolute;
+			bottom: 10px;
+			width: 100%;
+			text-align: center;
+		}
+
+		h3 {
+			position: absolute;
+			bottom: 10px;
+			margin: 0;
+			text-align: center;
+			width: 100%;
+		}
+	}
+
 	.conversations-list {
 		list-style: none;
 		padding: 0;

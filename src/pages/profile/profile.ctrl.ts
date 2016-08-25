@@ -40,7 +40,7 @@ class ProfileController {
 	}
 
 	private getUserFriends() {
-		FB.api('/me/friends', {fields: 'first_name,picture'}, (response: any) => {
+		FB.api('/me/friends', {fields: 'first_name,picture.width(500).height(500)'}, (response: any) => {
 			this.userFriends = response.data.map(obj => {
 				return {
 					name: obj.first_name,
@@ -66,6 +66,11 @@ class ProfileController {
 	}
 
 	showPreferenceSelector() {
+		if (this.openSettings.preferences) {
+			this.closeAllSettings();
+			return;
+		}
+
 		this.openSetting('preferences');
 		this.PreferenceService.getUserPreference(this.user.id, this.user.type).then((detailedPreferences) => {
 			console.log(detailedPreferences);
@@ -82,6 +87,11 @@ class ProfileController {
 	}
 
 	showSettings() {
+		if (this.openSettings.settings) {
+			this.closeAllSettings();
+			return;
+		}
+
 		this.openSetting('settings');
 		this.UserSettingsService.getUserSettings(this.user.id).then((userSettings) => {
 			this.userSettings = userSettings;
@@ -96,6 +106,11 @@ class ProfileController {
 	}
 
 	showRoomOffering() {
+		if (this.openSettings.roomPost) {
+			this.closeAllSettings();
+			return;
+		}
+
 		this.openSetting('roomPost');
 		this.ApartmentService.getApartmentDetailsByOffererId(this.user.id).then((apartmentDetailsResponse) => {
 			this.apartmentDetails = apartmentDetailsResponse.apartmentDetails;

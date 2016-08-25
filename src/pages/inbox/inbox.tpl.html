@@ -1,9 +1,13 @@
 <div class="app-view inbox-view">
+	<div class="strip">
+		<h2>Inbox</h2>
+		<h3>Your conversations with awesome matches</h3>
+	</div>
 	<div class="container">
 		<div>
-			<br>
+			<!-- <br>
 			<h3>Inbox</h3>
-			<hr>
+			<hr> -->
 			<p class="inbox-description">Communication with people you are interested in will appear here. Go ahead and get <a ui-sref="matches">matched</a></p>
 			<ul class="conversations-list" ng-class="{ 'all-closed' : !inbox.visibleConversation }">
 				<li ng-repeat="conversation in inbox.conversations">

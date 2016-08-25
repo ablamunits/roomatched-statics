@@ -1,18 +1,23 @@
 <div class="app-view profile-view" ng-cloak>
-	<div class="container">
-		<div>
-		</br>
-		<h3>Hi {{ profile.user.firstName }}, this is your profile page.</h3>
-		<hr>
-		<p>You can review and update your personal settings on this page.</p>
-		<div class="user-container">
+	<div class="strip">
+		<h2>Hi {{ profile.user.firstName}}</h2>
+		<h3>You are a {{ profile.user.type | typeToString }}. Review and update your personal settings here.</h3>
+		<div class="user-image-and-friends">
 			<div class="user-image">
 				<img ng-src="{{ profile.user.photoUrl || './assets/images/user-photo-placeholder.png' }}" />
-				<div class="edit-image-icon">
-					<p><b>{{ profile.user.firstName }} {{ profile.user.lastName}}</b></p>
-					<p>{{ profile.user.type | typeToString }}</p>
-				</div>
 			</div>
+			<div class="user-friends" ng-if="profile.userFriends.length > 0">
+				<ul class="user-friends-list">
+					<li class="user-friend" ng-repeat="friend in profile.userFriends | limitTo: 4">
+						<img style="width: 50px; height: 50px; border-radius: 50%" ng-src="{{ friend.picture }}" title="{{ friend.name }}"></img>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div>
+		<div class="user-container">
 			<div class="user-info">
 				<p>You are registered as an apartment {{ profile.user.type | typeToString }}.</p>
 				<div class="save-success-message" ng-show="profile.isSuccessMessageVisible"><i class="fa fa-check"></i> Your profile has been updated.</div>
@@ -74,14 +79,6 @@
 								<apartment-details-form ng-model="profile.apartmentDetails"></apartment-details-form>
 							</div>
 						</div>
-					</li>
-				</ul>
-			</div>
-			<div class="user-friends" ng-if="profile.userFriends.length > 0">
-				<span>Your friends on Roomatched:</span>
-				<ul class="user-friends-list">
-					<li class="user-friend" ng-repeat="friend in profile.userFriends | limitTo: 4">
-						<img style="width: 50px; height: 50px; border-radius: 50%" ng-src="{{ friend.picture }}" title="{{ friend.name }}"></img>
 					</li>
 				</ul>
 			</div>

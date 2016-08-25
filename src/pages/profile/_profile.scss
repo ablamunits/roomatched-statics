@@ -36,36 +36,92 @@
 }
 
 .profile-view {
+	.strip {
+		@include strip(400px, './assets/images/strip-profile.jpg', #6f6f6f);
+		background-position-y: -400px;
+		text-align: center;
+
+		h2 {
+			position: absolute;
+			bottom: 10px;
+			width: 100%;
+			text-align: center;
+		}
+
+		h3 {
+			position: absolute;
+			bottom: 10px;
+			margin: 0;
+			text-align: center;
+			width: 100%;
+		}
+
+		.user-image-and-friends {
+			@include vertical-align();
+
+			.user-image {
+				@include shadow();
+				overflow: hidden;
+				width: 150px;
+				height: 150px;
+				border-radius: 50%;
+				margin-bottom: 5px;
+				display: inline-block;
+				position: relative;
+
+				img {
+					width: 100%;
+					height: auto;
+				}
+			}
+
+			.user-friends {
+				margin: 5px;
+
+				.user-friends-list {
+					margin: 0;
+					list-style: none;
+					padding: 0;
+
+					.user-friend {
+						display: inline;
+						margin: 0 3px;
+					}
+				}
+			}
+		}
+	}
+
 	.user-container {
 		position: relative;
 		height: 100%;
 
-		.user-image {
-			@include shadow();
-			overflow: hidden;
-			width: 300px;
-			height: 300px;
-			border-radius: 50%;
-			display: inline-block;
-			position: relative;
-
-			img {
-				width: 100%;
-				height: auto;
-			}
-
-			.edit-image-icon {
-				background-color: rgba($white, .9);
-				font-size: 20px;
-				color: $red;
-				position: absolute;
-				bottom: 0;
-				width: 100%;
-				text-align: center;
-				height: 70px;
-				line-height: 5px;
-			}
-		}
+		//.user-image {
+		//	@include shadow();
+		//	overflow: hidden;
+		//	width: 300px;
+		//	height: 300px;
+		//	border-radius: 50%;
+		//	display: inline-block;
+		//	position: relative;
+		//
+		//	img {
+		//		width: 100%;
+		//		height: auto;
+		//	}
+		//
+		//	.edit-image-icon {
+		//		background-color: rgba($white, .9);
+		//		font-size: 20px;
+		//		color: $red;
+		//		position: absolute;
+		//		bottom: 0;
+		//		width: 100%;
+		//		text-align: center;
+		//		height: 70px;
+		//		line-height: 5px;
+		//	}
+		//}
 
 		.user-info {
 			@include input-field();
@@ -134,20 +190,6 @@
 							transition: transform .3s linear;
 						}
 					}
-				}
-			}
-		}
-
-		.user-friends {
-			margin: 10px 0;
-			padding-left: 20px;
-
-			.user-friends-list {
-				list-style: none;
-				padding: 0;
-
-				.user-friend {
-					display: inline;
 				}
 			}
 		}

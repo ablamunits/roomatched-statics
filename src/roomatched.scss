@@ -46,6 +46,32 @@ $preference-score-2: $pref-red;
 	}
 }
 
+@mixin strip($height, $image-url, $color-overlay: #525252) {
+	@include shadow();
+	position: relative;
+	width: 100%;
+	background-image: url($image-url);
+	height: $height;
+	background-position: center;
+	background-size: cover;
+	transition: backgrond-image 1s ease-in-out;
+	background-color: $color-overlay;
+	background-blend-mode: overlay;
+	background-attachment: fixed;
+
+	h2 {
+		color: $white;
+		font-size: 42px;
+		text-shadow: 0 0 1px rgba(0,0,0,0.6)
+	}
+
+	h3 {
+		color: $white;
+		font-size: 24px;
+		text-shadow: 0 0 1px, rgba(0, 0, 0, 0.6);
+	}
+}
+
 @mixin no-select {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
