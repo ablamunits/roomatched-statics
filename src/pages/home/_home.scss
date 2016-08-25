@@ -31,10 +31,11 @@ $green-confirm: rgb(128, 198, 115);
 		width: 100%;
 
 		&.strip-home {
-			height: 400px;
-			background-image: url('./assets/images/strip.jpg');
+			height: 400;
 			background-position: center;
-			background-color: darken($white, 3%);
+			background-size: cover;
+			transition: background-image 1s ease-in-out;
+			background-color: #525252;
 			background-blend-mode: overlay;
 
 			.user-type-buttons-wrapper {
@@ -45,7 +46,9 @@ $green-confirm: rgb(128, 198, 115);
 				margin-top: 50px;
 
 				h2 {
-					color: $red;
+					color: $white;
+					font-size: 42px;
+					text-shadow: 0 0 1px rgba(0,0,0,0.6)
 				}
 
 				.button-seeking-for-room, .button-offering-a-room {

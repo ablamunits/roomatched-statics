@@ -1,7 +1,7 @@
 <div class="apartment-post-wrapper">
 	<div class="post-content">
 		<div class="post-image">
-			<img ng-src="{{ post.content.room.roomImage || './assets/images/apartment-photo-placeholder.png' }}"/>
+			<img ng-src="{{ post.content.room.photoUrl || './assets/images/apartment-photo-placeholder.png' }}"/>
 		</div>
 		<div class="post-details">
 			<p class="post-address">{{ post.content.apartment.address }}<span class="post-city"> {{ post.content.apartment.city }}</span></p>

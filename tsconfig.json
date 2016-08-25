@@ -19,6 +19,7 @@
         "src/common/cloudinary/cloudinary.srv.ts",
         "src/common/facebook-utils/fb-friend.i.ts",
         "src/common/icon-set.ts",
+        "src/common/strip-images.ts",
         "src/directives/apartment-details-form/apartment-details-form.drv.ts",
         "src/directives/apartment-post/apartment-post.drv.ts",
         "src/directives/match-post/offerer-match-post.drv.ts",

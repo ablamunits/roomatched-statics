@@ -1,6 +1,7 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 
 class HomeController {
+	currentStripImageSrc: string = '';
 	isSeekerRegistration: boolean = false;
 	isOffererRegistration: boolean = false;
 	registrationHasErrors: boolean = false;
@@ -15,7 +16,7 @@ class HomeController {
 		fromPrice: 1,
 		toPrice: 2500,
 		preferedCity: null,
-		preferedNumberOfRoomates: 2
+		preferedNumberOfRoomates: 3
 	};
 
 	offererApartmentDetails: Apartment = <Apartment>{};
@@ -24,7 +25,7 @@ class HomeController {
 
 	postList: Post[];
 
-	constructor (private $scope: ng.IScope, private $http: ng.IHttpService, private UserService: UserServiceProvider, $stateParams, private AuthService, PostService, private $state) {
+	constructor (private $scope: ng.IScope, private $http: ng.IHttpService, private UserService: UserServiceProvider, $stateParams, private AuthService, PostService, private $state, private StripImages, private $interval) {
 		PostService.init().then((posts) => this.postList = posts);
 
 		this.preferenceSelect = {
@@ -52,6 +53,8 @@ class HomeController {
 				this.postRegistrationRedirect();
 			}
 		});
+
+		this.startStripTransitions();
 	}
 
 	openSeekerRegister() {
@@ -151,6 +154,19 @@ class HomeController {
 				});
 			}
 		});
+	}
+
+	private startStripTransitions() {
+		if (!this.currentStripImageSrc) {
+			this.currentStripImageSrc = this.StripImages.Home[0];
+		}
+
+		this.$interval(() => {
+			let currentIndex = this.StripImages.Home.indexOf(this.currentStripImageSrc);
+			let totalImages = this.StripImages.Home.length;
+
+			this.currentStripImageSrc = this.StripImages.Home[(currentIndex + 1) % totalImages];
+		}, 5000);
 	}
 };
 

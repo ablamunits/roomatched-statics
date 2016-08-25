@@ -4,7 +4,7 @@
 </div>
 
 <div class="app-view home-view">
-	<div class="strip strip-home">
+	<div class="strip strip-home" ng-style="{'background-image': 'url(' + home.currentStripImageSrc + ')'}">
 		<div class="user-type-buttons-wrapper">
 
 			<h2>What are you up to?</h2>
@@ -55,7 +55,7 @@
 						<input floating-label min="1" type="number" ng-model="home.seekerRegistrationFields.fromPrice" placeholder="From price"/>
 						<input floating-label type="number" ng-model="home.seekerRegistrationFields.toPrice" placeholder="To price"/>
 					</div>
-					<input floating-label type="number" min="0"  ng-model="home.seekerRegistrationFields.preferedNumberOfRoomates" placeholder="Number of Roommates"/>
+					<input floating-label type="number" min="0"  ng-model="home.seekerRegistrationFields.preferedNumberOfRoomates" placeholder="Max. Number of Roommates"/>
 				</div>
 			</div>
 		</div>
