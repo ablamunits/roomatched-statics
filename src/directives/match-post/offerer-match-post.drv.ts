@@ -8,7 +8,7 @@ class OffererMatchPostDirectiveController {
 	matchIsVisible: boolean = true;
 	messagingIsVisible: boolean = false;
 
-	constructor(NgMap, private GeoCoder, private AuthService, private MessageService, private FavouriteService) {
+	constructor(NgMap, private GeoCoder, private AuthService, private MessageService, private FavouriteService, private ngDialog, private $scope) {
 
 	}
 
@@ -45,6 +45,14 @@ class OffererMatchPostDirectiveController {
 
 	hideMessaging() {
 		this.messagingIsVisible = false;
+	}
+
+	openUserModal() {
+		this.ngDialog.open({
+			template: './directives/match-post/match-user-modal.tpl.html',
+			scope: this.$scope,
+			className: 'ngdialog-theme-plain roomatched-image-modal'
+		});
 	}
 }
 

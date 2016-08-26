@@ -26,7 +26,7 @@
 		</round-progress>
 
 		<div class="match-user-and-address">
-			<div class="match-user-image">
+			<div class="match-user-image" ng-click="ctrl.openUserModal()">
 				<img ng-src="{{ ctrl.content.user.photoUrl }}" />
 			</div>
 			<p class="match-address"><span class="room-price">{{ ctrl.content.room.price }}&#8362</span>| {{ ctrl.content.apartment.address }}, {{ ctrl.content.apartment.city }}</p>

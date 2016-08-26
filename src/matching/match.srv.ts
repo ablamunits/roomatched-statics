@@ -14,13 +14,17 @@ class MatchServiceProvider {
 					apartment: responseObject.apartment,
 					isFavorite: responseObject.isFavorite,
 					hasConversation: responseObject.hasConversation,
+					isFacebookFriend: responseObject.isFacebookFriend,
+					isPerfectFavourite: responseObject.isPerfectFavourite,
+					mutualFriends: responseObject.mutualFriends,
 					user: {
 						id: responseObject.user.id,
 						type: UserType.Offerer,
 						firstName: responseObject.user.firstName,
 						lastName: responseObject.user.lastName,
 						sex: responseObject.user.sex,
-						photoUrl: responseObject.user.photoUrl
+						photoUrl: responseObject.user.photoUrl,
+						about: responseObject.user.about
 					},
 					preferences: responseObject.preferences
 				};
@@ -37,13 +41,17 @@ class MatchServiceProvider {
 					matchPercentage: responseObject.matchPercentage,
 					isFavorite: responseObject.isFavorite,
 					hasConversation: responseObject.hasConversation,
+					isFacebookFriend: responseObject.isFacebookFriend,
+					isPerfectFavourite: responseObject.isPerfectFavourite,
+					mutualFriends: responseObject.mutualFriends,
 					user: <User>{
 						id: responseObject.user.id,
 						type: UserType.Seeker,
 						firstName: responseObject.user.firstName,
 						lastName: responseObject.user.lastName,
 						sex: responseObject.user.sex,
-						photoUrl: responseObject.user.photoUrl
+						photoUrl: responseObject.user.photoUrl,
+						about: responseObject.user.about
 					},
 					preferences: responseObject.preferences
 				};

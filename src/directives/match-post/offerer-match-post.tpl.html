@@ -19,7 +19,7 @@
 				</round-progress>
 
 			<div class="match-user">
-				<div class="match-user-image">
+				<div class="match-user-image" ng-click="ctrl.openUserModal()">
 					<img ng-src="{{ ctrl.content.user.photoUrl }}" />
 				</div>
 				<div class="match-user-name-pref">
@@ -43,6 +43,7 @@
 			</div>
 		</div>
 
+		<div class="match-about" ng-if="ctrl.content.user.about">{{ ctrl.content.user.about }}</div>
 		<ul class="match-options">
 			<li class="option-star" ng-click="ctrl.toggleStar()">
 				<span ng-if="!ctrl.content.isFavorite"><i class="fa fa-star-o"></i> Star This</span>

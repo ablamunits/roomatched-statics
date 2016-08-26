@@ -182,6 +182,28 @@ $preference-score-2: $pref-red;
 	img {
 		width: 100%;
 	}
+
+	h3 {
+		font-family: $font-family;
+		color: $red !important;
+		margin: 20px 0;
+		font-size: 42px;
+	}
+
+	p {
+		color: $black !important;
+		font-family: $font-family;
+		margin: 0;
+
+		&:last-of-type {
+			margin-bottom: 10px;
+		}
+	}
+
+	.secondary-text {
+		color: $grey !important;
+		font-size: 14px;
+	}
 }
 
 $color-bg-main: $white;

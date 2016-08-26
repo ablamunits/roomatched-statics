@@ -18,6 +18,13 @@
 		line-height: 1.5em;
 	}
 
+	&:hover {
+		.match-options {
+			opacity: 1;
+			transition: opacity .2s linear;
+		}
+	}
+
 	.match-options {
 		position: absolute;
 		top: 0;
@@ -28,6 +35,8 @@
 		line-height: normal;
 		margin: 10px;
 		text-align: right;
+		opacity: 0;
+		transition: opacity .2s linear;
 		z-index: 1;
 
 		li {
@@ -113,6 +122,7 @@
 					left: 0;
 
 					img {
+						cursor: pointer;
 						border-radius: 50%;
 						max-width: 50px;
 					}
