@@ -1,0 +1,7 @@
+<div>
+	<h3>{{ ctrl.content.user.firstName }} {{ ctrl.content.user.lastName }}</h3>
+	<p ng-if="ctrl.content.user.about">{{ ctrl.content.user.about }}</p>
+	<p ng-if="ctrl.content.isFacebookFriend" class="secondary-text"><i class="fa fa-facebook"></i> You and {{ ctrl.content.user.firstName }} are Facebook friends</p>
+	<p ng-if="ctrl.content.mutualFriends.length" class="secondary-text"><i class="fa fa-user"></i> You and {{ ctrl.content.user.firstName }} have {{ ctrl.content.mutualFriends.length }} mutual friends who use Roomatched</p>
+	<img ng-src="{{ ctrl.content.user.photoUrl }}"></img>
+</div>
