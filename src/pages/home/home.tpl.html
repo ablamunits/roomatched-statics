@@ -74,15 +74,13 @@
 					</div>
 				</div>
 				<!-- <br> -->
+				<div class="form-section form-apartment">
+					<h3>Apartment Details</h3>
+					<apartment-details-form ng-model="home.offererApartmentDetails"></apartment-details-form>
+				</div>
 				<div class="form-section form-room">
 					<h3>Room Details</h3>
-					<rm-select ng-model="home.offererApartmentDetails.city" options="home.cityOptions"></rm-select>
-					<input floating-label size="100" type="text" ng-model="home.offererApartmentDetails.address" placeholder="Address"/>
 					<room-details-form ng-model="home.offererRoomDetails"></room-details-form>
-				</div>
-				<div class="form-section form-apartment">
-					<h3>Additional Apartment Details</h3>
-					<apartment-details-form ng-model="home.offererApartmentDetails"></apartment-details-form>
 				</div>
 			</div>
 		</div>

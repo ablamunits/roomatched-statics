@@ -1,8 +1,12 @@
 <div class="apartment-details-form">
 	<div class="apartment-form">
+		<rm-select ng-model="ctrl.apartmentDetails.city" options="ctrl.cityOptions"></rm-select>
+		<input floating-label size="100" type="text" ng-model="ctrl.apartmentDetails.address" placeholder="Address"/>
+		<br>
 		<input floating-label type="number" ng-model="ctrl.apartmentDetails.size" placeholder="Apartment size" floating-label/>
 		<input floating-label type="number" ng-model="ctrl.apartmentDetails.floor" placeholder="Floor Number"/>
 		<input floating-label type="number" ng-model="ctrl.apartmentDetails.totalRooms" placeholder="Total Rooms"/>
+		<br>
 		<input floating-label type="number" ng-model="ctrl.apartmentDetails.totalRoomates" placeholder="Total Roomates"/>
 		<input floating-label type="number" ng-model="ctrl.apartmentDetails.freeRooms" placeholder="Free rooms"/>
 		<input floating-label type="number" ng-model="ctrl.apartmentDetails.approximateExpences" placeholder="Approx. Expences"/>

@@ -1,5 +1,6 @@
 class ApartmentDetailsFormDirectiveController {
 	apartmentDetails: Apartment;
+	cityOptions: string[] = ['Tel-Aviv', 'Beer-Sheva', 'Jerusalem', 'Haifa'];
 
 	constructor(private CloudinaryService){};
 
