@@ -21,6 +21,36 @@ class IconSetServiceProvider {
 		nightLife: 'Nightly Lifestyle'
 	};
 
+	public apartmentIcons = {
+		isFurnished: './assets/icons/furniture.svg',
+		hasLivingRoom: './assets/icons/livingroom.svg',
+		isRenovated: './assets/icons/renovated2.svg',
+		hasElevator: './assets/icons/elevator.svg',
+		hasParking: './assets/icons/parking.svg',
+	};
+
+	public apartmentIconsTitles = {
+		isFurnished: 'Furnished Apartment',
+		hasLivingRoom: 'Living Room',
+		isRenovated: 'Renovated',
+		hasElevator: 'Elevator',
+		hasParking: 'Parking Available'
+	};
+
+	public roomIcons = {
+		isFurnished: './assets/icons/furniture.svg',
+		hasBalcony: './assets/icons/balcony.svg',
+		seperateBathroom: './assets/icons/bathroom.svg',
+		airConditioned: './assets/icons/air-conditioner.svg'
+	};
+
+	public roomIconsTitles = {
+		isFurnished: 'Furnished Room',
+		hasBalcony: 'Room With A Balcony',
+		seperateBathroom: 'Seperate Bathroom',
+		airConditioned: 'Air Conditioned Room'
+	};
+
 	public scoreNameToValue = {
 		veryImportant: 2,
 		important: 1,

@@ -1,6 +1,3 @@
-.apartment-post-wrapper {
-	//border-radius: 4px;
-}
 
 .apartment-post-wrapper .post-content {
 	background-color: $white;
@@ -31,6 +28,12 @@
 		.icon-wrapper {
 			display: inline-block;
 			margin: 0 3px;
+
+			@include tooltip($light-red, $white, bottom);
+
+			.tooltip {
+				bottom: -20px;
+			}
 
 			.icon {
 				@include icon();

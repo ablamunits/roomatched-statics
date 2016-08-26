@@ -58,6 +58,12 @@
 
 			.icon-wrapper {
 				display: inline-block;
+				position: relative;
+				@include tooltip($light-red, $white, bottom);
+
+				.tooltip {
+					bottom: -20px;
+				}
 			}
 
 			.icon {
@@ -160,7 +166,7 @@
 					overflow: hidden;
 
 					&:not(.no-image) {
-						cursor: pointer;	
+						cursor: pointer;
 					}
 
 					img {

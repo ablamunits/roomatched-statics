@@ -54,7 +54,8 @@
 				<div class="match-apartment-details">
 					<h4 class="match-apartment-description">{{ ctrl.content.apartment.size }}sqm with {{ ctrl.content.apartment.totalRooms }} Rooms ({{ ctrl.content.apartment.freeRooms }} Available) and {{ ctrl.content.apartment.totalRoomates}} Roommates total. <span ng-if="ctrl.content.apartment.approximateExpences > 0">Expences: {{ ctrl.content.apartment.approximateExpences }}</span></h4>
 					<ul class="apartment-icons">
-						<li class="icon-wrapper" ng-repeat="(icon, url) in ctrl.apartmentIcons" ng-if="ctrl.content.apartment[icon]">
+						<li class="icon-wrapper" ng-repeat="(icon, url) in ctrl.iconSet.apartmentIcons" ng-if="ctrl.content.apartment[icon]">
+							<span class="tooltip">{{ ctrl.iconSet.apartmentIconsTitles[icon] }}</span>
 							<span class="icon" ng-include="url"></span>
 						</li>
 					</ul>
@@ -68,7 +69,8 @@
 				<div class="match-room-details">
 					<h4 class="match-room-description">Room is {{ ctrl.content.room.size }}sqm.</h4>
 					<ul class="room-icons">
-						<li class="icon-wrapper" ng-repeat="(icon, url) in ctrl.roomIcons" ng-if="ctrl.content.room[icon]">
+						<li class="icon-wrapper" ng-repeat="(icon, url) in ctrl.iconSet.roomIcons" ng-if="ctrl.content.room[icon]">
+							<span class="tooltip">{{ ctrl.iconSet.roomIconsTitles[icon] }}</span>
 							<span class="icon" ng-include="url"></span>
 						</li>
 					</ul>

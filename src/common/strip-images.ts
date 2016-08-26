@@ -1,5 +1,5 @@
 class StripImagesServiceProvider {
-	public homeImages = [
+	private homeImages = [
 		'./assets/images/strip2.jpg',
 		'./assets/images/strip3.jpg',
 		'./assets/images/strip4.jpg',

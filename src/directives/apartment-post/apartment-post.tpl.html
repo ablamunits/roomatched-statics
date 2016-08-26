@@ -8,7 +8,8 @@
 
 			<p class="post-price">{{ post.content.room.price }}</p>
 			<ul class="apartment-icons">
-				<li class="icon-wrapper" ng-repeat="(icon, url) in post.apartmentIcons" ng-if="post.content.apartment[icon]">
+				<li class="icon-wrapper" ng-repeat="(icon, url) in post.iconSet.apartmentIcons" ng-if="post.content.apartment[icon]">
+					<span class="tooltip">{{ post.iconSet.apartmentIconsTitles[icon] }}</span>
 					<span class="icon" ng-include="url"></span>
 				</li>
 			</ul>

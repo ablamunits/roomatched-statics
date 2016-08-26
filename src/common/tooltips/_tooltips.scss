@@ -1,16 +1,55 @@
-// Important to Overide tooltip arrow color
+@mixin tooltip($color: $xlight-grey, $text-color: $white, $position: top) {
 
-tooltip {
-	display: inline-block !important;
-}
+	& {
+		&:hover {
+			.tooltip {
+				opacity: 1;
+				transition: opacity .2s linear;
+			}
 
-.pref-tooltip {
-	@include shadow();
-	background-color: $white;
-	color: $light-red;
-	top: 85px !important;
+			.icon {
+				transform: scale(1.2);
+				transition: transform .1s linear;
+			}
+		}
+	}
 
-	tip-arrow {
-		border-bottom-color: $white !important;
+	.tooltip {
+		@include shadow();
+		display: block;
+		opacity: 0;
+		position: absolute;
+		font-size: 12px;
+		line-height: 12px;
+		@if ($position == top) {
+			top: -30px;
+		} @else {
+			bottom: -30px;
+		}
+		background-color: $color;
+		color: $text-color;
+		border-radius: 3px;
+		padding: 5px;
+		white-space: nowrap;
+		transition: opacity .2s linear;
+		pointer-events: none;
+		z-index: 2;
+
+		&:before {
+			content: '';
+			display: block;
+			background-color: $color;
+			width: 7px;
+			height: 7px;
+			border-radius: 0;
+			position: absolute;
+			@if ($position == top) {
+				bottom: -2px;
+			} @else {
+				top: -2px
+			}
+			left: 10px;
+			transform: rotate(45deg);
+		}
 	}
 }
