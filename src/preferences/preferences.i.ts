@@ -12,6 +12,7 @@ interface Preferences<T> {
 	animals: T;
 	musicianFriendly: T;
 	gayFriendly: T;
+	nightLife: T;
 };
 
 interface MostValuablePreferences {

@@ -6,7 +6,8 @@ class IconSetServiceProvider {
 		sharedExpences: './assets/icons/money.svg',
 		animals: './assets/icons/animals.svg',
 		gayFriendly: './assets/icons/gay.svg',
-		musicianFriendly: './assets/icons/musician.svg'
+		musicianFriendly: './assets/icons/musician.svg',
+		nightLife: './assets/icons/nightLife.svg'
 	};
 
 	public preferenceTitles = {
@@ -16,7 +17,8 @@ class IconSetServiceProvider {
 		sharedExpences: 'Shared Expences',
 		animals: 'Animal Friendly',
 		gayFriendly: 'Gay Friendly',
-		musicianFriendly: 'Musician Friendly'
+		musicianFriendly: 'Musician Friendly',
+		nightLife: 'Nightly Lifestyle'
 	};
 
 	public scoreNameToValue = {

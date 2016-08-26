@@ -96,43 +96,13 @@
 		position: relative;
 		height: 100%;
 
-		//.user-image {
-		//	@include shadow();
-		//	overflow: hidden;
-		//	width: 300px;
-		//	height: 300px;
-		//	border-radius: 50%;
-		//	display: inline-block;
-		//	position: relative;
-		//
-		//	img {
-		//		width: 100%;
-		//		height: auto;
-		//	}
-		//
-		//	.edit-image-icon {
-		//		background-color: rgba($white, .9);
-		//		font-size: 20px;
-		//		color: $red;
-		//		position: absolute;
-		//		bottom: 0;
-		//		width: 100%;
-		//		text-align: center;
-		//		height: 70px;
-		//		line-height: 5px;
-		//	}
-		//}
-
 		.user-info {
 			@include input-field();
 			p {
 				margin: 0;
 			}
 
-			display: inline;
-			position: absolute;
 			padding: 20px 20px 20px 30px;
-			height: 100%;
 
 			.user-info-option-list {
 				list-style: none;

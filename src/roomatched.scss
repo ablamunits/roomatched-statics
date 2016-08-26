@@ -125,12 +125,6 @@ $preference-score-2: $pref-red;
 		&:focus {
 			background-color: lighten($xlight-red, 10%);
 		}
-
-		//+ label {
-		//	position: absolute;
-		//	left: 0;
-		//}
-		// TODO: Input field poppy label, if it has one ..
 	}
 }
 
@@ -162,7 +156,7 @@ $preference-score-2: $pref-red;
 	max-width: 100%;
 
 	.ngdialog-overlay {
-		background: rgba($white, .85);
+		background: rgba(darken(#777777, 50%), .85);
 	}
 
 	.ngdialog-open {
@@ -197,10 +191,10 @@ $header-height: 60px;
 body {
 	margin: 0;
 	font-family: $font-family;
+	letter-spacing: .05em;
 	font-weight: 400;
 	color: $color-text-main;
 	background-color: $color-bg-main;
-	//height: 100%;
 
 	.roomatched-image-modal {
 		@include roomatched-image-modal();

@@ -35,7 +35,8 @@ class HomeController {
 			sharedExpences: PreferenceScore.Neutral,
 			animals: PreferenceScore.Neutral,
 			gayFriendly: PreferenceScore.Neutral,
-			musicianFriendly: PreferenceScore.Neutral
+			musicianFriendly: PreferenceScore.Neutral,
+			nightLife: PreferenceScore.Neutral
 		};
 
 		this.mostValuablePreferenceSelect = {
@@ -46,6 +47,7 @@ class HomeController {
 			animals: false,
 			gayFriendly: false,
 			musicianFriendly: false,
+			nightLife: false
 		};
 
 		this.$scope.$watch('home.registrationComplete', () => {

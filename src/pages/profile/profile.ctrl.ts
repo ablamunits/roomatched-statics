@@ -22,10 +22,11 @@ class ProfileController {
 
 	userFriends: FBFriend[];
 
-	constructor (private $scope, private AuthService, private PreferenceService, private UserSettingsService, private ApartmentService, private RoomService, private $state, private $timeout) {
+	constructor (private $scope, private AuthService, private PreferenceService, private UserSettingsService, private ApartmentService, private RoomService, private UserService, private $state, private $timeout) {
 		AuthService.onAuthComplete(() => {
 			if (AuthService.userIsLoggedIn) {
 				this.user = AuthService.loggedUser;
+				this.showPreferenceSelector();
 			} else {
 				$state.go('home');
 			}
@@ -73,7 +74,6 @@ class ProfileController {
 
 		this.openSetting('preferences');
 		this.PreferenceService.getUserPreference(this.user.id, this.user.type).then((detailedPreferences) => {
-			console.log(detailedPreferences);
 			this.preferences = detailedPreferences.preferences;
 			this.mostValuablePreferences = detailedPreferences.mostValuablePreferences;
 			this.details = detailedPreferences.additionalDetails;
@@ -84,6 +84,8 @@ class ProfileController {
 		this.PreferenceService.updateUserPreference(this.user.id, this.user.type, this.preferences, this.mostValuablePreferences, this.details).then(() => {
 			this.closeAllSettings(true);
 		});
+
+		this.UserService.updateUserAbout(this.user.id, this.user.about);
 	}
 
 	showSettings() {
@@ -95,7 +97,6 @@ class ProfileController {
 		this.openSetting('settings');
 		this.UserSettingsService.getUserSettings(this.user.id).then((userSettings) => {
 			this.userSettings = userSettings;
-			console.log(this.userSettings);
 		});
 	};
 

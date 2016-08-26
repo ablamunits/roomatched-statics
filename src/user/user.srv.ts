@@ -34,6 +34,22 @@ class UserServiceProvider {
 		});
 	}
 
+	getUserAbout(id: number) {
+		return this.$http.get(API_URI + '/userAbout/' + id).then(response => {
+			return response.data;
+		}, e => {
+			console.log(e);
+		});
+	}
+
+	updateUserAbout(id: number, content: string) {
+		let aboutObject = {
+			about: content
+		};
+
+		return this.$http.post(API_URI + '/userAbout/' + id, aboutObject);
+	}
+
 	typeToString(type: UserType): string {
 		if (type === UserType.Visitor) {
 			return 'VISITOR';

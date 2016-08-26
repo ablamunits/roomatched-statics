@@ -37,7 +37,8 @@ class PreferencesServiceProvider {
 				sharedExpences: rawPreferences.sharedExpences,
 				musicianFriendly: rawPreferences.musicianFriendly,
 				kosher: rawPreferences.kosher || 0,
-				vegan: rawPreferences.vegan
+				vegan: rawPreferences.vegan,
+				nightLife: rawPreferences.nightLife
 			};
 
 			let additionalDetails = {
@@ -80,7 +81,8 @@ class PreferencesServiceProvider {
 				sharedExpences: rawPreferences.sharedExpences,
 				musicianFriendly: rawPreferences.musicianFriendly,
 				kosher: rawPreferences.kosher || 0,
-				vegan: rawPreferences.vegan
+				vegan: rawPreferences.vegan,
+				nightLife: rawPreferences.nightLife
 			};
 
 			additionalDetails = {

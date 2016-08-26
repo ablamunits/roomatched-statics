@@ -16,16 +16,14 @@
 		</div>
 	</div>
 	<div class="container">
-		<div>
 		<div class="user-container">
 			<div class="user-info">
-				<p>You are registered as an apartment {{ profile.user.type | typeToString }}.</p>
 				<div class="save-success-message" ng-show="profile.isSuccessMessageVisible"><i class="fa fa-check"></i> Your profile has been updated.</div>
 				<ul class="user-info-option-list">
 					<li class="user-info-option">
 						<a ng-click="profile.showPreferenceSelector()">
 							<span class="icon icon-arrow" ng-include="'assets/icons/arrow-down.svg'" ng-class="{ 'open': profile.openSettings.preferences }"></span>
-							My Preferences
+							Your Profile
 						</a>
 						<div class="form-section user-preferences" ng-if="profile.openSettings.preferences && profile.preferences">
 							<button class="update-button" ng-click="profile.updatePreferences()">Update</button>
@@ -36,21 +34,27 @@
 							</div>
 							<div class="seeker-preferences" ng-if="(profile.user.type | typeToString) === 'Seeker'">
 								<div>
-									<h4>City preference</h4>
+									<h4>Choose your city</h4>
 									<rm-select ng-model="profile.details.city" options="profile.cityOptions"></rm-select>
 								</div>
 								<div>
-									<h4>Preffered price range</h4>
+									<h4>Preffered price and number of roommates</h4>
 									<input floating-label type="number" ng-model="profile.details.fromPrice" placeholder="From price"/>
 									<input floating-label type="number" ng-model="profile.details.toPrice" placeholder="To price"/>
+									<input floating-label type="number" ng-model="profile.details.numberOfRoomates" placeholder="Number of Roommates"/>
 								</div>
+							</div>
+							<div class="about">
+								<h4>What makes you an awesome roommate?</h4>
+								<input floating-label type="text" size="100" maxlength="100" ng-model="profile.user.about" placeholder="Write something about yourself"/>
 							</div>
 						</div>
 					</li>
 					<li class="user-info-option">
 						<a ng-click="profile.showSettings()">
 							<span class="icon icon-arrow" ng-include="'assets/icons/arrow-down.svg'" ng-class="{ 'open': profile.openSettings.settings }"></span>
-							My Settings
+							<!-- My Settings -->
+							Notifiactions & Appearance Settings
 						</a>
 						<div class="form-section user-settings" ng-if="profile.openSettings.settings && profile.userSettings">
 							<button class="update-button" ng-click="profile.updateSettings()">Update</button>
@@ -65,7 +69,8 @@
 					<li class="user-info-option" ng-if="(profile.user.type | typeToString) === 'Offerer'">
 						<a ng-click="profile.showRoomOffering()">
 							<span class="icon icon-arrow" ng-include="'assets/icons/arrow-down.svg'" ng-class="{ 'open': profile.openSettings.roomPost }"></span>
-							My Room Offering
+							<!-- My Room Offering -->
+							Post Details
 						</a>
 						<div class="user-details" ng-if="profile.openSettings.roomPost && profile.apartmentDetails && profile.roomDetails">
 							<div class="form-section form-room">
@@ -84,5 +89,4 @@
 			</div>
 		</div>
 	</div>
-</div>
 </div>
