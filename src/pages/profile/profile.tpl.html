@@ -1,7 +1,7 @@
 <div class="app-view profile-view" ng-cloak>
 	<div class="strip">
 		<h2>Hi {{ profile.user.firstName}}</h2>
-		<h3>You are a {{ profile.user.type | typeToString }}. Review and update your personal settings here.</h3>
+		<h3>You are {{ (profile.user.type | typeToString) === 'Offerer' ? 'an Offerer' : 'a Seeker'}}. Review and update your personal settings here.</h3>
 		<div class="user-image-and-friends">
 			<div class="user-image">
 				<img ng-src="{{ profile.user.photoUrl || './assets/images/user-photo-placeholder.png' }}" />
