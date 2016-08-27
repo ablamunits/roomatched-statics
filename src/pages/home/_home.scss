@@ -14,6 +14,20 @@ $green-confirm: rgb(128, 198, 115);
 			text-align: center;
 		}
 
+		h3 {
+			width: 900px;
+			margin: 10px auto;
+		}
+
+		hr {
+			width: 900px;
+		}
+
+		> div {
+			width: 900px;
+			margin: 0 auto;
+		}
+
 		.apartment-post-list {
 			display: flex;
 			flex-wrap: wrap;
@@ -56,6 +70,7 @@ $green-confirm: rgb(128, 198, 115);
 					@include button-big();
 					display: inline-block;
 					position: relative;
+					opacity: .95;
 
 					span {
 						position: absolute;

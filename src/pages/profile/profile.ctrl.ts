@@ -22,7 +22,7 @@ class ProfileController {
 
 	userFriends: FBFriend[];
 
-	constructor (private $scope, private AuthService, private PreferenceService, private UserSettingsService, private ApartmentService, private RoomService, private UserService, private $state, private $timeout) {
+	constructor (private $scope, private AuthService, private PreferenceService, private UserSettingsService, private ApartmentService, private RoomService, private UserService, private $state, private $timeout, private $location, private $anchorScroll) {
 		AuthService.onAuthComplete(() => {
 			if (AuthService.userIsLoggedIn) {
 				this.user = AuthService.loggedUser;
@@ -59,6 +59,7 @@ class ProfileController {
 		});
 
 		if (displaySuccessMessage) {
+			this.scrollToTop();
 			this.isSuccessMessageVisible = true;
 			this.$timeout(() => {
 				this.isSuccessMessageVisible = false;
@@ -125,6 +126,12 @@ class ProfileController {
 				this.closeAllSettings(true);
 			});
 		});
+	}
+
+	private scrollToTop() {
+		this.$location.hash('success-notification');
+		this.$anchorScroll.yOffset = 100;
+		this.$anchorScroll();
 	}
 };
 
