@@ -4,7 +4,7 @@
 			<img ng-src="{{ post.content.room.photoUrl || './assets/images/apartment-photo-placeholder.png' }}"/>
 		</div>
 		<div class="post-details">
-			<p class="post-address">{{ post.content.apartment.address }}<span class="post-city"> {{ post.content.apartment.city }}</span></p>
+			<p class="post-address">{{ post.content.apartment.address | lowercase }}<span class="post-city"> {{ post.content.apartment.city }}</span></p>
 
 			<p class="post-price">{{ post.content.room.price }}</p>
 			<ul class="apartment-icons">
