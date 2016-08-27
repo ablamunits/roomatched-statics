@@ -403,10 +403,9 @@ body {
 	}
 
 	.content {
-		min-height: 100%;
 		height: auto !important;
 		position: relative;
-		margin: $header-height auto;
+		margin-top: $header-height;
 
 		.label {
 			&.important {

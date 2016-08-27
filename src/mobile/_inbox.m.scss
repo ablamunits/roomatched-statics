@@ -1,11 +1,8 @@
 .inbox-view {
-	.inbox-description {
-		zoom: 2;
-		line-height: 20px;
+	.strip {
+		height: 300px;
+		h2 {
+			bottom: 25px;
+		}
 	}
-
-	.conversations-list {
-		zoom: 2;
-	}
-
 }

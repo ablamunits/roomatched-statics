@@ -1,64 +1,8 @@
 body {
-	font-size: 32px !important;
-
 	.header {
-		height: 200px;
-
 		.header-content {
-			h1 {
-				font-size: 72px;
-				padding: 15px 20px;
-			}
-
 			.user-wrapper {
-				right: 40px;
-
-				.sign-in-button {
-					font-size: 50px;
-					width: 200px;
-					height: 70px;
-					top: 80px;
-					left: -100px;
-					border-radius: 40px;
-				}
-
 				.user-info {
-					width: 100px;
-					background-color: inherit !important;
-				}
-
-				.user-info .user-greeting{
-					display: none;
-				}
-
-				.user-info .user-image {
-					height: 120px;
-					width: 120px;
-				}
-
-				.user-info ul.user-menu {
-					width: 300px;
-					top: 156px;
-					font-size: 44px;
-					left: -120px;
-					text-align: center;
-					border-bottom-left-radius: 20px;
-
-					.icon {
-						height: 80px;
-						top: 20px;
-					}
-
-					li {
-						padding: 30px 0 30px 30px;
-						&.navigate-inbox {
-							&:hover {
-								border-bottom-left-radius: 20px !important;
-							}
-
-						}
-					}
-
 					.navigate-profile, .navigate-logout {
 						display: none;
 					}
@@ -68,24 +12,8 @@ body {
 	}
 
 	.app-view {
-		margin-top: 200px;
-
 		.container {
 			margin: 0;
-
-			h3 {
-				font-size: 42px;
-			}
-
-			p {
-				font-size: 18px;
-			}
-		}
-	}
-
-	.footer {
-		p {
-			font-size: 21px;
 		}
 	}
 }

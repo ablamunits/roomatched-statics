@@ -1,67 +1,130 @@
-body .ngdialog-content {
-	width: 100% !important;
-}
-
 .matches-view {
-	.title{
-			font-size: 42px !important;
-	}
-
-	.match-filter-options {
-		.form-section {
-			.title {
-				display: none;
-			}
-
-			.select-wrapper {
-				zoom: 1.5;
-			}
+	.strip {
+		height: 300px;
+		h2 {
+			bottom: 25px;
 		}
 	}
 
 	.match-list {
 		.match-item {
 			width: 100%;
-			zoom: 2;
 
-			.match-apartment-image,
-			.match-room-image {
-				img {
-					top: 0;
+			.match-options {
+				opacity: 1;
+
+				.option-hide {
+					display: none;
 				}
 			}
+		}
 
-			.match-messaging .message-wrapper {
-				h3 {
-					font-size: 20px;
-				}
+		.offerer-match-post {
+			margin: 0;
 
-				.message-text-area {
-					height: 100px;
-				}
+			.offerer-match-content .match-user .match-user-name-pref .match-preferences svg {
+				height: 25px;
+			}
+
+			.offerer-match-content {
+				padding: 10px;
+			}
+		}
+
+		.match-apartment-image,
+		.match-room-image {
+			img {
+				top: 0;
+			}
+		}
+
+		.match-content .match-messaging .message-wrapper {
+			padding: 50px 10px 10px 10px;
+			font-size: 16px;
+
+			.message-send-button {
+				margin: 5px 0 0 0;
+				padding: 5px;
+				right: 10px;
 			}
 		}
 	}
 
-	// Offerer specific tweaks ..
-	.offerer-matches-list .match-item hr {
-		margin: 10px;
-	}
+	.match-filter-options .form-section .select-wrapper {
+		display: block;
 
-	div.offerer-match-post {
-		margin: 0;
-	}
-
-	div.offerer-match-content .match-options {
-		bottom: 0;
-		font-size: 24px;
-		margin-top: 30px;
-		text-align: left;
-
-		.option-hide {
-			display: block;
-			top: 0;
-			right: 0;
+		.select-list {
+			font-size: 16px;
+			margin: 5px 0;
 		}
 	}
 }
+
+//body .ngdialog-content {
+//	width: 100% !important;
+//}
+//
+//.matches-view {
+//	.title{
+//			font-size: 42px !important;
+//	}
+//
+//	.match-filter-options {
+//		.form-section {
+//			.title {
+//				display: none;
+//			}
+//
+//			.select-wrapper {
+//				zoom: 1.5;
+//			}
+//		}
+//	}
+//
+//	.match-list {
+//		.match-item {
+//			width: 100%;
+//			zoom: 2;
+//
+//			.match-apartment-image,
+//			.match-room-image {
+//				img {
+//					top: 0;
+//				}
+//			}
+//
+//			.match-messaging .message-wrapper {
+//				h3 {
+//					font-size: 20px;
+//				}
+//
+//				.message-text-area {
+//					height: 100px;
+//				}
+//			}
+//		}
+//	}
+//
+//	// Offerer specific tweaks ..
+//	.offerer-matches-list .match-item hr {
+//		margin: 10px;
+//	}
+//
+//	div.offerer-match-post {
+//		margin: 0;
+//	}
+//
+//	div.offerer-match-content .match-options {
+//		bottom: 0;
+//		font-size: 24px;
+//		margin-top: 30px;
+//		text-align: left;
+//		opacity: 1 !important;
+//
+//		.option-hide {
+//			display: block;
+//			top: 0;
+//			right: 0;
+//		}
+//	}
+//}
