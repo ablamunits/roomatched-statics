@@ -23,7 +23,7 @@
 				</div>
 				<ul class="user-info-option-list">
 					<li class="user-info-option">
-						<a ng-click="profile.showPreferenceSelector()">
+						<a ng-click="profile.showPreferenceSelector()" du-smooth-scroll="anchor-profile" offset="80" duration="1000" id="anchor-profile">
 							<span class="icon icon-arrow" ng-include="'assets/icons/arrow-down.svg'" ng-class="{ 'open': profile.openSettings.preferences }"></span>
 							Your Profile
 						</a>
@@ -53,7 +53,7 @@
 						</div>
 					</li>
 					<li class="user-info-option">
-						<a ng-click="profile.showSettings()">
+						<a ng-click="profile.showSettings()" du-smooth-scroll="anchor-settings" offset="80" duration="1000" id="anchor-settings">
 							<span class="icon icon-arrow" ng-include="'assets/icons/arrow-down.svg'" ng-class="{ 'open': profile.openSettings.settings }"></span>
 							<!-- My Settings -->
 							Notifiactions & Appearance Settings

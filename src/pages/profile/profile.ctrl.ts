@@ -22,7 +22,7 @@ class ProfileController {
 
 	userFriends: FBFriend[];
 
-	constructor (private $scope, private AuthService, private PreferenceService, private UserSettingsService, private ApartmentService, private RoomService, private UserService, private $state, private $timeout, private $location, private $anchorScroll) {
+	constructor (private $scope, private AuthService, private PreferenceService, private UserSettingsService, private ApartmentService, private RoomService, private UserService, private $state, private $timeout, private $document) {
 		AuthService.onAuthComplete(() => {
 			if (AuthService.userIsLoggedIn) {
 				this.user = AuthService.loggedUser;
@@ -59,8 +59,8 @@ class ProfileController {
 		});
 
 		if (displaySuccessMessage) {
-			this.scrollToTop();
 			this.isSuccessMessageVisible = true;
+			this.scrollToTop();
 			this.$timeout(() => {
 				this.isSuccessMessageVisible = false;
 			}, 3000);
@@ -129,9 +129,11 @@ class ProfileController {
 	}
 
 	private scrollToTop() {
-		this.$location.hash('success-notification');
-		this.$anchorScroll.yOffset = 100;
-		this.$anchorScroll();
+		// this.$location.hash('success-notification');
+		// this.$anchorScroll.yOffset = 100;
+		// this.$anchorScroll();
+		// let someElement = angular.element(document.getElementById('success-notification'));
+		this.$document.duScrollTopAnimated(0, 1000);
 	}
 };
 

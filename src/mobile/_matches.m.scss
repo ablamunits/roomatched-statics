@@ -50,12 +50,18 @@
 		}
 	}
 
-	.match-filter-options .form-section .select-wrapper {
-		display: block;
+	.match-filter-options {
+		.form-section {
+			padding: 2px;
 
-		.select-list {
-			font-size: 16px;
-			margin: 5px 0;
+			.select-wrapper {
+				display: block;
+
+				.select-list {
+					font-size: 16px;
+					margin: 5px 0;
+				}
+			}
 		}
 	}
 }

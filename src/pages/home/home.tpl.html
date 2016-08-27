@@ -8,10 +8,10 @@
 		<div class="user-type-buttons-wrapper">
 
 			<h2>What are you up to?</h2>
-			<div class="button-seeking-for-room" ng-click="home.openSeekerRegister()">
+			<div class="button-seeking-for-room" ng-click="home.openSeekerRegister()" du-smooth-scroll="sign-up-heading" offset="60" duration="1000">
 				<span><i class="icon fa fa-search"></i>Looking for a room</span>
 			</div>
-			<div class="button-offering-a-room" ng-click="home.openOffererRegister()">
+			<div class="button-offering-a-room" ng-click="home.openOffererRegister()" du-smooth-scroll="sign-up-heading" offset="60" duration="1000">
 				<span><i class="icon fa fa-bed"></i>Offering a room</span>
 			</div>
 		</div>
@@ -36,7 +36,7 @@
 		</ul>
 	</div>
 
-	<div class="container registration-container" ng-form name="userRegister">
+	<div class="container registration-container" ng-form name="userRegister" id="sign-up-heading">
 		<div class="register register-seeker" ng-show="home.isSeekerRegistration">
 			<h3>Looking for a room?</h3>
 			<hr>

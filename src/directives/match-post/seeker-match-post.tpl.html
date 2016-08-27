@@ -29,7 +29,7 @@
 			<div class="match-user-image">
 				<img ng-src="{{ ctrl.content.user.photoUrl }}" ng-click="ctrl.openUserModal()"/>
 			</div>
-			<p class="match-address"><span class="room-price">{{ ctrl.content.room.price }}&#8362</span>| {{ ctrl.content.apartment.address }}, {{ ctrl.content.apartment.city }}</p>
+			<p class="match-address"><span class="room-price">{{ ctrl.content.room.price }}&#8362</span>| {{ ctrl.content.apartment.address | lowercase }}, {{ ctrl.content.apartment.city }}</p>
 			<p class="match-user-name">{{ ctrl.content.matchPercentage | number:1 }}% Match with {{ ctrl.content.user.firstName + ' ' + ctrl.content.user.lastName }}</p>
 			<div class="match-preferences">
 				<preference-viewer ng-model="ctrl.content.preferences"></preference-viewer>
