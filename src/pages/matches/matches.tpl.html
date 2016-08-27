@@ -2,14 +2,15 @@
 	<div class="strip">
 		<h2>Matches</h2>
 		<h3 class="title title-searching" ng-if="!matches.matchesArray"><i class="fa fa-spinner fa-spin"></i> We are looking for matches for you ... Hold tight!</h3>
-		<h3 class="title title-matches-found" ng-if="matches.matchesArray">We have found {{ matches.matchesArray.length }} great {{ matches.matchesArray.length > 1 ? 'matches' : 'match' }} for you!</h3>
-		<div class="no-matches" ng-if="matches.hasNoMatches">
-			<h3>Sorry, no matches!</h3>
-		</div>
+		<h3 class="title title-matches-found" ng-if="matches.matchesArray.length > 0">We have found {{ matches.matchesArray.length }} great {{ matches.matchesArray.length > 1 ? 'matches' : 'match' }} for you!</h3>
 	</div>
 	<div class="container">
 		<div>
-			<div class="match-filter-options">
+			<div class="no-matches" ng-if="matches.hasNoMatches">
+				<p>Sorry, we couldn't find any matching roommates for you.</p>
+				<a ui-sref="profile" class="cta-edit-profile">Edit Profile</a>
+			</div>
+			<div class="match-filter-options" ng-if="matches.matchesArray.length > 0">
 				<div class="form-section">
 					<h4 class="title">You can filter the results further with these options</h4>
 					<div class="select-wrapper">

@@ -59,4 +59,23 @@
 			}
 		}
 	}
+
+	.no-matches {
+		text-align: center;
+
+		.cta-edit-profile {
+			border: 1px solid $red;
+			background-color: $red;
+			color: $white;
+			border-radius: 40px;
+			padding: 10px 15px;
+			cursor: pointer;
+
+			&:hover {
+				border-color: darken($red, 10%);
+				background-color: darken($red, 10%);
+				color: $white;
+			}
+		}
+	}
 }
