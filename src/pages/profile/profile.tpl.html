@@ -62,7 +62,7 @@
 							<button class="update-button" ng-click="profile.updateSettings()">Update</button>
 							<h3>Notification Email</h3>
 							<div>Set up an email address to recieve notifications when contacted by a match</div>
-							<input floating-label type="email" ng-model="profile.userSettings.email" placeholder="Email notifications address"/>
+							<input floating-label class="email-input" type="text" ng-model="profile.userSettings.email" placeholder="Email notifications address"/>
 							<h3>Match appearance settings</h3>
 							<input floating-label type="number" min="0" max="100" ng-model="profile.userSettings.minShowMatch" placeholder="Show me matches from (%)"/>
 							<input floating-label type="number" min="0" max="100" ng-model="profile.userSettings.minIncludeMatch" placeholder="Include me in matches from (%)"/>
