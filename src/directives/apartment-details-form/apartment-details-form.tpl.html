@@ -1,7 +1,14 @@
 <div class="apartment-details-form">
 	<div class="apartment-form">
 		<rm-select ng-model="ctrl.apartmentDetails.city" options="ctrl.cityOptions"></rm-select>
-		<input floating-label size="100" type="text" ng-model="ctrl.apartmentDetails.address" placeholder="Address (Street & Number)"/>
+		<br>
+		<rm-checkbox ng-model="ctrl.apartmentDetails.isFurnished" label="Furnished" icon="ctrl.apartmentIcons.isFurnished"></rm-checkbox>
+		<rm-checkbox ng-model="ctrl.apartmentDetails.hasLivingRoom" label="Living Room" icon="ctrl.apartmentIcons.hasLivingRoom"></rm-checkbox>
+		<rm-checkbox ng-model="ctrl.apartmentDetails.hasElevator" label="Elevator" icon="ctrl.apartmentIcons.hasElevator"></rm-checkbox>
+		<rm-checkbox ng-model="ctrl.apartmentDetails.hasParking" label="Parking" icon="ctrl.apartmentIcons.hasParking"></rm-checkbox>
+		<rm-checkbox ng-model="ctrl.apartmentDetails.isRenovated" label="Renovated" icon="ctrl.apartmentIcons.isRenovated"></rm-checkbox>
+		<br>
+		<input floating-label size="100" type="text" ng-model="ctrl.apartmentDetails.address" placeholder="* Address (Street & Number)"/>
 		<br>
 		<input floating-label type="number" ng-model="ctrl.apartmentDetails.size" placeholder="Apartment size (m²)" floating-label/>
 		<input floating-label type="number" ng-model="ctrl.apartmentDetails.floor" placeholder="Floor Number"/>
@@ -11,11 +18,7 @@
 		<input floating-label type="number" ng-model="ctrl.apartmentDetails.freeRooms" placeholder="Free rooms"/>
 		<input floating-label type="number" ng-model="ctrl.apartmentDetails.approximateExpences" placeholder="Approx. Expences"/>
 		<br>
-		<input type="checkbox" ng-model="ctrl.apartmentDetails.isFurnished" /> Furniture
-		<input type="checkbox" ng-model="ctrl.apartmentDetails.hasLivingRoom" /> Living Room
-		<input type="checkbox" ng-model="ctrl.apartmentDetails.hasElevator" /> Elevator
-		<input type="checkbox" ng-model="ctrl.apartmentDetails.hasParking" /> Parking
-		<input type="checkbox" ng-model="ctrl.apartmentDetails.isRenovated" /> Renovated
+
 	</div>
 	<div class="apartment-image-container image-uploader" type="file" ngf-select="ctrl.uploadApartmentImage($files)">
 		<div class="upload-image-label" ng-if="!ctrl.apartmentDetails.photoUrl"><i class="fa fa-camera"></i> Add Apartment Image</div>

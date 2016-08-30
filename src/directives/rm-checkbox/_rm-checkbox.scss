@@ -1,0 +1,42 @@
+.rm-checkbox-container {
+	display: inline-block;
+	margin: 5px;
+
+	.checkbox-button {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		border: 1px solid $light-grey;
+		border-radius: 4px;
+		width: 80px;
+		height: 80px;
+		justify-content: center;
+		padding: 5px;
+
+		.icon {
+			height: 45px;
+			@include icon($light-red);
+		}
+
+		.label {
+			font-size: 11px;
+			text-align: center;
+		}
+
+		&:hover {
+			cursor: pointer;
+			background-color: $superlight-grey;
+			transition: background-color .2s;
+		}
+
+		&.checked {
+			background-color: $xlight-red;
+			border: 1px solid $grey;
+			transition: background-color .2s;
+
+			.icon {
+				fill: darken($light-red, 5%);
+			}
+		}
+	}
+}

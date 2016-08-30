@@ -1,11 +1,14 @@
 <div class="room-details-form">
 	<div class="room-form">
-		<input floating-label type="number" ng-model="ctrl.roomDetails.price" placeholder="Room price"/>
+		<input floating-label type="number" ng-model="ctrl.roomDetails.price" placeholder="* Room price"/>
 		<input floating-label type="number" ng-model="ctrl.roomDetails.size" placeholder="Room size (m²)"/>
-		<input type="checkbox" ng-model="ctrl.roomDetails.isFurnished" /> Furniture
-		<input type="checkbox" ng-model="ctrl.roomDetails.hasBalcony" /> Balcony
-		<input type="checkbox" ng-model="ctrl.roomDetails.seperateBathroom" /> Separate Bathroom
-		<input type="checkbox" ng-model="ctrl.roomDetails.airConditioned" /> Air Conditioning
+		<br>
+
+		<rm-checkbox ng-model="ctrl.roomDetails.isFurnished" label="Furniture" icon="ctrl.roomIcons.isFurnished"></rm-checkbox>
+		<rm-checkbox ng-model="ctrl.roomDetails.hasBalcony" label="Balcony" icon="ctrl.roomIcons.hasBalcony"></rm-checkbox>
+		<rm-checkbox ng-model="ctrl.roomDetails.seperateBathroom" label="Own Bathroom" icon="ctrl.roomIcons.seperateBathroom"></rm-checkbox>
+		<rm-checkbox ng-model="ctrl.roomDetails.airConditioned" label="A/C" icon="ctrl.roomIcons.airConditioned"></rm-checkbox>
+
 	</div>
 	<div class="room-image-container image-uploader" type="file" ngf-select="ctrl.uploadRoomImage($files)">
 		<div class="upload-image-label" ng-if="!ctrl.roomDetails.photoUrl"><i class="fa fa-camera"></i> Add Room Image</div>

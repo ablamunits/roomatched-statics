@@ -1,8 +1,13 @@
 class ApartmentDetailsFormDirectiveController {
 	apartmentDetails: Apartment;
 	cityOptions: string[] = ['Tel-Aviv', 'Beer-Sheva', 'Jerusalem', 'Haifa'];
+	apartmentIcons: any;
+	apartmentIconsTitles: any;
 
-	constructor(private CloudinaryService){};
+	constructor(private CloudinaryService, IconSet) {
+		this.apartmentIcons = IconSet.apartmentIcons;
+		this.apartmentIconsTitles = IconSet.apartmentIconsTitles;
+	};
 
 	uploadApartmentImage(files) {
 		this.CloudinaryService.uploadFiles(files, (data) => {

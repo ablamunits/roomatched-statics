@@ -1,7 +1,10 @@
 class RoomDetailsFormDirectiveController {
 	roomDetails: Room;
+	roomIcons: any;
 
-	constructor(private CloudinaryService) {};
+	constructor(private CloudinaryService, IconSet) {
+		this.roomIcons = IconSet.roomIcons;
+	};
 
 	uploadRoomImage(files) {
 		this.CloudinaryService.uploadFiles(files, (data) => {
