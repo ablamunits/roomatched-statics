@@ -139,6 +139,36 @@ $green-confirm: rgb(128, 198, 115);
 			border-radius: 4px;
 			z-index: 1;
 
+			.hint {
+				font-size: 11px;
+				display: inline;
+				position: relative;
+				border: 1px solid $light-grey;
+				border-radius: 4px;
+				padding: 5px;
+				background-color: $white;
+				color: $grey;
+
+				&:hover {
+					cursor: default;
+					border: 1px solid $grey;
+
+					&:before {
+						box-shadow: 0 0 10px 0 rgba(0, 0, 0, .07);
+						content: attr(data-tooltip-content);
+						display: block;
+						padding: 0 5px;
+						border-radius: 4px;
+						z-index: 1;
+						position: absolute;
+						white-space: nowrap;
+						background-color: $white;
+						top: -1px;
+						left: 40px;
+					}
+				}
+			}
+
 			&.form-room,
 			&.form-apartment,
 			&.form-seeker-additional-details {

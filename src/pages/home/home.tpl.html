@@ -65,8 +65,8 @@
 			<hr>
 			<div class="registration-form">
 				<div class="form-section">
-					<h3>What's important to you in a roommate?</h3>
-					<div>You can select up to 3 of your most valuable preferences.</div>
+					<h3 >What's important to you in a roommate?</h3>
+					<div class="hint" data-tooltip-content="Mark up to 3 of your most valuable preferences with hearts">HINT</div>
 					<preference-select ng-model="home.preferenceSelect" mvp="home.mostValuablePreferenceSelect"></preference-select>
 					<div class="gender-wrapper">
 						<div>Roommate Gender</div>
@@ -75,10 +75,13 @@
 				</div>
 				<div class="form-section form-apartment">
 					<h3>Apartment Details</h3>
+					<div class="hint" data-tooltip-content="Address is mandatory">HINT</div>
+					<br>
 					<apartment-details-form ng-model="home.offererApartmentDetails"></apartment-details-form>
 				</div>
 				<div class="form-section form-room">
 					<h3>Room Details</h3>
+					<div class="hint" data-tooltip-content="Price is mandatory">HINT</div>
 					<room-details-form ng-model="home.offererRoomDetails"></room-details-form>
 				</div>
 			</div>
