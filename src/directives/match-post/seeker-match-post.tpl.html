@@ -52,7 +52,18 @@
 					<img ng-src="{{ ctrl.content.apartment.photoUrl || './assets/images/apartment-photo-placeholder.png' }}"/>
 				</div>
 				<div class="match-apartment-details">
-					<h4 class="match-apartment-description">{{ ctrl.content.apartment.size }}sqm with {{ ctrl.content.apartment.totalRooms }} Rooms ({{ ctrl.content.apartment.freeRooms }} Available) and {{ ctrl.content.apartment.totalRoomates}} Roommates total. <span ng-if="ctrl.content.apartment.approximateExpences > 0">Expences: {{ ctrl.content.apartment.approximateExpences }}</span></h4>
+					<!-- <h4 class="match-apartment-description">
+						{{ ctrl.content.apartment.size }}sqm with {{ ctrl.content.apartment.totalRooms }} Rooms ({{ ctrl.content.apartment.freeRooms }} Available) and {{ ctrl.content.apartment.totalRoomates}} Roommates total. <span ng-if="ctrl.content.apartment.approximateExpences > 0">Expences: {{ ctrl.content.apartment.approximateExpences }}</span>
+					</h4> -->
+					<div class="match-apartment-description">
+						<ul class="apartment-labels">
+							<li class="label" ng-if="ctrl.content.apartment.size > 0">Apartment Size: {{ ctrl.content.apartment.size }}m²</li>
+							<li class="label" ng-if="ctrl.content.apartment.totalRooms > 0">Total Rooms: {{ ctrl.content.apartment.totalRooms }}</li>
+							<li class="label" ng-if="ctrl.content.apartment.freeRooms > 0">Free Rooms: {{ ctrl.content.apartment.freeRooms }}</li>
+							<li class="label" ng-if="ctrl.content.apartment.totalRoomates > 0">Roommates Total: {{ ctrl.content.apartment.totalRoomates }}</li>
+							<li class="label" ng-if="ctrl.content.apartment.approximateExpences > 0">Approximate Expences: {{ ctrl.content.apartment.approximateExpences }}</li>
+						</ul>
+					</div>
 					<ul class="apartment-icons">
 						<li class="icon-wrapper" ng-repeat="(icon, url) in ctrl.iconSet.apartmentIcons" ng-if="ctrl.content.apartment[icon]">
 							<span class="tooltip">{{ ctrl.iconSet.apartmentIconsTitles[icon] }}</span>
@@ -67,7 +78,12 @@
 					<img ng-src="{{ ctrl.content.room.photoUrl || './assets/images/apartment-photo-placeholder.png' }}"/>
 				</div>
 				<div class="match-room-details">
-					<h4 class="match-room-description">Room is {{ ctrl.content.room.size }}sqm.</h4>
+					<!-- <h4 class="match-room-description">Room is {{ ctrl.content.room.size }}sqm.</h4> -->
+					<div class="match-room-description">
+						<ul class="room-labels">
+							<li class="label" ng-if="ctrl.content.room.size">Room size: {{ ctrl.content.room.size }}m²</li>
+						</ul>
+					</div>
 					<ul class="room-icons">
 						<li class="icon-wrapper" ng-repeat="(icon, url) in ctrl.iconSet.roomIcons" ng-if="ctrl.content.room[icon]">
 							<span class="tooltip">{{ ctrl.iconSet.roomIconsTitles[icon] }}</span>

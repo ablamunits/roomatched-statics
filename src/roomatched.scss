@@ -76,7 +76,7 @@ $preference-score0: $pref-grey;
 $preference-score-1: $pref-xlight-red;
 $preference-score-2: $pref-red;
 
-@mixin icon($color-fill: $light-grey) {
+@mixin icon($color-fill: $grey) {
 	pointer-events: none;
 	fill: $color-fill;
 
@@ -376,7 +376,7 @@ body {
 						border-bottom-left-radius: 4px;
 
 						.icon {
-							@include icon();
+							@include icon($light-grey);
 							height: 30px;
 							display: inline;
 							position: absolute;

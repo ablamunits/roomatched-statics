@@ -207,14 +207,33 @@
 					background-color: rgba($white, .9);
 					bottom: 0;
 
+					//.match-apartment-description,
+					//.match-room-description {
+					//	margin: 0;
+					//	padding: 5px;
+					//	color: $light-red;
+					//	font-weight: bolder;
+					//	letter-spacing: 1px;
+					//	font-size: 16px;
+					//}
+
 					.match-apartment-description,
 					.match-room-description {
-						margin: 0;
-						padding: 5px;
-						color: $light-red;
-						font-weight: bolder;
-						letter-spacing: 1px;
-						font-size: 16px;
+						.apartment-labels,
+						.room-labels {
+							list-style: none;
+							padding: 0 5px;
+							margin: 5px 0;
+
+							.label {
+								font-size: 12px;
+								display: inline;
+								border: 1px solid $light-red;
+								border-radius: 4px;
+								padding: 5px;
+								background-color: $xlight-grey;
+							}
+						}
 					}
 
 					.apartment-icons,
