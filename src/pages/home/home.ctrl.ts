@@ -26,7 +26,10 @@ class HomeController {
 	postList: Post[];
 
 	constructor (private $scope: ng.IScope, private $http: ng.IHttpService, private UserService: UserServiceProvider, $stateParams, private AuthService, PostService, private $state, private StripImages, private $interval) {
-		PostService.init().then((posts) => this.postList = posts);
+		PostService.init().then((posts) => {
+			let unshuffledPosts = posts.filter((post) => post.room.photoUrl);
+			this.postList = this.shufflePosts(unshuffledPosts);
+		});
 
 		this.preferenceSelect = {
 			smoking: PreferenceScore.Neutral,
@@ -169,6 +172,25 @@ class HomeController {
 
 			this.currentStripImageSrc = this.StripImages.Home[(currentIndex + 1) % totalImages];
 		}, 5000);
+	}
+
+	private shufflePosts(array: Post[]) {
+		var currentIndex = array.length, temporaryValue, randomIndex;
+
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
+
+			// Pick a remaining element...
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+
+			// And swap it with the current element.
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+		}
+
+		return array;
 	}
 };
 

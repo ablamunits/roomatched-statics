@@ -4,8 +4,8 @@ var API_URI = 'http://vmedu92.mtacloud.co.il:8080/Roomatched/api';
 var roomatchedApp: ng.IModule = angular.module('RoomatchedApp', ['ui.router', 'ab.Typeit', '720kb.tooltips', 'angular-svg-round-progressbar', 'ngMap', 'cloudinary', 'ngFileUpload', 'components', 'ngDialog', 'duScroll'])
 .config(['cloudinaryProvider', function(cloudinaryProvider) {
 	cloudinaryProvider
-		.set('cloud_name', 'roomatched')
-		.set('upload_preset', 'f0dwrr6s');
+	.set('cloud_name', 'roomatched')
+	.set('upload_preset', 'f0dwrr6s');
 }])
 .run(function($rootScope, $location, $state, $timeout, AuthService, $window) {
 	$rootScope.$state = $state;
