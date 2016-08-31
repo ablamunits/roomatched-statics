@@ -4,6 +4,8 @@ class HomeController {
 	currentStripImageSrc: string = '';
 	isSeekerRegistration: boolean = false;
 	isOffererRegistration: boolean = false;
+
+	registrationInProgress: boolean = false;
 	registrationHasErrors: boolean = false;
 	registrationComplete: boolean = false;
 
@@ -76,6 +78,8 @@ class HomeController {
 		this.registrationHasErrors = false;
 
 		if (this.isUserInputValid()) {
+			this.registrationInProgress = true;
+
 			FB.login((response: any) => {
 				FB.api('/me', {
 					fields: 'first_name,last_name,email,gender,birthday,picture.width(500).height(500),likes,friends'
@@ -99,6 +103,9 @@ class HomeController {
 						} else if (this.isOffererRegistration) {
 							this.registerAsOfferer();
 						}
+					} else {
+						// FB Error in response
+						this.registrationInProgress = false;
 					}
 				});
 			}, {scope: 'user_birthday, user_friends' });
@@ -111,7 +118,8 @@ class HomeController {
 		if (this.isSeekerRegistration) {
 			return true; // its just numbers ...
 		} else if (this.isOffererRegistration) {
-			return (/^[-\'\sa-zA-Z0-9]*$/).test(this.offererApartmentDetails.address);
+			// Address Validation
+			return this.offererApartmentDetails.address && (/^[-\'\sa-zA-Z0-9]*$/).test(this.offererApartmentDetails.address);
 		}
 	}
 
@@ -129,6 +137,7 @@ class HomeController {
 			this.registrationComplete = true;
 		}, (e) => {
 			this.registrationHasErrors = true;
+			this.registrationInProgress = false;
 		});
 	}
 
@@ -145,6 +154,7 @@ class HomeController {
 			this.registrationComplete = true;
 		}, (e) => {
 			this.registrationHasErrors = true;
+			this.registrationInProgress = false;
 		});
 	}
 

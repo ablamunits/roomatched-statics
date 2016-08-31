@@ -43,7 +43,7 @@
 			<div class="registration-form">
 				<div class="form-section">
 					<h3>What's important to you in a roommate?</h3>
-					<div>You can select up to 3 of your most valuable preferences.</div>
+					<div class="hint" data-tooltip-content="Mark up to 3 of your most valuable preferences with hearts">HINT</div>
 					<preference-select ng-model="home.preferenceSelect" mvp="home.mostValuablePreferenceSelect"></preference-select>
 				</div>
 				<div class="form-section form-seeker-additional-details">
@@ -89,10 +89,11 @@
 		<br>
 		<div ng-show="home.isSeekerRegistration || home.isOffererRegistration">
 			<h3>You are almost ready to get Roomatched!</h3>
-			<p>Confirm your registration with Facebook to help us hook you up with more genuine results.</p>
+			<p ng-show="home.isUserInputValid()">Confirm your registration with Facebook to help us hook you up with more genuine results.</p>
+			<p ng-show="!home.isUserInputValid()">Please make sure the mandatory fields are correct and you are good to go!</p>
 			<form ng-submit="home.registerButtonClick()">
 				<div>
-					<input type="submit" class="register-button" value="Sign up with Facebook"/>
+					<input type="submit" class="register-button" value="{{ home.registrationInProgress ? 'Registering ...' : 'Sign up with Facebook' }}" ng-class="{ 'disabled': home.registrationInProgress || !home.isUserInputValid() }"/>
 				</div>
 				<div class="register-error" ng-if="home.registrationHasErrors">
 					There is a problem with your registration. Please review the information and try again.

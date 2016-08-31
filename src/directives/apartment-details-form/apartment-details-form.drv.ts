@@ -4,14 +4,23 @@ class ApartmentDetailsFormDirectiveController {
 	apartmentIcons: any;
 	apartmentIconsTitles: any;
 
+	isImageUploading: boolean = false;
+	imageUploadPercentComplete: number = 0;
+
 	constructor(private CloudinaryService, IconSet) {
 		this.apartmentIcons = IconSet.apartmentIcons;
 		this.apartmentIconsTitles = IconSet.apartmentIconsTitles;
 	};
 
 	uploadApartmentImage(files) {
+		this.imageUploadPercentComplete = 0;
+		this.isImageUploading = true;
+
 		this.CloudinaryService.uploadFiles(files, (data) => {
 			this.apartmentDetails.photoUrl = data.url;
+			this.isImageUploading = false;
+		}, (percentComplete) => {
+			this.imageUploadPercentComplete = percentComplete.toFixed(1);
 		});
 	}
 }

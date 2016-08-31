@@ -21,9 +21,12 @@
 
 	</div>
 	<div class="apartment-image-container image-uploader" type="file" ngf-select="ctrl.uploadApartmentImage($files)">
-		<div class="upload-image-label" ng-if="!ctrl.apartmentDetails.photoUrl"><i class="fa fa-camera"></i> Add Apartment Image</div>
+		<div class="upload-image-label" ng-if="!ctrl.apartmentDetails.photoUrl"><i class="fa fa-camera"></i> {{ ctrl.isImageUploading ? ctrl.imageUploadPercentComplete + '%' : 'Add Apartment Image' }}</div>
 		<div class="uploaded-image" ng-if="ctrl.apartmentDetails.photoUrl">
 			<img ng-src="{{ ctrl.apartmentDetails.photoUrl }}"/>
+		</div>
+		<div class="upload-progress" ng-if="ctrl.isImageUploading" ng-style="{'width': ctrl.imageUploadPercentComplete + '%'}">
+
 		</div>
 	</div>
 </div>

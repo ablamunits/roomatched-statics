@@ -53,11 +53,18 @@
 			margin: 0;
 		}
 
+		.address-city-wrapper {
+			display: flex;
+			justify-content: space-between;
+		}
+
 		.post-address {
+			@include ellipsis-line();
+			max-width: 230px;
+			display: inline-block;
 			color: $red;
 			font-size: 22px;
 			text-transform: capitalize;
-			//font-weight: bold;
 		}
 
 		.post-city {

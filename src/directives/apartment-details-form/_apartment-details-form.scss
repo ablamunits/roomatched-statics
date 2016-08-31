@@ -1,3 +1,10 @@
 .apartment-details-form {
-	//display: flex;
+	.upload-progress {
+		position: absolute;
+		bottom: 0;
+		height: 5px;
+		width: 0;
+		background-color: $light-red;
+		transition: width .2s linear;
+	}
 }

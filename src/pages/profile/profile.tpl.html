@@ -69,7 +69,7 @@
 						</div>
 					</li>
 					<li class="user-info-option" ng-if="(profile.user.type | typeToString) === 'Offerer'">
-						<a ng-click="profile.showRoomOffering()">
+						<a ng-click="profile.showRoomOffering()" du-smooth-scroll="anchor-post" offset="80" duration="1000" id="anchor-post">
 							<span class="icon icon-arrow" ng-include="'assets/icons/arrow-down.svg'" ng-class="{ 'open': profile.openSettings.roomPost }"></span>
 							<!-- My Room Offering -->
 							Post Details

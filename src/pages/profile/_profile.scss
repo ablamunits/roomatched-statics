@@ -94,7 +94,7 @@
 
 	.user-container {
 		position: relative;
-		height: 100%;
+		min-height: 500px;
 
 		.user-info {
 			@include input-field();
@@ -138,27 +138,24 @@
 				}
 			}
 
-			.icon {
+			.icon-arrow {
 				@include icon($red);
 				height: 20px;
+				position: relative;
 
-				&.icon-arrow {
+				svg {
 					position: relative;
+					top: 6px;
+					height: 24px;
+					width: 17px;
+					transform: rotate(-90deg);
+					transition: transform .3s linear;
+				}
 
+				&.open {
 					svg {
-						position: relative;
-						top: 6px;
-						height: 24px;
-						width: 17px;
-						transform: rotate(-90deg);
+						transform: rotate(0);
 						transition: transform .3s linear;
-					}
-
-					&.open {
-						svg {
-							transform: rotate(0);
-							transition: transform .3s linear;
-						}
 					}
 				}
 			}

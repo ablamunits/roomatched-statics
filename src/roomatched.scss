@@ -154,6 +154,7 @@ $preference-score-2: $pref-red;
 		padding: 10px;
 		margin: 5px;
 		outline: none;
+		max-width: 500px;
 
 		&:focus {
 			background-color: lighten($xlight-red, 10%);
@@ -184,6 +185,12 @@ $preference-score-2: $pref-red;
 	position: $position;
 	top: 50%;
 	transform: translateY(-50%);
+}
+
+@mixin ellipsis-line {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 @mixin roomatched-image-modal() {
@@ -276,7 +283,13 @@ body {
 				font-size: 25px;
 				color: $white;
 				font-weight: 300;
-				//font-weight: bold;
+
+				.beta {
+					font-size: 10px;
+					position: absolute;
+					bottom: 0;
+					opacity: .5;
+				}
 			}
 
 			.user-wrapper {

@@ -129,10 +129,6 @@ class ProfileController {
 	}
 
 	private scrollToTop() {
-		// this.$location.hash('success-notification');
-		// this.$anchorScroll.yOffset = 100;
-		// this.$anchorScroll();
-		// let someElement = angular.element(document.getElementById('success-notification'));
 		this.$document.duScrollTopAnimated(0, 1000);
 	}
 };

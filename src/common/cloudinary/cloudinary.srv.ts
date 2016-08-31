@@ -5,7 +5,7 @@ class CloudinaryServiceProvider {
 		return this.cloudinary.config();
 	}
 
-	uploadFiles(files, onUploadCompleteCb) {
+	uploadFiles(files, onUploadCompleteCb, onProgressCb) {
 		angular.forEach(files, (file) => {
 			if (file) {
 				file.upload = this.Upload.upload({
@@ -25,6 +25,15 @@ class CloudinaryServiceProvider {
 					}
 				}, function (evt) {
 					// Progress
+					let loaded = evt.loaded;
+					let total = evt.total;
+					let loadedPercent = (loaded * 100 ) / total;
+					console.log((loaded * 100 ) / total);
+
+					if (onProgressCb) {
+						onProgressCb(loadedPercent);
+					}
+
 				});
 			}
 		});

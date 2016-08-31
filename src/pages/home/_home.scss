@@ -198,6 +198,13 @@ $green-confirm: rgb(128, 198, 115);
 		&:hover {
 			background-color: darken($facebook-blue, 5%);
 		}
+
+		&.disabled {
+			pointer-events: none;
+			border: 1px solid $light-grey;
+			background-color: $xlight-grey;
+			color: $light-grey;
+		}
 	}
 
 	.image-uploader {
