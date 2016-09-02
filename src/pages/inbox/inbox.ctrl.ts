@@ -13,7 +13,7 @@ class InboxController {
 	isPolling: boolean = false;
 	pollingPromise: any;
 
-	constructor (private MessageService, private AuthService, private $state, private $interval, private $scope) {
+	constructor (private MessageService, private AuthService, private $state, private $interval, private $scope, private $timeout) {
 		AuthService.onAuthComplete(() => {
 			if (AuthService.userIsLoggedIn) {
 				this.myUserId = AuthService.loggedUser.id;
@@ -53,11 +53,14 @@ class InboxController {
 		})[0];
 
 		this.visibleConversation = requestedConversation;
-		this.doActiveConversationScroll();
 
 		this.MessageService.getConversationContentById(conversationId).then(content => {
 			this.visibleConversationContent = content;
 			this.startMessagePolling(conversationId);
+
+			this.$timeout(() => {
+				this.doConversationContentScroll();
+			}, 100);
 		});
 	}
 
@@ -91,14 +94,7 @@ class InboxController {
 
 	private doConversationContentScroll() {
 		let $conv = $('.visible-conversation .conversation-message-list');
-
 		$conv.animate({ scrollTop: $conv[0].scrollHeight}, 1000);
-	}
-
-	private doActiveConversationScroll() {
-		// let $conv = $('.conversation-item.active');
-		//
-		// $('body').animate({ scrollTop: $conv[0].scrollHeight}, 1000);
 	}
 
 	private resetVisibleConversation() {
