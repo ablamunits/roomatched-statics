@@ -73,6 +73,12 @@
 				border-top: 1px dashed $light-grey;
 				opacity: .4;
 			}
+
+			&:last-of-type {
+				hr {
+					display: none;
+				}
+			}
 		}
 	}
 
@@ -92,6 +98,22 @@
 				background-color: darken($red, 10%);
 				color: $white;
 			}
+		}
+	}
+
+	.matches-end {
+		margin-top: 70px !important;
+		text-align: center;
+
+		h3 {
+			text-transform: uppercase;
+			font-weight: 500;
+		}
+
+		.cta-profile {
+			@include cta-button();
+			margin-top: 0;
+			margin-bottom: 50px;
 		}
 	}
 }

@@ -133,6 +133,26 @@ $preference-score-2: $pref-red;
 	}
 }
 
+@mixin cta-button() {
+	outline: none;
+	border: 1px solid $red;
+	background-color: transparent;
+	color: $red;
+	border-radius: 40px;
+	padding: 10px 15px;
+	cursor: pointer;
+	transition: all .2s linear;
+	font-size: 16px;
+	font-weight: 300;
+	margin-top: 25px;
+
+	&:hover {
+		background-color: $red;
+		color: $white;
+		transition: all .2s linear;
+	}
+}
+
 @mixin button-big() {
 	@include button();
 	@include shadow();
@@ -524,6 +544,22 @@ body {
 			width: 100%;
 			text-align: center;
 			font-size: 16px;
+		}
+
+		a:hover {
+			cursor: pointer;
+
+			.fa-twitter {
+				color: lighten($facebook-blue, 40%);
+			}
+
+			.fa-facebook {
+				color: $facebook-blue;
+			}
+
+			.fa-google-plus {
+				color: $red;
+			}
 		}
 	}
 }

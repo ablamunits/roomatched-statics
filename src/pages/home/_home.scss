@@ -225,23 +225,7 @@ $green-confirm: rgb(128, 198, 115);
 	}
 
 	.cta-get-started {
-		outline: none;
-		border: 1px solid $red;
-		background-color: transparent;
-		color: $red;
-		border-radius: 40px;
-		padding: 10px 15px;
-		cursor: pointer;
-		transition: all .2s linear;
-		font-size: 16px;
-		font-weight: 300;
-		margin-top: 25px;
-
-		&:hover {
-			background-color: $red;
-			color: $white;
-			transition: all .2s linear;
-		}
+		@include cta-button();
 	}
 }
 

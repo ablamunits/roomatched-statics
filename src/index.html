@@ -58,6 +58,12 @@
 		js.src = "//connect.facebook.net/en_US/all.js";
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
+
+	// Sharing function for footer icons
+	window.shareLink = function (url) {
+		window.open(url, 'myWindow', 'status = 1, height = 500, width = 360, resizable = 0');
+	}
+
 	</script>
 	<div class="header">
 		<div class="header-content">
@@ -86,12 +92,17 @@
 	</div>
 
 	<div class="content">
-		<div ui-view class="main-view">
+		<div ui-view class="main-view" id="top">
 		</div>
 	</div>
 
 	<div class="footer">
-		<p>Roomatched | By Boris Ablamunits, Or Bar and Gil Dadosh - an MTA project</p>
+		<p>
+			Roomatched | By Boris Ablamunits, Or Bar and Gil Dadosh - an MTA project |
+			<span><a onClick="window.shareLink('https://www.facebook.com/sharer/sharer.php?u=http%3A//www.roomatched.com')"><i class="fa fa-facebook"></i></a></span>
+			<span><a onClick="window.shareLink('https://twitter.com/home?status=Looking%20for%20the%20perfect%20roommate?%20Roomatched%20matches%20you%20by%20personal%20preference!%20http%3A//www.roomatched.com')"><i class="fa fa-twitter"></i></a></span>
+			<span><a onClick="window.shareLink('https://plus.google.com/share?url=http%3A//www.roomatched.com')"><i class="fa fa-google-plus"></i></a></span>
+		</p>
 	</div>
 </body>
 
