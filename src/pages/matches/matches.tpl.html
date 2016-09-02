@@ -1,10 +1,14 @@
 <div class="app-view matches-view">
 	<div class="strip">
 		<h2>Matches</h2>
-		<h3 class="title title-searching" ng-if="!matches.matchesArray"><i class="fa fa-spinner fa-spin"></i> We are looking for matches for you ... Hold tight!</h3>
+		<!-- <h3 class="title title-searching" ng-if="!matches.matchesArray"><i class="fa fa-spinner fa-spin"></i> We are looking for matches for you ... Hold tight!</h3> -->
 		<h3 class="title title-matches-found" ng-if="matches.matchesArray.length > 0">We have found {{ matches.matchesArray.length }} great {{ matches.matchesArray.length > 1 ? 'matches' : 'match' }} for you!</h3>
 	</div>
-	<div class="container">
+	<div class="matches-loading-overlay" ng-show="!matches.matchesArray">
+		<loader></loader>
+		<div class="loader">Matching you up ...</div>
+	</div>
+	<div class="container" ng-if="matches.matchesArray">
 		<div>
 			<div class="no-matches" ng-if="matches.hasNoMatches">
 				<p>Sorry, we couldn't find any matching roommates for you.</p>
