@@ -3,7 +3,7 @@
 	<div class="mobile-description">Sign in to view your matches and contact inbox</div>
 </div>
 
-<div class="app-view home-view">
+<div class="app-view home-view" id="top">
 	<div class="strip strip-home" ng-style="{'background-image': 'url(' + home.currentStripImageSrc + ')'}">
 		<div class="user-type-buttons-wrapper">
 
@@ -22,18 +22,19 @@
 		<h2>&nbsp;<span class="typeit" ab-typeit="home.cityOptions" typeit-loop="true" typeit-cursor="false" typeit-break-lines="false"></span></h2>
 	</div>
 	<div class="container homepage-container" ng-hide="home.isSeekerRegistration || home.isOffererRegistration">
-		<h3>What is this about?</h3>
-		<hr>
-		<div>
-			Roomatched is a platform that helps people find the perfect shared flats to live together.
-			Whether you're looking for a room or want another person to join your flat - Roomatched connects people by personal preferences. No surprises.
-		</div>
-		<h2>Apartments waiting just for you!</h2>
 		<ul class="apartment-post-list">
 			<li ng-repeat="apartmentPost in home.postList | limitTo: 6" class="apartment-post">
 				<apartment-post content="apartmentPost"></apartment-post>
 			</li>
 		</ul>
+		<div class="home-about">
+			<h3>What is this about?</h3>
+			<p>
+			Roomatched is a platform that helps people find the perfect shared flats to live together.
+			Whether you're looking for a room or want another person to join your flat - Roomatched connects people by personal preferences. No surprises.
+			</p>
+			<button du-smooth-scroll="top" duration="1000" class="cta-get-started">Get Started</button>
+		</div>
 	</div>
 
 	<div class="container registration-container" ng-form name="userRegister" id="sign-up-heading">

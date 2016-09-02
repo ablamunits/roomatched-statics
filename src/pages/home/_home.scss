@@ -32,6 +32,7 @@ $green-confirm: rgb(128, 198, 115);
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: center;
+			margin-top: 40px;
 
 			.apartment-post {
 				margin: 10px;
@@ -45,7 +46,7 @@ $green-confirm: rgb(128, 198, 115);
 		width: 100%;
 
 		&.strip-home {
-			height: 400;
+			height: 75vh;
 			background-position: center;
 			background-size: cover;
 			transition: background-image 1s ease-in-out;
@@ -211,6 +212,36 @@ $green-confirm: rgb(128, 198, 115);
 		position: absolute;
 		bottom: 0;
 		right: 0;
+	}
+
+	.home-about {
+		margin-top: 50px !important;
+		text-align: center;
+
+		h3 {
+			text-transform: uppercase;
+			font-weight: 500;
+		}
+	}
+
+	.cta-get-started {
+		outline: none;
+		border: 1px solid $red;
+		background-color: transparent;
+		color: $red;
+		border-radius: 40px;
+		padding: 10px 15px;
+		cursor: pointer;
+		transition: all .2s linear;
+		font-size: 16px;
+		font-weight: 300;
+		margin-top: 25px;
+
+		&:hover {
+			background-color: $red;
+			color: $white;
+			transition: all .2s linear;
+		}
 	}
 }
 
