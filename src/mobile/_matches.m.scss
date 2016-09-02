@@ -1,12 +1,16 @@
 .matches-view {
 	.strip {
-		height: 300px;
+		height: 200px;
+
 		h2 {
 			bottom: 25px;
 		}
 	}
 
 	.match-list {
+		.match-media-nav {
+			font-size: 14px;
+		}
 		.match-item {
 			width: 100%;
 
@@ -33,9 +37,17 @@
 
 		.match-apartment-image,
 		.match-room-image {
+			max-height: 300px;
+
 			img {
 				top: 0;
 			}
+		}
+
+		.match-apartment-details,
+		.match-room-details {
+			background-color: $white !important;
+			border-top: 1px solid $light-grey !important;
 		}
 
 		.match-content .match-messaging .message-wrapper {
@@ -51,8 +63,14 @@
 	}
 
 	.match-filter-options {
+		font-size: 12px;
+
 		.form-section {
 			padding: 2px;
+
+			.title {
+				display: none;
+			}
 
 			.select-wrapper {
 				display: block;
@@ -60,77 +78,17 @@
 				.select-list {
 					font-size: 16px;
 					margin: 5px 0;
+
+					.select-list-item {
+						padding: 3px;
+						font-size: 10px;
+					}
 				}
 			}
 		}
 	}
-}
 
-//body .ngdialog-content {
-//	width: 100% !important;
-//}
-//
-//.matches-view {
-//	.title{
-//			font-size: 42px !important;
-//	}
-//
-//	.match-filter-options {
-//		.form-section {
-//			.title {
-//				display: none;
-//			}
-//
-//			.select-wrapper {
-//				zoom: 1.5;
-//			}
-//		}
-//	}
-//
-//	.match-list {
-//		.match-item {
-//			width: 100%;
-//			zoom: 2;
-//
-//			.match-apartment-image,
-//			.match-room-image {
-//				img {
-//					top: 0;
-//				}
-//			}
-//
-//			.match-messaging .message-wrapper {
-//				h3 {
-//					font-size: 20px;
-//				}
-//
-//				.message-text-area {
-//					height: 100px;
-//				}
-//			}
-//		}
-//	}
-//
-//	// Offerer specific tweaks ..
-//	.offerer-matches-list .match-item hr {
-//		margin: 10px;
-//	}
-//
-//	div.offerer-match-post {
-//		margin: 0;
-//	}
-//
-//	div.offerer-match-content .match-options {
-//		bottom: 0;
-//		font-size: 24px;
-//		margin-top: 30px;
-//		text-align: left;
-//		opacity: 1 !important;
-//
-//		.option-hide {
-//			display: block;
-//			top: 0;
-//			right: 0;
-//		}
-//	}
-//}
+	.matches-end {
+		display: none;
+	}
+}
