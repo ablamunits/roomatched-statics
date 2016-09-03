@@ -118,8 +118,8 @@ class HomeController {
 		if (this.isSeekerRegistration) {
 			return true; // its just numbers ...
 		} else if (this.isOffererRegistration) {
-			// Address Validation
-			return this.offererApartmentDetails.address && (/^[-\'\sa-zA-Z0-9]*$/).test(this.offererApartmentDetails.address);
+			// Address and Room Price Validation
+			return this.offererApartmentDetails.address && (/^[-\'\sa-zA-Z0-9]*$/).test(this.offererApartmentDetails.address) && this.offererRoomDetails.price > 0;
 		}
 	}
 
