@@ -23,7 +23,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="match-lists-container">
+			<div class="match-lists-container" ng-if="matches.matchesArray.length > 0">
 				<ul class="offerer-matches-list match-list" ng-if="matches.showMatchesForOfferer">
 					<li class="match-item" ng-repeat="match in matches.matchesArray
 					| filter: (matches.filters.starred !== 'All' || '') && {isFavorite: matches.filters.starred === 'Starred'}
