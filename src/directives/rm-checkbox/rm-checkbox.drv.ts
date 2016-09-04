@@ -1,5 +1,5 @@
 class RoomatchedCheckboxDirectiveController {
-	isChecked: boolean = false;
+	isChecked: boolean;
 	label: string;
 	icon: string;
 

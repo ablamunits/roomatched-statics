@@ -44,7 +44,7 @@ class UserServiceProvider {
 
 	updateUserAbout(id: number, content: string) {
 		let aboutObject = {
-			about: content
+			about: content ? content : ''
 		};
 
 		return this.$http.post(API_URI + '/userAbout/' + id, aboutObject);

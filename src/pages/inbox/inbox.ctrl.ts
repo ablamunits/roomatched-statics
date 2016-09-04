@@ -28,13 +28,11 @@ class InboxController {
 		});
 
 		$scope.$on('$stateChangeStart', () => {
-			console.log('should stop polling now ...');
 			this.stopMessagePolling();
 		});
 
 		$scope.$watch('inbox.visibleConversationContent', (newVal, oldVal) => {
 			if (newVal && oldVal && newVal.length !== oldVal.length) {
-				console.log('doing conversation scroll!');
 				this.doConversationContentScroll();
 			}
 		});

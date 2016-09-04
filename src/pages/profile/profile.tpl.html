@@ -71,19 +71,18 @@
 					<li class="user-info-option" ng-if="(profile.user.type | typeToString) === 'Offerer'">
 						<a ng-click="profile.showRoomOffering()" du-smooth-scroll="anchor-post" offset="80" duration="1000" id="anchor-post">
 							<span class="icon icon-arrow" ng-include="'assets/icons/arrow-down.svg'" ng-class="{ 'open': profile.openSettings.roomPost }"></span>
-							<!-- My Room Offering -->
 							Post Details
 						</a>
-						<div class="user-details" ng-if="profile.openSettings.roomPost && profile.apartmentDetails && profile.roomDetails">
+						<div class="user-details" ng-if="profile.openSettings.roomPost">
 							<div class="form-section form-room">
 								<button class="update-button upper-left" ng-click="profile.updateRoomOffering()">Update</button>
 								<h3>My Room Details</h3>
-								<room-details-form ng-model="profile.roomDetails"></room-details-form>
+								<room-details-form ng-if="profile.roomDetails" ng-model="profile.roomDetails"></room-details-form>
 							</div>
 							<div class="form-section form-apartment">
 								<button class="update-button upper-left" ng-click="profile.updateRoomOffering()">Update</button>
 								<h3>My Apartment Details</h3>
-								<apartment-details-form ng-model="profile.apartmentDetails"></apartment-details-form>
+								<apartment-details-form ng-if="profile.apartmentDetails" ng-model="profile.apartmentDetails"></apartment-details-form>
 							</div>
 						</div>
 					</li>
