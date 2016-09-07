@@ -37,6 +37,8 @@
 
 .profile-view {
 	.strip {
+		//$list-strip-options: './assets/images/strip-profile-beer-sheva.jpg', './assets/images/strip-profile-tel-aviv.jpg', './assets/images/strip-profile-jerusalem.jpg', './assets/images/strip-profile-haifa.jpg';
+
 		@include strip(400px, './assets/images/strip-profile.jpg', #6f6f6f);
 		background-position-y: -400px;
 		text-align: center;
