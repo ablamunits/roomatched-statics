@@ -30,6 +30,8 @@
 				</div>
 			</div>
 		</div>
+		
+		<div class="match-about" ng-if="ctrl.content.user.about">{{ ctrl.content.user.about }}</div>
 
 		<div class="match-messaging" ng-show="ctrl.messagingIsVisible">
 			<div class="message-wrapper">
@@ -43,7 +45,6 @@
 			</div>
 		</div>
 
-		<div class="match-about" ng-if="ctrl.content.user.about">{{ ctrl.content.user.about }}</div>
 		<ul class="match-options">
 			<li class="option-star" ng-click="ctrl.toggleStar()">
 				<span ng-if="!ctrl.content.isFavorite"><i class="fa fa-star-o"></i> Star This</span>

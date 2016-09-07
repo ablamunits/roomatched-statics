@@ -11,6 +11,7 @@
 		.match-media-nav {
 			font-size: 14px;
 		}
+
 		.match-item {
 			width: 100%;
 
@@ -32,6 +33,28 @@
 
 			.offerer-match-content {
 				padding: 10px;
+
+				.match-user-name {
+					font-size: 14px;
+					line-height: 1.2em;
+				}
+
+				.match-about {
+					font-size: 14px;
+				}
+
+				.match-options {
+					display: flex;
+					justify-content: space-between;
+				}
+
+				.match-messaging * {
+					font-size: 14px;
+
+					.message-send-button {
+						width: 100px;
+					}
+				}
 			}
 		}
 

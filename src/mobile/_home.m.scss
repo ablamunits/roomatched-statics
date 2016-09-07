@@ -1,7 +1,9 @@
 .home-view.home-mobile {
 	display: block;
 	background-color: $xlight-grey;
-	height: 600px;
+	height: 100vh;
+	position: fixed;
+	top: 0;
 
 	.mobile-welcome {
 		@include vertical-align();
