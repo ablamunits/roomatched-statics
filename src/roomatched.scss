@@ -181,6 +181,13 @@ $preference-score-2: $pref-red;
 			background-color: lighten($xlight-red, 10%);
 			border: 1px solid darken($grey, 3%);
 		}
+
+		&::-webkit-input-placeholder {
+			font-size: 14px;
+			top: 0;
+			//display: flex;
+			//justify-content: center;
+		}
 	}
 }
 

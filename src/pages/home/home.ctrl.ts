@@ -21,7 +21,8 @@ class HomeController {
 		preferedNumberOfRoomates: 3
 	};
 
-	offererApartmentDetails: Apartment = <Apartment>{};
+	offererApartmentDetails: Apartment = <Apartment> {};
+
 	offererRoomDetails: Room = <Room>{};
 	offererSexPreffered: string = 'any';
 
@@ -116,7 +117,8 @@ class HomeController {
 
 	private isUserInputValid() {
 		if (this.isSeekerRegistration) {
-			return true; // its just numbers ...
+			// Price range validation
+			return this.seekerRegistrationFields.fromPrice > 0 && this.seekerRegistrationFields.fromPrice < this.seekerRegistrationFields.toPrice;
 		} else if (this.isOffererRegistration) {
 			// Address and Room Price Validation
 			return this.offererApartmentDetails.address && (/^[-\'\sa-zA-Z0-9]*$/).test(this.offererApartmentDetails.address) && this.offererRoomDetails.price > 0;

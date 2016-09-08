@@ -14,8 +14,8 @@
 		<input floating-label type="number" ng-model="ctrl.apartmentDetails.floor" placeholder="Floor Number"/>
 		<input floating-label type="number" ng-model="ctrl.apartmentDetails.totalRooms" placeholder="Total Rooms"/>
 		<br>
-		<input floating-label type="number" ng-model="ctrl.apartmentDetails.totalRoomates" placeholder="Total Roomates"/>
-		<input floating-label type="number" ng-model="ctrl.apartmentDetails.freeRooms" placeholder="Free rooms"/>
+		<input floating-label type="number" ng-model="ctrl.apartmentDetails.totalRoomates" min="2" placeholder="Total Roommates (Min. 2)"/>
+		<input floating-label type="number" ng-model="ctrl.apartmentDetails.freeRooms" min="1" placeholder="Free rooms"/>
 		<input floating-label type="number" ng-model="ctrl.apartmentDetails.approximateExpences" placeholder="Approx. Expences"/>
 		<br>
 
