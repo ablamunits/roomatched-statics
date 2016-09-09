@@ -16,8 +16,8 @@
 
 	.tooltip {
 		@include shadow();
-		display: block;
 		opacity: 0;
+		display: block;
 		position: absolute;
 		font-size: 12px;
 		line-height: 12px;

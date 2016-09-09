@@ -1,4 +1,5 @@
 $green-confirm: rgb(128, 198, 115);
+$strip-headline-height: 130px;
 
 .home-view.home-mobile {
 	display: none;
@@ -46,7 +47,7 @@ $green-confirm: rgb(128, 198, 115);
 		width: 100%;
 
 		&.strip-home {
-			height: 75vh;
+			height: calc(100vh - #{$strip-headline-height} - #{$header-height});
 			background-position: center;
 			background-size: cover;
 			transition: background-image .5s ease-in-out;
@@ -101,6 +102,8 @@ $green-confirm: rgb(128, 198, 115);
 		&.strip-headline {
 			text-align: center;
 			background: $color-bg-section-strip;
+			height: $strip-headline-height;
+
 			h2 {
 				margin: 0;
 				padding: 10px 0;
