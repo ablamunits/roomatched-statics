@@ -184,9 +184,8 @@ $preference-score-2: $pref-red;
 
 		&::-webkit-input-placeholder {
 			font-size: 14px;
+			color: $grey;
 			top: 0;
-			//display: flex;
-			//justify-content: center;
 		}
 	}
 }

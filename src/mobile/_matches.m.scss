@@ -51,11 +51,6 @@
 					font-size: 14px;
 				}
 
-				.match-options {
-					display: flex;
-					justify-content: space-between;
-				}
-
 				.match-messaging * {
 					font-size: 14px;
 
@@ -84,6 +79,17 @@
 		.match-content .match-messaging .message-wrapper {
 			padding: 50px 10px 10px 10px;
 			font-size: 16px;
+		}
+
+		.match-messaging .message-wrapper {
+			.message-contacted-tooltip {
+				margin-bottom: 2px;
+				line-height: 1.4em;
+			}
+
+			h3 {
+				display: none; // Hides the 'send X a message and let them know ...'
+			}
 
 			.message-send-button {
 				margin: 5px 0 0 0;

@@ -247,7 +247,7 @@
 
 			.match-messaging {
 				.message-wrapper {
-					height: 400px;
+					//height: 400px;
 					padding: 50px;
 					box-sizing: border-box;
 					position: relative;
@@ -274,10 +274,14 @@
 							outline: none;
 							border: 1px solid $light-red;
 						}
+
+						&::-webkit-input-placeholder {
+							font-size: 14px;
+							color: $grey;
+						}
 					}
 
 					.message-send-button {
-						position: absolute;
 						cursor: pointer;
 						text-align: center;
 						background-color: $pref-green;
@@ -285,7 +289,7 @@
 						border-radius: 50px;
 						right: 30px;
 						display: block;
-						margin: 20px;
+						margin: 20px 0;
 						padding: 12px;
 						width: 110px;
 

@@ -81,7 +81,7 @@
 		.conversation-message-list {
 			list-style: none;
 			max-height: 400px;
-			overflow: scroll;
+			overflow: auto;
 
 			.conversation-message {
 				position: relative;
@@ -164,6 +164,11 @@
 			font-size: inherit;
 			font-family: $font-family;
 			position: relative;
+
+			&::-webkit-input-placeholder {
+				font-size: 14px;
+				color: $grey;
+			}
 
 			&:focus {
 				outline: none;

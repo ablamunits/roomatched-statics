@@ -101,9 +101,9 @@
 
 			<div class="match-messaging" ng-show="ctrl.currentSlide === 'messaging'">
 				<div class="message-wrapper">
-					<div class="message-contacted-tooltip" ng-if="ctrl.content.hasConversation">Hey! You have already sent a message to {{ ctrl.content.user.firstName }}. See the full conversation in your <a ui-sref="inbox">Inbox</a>.</div>
+					<div class="message-contacted-tooltip" ng-if="ctrl.content.hasConversation">Hey! You have already sent a message to {{ ctrl.content.user.firstName }}. Check out your <a ui-sref="inbox">Inbox</a>.</div>
 					<h3>Send {{ ctrl.content.user.firstName }} a message and let them know you are interested in this room!</h3>
-					<textarea class="message-text-area" placeholder="Living together starts with a 'Hi'!" ng-model="ctrl.matchMessage"></textarea>
+					<textarea ng-focus="ctrl.messageStatus = ctrl.messageStatuses.NOT_SENT" class="message-text-area" placeholder="Living together starts with a 'Hi'!" ng-model="ctrl.matchMessage"></textarea>
 					<div class="message-send-button" ng-click="ctrl.sendMatchMessage(ctrl.content.user.id)" ng-class="{ 'sent' : ctrl.messageStatus === ctrl.messageStatuses.SENT }">
 						<span ng-if="ctrl.messageStatus === ctrl.messageStatuses.NOT_SENT"><i class="fa fa-paper-plane-o"></i> Send</span>
 						<span ng-if="ctrl.messageStatus === ctrl.messageStatuses.SENDING"><i class="fa fa-spinner fa-spin"></i> Sending..</span>

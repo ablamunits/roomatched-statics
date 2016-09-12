@@ -17,6 +17,7 @@ class OffererMatchPostDirectiveController {
 
 		this.MessageService.sendMessage(this.AuthService.loggedUser.id, to, this.matchMessage).then(() => {
 			this.messageStatus = MessageStatus.SENT;
+			this.matchMessage = '';
 			this.content.hasConversation = true;
 		});
 	}
